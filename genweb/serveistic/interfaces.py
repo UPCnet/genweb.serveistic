@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
-from plone.theme.interfaces import IDefaultPloneLayer
+from genweb.theme.browser.interfaces import IGenwebTheme
 
 
-class IGenwebServeisticLayer(IDefaultPloneLayer):
+class IGenwebServeisticLayer(IGenwebTheme):
     """Marker interface that defines a Zope 3 browser layer."""

@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
@@ -22,10 +23,15 @@
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
         name="default"
-        title="genweb.serveistic"
+        title="Genweb Serveistic"
         directory="profiles/default"
         description="Extension profile for genweb.serveistic."
         provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <browser:jbot
+      directory="templates"
+      layer=".interfaces.IGenwebServeisticLayer"
         />
 
 </configure>

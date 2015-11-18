@@ -1,0 +1,60 @@
+<nav id="portal-globalnav"
+     tal:define="menuPrincipal view/menuPrincipal;
+                 subfolders view/menu"
+     i18n:domain="plone"><!-- #portal-globalnav -->
+    <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse-menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <h2 class="hidden-desktop brand"></h2>
+        <div class="nav-collapse nav-collapse-menu">
+          <ul class="nav"
+              tal:define="selected_tab python:view.selected_portal_tab">
+            <tal:tabs tal:repeat="tab menuPrincipal">
+              <li tal:define="tid tab/id;
+                              showSubfolders python:subfolders.get(tid, [])"
+                  tal:attributes="id string:portaltab-${tid};" class="dropdown">
+                <a href=""
+                   tal:attributes="href tab/url;
+                                   title tab/description|nothing;
+                                   alt   tab/description|nothing;
+                                   class python:'dropdown-toggle'" >
+                   <tal:tab content="tab/name"></tal:tab>
+                   <b tal:condition="showSubfolders" class="caret"></b>
+                </a>
+                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
+                    tal:condition="showSubfolders">
+                    <li tal:repeat="subitem showSubfolders" >
+                        <a role="menuitem" tabindex="-1" href=""
+                            tal:content="subitem/name"
+                            tal:attributes="href  subitem/url;
+                                            alt   subitem/description|nothing;
+                                            title subitem/description|nothing;">SUBMENU</a>
+                    </li>
+                </ul>
+
+              </li>
+
+            </tal:tabs>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+$(document).ready(function () {
+
+    $('#portal-globalnav ul.nav li.dropdown').hover(function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeIn();
+    }, function() {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+    });
+
+});
+</script>
