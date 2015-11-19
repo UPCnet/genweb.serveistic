@@ -14,10 +14,4 @@
       layer="..interfaces.IGenwebServeisticLayer"
       />
 
-    <!-- Publish static files -->
-    <browser:resourceDirectory
-      name="genweb.serveistic"
-      directory="static"
-      />
-
 </configure>
