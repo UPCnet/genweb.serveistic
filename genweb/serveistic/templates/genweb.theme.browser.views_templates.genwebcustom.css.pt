@@ -9,3 +9,9 @@
     color: #F7F7F7;
 }
 
+.link-parent.link-root {
+    float: right;
+    margin-top: -15px;
+    margin-bottom: 0px;
+}
+
