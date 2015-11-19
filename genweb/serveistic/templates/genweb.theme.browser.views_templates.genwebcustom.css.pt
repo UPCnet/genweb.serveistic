@@ -1,6 +1,6 @@
-// Aqui posar el SCSS addicional per a suport del tema.
-$fontAwesomePath: "/++genweb++static/fonts";
-@import "compass_twitter_bootstrap/font-awesome";
-@import "overrides";
-
-
+#portal-header-gwst {
+    background: rgba(0, 0, 0, 0) url("++genweb++serveistic/capcalera.jpg") scroll 0 0 / cover;
+    border-bottom: 1px solid #d7d5d2;
+    border-top: 5px solid #bdc8cf;
+    height: 130px;
+    }

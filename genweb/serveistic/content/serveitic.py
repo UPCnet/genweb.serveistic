@@ -92,11 +92,11 @@ class IServeiTIC(form.Schema):
     )
 
 
-# class View(dexterity.DisplayForm):
-#     """ View form
-#     """
-#     grok.context(IServeiTIC)
-#     grok.template('serveitic_view')
+class View(dexterity.DisplayForm):
+    """ View form
+    """
+    grok.context(IServeiTIC)
+    grok.template('serveitic_view')
 
 
 class Edit(dexterity.EditForm):
