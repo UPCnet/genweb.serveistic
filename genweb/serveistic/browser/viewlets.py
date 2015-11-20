@@ -1,45 +1,34 @@
 # -*- coding: utf-8 -*-
-import re
+
 from five import grok
 from plone import api
-
-from cgi import escape
-from Acquisition import aq_inner
 from AccessControl import getSecurityManager
-from zope.interface import Interface
-from zope.component import getMultiAdapter
-from zope.component.hooks import getSite
 
+
+from Acquisition import aq_inner
+from zope.interface import Interface
+from zope.component.hooks import getSite
 from plone.memoize.view import memoize_contextless
 
-from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from plone.app.layout.viewlets.common import PersonalBarViewlet, GlobalSectionsViewlet, PathBarViewlet
-from plone.app.layout.viewlets.common import SearchBoxViewlet, TitleViewlet, ManagePortletsFallbackViewlet
-from plone.app.layout.viewlets.interfaces import IHtmlHead, IPortalTop, IPortalHeader, IBelowContent
-from plone.app.layout.viewlets.interfaces import IPortalFooter, IAboveContentTitle, IAboveContentBody
-from Products.CMFPlone.interfaces import IPloneSiteRoot
+from plone.app.layout.viewlets.common import GlobalSectionsViewlet
+from plone.app.layout.viewlets.interfaces import IPortalTop, IPortalHeader
+from plone.app.layout.navigation.interfaces import INavigationRoot
 
-from Products.ATContentTypes.interface.news import IATNewsItem
-from genweb.core.adapters import IImportant
 
 from genweb.core.interfaces import IHomePage
-from genweb.core.utils import genweb_config, havePermissionAtRoot, pref_lang
+from genweb.core.utils import genweb_config, pref_lang
 
-from genweb.theme.browser.interfaces import IGenwebTheme
-from genweb.alternatheme.browser.viewlets import gwManagePortletsFallbackViewlet
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 
-from plone.app.collection.interfaces import ICollection
-from genweb.core import HAS_CAS
-from zope.security import checkPermission
-
-import random
 from genweb.core import GenwebMessageFactory as _
 from DateTime.DateTime import DateTime
+
+from genweb.serveistic.content.serveitic import IServeiTIC
+from plone.app.layout.viewlets.interfaces import IBelowContent
+from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
 
 grok.context(Interface)
 
@@ -157,3 +146,51 @@ class PortalHeaderGWServeistic(gwHeader):
         else:
             cabecera = default_image
         return cabecera
+
+
+class gwManagePortletsFallbackViewletMixin(object):
+    """ The override for the manage_portlets_fallback viewlet for IPloneSiteRoot
+    """
+
+    render = ViewPageTemplateFile('viewlets_templates/manage_portlets_fallback.pt')
+
+    def getPortletContainerPath(self):
+        context = aq_inner(self.context)
+
+        container_url = context.absolute_url()
+
+        # Portlet container will be in the context,
+        # Except in the portal root, when we look for an alternative
+        if INavigationRoot.providedBy(self.context):
+            pc = getToolByName(context, 'portal_catalog')
+            # Add the use case of mixin types of IHomepages. The main ones of a
+            # non PAM-enabled site and the possible inner ones.
+            result = pc.searchResults(object_provides=IHomePage.__identifier__,
+                                      portal_type='Document',
+                                      Language=pref_lang())
+
+            if result:
+                # Return the object without forcing a getObject()
+                container_url = result[0].getURL()
+
+        return container_url
+
+    def managePortletsURL(self):
+        return "%s/%s" % (self.getPortletContainerPath(), '@@manage-homeportlets')
+
+    def available(self):
+        secman = getSecurityManager()
+
+        if secman.checkPermission('Genweb: Manage home portlets', self.context):
+            return True
+        else:
+            return False
+
+
+class gwManagePortletsFallbackViewletForIHomePage(gwManagePortletsFallbackViewletMixin, ManagePortletsFallbackViewlet, viewletBase):
+    """ The override for the manage_portlets_fallback viewlet for IHomePage
+    """
+    grok.context(IServeiTIC)
+    grok.name('serveitic.manage_portlets_fallback')
+    grok.viewletmanager(IBelowContent)
+    grok.layer(IGenwebServeisticLayer)
