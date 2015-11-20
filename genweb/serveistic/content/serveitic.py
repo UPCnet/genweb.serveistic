@@ -137,8 +137,8 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     manuals = createContentInContainer(serveitic, 'Folder', title='Manuals', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Manual usuari', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Manual administrador', checkConstraints=False)
+    createContentInContainer(manuals, 'Document', title='Manual usuari', checkConstraints=False)
+    createContentInContainer(manuals, 'Document', title='Manual administrador', checkConstraints=False)
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(manuals)
     behavior.setConstrainTypesMode(1)
@@ -146,9 +146,9 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     ajuda = createContentInContainer(serveitic, 'Folder', title='Ajuda', checkConstraints=False)
-    createContentInContainer(serveitic, 'Folder', title='FAQs', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Casos us', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Errors coneguts', checkConstraints=False)
+    createContentInContainer(ajuda, 'Folder', title='FAQs', checkConstraints=False)
+    createContentInContainer(ajuda, 'Document', title='Casos us', checkConstraints=False)
+    createContentInContainer(ajuda, 'Document', title='Errors coneguts', checkConstraints=False)
 
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(ajuda)
@@ -157,9 +157,9 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     documentacio = createContentInContainer(serveitic, 'Folder', title='Documentació', checkConstraints=False)
-    createContentInContainer(serveitic, 'Folder', title='Documentació tècnica', checkConstraints=False)
-    createContentInContainer(serveitic, 'Folder', title='Documentació de referència', checkConstraints=False)
-    links = createContentInContainer(serveitic, 'Folder', title='Enllaços', checkConstraints=False)
+    createContentInContainer(documentacio, 'Folder', title='Documentació tècnica', checkConstraints=False)
+    createContentInContainer(documentacio, 'Folder', title='Documentació de referència', checkConstraints=False)
+    links = createContentInContainer(documentacio, 'Folder', title='Enllaços', checkConstraints=False)
 
     behavior = ISelectableConstrainTypes(links)
     behavior.setConstrainTypesMode(1)
@@ -172,8 +172,8 @@ def initialize_servei(serveitic, event):
     behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
-    suggeriments = createContentInContainer(serveitic, 'Folder', title='suggeriments', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Suggeriments', checkConstraints=False)
+    suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
+    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(suggeriments)
     behavior.setConstrainTypesMode(1)
