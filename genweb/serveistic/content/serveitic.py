@@ -23,6 +23,7 @@ from AccessControl import getSecurityManager
 
 from z3c.form import button
 
+from genweb.serveistic.interfaces import IGenwebServeisticLayer
 
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
@@ -44,17 +45,16 @@ from plone.dexterity.utils import createContentInContainer
 
 from plone.indexer import indexer
 from plone.memoize.view import memoize_contextless
-from plone.namedfile.field import NamedBlobImage
 from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.interfaces import IPortletManager
 from plone.registry.interfaces import IRegistry
 
-from Products.statusmessages.interfaces import IStatusMessage
-from ZPublisher.HTTPRequest import FileUpload
-from genweb.core.adapters.favorites import IFavorite
-from genweb.core.widgets.select2_user_widget import Select2UserInputFieldWidget
-from genweb.core.widgets.select2_user_widget import SelectWidgetConverter
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.app.portlets.portlets.navigation import Assignment as NavPortletAssignment
+from genweb.theme.browser.interfaces import IHomePageView
+from genweb.theme.browser.views import HomePageBase
 
 
 class IInitializedServeiTIC(Interface):
@@ -67,7 +67,7 @@ class IServeiTIC(form.Schema):
     """ Tipus Servei TIC
     """
 
-    serveiDescrition = RichText(
+    serveiDescription = RichText(
         title=_(u"Body"),
         required=False,
     )
@@ -92,11 +92,25 @@ class IServeiTIC(form.Schema):
     )
 
 
-class View(dexterity.DisplayForm):
-    """ View form
+class IInitializedPortlets(Interface):
     """
+    Marker interface to mark wether the default portlets have been initialized
+    """
+
+
+class View(HomePageBase):
+    grok.implements(IHomePageView)
     grok.context(IServeiTIC)
+    grok.layer(IGenwebServeisticLayer)
+    # grok.name('subhome')
     grok.template('serveitic_view')
+
+
+# class View(dexterity.DisplayForm):
+#     """ View form
+#     """
+#     grok.context(IServeiTIC)
+#     grok.template('serveitic_view')
 
 
 class Edit(dexterity.EditForm):
