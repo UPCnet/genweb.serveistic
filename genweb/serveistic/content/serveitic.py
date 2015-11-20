@@ -163,8 +163,8 @@ def initialize_servei(serveitic, event):
 
     behavior = ISelectableConstrainTypes(links)
     behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Link'))
-    behavior.setImmediatelyAddableTypes(('Link'))
+    behavior.setLocallyAllowedTypes(('Link',))
+    behavior.setImmediatelyAddableTypes(('Link',))
 
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(documentacio)
