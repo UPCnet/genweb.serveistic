@@ -68,25 +68,49 @@ class IServeiTIC(form.Schema):
     """
 
     serveiDescription = RichText(
-        title=_(u"Body"),
+        title=_(u"Breu resum del servei"),
         required=False,
     )
 
-    responsable = schema.Text(
+    responsable = schema.TextLine(
         title=_(u"Nom responsable"),
         description=_(u"Nom responsable del servei"),
         required=False,
     )
 
     responsableMail = schema.TextLine(
-        title=_(u'From mail'),
+        title=_(u'Email responsable'),
         description=_(u'Enter the from used in the mail form'),
         required=False,
         constraint=checkEmailAddress
     )
 
+    ambito = schema.TextLine(
+        title=_(u"Àmbit del servei"),
+        description=_(u""),
+        required=False,
+    )
+
+    ubicacio = schema.TextLine(
+        title=_(u"Ubicació del servei"),
+        description=_(u""),
+        required=False,
+    )
+
+    prestador = schema.TextLine(
+        title=_(u"Prestador del servei"),
+        description=_(u""),
+        required=False,
+    )
+
+    tipologia = schema.TextLine(
+        title=_(u"Tipologia del servei"),
+        description=_(u""),
+        required=False,
+    )
+
     image = NamedBlobImage(
-        title=_(u"Image"),
+        title=_(u"Imatge capcalera"),
         description=_(u""),
         required=False,
     )
@@ -102,15 +126,7 @@ class View(HomePageBase):
     grok.implements(IHomePageView)
     grok.context(IServeiTIC)
     grok.layer(IGenwebServeisticLayer)
-    # grok.name('subhome')
     grok.template('serveitic_view')
-
-
-# class View(dexterity.DisplayForm):
-#     """ View form
-#     """
-#     grok.context(IServeiTIC)
-#     grok.template('serveitic_view')
 
 
 class Edit(dexterity.EditForm):
@@ -129,7 +145,6 @@ def initialize_servei(serveitic, event):
     createContentInContainer(elservei, 'Document', title='Normativa', checkConstraints=False)
     createContentInContainer(elservei, 'Document', title='Procediments', checkConstraints=False)
     createContentInContainer(elservei, 'Document', title='Evolució del servei', checkConstraints=False)
-
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(elservei)
     behavior.setConstrainTypesMode(1)
@@ -149,7 +164,6 @@ def initialize_servei(serveitic, event):
     createContentInContainer(ajuda, 'Folder', title='FAQs', checkConstraints=False)
     createContentInContainer(ajuda, 'Document', title='Casos us', checkConstraints=False)
     createContentInContainer(ajuda, 'Document', title='Errors coneguts', checkConstraints=False)
-
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(ajuda)
     behavior.setConstrainTypesMode(1)
@@ -160,13 +174,12 @@ def initialize_servei(serveitic, event):
     createContentInContainer(documentacio, 'Folder', title='Documentació tècnica', checkConstraints=False)
     createContentInContainer(documentacio, 'Folder', title='Documentació de referència', checkConstraints=False)
     links = createContentInContainer(documentacio, 'Folder', title='Enllaços', checkConstraints=False)
-
+    # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(links)
     behavior.setConstrainTypesMode(1)
     behavior.setLocallyAllowedTypes(('Link',))
     behavior.setImmediatelyAddableTypes(('Link',))
 
-    # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(documentacio)
     behavior.setConstrainTypesMode(1)
     behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
@@ -179,45 +192,6 @@ def initialize_servei(serveitic, event):
     behavior.setConstrainTypesMode(1)
     behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
-
-    # Add portlets programatically
-    # target_manager = queryUtility(IPortletManager, name='plone.leftcolumn', context=ServeiTIC)
-    # target_manager_assignments = getMultiAdapter((ServeiTIC, target_manager), IPortletAssignmentMapping)
-    # from ulearn.theme.portlets.profile import Assignment as profileAssignment
-    # from ulearn.theme.portlets.thinnkers import Assignment as thinnkersAssignment
-    # from ulearn.theme.portlets.communities import Assignment as communitiesAssignment
-    # from ulearn.theme.portlets.stats import Assignment as statsAssignment
-    # from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
-    # target_manager_assignments['profile'] = profileAssignment()
-    # target_manager_assignments['navigation'] = navigationAssignment(root=u'/{}'.format(ServeiTIC.id))
-    # target_manager_assignments['communities'] = communitiesAssignment()
-    # target_manager_assignments['thinnkers'] = thinnkersAssignment()
-    # target_manager_assignments['stats'] = statsAssignment()
-
-    # # Blacklist the right column portlets on documents
-    # right_manager = queryUtility(IPortletManager, name=u"plone.rightcolumn")
-    # blacklist = getMultiAdapter((documents, right_manager), ILocalPortletAssignmentManager)
-    # blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
-
-    # # Blacklist the right column portlets on photos
-    # right_manager = queryUtility(IPortletManager, name=u"plone.rightcolumn")
-    # blacklist = getMultiAdapter((photos, right_manager), ILocalPortletAssignmentManager)
-    # blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
-
-    # # Blacklist the right column portlets on links
-    # right_manager = queryUtility(IPortletManager, name=u"plone.rightcolumn")
-    # blacklist = getMultiAdapter((links, right_manager), ILocalPortletAssignmentManager)
-    # blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
-
-    # # Blacklist the right column portlets on events
-    # right_manager = queryUtility(IPortletManager, name=u"plone.rightcolumn")
-    # blacklist = getMultiAdapter((events, right_manager), ILocalPortletAssignmentManager)
-    # blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
-
-    # # Blacklist the right column portlets on discussion
-    # right_manager = queryUtility(IPortletManager, name=u"plone.rightcolumn")
-    # blacklist = getMultiAdapter((discussion, right_manager), ILocalPortletAssignmentManager)
-    # blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
 
     # Reindex all created objects
     elservei.reindexObject()
