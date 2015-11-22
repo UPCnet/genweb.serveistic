@@ -5,7 +5,7 @@ from plone import api
 from AccessControl import getSecurityManager
 
 
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_chain
 from zope.interface import Interface
 from zope.component.hooks import getSite
 from plone.memoize.view import memoize_contextless
@@ -56,6 +56,12 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
     index = ViewPageTemplateFile('viewlets_templates/sections.pt')
 
     allowed_section_types = ['Folder', 'Collection', 'Document', 'serveitic']
+
+    def get_servei(self):
+        context = aq_inner(self.context)
+        for obj in aq_chain(context):
+            if IServeiTIC.providedBy(obj):
+                return obj
 
     def show_menu(self):
         return not self.genweb_config().treu_menu_horitzontal and self.portal_tabs
@@ -135,17 +141,11 @@ class PortalHeaderGWServeistic(gwHeader):
     grok.template('portal_header')
     grok.layer(IGenwebServeisticLayer)
 
-    def getimage(self):
-        default_image = 'capcalera'
-        servei = self.context
-        path = servei.absolute_url_path()
-        obj = api.content.get(path)
-        image = 'aqui va la imagen'
-        if obj.portal_type == 'serveitic' and image:
-            cabecera = image
-        else:
-            cabecera = default_image
-        return cabecera
+    def get_servei(self):
+        context = aq_inner(self.context)
+        for obj in aq_chain(context):
+            if IServeiTIC.providedBy(obj):
+                return obj
 
 
 class gwManagePortletsFallbackViewletMixin(object):

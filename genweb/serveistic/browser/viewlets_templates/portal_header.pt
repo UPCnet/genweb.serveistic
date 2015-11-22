@@ -1,12 +1,29 @@
-<!-- dklfgjslñdfkghsdfkh
-<div tal:define="dada viewlet/getimage" class="portal-header-gwst" /> -->
-
-
+<p class="goout">
+    <a accesskey="S" href="#content"
+       i18n:domain="genweb"
+       i18n:translate="skip_to_content">
+        Vés al contingut (premeu Retorn)
+    </a></p>
 <header id="portal-header-gwst" role="banner"
         tal:define="genweb_config context/@@gwconfig;
-                    class_show_image python:genweb_config.treu_imatge_capsalera and 'no-image' or None"
-        tal:attributes="class class_show_image | nothing">
+                    class_show_image python:genweb_config.treu_imatge_capsalera and 'no-image' or None;
+                    servei viewlet/get_servei"
+        tal:attributes="class class_show_image | nothing"
+        tal:condition="nocall:not:servei/image | nothing">
     <div tal:replace="structure provider:plone.portalheader" />
 </header>
 
-
+<header id="portal-header" role="banner"
+        tal:define="genweb_config context/@@gwconfig;
+                    class_show_image python:genweb_config.treu_imatge_capsalera and 'no-image' or None;
+                    servei viewlet/get_servei"
+        tal:attributes="class class_show_image | nothing"
+        tal:condition="nocall:servei/image | nothing">
+    <div>
+        <img tal:attributes="src string:${servei/absolute_url}/@@images/image;
+                                 alt servei/title"
+                 class="img-cabecera"/>
+        <tal:rep tal:replace="structure provider:plone.portalheader">
+        </tal:rep>
+    </div>
+</header>

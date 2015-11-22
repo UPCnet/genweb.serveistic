@@ -1,3 +1,4 @@
+<tal:block tal:condition="view/get_servei">
 <nav id="portal-globalnav"
      tal:define="menuPrincipal view/menuPrincipal;
                  subfolders view/menu"
@@ -46,6 +47,7 @@
     </div>
   </div>
 </nav>
+</tal:block>
 
 <script>
 $(document).ready(function () {

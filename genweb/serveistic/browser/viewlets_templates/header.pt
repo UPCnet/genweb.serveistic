@@ -130,11 +130,9 @@
         <li class="divider"> </li>
       </ul>
     </div>
-
-
-
-  </div>
-  <a tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}" class="link-parent link-root">Torna al cercador de Serveis TIC</a>
+</div>
+  <a tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}"
+     class="link-parent link-root">Torna al cercador de Serveis TIC</a>
 
   <div class="titol-espai clearfix">
     <h1>
@@ -148,7 +146,7 @@
                tal:attributes="src string:${viewlet/root_url}/logoPropi.png;
                                alt viewlet/get_right_logo_alt">
       </a>
-</h1>
+    </h1>
   </div>
 </div>
 <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
