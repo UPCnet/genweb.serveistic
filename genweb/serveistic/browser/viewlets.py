@@ -71,7 +71,10 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
         urltool = getToolByName(self.context, 'portal_url')
         portal_catalog = getToolByName(self.context, 'portal_catalog')
         # Obtain all folders in first level "published" o "visible"
-        path = urltool.getPortalPath() + '/ca'
+        lang = pref_lang()
+        servei = self.get_servei()
+        subpath = servei.id
+        path = urltool.getPortalPath() + '/' + lang + '/' + subpath
         folders = portal_catalog.searchResults(portal_type=self.allowed_section_types,
                                                path=dict(query=path, depth=1),
                                                sort_on='getObjPositionInParent')
@@ -91,7 +94,10 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
         urltool = getToolByName(self.context, 'portal_url')
         portal_catalog = getToolByName(self.context, 'portal_catalog')
         # Obtain all folders in first level "published" o "visible"
-        path = urltool.getPortalPath() + '/ca'
+        lang = pref_lang()
+        servei = self.get_servei()
+        subpath = servei.id
+        path = urltool.getPortalPath() + '/' + lang + '/' + subpath
         folders = portal_catalog.searchResults(portal_type=self.allowed_section_types,
                                                path=dict(query=path, depth=1),
                                                sort_on='getObjPositionInParent')
