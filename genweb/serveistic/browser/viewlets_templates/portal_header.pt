@@ -13,16 +13,14 @@
     <div tal:replace="structure provider:plone.portalheader" />
 </header>
 
-<header id="portal-header" role="banner"
+<header role="banner"
         tal:define="genweb_config context/@@gwconfig;
                     class_show_image python:genweb_config.treu_imatge_capsalera and 'no-image' or None;
                     servei viewlet/get_servei"
-        tal:attributes="class class_show_image | nothing"
+        tal:attributes="class class_show_image | nothing;
+                        style string:background: rgba(0, 0, 0,0) url(${servei/absolute_url}/@@images/image) scroll 0 0 /cover"
         tal:condition="nocall:servei/image | nothing">
     <div>
-        <img tal:attributes="src string:${servei/absolute_url}/@@images/image;
-                                 alt servei/title"
-                 class="img-cabecera"/>
         <tal:rep tal:replace="structure provider:plone.portalheader">
         </tal:rep>
     </div>
