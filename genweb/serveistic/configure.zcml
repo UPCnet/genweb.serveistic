@@ -23,11 +23,10 @@
 
     <!-- "++genweb++serveistic/logoUPC.png" -->
     <plone:static
-         directory="static"
+         directory="resources"
          type="genweb"
          name="serveistic"
          />
-
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile

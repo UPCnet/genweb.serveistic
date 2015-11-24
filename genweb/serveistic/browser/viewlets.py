@@ -75,6 +75,7 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
         servei = self.get_servei()
         subpath = servei.id
         path = urltool.getPortalPath() + '/' + lang + '/' + subpath
+
         folders = portal_catalog.searchResults(portal_type=self.allowed_section_types,
                                                path=dict(query=path, depth=1),
                                                sort_on='getObjPositionInParent')
