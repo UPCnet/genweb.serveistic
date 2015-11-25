@@ -30,54 +30,55 @@
 
 
     <div class="caixessearch">
-
-      <fieldset>
-        <legend>Facetes</legend>
-        <div class="row-fluid">
-          <div class="span3">
-            <div class="span12"><input type="checkbox" name="facetes" value="Cat" />Àmbit</div>
-            <div class="span12">
-              <select class="selectpicker" multiple>
-                <option>MustardMustardMustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-              </select>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="span12"><input type="checkbox" name="facetes" value="Cat" />Àmbit</div>
-            <div class="span12">
-              <select class="selectpicker" multiple>
-                <option>MustardMustardMustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-              </select>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="span12"><input type="checkbox" name="facetes" value="Cat" />Àmbit</div>
-            <div class="span12">
-              <select class="selectpicker" multiple>
-                <option>MustardMustardMustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-              </select>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="span12"><input type="checkbox" name="facetes" value="Cat" />Àmbit</div>
-            <div class="span12">
-              <select class="selectpicker" multiple>
-                <option>MustardMustardMustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-
       <div id="searchinputcontentserveis">
+
+        <fieldset id="facetes">
+          <legend>Facetes</legend>
+          <div class="row-fluid">
+            <div class="span3">
+              <div class="span12"><input type="checkbox" name="facetes" value="ambit" tal:attributes="data-name path"/>Àmbit</div>
+              <div class="span12 ambit" data-id="ambit" style="display:none;">
+                <select class="selectpicker" multiple tal:attributes="data-name path">
+                  <option>MustardMustardMustard</option>
+                  <option>Recerca</option>
+                  <option>Relish</option>
+                </select>
+              </div>
+            </div>
+            <div class="span3 ">
+              <div class="span12"><input type="checkbox" name="facetes" value="ubicacio" tal:attributes="data-name path"/>Ubicació</div>
+              <div class="span12 ubicacio" data-id="ubicacio" style="display:none;">
+                <select class="selectpicker" multiple tal:attributes="data-name path">
+                  <option>MustardMustardMustard</option>
+                  <option>Terrassa</option>
+                  <option>Relish</option>
+                </select>
+              </div>
+            </div>
+            <div class="span3">
+              <div class="span12"><input type="checkbox" name="facetes" value="prestador" tal:attributes="data-name path"/>Prestador</div>
+              <div class="span12 prestador" data-id="prestador" style="display:none;">
+                <select class="selectpicker" multiple tal:attributes="data-name path">
+                  <option>MustardMustardMustard</option>
+                  <option>upcnet</option>
+                  <option>web</option>
+                </select>
+              </div>
+            </div>
+            <div class="span3">
+              <div class="span12"><input type="checkbox" name="facetes" value="tipologia" tal:attributes="data-name path"/>Tipologia</div>
+              <div class="span12 tipologia" data-id="tipologia" style="display:none;">
+                <select class="selectpicker" multiple tal:attributes="data-name path">
+                  <option>MustardMustardMustard</option>
+                  <option>Ketchup</option>
+                  <option>Relish</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+      
         <div class="input-append">
           <input class="searchInput" type="text" placeholder="Cerca"
                  i18n:attributes="placeholder search"  tal:attributes="data-name path">
@@ -90,34 +91,17 @@
     <section id="tagslist"
              tal:define="site_properties context/portal_properties/site_properties;
                         use_view_action site_properties/typesUseViewActionInListings|python:()">
-
       <ul>
-        <tal:llistat repeat="continguttot continguts">
-          <tal:favorite repeat="contingut continguttot/favorite">
-            <li tal:define="item_type contingut/obj/portal_type;
-                            item_url contingut/obj/getURL|contingut/obj/absolute_url;">
-              <div class="favorite">
-                <div class="star pull-right"><i class="fa fa-star pull-right"></i></div>
-                <a tal:attributes="href python: item_url+'/view' if item_type in use_view_action else item_url;">
-                  <h4 tal:attributes="class item_type"><span tal:replace="contingut/obj/Title">Title</span></h4>
-                  <p tal:condition="contingut/obj/Description"><span tal:content="contingut/obj/Description">Description</span>
-                  </p>
-                </a>
-              </div>
-           </li>
-          </tal:favorite>
-          <tal:nofavorite repeat="contingut continguttot/nofavorite">
-            <li tal:define="item_type contingut/obj/portal_type;
-                              item_url contingut/obj/getURL|contingut/obj/absolute_url;">
+        <tal:llistat repeat="contingut continguts">
+            <li tal:define="item_url contingut/obj/getURL|contingut/obj/absolute_url">
               <div class="nofavorite">
-                <a tal:attributes="href python: item_url+'/view' if item_type in use_view_action else item_url;">
-                  <h4 tal:attributes="class item_type"><span tal:replace="contingut/obj/Title">Title</span></h4>
+                <a tal:attributes="href python: item_url+'/view'">
+                  <h4><span tal:replace="contingut/obj/Title">Title</span></h4>
                   <p tal:condition="contingut/obj/Description"><span tal:content="contingut/obj/Description">Description</span>
                   </p>
                 </a>
               </div>
            </li>
-          </tal:nofavorite>
         </tal:llistat>
 
       </ul>

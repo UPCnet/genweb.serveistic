@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="genweb">
+
+    <!-- Added Event Subscriber -->
+    <subscriber
+        handler=".hooks.Added"
+        for="plone.app.contenttypes.interfaces.IDocument
+             zope.app.container.interfaces.IObjectAddedEvent"
+        />
+
+    <subscriber
+        handler=".hooks.Added"
+        for="plone.app.contenttypes.interfaces.IFile
+             zope.app.container.interfaces.IObjectAddedEvent"
+        />
+
+    <subscriber
+        handler=".hooks.Added"
+        for="plone.app.contenttypes.interfaces.ILink
+             zope.app.container.interfaces.IObjectAddedEvent"
+        />
+
+    <subscriber
+        handler=".hooks.Added"
+        for="plone.app.contenttypes.interfaces.IImage
+             zope.app.container.interfaces.IObjectAddedEvent"
+        />
+
+</configure>

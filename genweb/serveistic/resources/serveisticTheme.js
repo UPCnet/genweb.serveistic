@@ -20,17 +20,23 @@ $(document).ready(function (event) {
       }
   });
 
-  // Tags search
-  $('#searchbytaghomepage').on("change", function(event) {
+  // facetes search
+  $('#searchinputcontentserveis .selectpicker').on("change", function(event) {
+    var id = $(this).parent().data('id');
+    var query = $('#searchinputcontentserveis .searchInput').val();
+    var path = $(this).data().name;
+    var tags = []
+    $('select.selectpicker').each(function(index){
+      if($(this)[0].value != ""){
+        tags.push($(this)[0].value);
+      }
+    });
+    tags = tags.join(",");
 
-      var query = $('#searchinputcontentserveis .searchInput').val();
-      var path = $(this).data().name;
-      var tags = $('#searchbytaghomepage').val();
-
-      $('.listingBar').hide();
-      $.get(portal_url + '/' + path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
-          $('#tagslist').html(data);
-      });
+    $('.listingBar').hide();
+    $.get(portal_url + '/' + path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
+        $('#tagslist').html(data);
+    });
   });
 
   // Content search
@@ -38,12 +44,44 @@ $(document).ready(function (event) {
 
       var query = $(this).val();
       var path = $(this).data().name;
-      var tags = $('#searchbytaghomepage').val();
+      var tags = []
+      $('select.selectpicker').each(function(index){
+        if($(this)[0].value != ""){
+          tags.push($(this)[0].value);
+        }
+      });
+      tags = tags.join(",");
 
       $('.listingBar').hide();
       $.get(path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
           $('#tagslist').html(data);
       });
+  });
+
+  // ------------------------- Facetes -------------------------
+  $('#facetes :checkbox').change(function(event){
+    var val = $(this).val();
+
+    if ($(this).is(':checked')){
+      $('.'+val).show();
+    }
+    else {
+     $('.'+val).hide();
+     $('.'+val).children().val([]);
+      var query = $('#searchinputcontentserveis .searchInput').val();
+      var path = $(this).data().name;
+      var tags = []
+      $('select.selectpicker').each(function(index){
+        if($(this)[0].value != ""){
+          tags.push($(this)[0].value);
+        }
+      });
+      tags = tags.join(",");
+      $('.listingBar').hide();
+      $.get(portal_url + '/' + path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
+          $('#tagslist').html(data);
+      });
+    }
   });
 
 });
