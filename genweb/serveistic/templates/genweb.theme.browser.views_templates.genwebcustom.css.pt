@@ -15,6 +15,17 @@
     margin-bottom: 0px;
 }
 
+.link-parent.link-root:before {
+    background: url('++genweb++static/images/gh-w.png?1434546601') no-repeat -241px -72px;
+    content: " ";
+    display: inline-block;
+    height: 14px;
+    margin-right: 3px;
+    position: relative;
+    top: 2px;
+    width: 14px;
+}
+
 
 // ---- search view ----
 
@@ -186,3 +197,30 @@
     display:inline-block;
     overflow:hidden
 }
+
+// ----content type icon ---
+#listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
+  a, span  {
+    &[class^="contenttype-"], &[class*=" contenttype-"] {
+      padding-left: 8px;
+      position: relative;
+    }
+    &[class^="contenttype-"]:before,
+    &[class*=" contenttype-"]:before {
+          background-image: image-url("gh.png");
+          background-repeat:no-repeat;
+        content: " ";
+        display: block;
+        height: 14px;
+        width: 14px;
+        margin-top:2px;
+        @include opacity(75);
+        position:relative;
+                float: left;
+    }
+        &.contenttype-serveitic:before      {background-position: -432px    -144px;}
+
+.icon-serveitic {
+  background-position: -432px -144px;
+}
+

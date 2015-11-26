@@ -141,6 +141,30 @@ class HeaderGWServeistic(gwHeader):
     def get_image_class(self):
             return 'l3-image'
 
+    def get_servei(self):
+        context = aq_inner(self.context)
+        for obj in aq_chain(context):
+            if IServeiTIC.providedBy(obj):
+                return obj
+        return None
+
+    def get_title(self):
+        servei = self.get_servei()
+        if servei:
+            return servei.title
+        else:
+            title = getattr(self.genweb_config(), 'html_title_{}'.format(self.pref_lang()))
+            if title:
+                return title
+            else:
+                return u''
+
+    def isServei(self):
+        if self.get_servei():
+            return True
+        else:
+            return False
+
 
 class PortalHeaderGWServeistic(gwHeader):
     grok.name('plone.header')
