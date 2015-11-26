@@ -140,6 +140,13 @@ def initialize_servei(serveitic, event):
 
     # Create default content containers
 
+    # target_manager_en = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal_en)
+    # target_manager_en_assignments = getMultiAdapter((portal_en, target_manager_en), IPortletAssignmentMapping)
+
+    # from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
+    # if 'navigation' not in target_manager_en_assignments:
+    #     target_manager_en_assignments['navigation'] = navigationAssignment(topLevel=1, bottomLevel=2)
+
     elservei = createContentInContainer(serveitic, 'Folder', title='El servei', checkConstraints=False)
     createContentInContainer(elservei, 'Document', title='Descripció del servei', checkConstraints=False)
     createContentInContainer(elservei, 'Document', title='Normativa', checkConstraints=False)
@@ -186,7 +193,9 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
-    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
+    suggeriments_page = createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
+    suggeriments.default_page = suggeriments_page
+
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(suggeriments)
     behavior.setConstrainTypesMode(1)
