@@ -85,30 +85,6 @@ class IServeiTIC(form.Schema):
         constraint=checkEmailAddress
     )
 
-    ambito = schema.TextLine(
-        title=_(u"Àmbit del servei"),
-        description=_(u""),
-        required=False,
-    )
-
-    ubicacio = schema.TextLine(
-        title=_(u"Ubicació del servei"),
-        description=_(u""),
-        required=False,
-    )
-
-    prestador = schema.TextLine(
-        title=_(u"Prestador del servei"),
-        description=_(u""),
-        required=False,
-    )
-
-    tipologia = schema.TextLine(
-        title=_(u"Tipologia del servei"),
-        description=_(u""),
-        required=False,
-    )
-
     image = NamedBlobImage(
         title=_(u"Imatge capcalera"),
         description=_(u""),
