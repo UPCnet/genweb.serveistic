@@ -52,9 +52,12 @@ from plone.registry.interfaces import IRegistry
 
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.portlets.portlets.navigation import Assignment as NavPortletAssignment
+from plone.portlets.interfaces import IPortletAssignmentMapping
 from genweb.theme.browser.interfaces import IHomePageView
 from genweb.theme.browser.views import HomePageBase
+
+
+
 
 
 class IInitializedServeiTIC(Interface):
@@ -114,7 +117,11 @@ class Edit(dexterity.EditForm):
 @grok.subscribe(IServeiTIC, IObjectAddedEvent)
 def initialize_servei(serveitic, event):
 
-    # Create default content containers
+    # Add navigation portlet
+    target_manager = queryUtility(IPortletManager, name='plone.leftcolumn', context=serveitic)
+    target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
+    from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
+    target_manager_assignments['navigation'] = navigationAssignment(topLevel=0, bottomLevel=2, currentFolderOnly='True')
 
     # target_manager_en = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal_en)
     # target_manager_en_assignments = getMultiAdapter((portal_en, target_manager_en), IPortletAssignmentMapping)
