@@ -15,43 +15,19 @@ from plone.dexterity.content import Item
 from plone.app.users.userdataschema import checkEmailAddress
 from zope.app.container.interfaces import IObjectAddedEvent
 
-
-
-
-from AccessControl import Unauthorized
-from AccessControl import getSecurityManager
-
-from z3c.form import button
-
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.component.hooks import getSite
-from zope.event import notify
+
 from zope.interface import Interface
 from zope.interface import alsoProvides
-from zope.lifecycleevent import ObjectModifiedEvent
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-from zope.lifecycleevent.interfaces import IObjectRemovedEvent
-from zope.schema.interfaces import IContextSourceBinder
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.security import checkPermission
 
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 from plone.dexterity.utils import createContentInContainer
 
-from plone.indexer import indexer
-from plone.memoize.view import memoize_contextless
-from plone.portlets.constants import CONTEXT_CATEGORY
-from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.interfaces import IPortletManager
-from plone.registry.interfaces import IRegistry
 
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from genweb.theme.browser.interfaces import IHomePageView
 from genweb.theme.browser.views import HomePageBase
@@ -114,11 +90,17 @@ class Edit(dexterity.EditForm):
 @grok.subscribe(IServeiTIC, IObjectAddedEvent)
 def initialize_servei(serveitic, event):
 
-    # Add navigation portlet
+    # Add navigation and banners portlets
     target_manager = queryUtility(IPortletManager, name='plone.leftcolumn', context=serveitic)
     target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
     from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
+    from genweb.banners.portlets.bannersportlet import Assignment as bannersAssignment
     target_manager_assignments['navigation'] = navigationAssignment(topLevel=0, bottomLevel=2, currentFolderOnly='True')
+    target_manager_assignments['banner'] = bannersAssignment()
+
+    target_manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager1', context=serveitic)
+    target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
+    target_manager_assignments['banner'] = bannersAssignment()
 
     # target_manager_en = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal_en)
     # target_manager_en_assignments = getMultiAdapter((portal_en, target_manager_en), IPortletAssignmentMapping)
@@ -173,8 +155,8 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
-    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
-    # suggeriments.default_page = suggeriments_page
+    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False, exclude_from_nav=True, allow_discussion=True)
+    suggeriments.setDefaultPage('suggeriments')
 
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(suggeriments)

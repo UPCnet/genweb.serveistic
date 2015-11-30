@@ -159,6 +159,13 @@ class HeaderGWServeistic(gwHeader):
             else:
                 return u''
 
+    def get_url(self):
+        servei = self.get_servei()
+        if servei:
+            return servei.absolute_url()
+        else:
+            return u''
+
     def isServei(self):
         if self.get_servei():
             return True
