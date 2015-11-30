@@ -57,9 +57,6 @@ from genweb.theme.browser.interfaces import IHomePageView
 from genweb.theme.browser.views import HomePageBase
 
 
-
-
-
 class IInitializedServeiTIC(Interface):
     """
         A Servei TIC that has been succesfully initialized
@@ -176,8 +173,8 @@ def initialize_servei(serveitic, event):
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
-    suggeriments_page = createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
-    suggeriments.default_page = suggeriments_page
+    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False)
+    # suggeriments.default_page = suggeriments_page
 
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(suggeriments)
