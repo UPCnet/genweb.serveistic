@@ -34,14 +34,9 @@ class SubjectChooserWidget(textarea.TextAreaWidget):
     def subjects_list(self):
         """
         """
-        # subjects_tool = getToolByName(self.context, 'portal_keywords_categorization')
-        # checked = self.value.split('\n')
-        val = [{'header': True, 'value': 'acti', 'title': 'Activitats'},
-         {'header': False, 'checked': False, 'value': u'Aikido', 'title': u'Aikido'},
-         {'header': False, 'checked': False, 'value': u'Balls', 'title': u'Balls'},
-         {'header': False, 'checked': False, 'value': u'Bridge', 'title': u'Bridge'}]
-        # return subjects_tool.keywords(checked=checked)
-        return val
+        subjects_tool = getToolByName(self.context, 'portal_keywords_categorization')
+        checked = self.value.split('\n')
+        return subjects_tool.keywords(checked=checked)
 
     def render(self):
         if self.mode == interfaces.DISPLAY_MODE:

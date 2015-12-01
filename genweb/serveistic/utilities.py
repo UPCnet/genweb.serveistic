@@ -7,9 +7,9 @@ from BTrees.OOBTree import OOBTree
 
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
-
-from lxml import etree
-import requests
+from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
+from zope.component import queryUtility
+from plone.registry.interfaces import IRegistry
 
 
 class IKeywordsCategorizationUtility(Interface):
@@ -29,55 +29,32 @@ class KeywordsCategorizationUtility(SimpleItem):
     def __init__(self):
         """
         """
-        self.categories = OOBTree()
 
     def update(self):
         """
         """
-        import ipdb;ipdb.set_trace()
-        self.categories = OOBTree()
 
     def keywords(self, checked=[]):
         """
         """
-        import ipdb;ipdb.set_trace()
-        factory = getUtility(IVocabularyFactory, 'plone.app.vocabularies.Keywords')
-        vocabulary = factory(self)
+        facetes_added = []
+        keywords = []
+        facetes = self.serveistic_config().facetes_table
+        facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
+        for tup in facetes_sorted:
+            if tup['faceta'] not in facetes_added:
+                keywords.append({'title': tup['faceta'],
+                                 'value': tup['faceta'],
+                                 'header':  True})
+                facetes_added.append(tup['faceta'])
 
-        keywords_by_filter = []
-        terms = []
-        # terms = [str(a).decode('utf-8') for a in vocabulary]
-        for a in vocabulary:
-            terms.append(a.title)
+            keywords.append({'title': tup['valor'],
+                             'value': tup['valor'],
+                             'header': False,
+                             'checked': tup['valor'] in checked})
+        return keywords
 
-        filter_terms = []
-
-        filters_by_title = sorted(self.filternames.items(), key=lambda x: x[1])
-
-        for filterid, filtertitle in filters_by_title:
-            if len(self.categories[filterid]) > 0:
-                keywords_by_filter.append({'title': filtertitle,
-                                           'value': filterid,
-                                           'header':  True})
-                for item in self.categories[filterid]:
-                    filter_terms.append(item)
-                    keywords_by_filter.append({'title': item,
-                                               'value': item,
-                                               'header': False,
-                                               'checked': item in checked})
-
-        total = set(terms)
-        existents = set(filter_terms)
-        altres = set(existents).symmetric_difference(set(total))
-        if altres:
-            altres = list(altres)
-            altres.sort()
-            keywords_by_filter.append({'title': 'Altres',
-                                       'value': 'altres',
-                                       'header':  True})
-            for item in altres:
-                keywords_by_filter.append({'title': item,
-                                           'value': item,
-                                           'header': False,
-                                           'checked': item in checked})
-        return keywords_by_filter
+    def serveistic_config(self):
+        """ Funcio que retorna les configuracions del controlpanel """
+        registry = queryUtility(IRegistry)
+        return registry.forInterface(IServeisTICControlPanelSettings)
