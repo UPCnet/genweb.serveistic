@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+import unicodedata
+
 from zope import schema
 from plone.supermodel import model
 
@@ -12,11 +15,42 @@ from plone.app.registry.browser import controlpanel
 
 from z3c.form import button
 from Products.statusmessages.interfaces import IStatusMessage
+from five import grok
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.interfaces import IVocabularyFactory
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+
+
+class ITableTitleFaceta(form.Schema):
+    faceta = schema.TextLine(title=_(u'Títol faceta'),
+             required=False)
+
+
+class getFacetesTitles(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IServeisTICControlPanelSettings, check=False)
+        items = []
+
+        if settings.title_faceta_table is not None:
+            for item in settings.title_faceta_table:
+                token = unicodedata.normalize('NFKD', item['faceta']).encode('ascii', 'ignore').lower()
+                items.append(SimpleVocabulary.createTerm(
+                    item['faceta'],
+                    token,
+                    item['faceta'],))
+        return SimpleVocabulary(items)
+
+grok.global_utility(getFacetesTitles, name="availableTitleFacetes")
 
 
 class ITableFacetes(form.Schema):
-    faceta = schema.TextLine(title=_(u'Faceta'),
-        required=False)
+    faceta = schema.Choice(title=_(u'Faceta'),
+             vocabulary='availableTitleFacetes',
+             required=False)
     valor = schema.TextLine(title=_(u'Valor'),
         required=False)
 
@@ -26,14 +60,23 @@ class IServeisTICControlPanelSettings(model.Schema):
     configuration registry and obtainable via plone.registry.
     """
 
-    model.fieldset('Facetes information',
-                  _(u'Facetes information'),
-                  fields=['facetes_table'])
+    model.fieldset('Facetes',
+                  _(u'Facetes'),
+                  fields=['title_faceta_table', 'facetes_table'])
+
+    form.widget(title_faceta_table=DataGridFieldFactory)
+    title_faceta_table = schema.List(title=_(u'Faceta'),
+                                description=_(u'desc_title_faceta_table',
+                                       default=u'Afegir títol de facetes'),
+                                value_type=DictRow(title=_(u'help_facetes_table'),
+                                                   schema=ITableTitleFaceta),
+                                required=False
+                                     )
 
     form.widget(facetes_table=DataGridFieldFactory)
     facetes_table = schema.List(title=_(u'Facetes'),
                                 description=_(u'help_facetes_table',
-                                       default=u'Afegir facetes de cerca'),
+                                       default=u'Afegir els valors per facetes de cerca'),
                                 value_type=DictRow(title=_(u'help_facetes_table'),
                                                    schema=ITableFacetes),
                                 required=False
@@ -44,7 +87,7 @@ class ServeisTICControlPanelSettingsForm(controlpanel.RegistryEditForm):
 
     schema = IServeisTICControlPanelSettings
     id = 'ServeisTICControlPanelSettingsForm'
-    label = _(u'Serveis TIC settings')
+    label = _(u'Genweb ServeisTIC settings')
     description = _(u'help_serveistic_settings_editform',
                     default=u'ServeisTIC configuration.')
 
