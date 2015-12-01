@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+
+
+<input type="hidden" id="form-widgets-IDublinCore-subjects" name="form.widgets.IDublinCore.subjects" value=""/>
+
+<script type="text/javascript">
+$(document).ready(function(event) {
+  $("#subjects-chooser input[type=checkbox]").on('change', function(event) {
+    $store = $('#form-widgets-IDublinCore-subjects')
+    $store.attr('value', '')
+    var checked = []
+    $("#subjects-chooser input:checked").each(function(index,ele) {
+      checked.push($(ele).val())
+    })
+    $store.attr('value', checked.join('\n'))
+  })
+})
+</script>
+
+<div class="QueryWidget" id="subjects-chooser">
+  <div class="criteria">
+    <dl class="querywidget queryvalue multipleSelectionWidget">
+        <dt class="hiddenStructure">
+            <span class="arrowDownAlternative">&#09660;</span>
+            <span class="multipleSelectionWidgetTitle" i18n:translate="">Select&hellip;</span>
+        </dt>
+        <dd>
+            <tal:values repeat="item view/subjects_list">
+                <label tal:attributes="class python: item['header'] and 'header' or nothing">
+                    <input tal:condition="not: item/header" type="checkbox" name="form.widgets.query.v:records:list"
+                           tal:attributes="name python:'subject.v:records:list'; value item/title;
+                           checked python: item['checked'] and 'checked' or nothing"/>
+                    <span tal:content="item/title"/>
+                </label>
+            </tal:values>
+        </dd>
+    </dl>
+  </div>
+</div>
+<br/>
+</html>
