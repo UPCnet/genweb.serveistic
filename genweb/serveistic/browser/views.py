@@ -6,6 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from genweb.theme.browser.views import HomePageBase
 from genweb.theme.browser.interfaces import IHomePageView
 from plone.app.layout.navigation.interfaces import INavigationRoot
+from genweb.serveistic.utilities import getFacetes
 
 order_by_type = {"Folder": 1, "Document": 2, "File": 3, "Link": 4, "Image": 5}
 
@@ -95,6 +96,9 @@ class FilteredContentsSearchView(HomePageBase):
 
         items = [{'obj': r} for r in r_results_parent]
         return items
+
+    def facetes(self):
+        return getFacetes(self)
 
 
 class SearchFilteredContentAjax(FilteredContentsSearchView):

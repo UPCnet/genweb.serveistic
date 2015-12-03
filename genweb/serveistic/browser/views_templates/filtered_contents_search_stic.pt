@@ -20,7 +20,8 @@
               tal:define="b_start python:0;
                          b_start request/b_start | b_start;
                          continguts python: view.getContent();
-                         path python: view.get_container_path()">
+                         path python: view.get_container_path();
+                         facetes view/facetes">
 
   <div id="librarysearch">
 
@@ -34,47 +35,29 @@
 
         <fieldset id="facetes">
           <legend>Facetes</legend>
-          <div class="row-fluid">
-            <div class="span3">
-              <div class="span12"><input type="checkbox" name="facetes" value="ambit" tal:attributes="data-name path"/>Àmbit</div>
-              <div class="span12 ambit" data-id="ambit" style="display:none;">
-                <select class="selectpicker" multiple tal:attributes="data-name path">
-                  <option>MustardMustardMustard</option>
-                  <option>Recerca</option>
-                  <option>Relish</option>
-                </select>
+          <div class="row-fluid facetes">
+
+          <tal:facetes tal:repeat="faceta facetes">
+            <tal:header condition="python:faceta['header'] == True">
+              <div class="span3">
+                <div class="span12">
+                  <input type="checkbox" name="facetes" tal:attributes="data-name path; value faceta/title" tal:content="faceta/title"/>
+                </div>
+
+                <div class="span12" tal:attributes="data-id faceta/title; class faceta/title" style="display:none;">
+                  <select class="selectpicker" multiple tal:attributes="data-name path">
+                    <tal:content tal:repeat="fac facetes">
+                      <option tal:condition="python:fac['header-obj'] == faceta['title']"
+                              tal:content="fac/title">MustardMustardMustard</option>
+                    </tal:content>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="span3 ">
-              <div class="span12"><input type="checkbox" name="facetes" value="ubicacio" tal:attributes="data-name path"/>Ubicació</div>
-              <div class="span12 ubicacio" data-id="ubicacio" style="display:none;">
-                <select class="selectpicker" multiple tal:attributes="data-name path">
-                  <option>MustardMustardMustard</option>
-                  <option>Terrassa</option>
-                  <option>Relish</option>
-                </select>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="span12"><input type="checkbox" name="facetes" value="prestador" tal:attributes="data-name path"/>Prestador</div>
-              <div class="span12 prestador" data-id="prestador" style="display:none;">
-                <select class="selectpicker" multiple tal:attributes="data-name path">
-                  <option>MustardMustardMustard</option>
-                  <option>upcnet</option>
-                  <option>web</option>
-                </select>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="span12"><input type="checkbox" name="facetes" value="tipologia" tal:attributes="data-name path"/>Tipologia</div>
-              <div class="span12 tipologia" data-id="tipologia" style="display:none;">
-                <select class="selectpicker" multiple tal:attributes="data-name path">
-                  <option>MustardMustardMustard</option>
-                  <option>Ketchup</option>
-                  <option>Relish</option>
-                </select>
-              </div>
-            </div>
+            </tal:header>
+              
+
+          </tal:facetes>
+
           </div>
         </fieldset>
 
