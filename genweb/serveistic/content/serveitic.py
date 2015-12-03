@@ -56,14 +56,14 @@ class IServeiTIC(form.Schema):
 
     responsableMail = schema.TextLine(
         title=_(u'Email responsable'),
-        description=_(u'Enter the from used in the mail form'),
+        description=_(u'Adreça e-mail del responsable del servei'),
         required=False,
         constraint=checkEmailAddress
     )
 
     image = NamedBlobImage(
         title=_(u"Imatge capcalera"),
-        description=_(u""),
+        description=_(u"Imatge recomanada de 1280x130 pixels"),
         required=False,
     )
 
