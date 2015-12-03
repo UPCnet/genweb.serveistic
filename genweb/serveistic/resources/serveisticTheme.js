@@ -34,7 +34,7 @@ $(document).ready(function (event) {
     tags = tags.join(",");
 
     $('.listingBar').hide();
-    $.get(portal_url + '/' + path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
+    $.get(path + '/search_filtered_content_stic', { q: query, t: tags }, function(data) {
         $('#tagslist').html(data);
     });
   });
