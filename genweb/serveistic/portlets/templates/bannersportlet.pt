@@ -1,0 +1,8 @@
+<div id="box_banners">
+        <tal:ban repeat="service view/getServices">
+            <a tal:attributes="href service/url;" target="_blank">
+
+                  <img rel="tooltip" tal:attributes="src string:${service/imgUrl}/@@images/banner;" />
+            </a>
+        </tal:ban>
+</div>
