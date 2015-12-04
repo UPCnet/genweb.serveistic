@@ -6,17 +6,15 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="genweb.portlets">
 
-
     <include package="plone.app.portlets" />
 
     <plone:portlet
         name="serveistic.portlets.notificacions_tic"
-        interface=".notificacions_tic.INotificacionsPortlet"
+        interface=".notificacions_tic.INotificationsPortlet"
         assignment=".notificacions_tic.Assignment"
         renderer=".notificacions_tic.Renderer"
         addview=".notificacions_tic.AddForm"
         editview=".notificacions_tic.EditForm"
-        layer="genweb.serveistic.interfaces.IGenwebServeisticLayer"
     />
 
     <plone:portlet

@@ -28,6 +28,8 @@
          name="serveistic"
          />
 
+    <include package=".portlets" />
+
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
         name="default"

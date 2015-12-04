@@ -3,12 +3,10 @@
           i18n:domain="plone">
 
   <portlet addview="serveistic.portlets.banners"
-           title="Banners serveistic"
-           i18n:attributes="title"/>
+           title="Serveistic Banners"/>
 
   <portlet addview="serveistic.portlets.notificacions_tic"
-           title="Notificacions TIC"
-           i18n:attributes="title"/>
+           title="Serveistic Notificacions"/>
 
 
 </portlets>
