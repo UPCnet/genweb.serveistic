@@ -23,7 +23,6 @@
         assignment=".bannersportlet.Assignment"
         renderer=".bannersportlet.Renderer"
         addview=".bannersportlet.AddForm"
-        editview=".bannersportlet.EditForm"
     />
 
 </configure>

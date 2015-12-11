@@ -6,13 +6,6 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="ulearn">
 
-<head>
-  <metal:block fill-slot="top_slot">
-      <tal:insert tal:replace="nothing"
-                  tal:define="dummy python:request.set('enable_border', 1);
-                              disable_column_one python:request.set('disable_plone.rightcolumn',1);" />
-    </metal:block>
-</head>
 
 <body>
 

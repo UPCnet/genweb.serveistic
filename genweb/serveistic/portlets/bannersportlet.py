@@ -6,77 +6,52 @@ from plone.app.portlets.portlets import base
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
-from souper.soup import get_soup
-from genweb.core.utils import pref_lang
-
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-from zope.formlib import form
-from zope import schema
-
-import requests
 
 
 class IBannersPortlet(IPortletDataProvider):
     """ A portlet which can show actived.
     """
 
-    root = schema.Choice(
-            title=_(u"label_navigation_root_path", default=u"Root node"),
-            description=_(u'help_navigation_root',
-                          default=u"You may search for and choose a folder "
-                                   "to act as the root of the navigation tree. "
-                                   "Leave blank to use the Plone site root."),
-            required=True,
-            source=SearchableTextSourceBinder({'is_folderish': True},
-                                              default_query='path:/portlets'))
-
 
 class Assignment(base.Assignment):
     implements(IBannersPortlet)
 
-    title = _(u'label_banner_serveis', default=u'Blanquerna Banner Serveis')
-    root = None
-
-    def __init__(self, root=None):
-        self.root = root
+    title = _(u'label_banner_serveis', default=u'Serveis Tic Banners')
 
 
 class Renderer(base.Renderer):
 
     render = ViewPageTemplateFile('templates/bannersportlet.pt')
 
-    def getServices(self):
+    def portal_url(self):
+        return self.portal().absolute_url()
+
+    def portal(self):
+        return api.portal.get()
+
+    def getBanners(self):
         """ return list of user service to show in portlet """
-        resul = []
+
         portal = api.portal.get()
-        path_portlet = "/".join(portal.getPhysicalPath()) + self.data.root
+        path_portlet = "/".join(self.context.getPhysicalPath()) + '/banners'
         catalog = getToolByName(portal, 'portal_catalog')
-        records = catalog.searchResults(portal_type='Services',
-                                        path={'query': path_portlet},
-                                        sort_on='getObjPositionInParent')
+        return catalog.searchResults(portal_type='Banner',
+                                     review_state=['published', 'intranet'],
+                                     path={'query': path_portlet},
+                                     sort_on='getObjPositionInParent')
 
-        for record in records:
-            import ipdb;ipdb.set_trace()
-            resul.append({'url': record[1].attrs['url'],
-                          'imgUrl': record[1].attrs['url']
-                          })
-
-        return resul
+    def getAltAndTitle(self, altortitle, open_in_new_window):
+        """ Funcio que extreu idioma actiu i afegeix al alt i al title de les imatges del banner
+            el literal Obriu l'enllac en una finestra nova.
+        """
+        if open_in_new_window:
+            return '%s, %s' % (altortitle.decode('utf-8'), self.portal().translate(_('obrir_link_finestra_nova', default=u"(obriu en una finestra nova)")))
+        else:
+            return '%s' % (altortitle.decode('utf-8'))
 
 
 class AddForm(base.AddForm):
-    form_fields = form.Fields(IBannersPortlet)
-    form_fields['root'].custom_widget = UberSelectionWidget
-    label = _(u"Edit Banner Portlet")
-    description = _(u"This portlet displays banners in folder.")
+    form_fields = []
 
     def create(self, data):
-        return Assignment(root=data.get('root', ""))
-
-
-class EditForm(base.EditForm):
-    form_fields = form.Fields(IBannersPortlet)
-    form_fields['root'].custom_widget = UberSelectionWidget
-    label = _(u"Edit banner Portlet")
-    description = _(u"This portlet displays banners in folder.")
+        return Assignment()
