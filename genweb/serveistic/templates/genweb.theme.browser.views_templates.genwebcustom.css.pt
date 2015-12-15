@@ -1,14 +1,76 @@
+body {
+    color: #444;
+    font-family: "open sans",arial;
+    font-size: 14px;
+    line-height: 20px;
+}
+#eines > li > a {
+  color: white;
+}
+.nav > li > a:hover, .contentViews > li > a:hover, .configlets > li > a:hover, .formTabs > li > a:hover {
+    color: #444;
+ }
+ h1, h2, h3 {
+    color: #017bbe;
+    margin-top: 27px;
+}
+.titol-espai a span {
+    font-size: 30px;
+ }
+.liniaBaix, .documentFirstHeading {
+    border-bottom: medium none;
+}
+.caixessearch {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    min-height: 160px;
+    padding: 10px 20px 20px;
+}
+.facetes .span12 {
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px white;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.facetes .span12 > input {
+    margin-right: 6px;
+    margin-top: 0;
+}    
+.selectpicker {
+    background: white none repeat scroll 0 0;
+    border: medium none;
+    min-width: 200px;
+    opacity: 0.7;
+}
+.selectpicker:hover, .selectpicker:active, .selectpicker:focus {
+      opacity: 1;
+}
+.Prestador, .Tipologia, .Ubicació, .Ambit {
+  display: block;
+}
+
 #portal-header-gwst {
     background: rgba(0, 0, 0, 0) url("++genweb++serveistic/capcalera.jpg") scroll 0 0 / cover;
     border-bottom: 1px solid #d7d5d2;
     border-top: 5px solid #bdc8cf;
     height: 130px;
+    box-shadow: 0 -2px 4px #555 inset;
     }
 
 .titol-espai a {
     color: #F7F7F7;
 }
-
+#facetes legend {
+    border-bottom: 1px solid #ddd;
+    color: #017bbe;
+    font-size: 23px !important;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
 .link-parent.link-root {
     float: right;
     margin-top: -15px;
@@ -83,14 +145,6 @@
 .caixessearch > h3 {
   color: #777777;
   margin-top: 0;
-}
-
-
-.caixessearch {
-  background: none repeat scroll 0 0 #F5F5F5;
-  margin-bottom: 10px;
-  min-height: 160px;
-  padding: 10px;
 }
 
 .select2-drop-active {
