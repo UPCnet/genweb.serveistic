@@ -369,3 +369,40 @@ border: 1px solid #666;
   background-position: -432px -144px;
 }
 
+// --- Notificacions ---
+
+#notificacions li {
+color: #555555;
+font-size:11px;
+font-weight:normal;
+}
+#notificacions li a {
+color:#555555 !important;
+font-weight:bold;
+border-bottom:0 !important;
+text-decoration:underline;
+}
+#notificacions li .data {
+color: #9a9a9a;
+font-size:11px;
+font-weight:normal;
+}
+#notificacions {
+margin:21px 0 0 0 !important;
+}
+#notificacions li {
+display:block;
+margin-top:14px;
+}
+.avis, .notificacio, .novetat {
+padding-left:25px;
+}
+.avis {
+background: url('icon_avis.png') no-repeat 0 15px transparent;
+}
+.notificacio {
+background: url('icon_notificacio.png') no-repeat 0 15px transparent;
+}
+.novetat {
+background: url('icon_novetat.png') no-repeat 0 15px transparent;
+}
