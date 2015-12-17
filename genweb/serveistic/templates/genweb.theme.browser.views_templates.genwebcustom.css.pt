@@ -13,6 +13,10 @@ body {
 }
 #eines > li > a {
   color: white;
+  font-size: 13px;
+}
+#eines > li > a:hover {
+    color: black;
 }
 .nav > li > a:hover, .contentViews > li > a:hover, .configlets > li > a:hover, .formTabs > li > a:hover {
     color: #444;
@@ -22,7 +26,7 @@ body {
     margin-top: 27px;
 }
 .titol-espai a span {
-    font-size: 30px;
+    font-size: 34px;
  }
 .liniaBaix, .documentFirstHeading {
     border-bottom: medium none;
@@ -32,15 +36,16 @@ body {
     border-radius: 3px;
     margin-bottom: 10px;
     min-height: 160px;
-    padding: 10px 20px 20px;
+    padding: 20px;
 }
-.facetes .span12 {
+.facetes h5 {
     color: #555;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     text-shadow: 1px 1px 1px white;
     text-transform: uppercase;
     margin-bottom: 0;
+
 }
 .facetes .span12 > input {
     margin-right: 6px;
@@ -48,15 +53,13 @@ body {
 }    
 .selectpicker {
     background: white none repeat scroll 0 0;
-    border: medium none;
-    min-width: 200px;
-    opacity: 0.7;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    height: 35px;
+    width: 200px;
 }
 .selectpicker:hover, .selectpicker:active, .selectpicker:focus {
-      opacity: 1;
-}
-.Prestador, .Tipologia, .Ubicació, .Ambit {
-  display: block;
+border: 1px solid #666;
 }
 
 #portal-header-gwst {
@@ -77,6 +80,10 @@ body {
     font-weight: 600;
     margin-bottom: 20px;
     padding-bottom: 10px;
+}
+#facetes > h3 {
+    font-size: 18px;
+    font-weight: normal;
 }
 .link-parent.link-root {
     float: right;
@@ -249,76 +256,6 @@ body {
   min-height: 40px; }
 #tagslist p {
   margin-left: 25px; }
-
-#librarysearch .File:before {
-      content:"\f1c1";
-      font-family: FontAwesome;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: inherit;
-      margin-right: 7px;
-  }
-#librarysearch .File {
-      color: #585858;
-       font-size: 14px;
-      font-weight: 600;
-  }
-#librarysearch .Link:before {
-      content:"\f0c1";
-      font-family: FontAwesome;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: inherit;
-      margin-right: 7px;
-  }
-#librarysearch .Link {
-      color: #585858;
-      font-size: 14px;
-      font-weight: 600;
-  }
-#librarysearch .Image:before {
-      content:"\f1c5";
-      font-family: FontAwesome;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: inherit;
-      margin-right: 7px;
-  }
-#librarysearch .Image {
-      color: #585858;
-      font-size: 14px;
-      font-weight: 600;
-  }
-#librarysearch .Document:before {
-      content:"\f0f6";
-      font-family: FontAwesome;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: inherit;
-      margin-right: 7px;
-  }
-#librarysearch .Document {
-      color: #585858;
-      font-size: 14px;
-      font-weight: 600;
-  }
-
-#tagslist a .Folder {
-  color: inherit;
-}
-
-#tagslist a .Folder:before {
-      content:"\f114";
-      font-family: FontAwesome;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: inherit;
-      margin-right: 10px;
-  }
 
 // ---- end search view ----
 
