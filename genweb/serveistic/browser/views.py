@@ -1,5 +1,7 @@
 from five import grok
 from plone import api
+from Acquisition import aq_inner, aq_chain
+from genweb.serveistic.content.serveitic import IServeiTIC
 from zope.interface import Interface
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from Products.CMFCore.utils import getToolByName
@@ -107,3 +109,24 @@ class SearchFilteredContentAjax(FilteredContentsSearchView):
     grok.context(Interface)
     grok.template('filtered_contents_search_ajax_stic')
     grok.layer(IGenwebServeisticLayer)
+
+    def getServeiParent(self, brain):
+        resultObject = brain.getObject()
+        context = aq_inner(resultObject)
+        for obj in aq_chain(context):
+            if IServeiTIC.providedBy(obj):
+                return obj.title
+
+    def showInSeeker(self, brain):
+        resultObject = brain.getObject()
+        context = aq_inner(resultObject)
+        for obj in aq_chain(context):
+            if IServeiTIC.providedBy(obj):
+                return True
+        return False
+
+    def showLabelLocation(self, brain):
+        resultObject = brain.getObject()
+        if IServeiTIC.providedBy(resultObject):
+            return False
+        return True

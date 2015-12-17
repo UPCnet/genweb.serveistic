@@ -15,16 +15,24 @@
 </ul> -->
 <ul tal:define="continguts view/get_contenttags_by_query">
   <tal:llistat repeat="contingut continguts">
-      <li tal:define="item_url contingut/obj/getURL|contingut/obj/absolute_url;
-                      item_type contingut/obj/portal_type">
-        <div class="nofavorite">
-          <a tal:attributes="href python: item_url+'/view'">
-            <h4 tal:attributes="class item_type"><span tal:replace="contingut/obj/Title">Title</span></h4>
-            <p tal:condition="contingut/obj/Description"><span tal:content="contingut/obj/Description">Description</span>
-            </p>
-          </a>
-        </div>
-     </li>
+      <tal:def define="object contingut/obj">
+        <tal:showContent tal:condition="python:view.showInSeeker(object)">
+          <li tal:define="item_url contingut/obj/getURL|contingut/obj/absolute_url;
+                          item_type contingut/obj/portal_type">
+            <div class="nofavorite">
+              <a tal:attributes="href python: item_url+'/view'">
+                <h4 tal:attributes="class item_type">
+                  <span tal:replace="contingut/obj/Title">Title</span> 
+                  <span tal:condition="python:view.showLabelLocation(object)" class="seeker_locate"> Ubicat a <span tal:replace="python: view.getServeiParent(object)"/> </span>
+                </h4>
+                <p tal:condition="contingut/obj/Description">
+                  <span tal:content="contingut/obj/Description">Description</span>
+                </p>
+              </a>
+            </div>
+         </li>
+        </tal:showContent>
+      </tal:def>
   </tal:llistat>
 
 </ul>
