@@ -1,4 +1,4 @@
-@font-face {
+@font-face { 
   font-family: 'FontAwesome';
   src: url("/++components++root/fontawesome/fonts/fontawesome-webfont.eot?v=4.3.0");
   src: url("/++components++root/fontawesome/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("/++components++root/fontawesome/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("/++components++root/fontawesome/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("/++components++root/fontawesome/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("/++components++root/fontawesome/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
@@ -256,6 +256,76 @@ border: 1px solid #666;
   min-height: 40px; }
 #tagslist p {
   margin-left: 25px; }
+
+#librarysearch .File:before {
+      content:"\f1c1";
+      font-family: FontAwesome;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 7px;
+  }
+#librarysearch .File {
+      color: #585858;
+       font-size: 14px;
+      font-weight: 600;
+  }
+#librarysearch .Link:before {
+      content:"\f0c1";
+      font-family: FontAwesome;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 7px;
+  }
+#librarysearch .Link {
+      color: #585858;
+      font-size: 14px;
+      font-weight: 600;
+  }
+#librarysearch .Image:before {
+      content:"\f1c5";
+      font-family: FontAwesome;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 7px;
+  }
+#librarysearch .Image {
+      color: #585858;
+      font-size: 14px;
+      font-weight: 600;
+  }
+#librarysearch .Document:before {
+      content:"\f0f6";
+      font-family: FontAwesome;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 7px;
+  }
+#librarysearch .Document {
+      color: #585858;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+#tagslist a .Folder {
+  color: inherit;
+}
+
+#tagslist a .Folder:before {
+      content:"\f114";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 10px;
+  }
 
 // ---- end search view ----
 
