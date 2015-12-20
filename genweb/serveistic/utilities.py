@@ -48,18 +48,28 @@ def getFacetes(self, checked=[]):
     header_name = ''
     facetes = serveistic_config().facetes_table
     facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-    for tup in facetes_sorted:
-        if tup['faceta'] not in facetes_added:
-            header_name = tup['faceta']
-            keywords.append({'title': tup['faceta'],
-                             'value': tup['faceta'],
-                             'header':  True,
-                             'header-obj': ''})
-            facetes_added.append(tup['faceta'])
+    try:
+        for tup in facetes_sorted:
+            if tup['faceta'] not in facetes_added:
+                header_name = tup['faceta']
+                keywords.append({'title': tup['faceta'],
+                                 'value': tup['faceta'],
+                                 'header':  True,
+                                 'header-obj': ''})
+                facetes_added.append(tup['faceta'])
 
-        keywords.append({'title': tup['valor'],
-                         'value': tup['valor'],
-                         'header': False,
-                         'checked': tup['valor'] in checked,
-                         'header-obj': header_name})
-    return keywords
+            keywords.append({'title': tup['valor'],
+                             'value': tup['valor'],
+                             'header': False,
+                             'checked': tup['valor'] in checked,
+                             'header-obj': header_name})
+        return keywords
+    except:
+        return None
+
+def get_servei(self):
+    context = aq_inner(self.context)
+    for obj in aq_chain(context):
+        if IServeiTIC.providedBy(obj):
+            return obj
+    return None

@@ -1,1 +1,24 @@
+<tal:noptificacions define="notificacions view/retNotificacions"
+             i18n:domain="genweb.serveistic">
 
+<div class="portlet portlet-notificacions">
+    <h2 i18n:translate="">Notificacions</h2>
+    <ul id="notificacions">
+        <tal:rep tal:repeat="notificacio notificacions">
+            <li tal:attributes="class notificacio/tipus">
+                <span class="data" tal:content="notificacio/data">04/04/2010</span>
+                <br/>
+                <a tal:attributes="href notificacio/url; title notificacio/titol;"
+                   tal:content="notificacio/titol">IMPORTANT</a>
+                <tal:co tal:condition="notificacio/desc">: <tal:repl tal:replace="notificacio/desc" />
+                </tal:co>
+            </li>
+        </tal:rep>
+    </ul>
+    <div class="portlet-footer">
+        <a href=""
+           tal:attributes="href view/getNotifFolder"
+           i18n:translate="">Totes les notificacions
+        </a>
+    </div>
+</div>

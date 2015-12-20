@@ -18,6 +18,7 @@ from Products.CMFCore.utils import getToolByName
 from genweb.core.utils import pref_lang
 
 from DateTime.DateTime import DateTime
+from genweb.serveistic.utilities import get_servei
 
 
 class INotificationsPortlet(IPortletDataProvider):
@@ -60,6 +61,12 @@ class Renderer(base.Renderer):
                          "tipus": notificacio.tipus}
             resultats.append(dades_not)
         return resultats
+
+    def getNotifFolder(self):
+        import ipdb; ipdb.set_trace()
+        servei = get_servei()
+        notificacio_folder = servei.getURL + '/'+ lang + '/notificacions'
+        return notificacio_folder
 
 
 class AddForm(base.AddForm):

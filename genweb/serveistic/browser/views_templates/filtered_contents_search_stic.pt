@@ -25,6 +25,7 @@
     <div class="caixessearch">
       <div id="searchinputcontentserveis">
 
+
       
         <div class="input-append">
           <input class="searchInput" type="text" placeholder="Cerca"
@@ -32,6 +33,7 @@
           <span class="add-on"><i class="fa fa-search"></i></span>
         </div>
 
+      <tal:co condition="facetes">
         <fieldset id="facetes">
           <h3>Filtra per...</h3>
           <div class="row-fluid facetes">
@@ -40,7 +42,6 @@
             <tal:header condition="python:faceta['header'] == True">
               <div class="span3">
                 <div class="span12">
-<!--                   <input type="checkbox" name="facetes" tal:attributes="data-name path; value faceta/title" tal:content="faceta/title" checked/> -->
                     <h5 tal:content="faceta/title"></h5>
                 </div>
 
@@ -56,12 +57,17 @@
                 </div>
               </div>
             </tal:header>
-            
           </tal:facetes>
 
           </div>
         </fieldset>
+       </tal:co>
 
+        <div class="input-append">
+          <input class="searchInput" type="text" placeholder="Cerca"
+                 i18n:attributes="placeholder search"  tal:attributes="data-name path">
+          <span class="add-on"><i class="fa fa-search"></i></span>
+        </div>
       </div>
 
     </div>
