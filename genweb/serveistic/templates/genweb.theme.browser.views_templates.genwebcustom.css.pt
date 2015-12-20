@@ -406,3 +406,5 @@ background: url('icon_notificacio.png') no-repeat 0 15px transparent;
 .novetat {
 background: url('icon_novetat.png') no-repeat 0 15px transparent;
 }
+
+

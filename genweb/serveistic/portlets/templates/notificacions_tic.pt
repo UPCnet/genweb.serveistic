@@ -1,4 +1,4 @@
-<tal:noptificacions define="notificacions view/retNotificacions"
+<tal:notificacions define="notificacions view/retNotificacions"
              i18n:domain="genweb.serveistic">
 
 <div class="portlet portlet-notificacions">
@@ -22,3 +22,4 @@
         </a>
     </div>
 </div>
+</tal:notificacions>

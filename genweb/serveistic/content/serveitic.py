@@ -32,6 +32,8 @@ from plone.portlets.interfaces import IPortletAssignmentMapping
 from genweb.theme.browser.interfaces import IHomePageView
 from genweb.theme.browser.views import HomePageBase
 
+import pkg_resources
+
 
 class IInitializedServeiTIC(Interface):
     """
@@ -89,6 +91,7 @@ class Edit(dexterity.EditForm):
 
 @grok.subscribe(IServeiTIC, IObjectAddedEvent)
 def initialize_servei(serveitic, event):
+    egglocation = pkg_resources.get_distribution('genweb.serveistic').location
 
     # Add navigation and banners portlets
     target_manager = queryUtility(IPortletManager, name='plone.leftcolumn', context=serveitic)
@@ -101,13 +104,6 @@ def initialize_servei(serveitic, event):
     target_manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager1', context=serveitic)
     target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
     target_manager_assignments['banner'] = bannersAssignment()
-
-    # target_manager_en = queryUtility(IPortletManager, name='plone.leftcolumn', context=portal_en)
-    # target_manager_en_assignments = getMultiAdapter((portal_en, target_manager_en), IPortletAssignmentMapping)
-
-    # from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
-    # if 'navigation' not in target_manager_en_assignments:
-    #     target_manager_en_assignments['navigation'] = navigationAssignment(topLevel=1, bottomLevel=2)
 
     elservei = createContentInContainer(serveitic, 'Folder', title='El servei', checkConstraints=False)
     createContentInContainer(elservei, 'Document', title='Descripció del servei', checkConstraints=False)
@@ -157,12 +153,24 @@ def initialize_servei(serveitic, event):
     suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
     createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False, exclude_from_nav=True, allow_discussion=True)
     suggeriments.setDefaultPage('suggeriments')
-
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(suggeriments)
     behavior.setConstrainTypesMode(1)
     behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
+    behavior.setImmediatelyAddableTypes(())
+
+    notificacions = createContentInContainer(serveitic, 'Folder', title='Notificacions', description='Notificacions del servei', exclude_from_nav=True, checkConstraints=False)
+    # Set on them the allowable content types
+    behavior = ISelectableConstrainTypes(notificacions)
+    behavior.setConstrainTypesMode(1)
+    behavior.setLocallyAllowedTypes(('notificaciotic'))
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
+
+    banners = createContentInContainer(serveitic, 'BannerContainer', title='Banners', exclude_from_nav=True, checkConstraints=False)
+    data_banner = open('{}/genweb/serveistic/resources/banner_eATIC.png'.format(egglocation)).read()
+    # createContentInContainer(banners, 'Banner', title='ATIC', remoteUrl='http://eatic.upc.edu', open_link_in_new_window=True, image=NamedBlobImage(data=data_banner, filename=u'banner_eATIC.png'))
+    # image_file = NamedBlobImage(data=data_banner, contentType='image/png', filename=u'banner_eATIC.png')
+    # createContentInContainer(banners, 'Banner', title='ATIC', image=image_file)
 
     # Reindex all created objects
     elservei.reindexObject()
@@ -170,6 +178,8 @@ def initialize_servei(serveitic, event):
     ajuda.reindexObject()
     documentacio.reindexObject()
     suggeriments.reindexObject()
+    banners.reindexObject()
+    notificacions.reindexObject()
 
     # Mark ServeiTIC as initialitzated, to avoid  previous
     # folder creations to trigger modify event

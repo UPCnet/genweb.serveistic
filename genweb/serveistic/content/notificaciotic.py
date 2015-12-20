@@ -57,10 +57,17 @@ class View(dexterity.DisplayForm):
             pintar-les a la columna dreta
         """
         resultats = []
-        notificacions = self.catalog.searchResults(portal_type='notificaciotic', sort_on='effective', sort_order='reverse', review_state='internally_published')
+        notificacions = self.catalog.searchResults(portal_type='notificaciotic',
+                                                   sort_on='effective',
+                                                   sort_order='reverse',
+                                                   review_state='published')
         for notificacio in notificacions:
             data = DateTime(notificacio.effective).strftime('%d/%m/%Y')
-            dades_not = {"data": data, "titol": notificacio.Title, "desc": notificacio.Description, "url": notificacio.getURL(), "tipus": notificacio.tipus}
+            dades_not = {"data": data,
+                         "titol": notificacio.Title,
+                         "desc": notificacio.Description,
+                         "url": notificacio.getURL(),
+                         "tipus": notificacio.tipus}
             resultats.append(dades_not)
         return resultats
 

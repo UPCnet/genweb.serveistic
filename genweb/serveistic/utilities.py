@@ -7,6 +7,9 @@ from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry
 
+from Acquisition import aq_inner, aq_chain
+from genweb.serveistic.content.serveitic import IServeiTIC
+
 
 class IKeywordsCategorizationUtility(Interface):
     """ Utility to manage a registry of the items used in the newsletters
@@ -47,14 +50,15 @@ def getFacetes(self, checked=[]):
     keywords = []
     header_name = ''
     facetes = serveistic_config().facetes_table
-    facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-    try:
+    if facetes:
+        facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
+
         for tup in facetes_sorted:
             if tup['faceta'] not in facetes_added:
                 header_name = tup['faceta']
                 keywords.append({'title': tup['faceta'],
                                  'value': tup['faceta'],
-                                 'header':  True,
+                                 'header': True,
                                  'header-obj': ''})
                 facetes_added.append(tup['faceta'])
 
@@ -64,7 +68,8 @@ def getFacetes(self, checked=[]):
                              'checked': tup['valor'] in checked,
                              'header-obj': header_name})
         return keywords
-    except:
+
+    else:
         return None
 
 def get_servei(self):
