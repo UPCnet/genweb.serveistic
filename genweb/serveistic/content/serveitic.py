@@ -163,7 +163,7 @@ def initialize_servei(serveitic, event):
     # Set on them the allowable content types
     behavior = ISelectableConstrainTypes(notificacions)
     behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('notificaciotic'))
+    behavior.setLocallyAllowedTypes(('notificaciotic',))
     behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
 
     banners = createContentInContainer(serveitic, 'BannerContainer', title='Banners', exclude_from_nav=True, checkConstraints=False)
