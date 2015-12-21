@@ -45,6 +45,18 @@ class IServeiTIC(form.Schema):
     """ Tipus Servei TIC
     """
 
+    title = schema.TextLine(
+        title=_(u"Títol"),
+        description=_(u""),
+        required=True,
+    )
+
+    description = schema.Text(
+        title=_(u"Descripció"),
+        description=_(u"Descripció del servei que es veurà al buscador"),
+        required=False,
+    )
+
     serveiDescription = RichText(
         title=_(u"Breu resum del servei"),
         required=False,
@@ -65,7 +77,7 @@ class IServeiTIC(form.Schema):
 
     image = NamedBlobImage(
         title=_(u"Imatge capcalera"),
-        description=_(u"Imatge recomanada de 1280x130 pixels"),
+        description=_(u"Mida imatge recomanada de 1280x130 pixels"),
         required=False,
     )
 
@@ -164,7 +176,7 @@ def initialize_servei(serveitic, event):
     behavior = ISelectableConstrainTypes(notificacions)
     behavior.setConstrainTypesMode(1)
     behavior.setLocallyAllowedTypes(('notificaciotic',))
-    behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
+    behavior.setImmediatelyAddableTypes(('notificaciotic',))
 
     banners = createContentInContainer(serveitic, 'BannerContainer', title='Banners', exclude_from_nav=True, checkConstraints=False)
     data_banner = open('{}/genweb/serveistic/resources/banner_eATIC.png'.format(egglocation)).read()
