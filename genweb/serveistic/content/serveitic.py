@@ -110,8 +110,8 @@ def initialize_servei(serveitic, event):
     target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
     from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
     from genweb.banners.portlets.bannersportlet import Assignment as bannersAssignment
-    target_manager_assignments['navigation'] = navigationAssignment(topLevel=0, bottomLevel=2, currentFolderOnly='True')
     target_manager_assignments['banner'] = bannersAssignment()
+    target_manager_assignments['navigation'] = navigationAssignment(topLevel=0, bottomLevel=2, currentFolderOnly='True')
 
     target_manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager1', context=serveitic)
     target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
