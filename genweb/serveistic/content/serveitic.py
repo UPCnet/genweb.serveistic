@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+
 from five import grok
 from plone.directives import dexterity
 
 from zope import schema
 from plone.directives import form
 from plone.namedfile.file import NamedBlobImage
+from plone.namedfile.field import NamedBlobImage as BlobImage
 from plone.app.textfield import RichText
 
 from genweb.serveistic import _
@@ -75,9 +77,9 @@ class IServeiTIC(form.Schema):
         constraint=checkEmailAddress
     )
 
-    image = NamedBlobImage(
+    image = BlobImage(
         title=_(u"Imatge capcalera"),
-        description=_(u"Mida imatge recomanada de 1280x130 pixels"),
+        description=_(u"Mida recomanada de la imatge 1280x130 pixels"),
         required=False,
     )
 
