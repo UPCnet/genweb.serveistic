@@ -4,7 +4,7 @@ from plone.directives import dexterity
 
 from zope import schema
 from plone.directives import form
-from plone.namedfile.field import NamedBlobImage
+from plone.namedfile.file import NamedBlobImage
 from plone.app.textfield import RichText
 
 from genweb.serveistic import _
@@ -180,9 +180,9 @@ def initialize_servei(serveitic, event):
 
     banners = createContentInContainer(serveitic, 'BannerContainer', title='Banners', exclude_from_nav=True, checkConstraints=False)
     data_banner = open('{}/genweb/serveistic/resources/banner_eATIC.png'.format(egglocation)).read()
-    # createContentInContainer(banners, 'Banner', title='ATIC', remoteUrl='http://eatic.upc.edu', open_link_in_new_window=True, image=NamedBlobImage(data=data_banner, filename=u'banner_eATIC.png'))
-    # image_file = NamedBlobImage(data=data_banner, contentType='image/png', filename=u'banner_eATIC.png')
-    # createContentInContainer(banners, 'Banner', title='ATIC', image=image_file)
+    createContentInContainer(banners, 'Banner', title='ATIC', remoteUrl='http://eatic.upc.edu', open_link_in_new_window=True, image=NamedBlobImage(data=data_banner, filename=u'banner_eATIC.png'))
+    image_file = NamedBlobImage(data=data_banner, contentType='image/png', filename=u'banner_eATIC.png')
+    createContentInContainer(banners, 'Banner', title='ATIC', image=image_file)
 
     # Reindex all created objects
     elservei.reindexObject()

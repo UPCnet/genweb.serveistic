@@ -42,13 +42,6 @@ class Assignment (base.Assignment):
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('templates/notificacions_tic.pt')
 
-    # def get_servei(self):
-    #     context = aq_inner(self.context)
-    #     for obj in aq_chain(context):
-    #         if IServeiTIC.providedBy(obj):
-    #             return obj
-    #     return None
-
     def retNotificacions(self):
         """retorna les dades necessaries de les notificacions del portal per pintar-les al portlet"""
         lang = pref_lang()
@@ -60,13 +53,14 @@ class Renderer(base.Renderer):
                                          sort_order='reverse',
                                          review_state='published')
         for notificacio in notificacions:
+            import ipdb;ipdb.set_trace()
             data = DateTime(notificacio.effective).strftime('%d/%m/%Y')
-            not_tip = notificacio.getObject()
+            # not_tip = notificacio.getObject()
             dades_not = {"data": data,
                          "titol": notificacio.Title,
                          "desc": notificacio.Description,
                          "url": notificacio.getURL(),
-                         "tipus": not_tip.tipus}
+                         "tipus": notificacio.tipus}
             resultats.append(dades_not)
         return resultats
 

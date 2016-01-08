@@ -105,7 +105,7 @@
                   <div class="span3"
                        tal:condition="have_portlets_slot10"
                        tal:define="manager_name string:genweb.portlets.HomePortletManager10"
-                       tal:attributes="class python:'span' + view.getSpanValueForManager(manager_name)">
+                       tal:attributes="class python:'span' + view.SetSpanValueForManager(manager_name)">
                     <span tal:replace="structure python:view.renderProviderByName(manager_name)" />
                   </div>
           </div>
@@ -113,7 +113,6 @@
       </div>
     </div>
   </div>
-
 
         <div metal:fill-slot="portlets_two_slot">
             <tal:comment tal:replace="nothing">get rid of the left hand column portlets to avoid confusion</tal:comment>
