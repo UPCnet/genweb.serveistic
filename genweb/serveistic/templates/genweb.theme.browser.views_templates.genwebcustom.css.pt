@@ -8,7 +8,7 @@
 body {
     color: #444;
     font-family: "open sans",arial;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
 }
 #eines > li > a {
@@ -227,10 +227,19 @@ border: 1px solid #666;
   color: #555;
   text-decoration: none; }
 
+#tagslist a h4:before {
+    content:"\f022";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    margin-right: 10px;
+    text-decoration: inherit;
+}
 #tagslist a h4 {
   font-size: 16px;
   margin-bottom: 0;
-  margin-top: 0; }
+  margin-top: 0; 
+}
 
 #tagslist a h4:hover {
   opacity: 0.8; }
@@ -342,6 +351,10 @@ border: 1px solid #666;
   text-shadow: 1px 1px 0 white;
 }
 
+#edit-bar {
+    font-size: 12px;
+}
+
 // --- Notificacions ---
 
 #notificacions li {
@@ -379,6 +392,38 @@ background: url('++genweb++serveistic/icon_notificacio.png') no-repeat 0 15px tr
 .novetat {
 background: url('++genweb++serveistic/icon_novetat.png') no-repeat 0 15px transparent;
 }
+// --- Notificacions ---
+
+
+
+// ----content type icon ---
+#listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
+  a, span  {
+    &
+    [class^="contenttype-"], &[class*=" contenttype-"] {
+      padding-left: 8px;
+      position: relative;
+    }
+    &[class^="contenttype-"]:before,
+    &[class*=" contenttype-"]:before {
+          background-image: image-url("gh.png");
+          background-repeat:no-repeat;
+        content: " ";
+        display: block;
+        height: 14px;
+        width: 14px;
+        margin-top:2px;
+        @include opacity(75);
+        position:relative;
+                float: left;
+    }
+        &.contenttype-serveitic:before      {background-position: -432px    -144px;}
+
+.icon-serveitic {
+  background-position: -432px -144px;
+}
+
+
 
 
 // ----content type icon ---
