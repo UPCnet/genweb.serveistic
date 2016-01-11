@@ -353,9 +353,8 @@ border: 1px solid #666;
 
 #edit-bar {
     font-size: 12px;
-
-
 }
+
 // --- Notificacions ---
 
 #notificacions li {
@@ -385,13 +384,13 @@ margin-top:14px;
 padding-left:25px;
 }
 .avis {
-background: url('icon_avis.png') no-repeat 0 15px transparent;
+background: url('++genweb++serveistic/icon_avis.png') no-repeat 0 15px transparent;
 }
 .notificacio {
-background: url('icon_notificacio.png') no-repeat 0 15px transparent;
+background: url('++genweb++serveistic/icon_notificacio.png') no-repeat 0 15px transparent;
 }
 .novetat {
-background: url('icon_novetat.png') no-repeat 0 15px transparent;
+background: url('++genweb++serveistic/icon_novetat.png') no-repeat 0 15px transparent;
 }
 // --- Notificacions ---
 
@@ -426,4 +425,30 @@ background: url('icon_novetat.png') no-repeat 0 15px transparent;
 
 
 
+
+// ----content type icon ---
+#listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
+  a, span  {
+    &[class^="contenttype-"], &[class*=" contenttype-"] {
+      padding-left: 8px;
+      position: relative;
+    }
+    &[class^="contenttype-"]:before,
+    &[class*=" contenttype-"]:before {
+          background-image: image-url("gh.png");
+          background-repeat:no-repeat;
+        content: " ";
+        display: block;
+        height: 14px;
+        width: 14px;
+        margin-top:2px;
+        @include opacity(75);
+        position:relative;
+                float: left;
+    }
+        &.contenttype-serveitic:before      {background-position: -432px    -144px;}
+
+.icon-serveitic {
+  background-position: -432px -144px;
+}
 
