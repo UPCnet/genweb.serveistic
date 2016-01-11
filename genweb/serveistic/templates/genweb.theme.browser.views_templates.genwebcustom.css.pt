@@ -232,7 +232,7 @@ border: 1px solid #666;
     font-family: FontAwesome;
     font-style: normal;
     font-weight: 400;
-    margin-right: 10px;
+    margin-right: 11px;
     text-decoration: inherit;
 }
 #tagslist a h4 {
