@@ -53,7 +53,6 @@ class Renderer(base.Renderer):
                                          sort_order='reverse',
                                          review_state='published')
         for notificacio in notificacions:
-            import ipdb;ipdb.set_trace()
             data = DateTime(notificacio.effective).strftime('%d/%m/%Y')
             # not_tip = notificacio.getObject()
             dades_not = {"data": data,
