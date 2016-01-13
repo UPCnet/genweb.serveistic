@@ -72,6 +72,7 @@ def getFacetes(self, checked=[]):
     else:
         return None
 
+
 def get_servei(self):
     context = aq_inner(self.context)
     for obj in aq_chain(context):

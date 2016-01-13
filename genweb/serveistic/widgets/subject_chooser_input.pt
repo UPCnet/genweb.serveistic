@@ -24,7 +24,10 @@ $(document).ready(function(event) {
     <dl class="querywidget queryvalue multipleSelectionWidget">
         <dt class="hiddenStructure">
             <span class="arrowDownAlternative">&#09660;</span>
-            <span class="multipleSelectionWidgetTitle" i18n:translate="">Select&hellip;</span>
+            <span class="multipleSelectionWidgetTitle" 
+                  tal:attributes="title view/checked_subjects_list"
+                  tal:content="view/checked_subjects_list"
+                  i18n:translate="">Select&hellip;</span>
         </dt>
         <dd>
             <tal:values repeat="item view/subjects_list">
