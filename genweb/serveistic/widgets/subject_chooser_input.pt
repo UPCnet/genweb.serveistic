@@ -16,6 +16,15 @@ $(document).ready(function(event) {
     })
     $store.attr('value', checked.join('\n'))
   })
+
+    $store = $('#form-widgets-IDublinCore-subjects')
+    $store.attr('value', '')
+    var checked = []
+    $("#subjects-chooser input:checked").each(function(index,ele) {
+      checked.push($(ele).val())
+    })
+    $store.attr('value', checked.join('\n'))
+
 })
 </script>
 

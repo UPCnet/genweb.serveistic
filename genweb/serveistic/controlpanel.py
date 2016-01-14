@@ -37,6 +37,8 @@ class getFacetesTitles(object):
 
         if settings.title_faceta_table is not None:
             for item in settings.title_faceta_table:
+                if item['faceta'] is None:
+                    continue
                 token = unicodedata.normalize('NFKD', item['faceta']).encode('ascii', 'ignore').lower()
                 items.append(SimpleVocabulary.createTerm(
                     item['faceta'],
