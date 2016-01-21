@@ -62,4 +62,24 @@
         />
     </class>
 
+  <utility
+    factory=".utilities.UbicacioVocabulary"
+    name="genweb.serveitic.vocabularies.ubicacioFacetes"
+    />
+
+  <utility
+    factory=".utilities.PrestadorVocabulary"
+    name="genweb.serveitic.vocabularies.prestadorFacetes"
+    />
+
+  <utility
+    factory=".utilities.TipologiaVocabulary"
+    name="genweb.serveitic.vocabularies.tipologiaFacetes"
+    />
+
+  <utility
+    factory=".utilities.AmbitVocabulary"
+    name="genweb.serveitic.vocabularies.ambitFacetes"
+    />
+
 </configure>
