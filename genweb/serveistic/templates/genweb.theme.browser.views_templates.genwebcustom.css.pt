@@ -11,6 +11,9 @@ body {
     font-size: 13px;
     line-height: 20px;
 }
+#content-area {
+    margin-top: 1em;
+}
 #eines > li > a {
   color: white;
   font-size: 13px;
@@ -27,6 +30,10 @@ body {
 }
 .titol-espai a span {
     font-size: 34px;
+ }
+
+ .titol-espai h1 {
+  width: 300px;
  }
 .liniaBaix, .documentFirstHeading {
     border-bottom: medium none;
@@ -85,23 +92,96 @@ border: 1px solid #666;
     font-size: 18px;
     font-weight: normal;
 }
+.btn-info, .link-parent {
+    background-color: #017bbe;
+    background-image: none;
+}
+.btn-info:hover, .link-parent:hover, .btn-info:active, .link-parent:active, .btn-info.active, .btn-info.selected, .selected.link-parent, .active.link-parent, .btn-info.disabled, .disabled.link-parent, .btn-info[disabled], .link-parent[disabled] {
+    background-color: #015b8d;
+    color: white;
+}    
 .link-parent.link-root {
     float: right;
-    margin-top: -15px;
-    margin-bottom: 0px;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 0;
+    margin-top: -10px;
+    padding-bottom: 9px;
+    padding-top: 5px;
+    width: 205px;
 }
-
 .link-parent.link-root:before {
-    background: url('++genweb++static/images/gh-w.png?1434546601') no-repeat -241px -72px;
+    background: rgba(0, 0, 0, 0) url("++genweb++static/images/gh-w.png?1434546601") no-repeat scroll -241px -72px;
     content: " ";
     display: inline-block;
-    height: 14px;
-    margin-right: 3px;
+    height: 16px;
+    margin-right: 5px;
     position: relative;
-    top: 2px;
-    width: 14px;
+    top: 3px;
+    width: 15px;
+}
+#portal-globalnav .nav > li > a, #portal-globalnav .contentViews > li > a, #portal-globalnav .configlets > li > a, #portal-globalnav .formTabs > li > a {
+    border-right: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 20px;
 }
 
+div#gwsearch {
+    margin-left: 15px;
+  
+}
+#portal-globalnav {
+    background: #eee none repeat scroll 0 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#portal-globalnav .navbar-inner {
+    background-image: none;
+    border-bottom: 0;
+    border-radius: 0;
+    border-top: 0 none;
+    box-shadow: none;
+    padding: 0;
+    border-color: #ddd;
+}
+
+.portlet {
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.portlet h2 {
+    border-bottom: 0 none;
+    box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.1);
+    color: #017bbe;
+    font-size: 18px;
+    line-height: 16px;
+    margin: 0;
+    padding: 10px 15px 10px 6px;
+    position: relative;
+}
+.portlet-footer {
+    background: transparent none repeat scroll 0 0;
+    border-radius: 0;
+    border-top: 1px solid white;
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 5px 10px 7px;
+    position: relative;
+    text-align: right;
+}
+.portlet-footer > a::before {
+    content: "[+]";
+    margin-right: 5px;
+}
+
+header {
+    height: 130px;
+}
 
 // ---- search view ----
 
@@ -335,6 +415,10 @@ border: 1px solid #666;
       text-decoration: inherit;
       margin-right: 10px;
   }
+#portal-globalnav .navbar .nav > li > a:focus, #portal-globalnav .navbar .contentViews > li > a:focus, #portal-globalnav .navbar .configlets > li > a:focus, #portal-globalnav .navbar .formTabs > li > a:focus, #portal-globalnav .navbar .nav > li > a:hover, #portal-globalnav .navbar .contentViews > li > a:hover, #portal-globalnav .navbar .configlets > li > a:hover, #portal-globalnav .navbar .formTabs > li > a:hover {
+    box-shadow: none;
+}
+
 
 // ---- end search view ----
 
@@ -381,16 +465,20 @@ display:block;
 margin-top:14px;
 }
 .avis, .notificacio, .novetat {
-padding-left:25px;
+
 }
 .avis {
-background: url('++genweb++serveistic/icon_avis.png') no-repeat 0 15px transparent;
+
 }
-.notificacio {
-background: url('++genweb++serveistic/icon_notificacio.png') no-repeat 0 15px transparent;
+.notificacio:before {
+  content:"\f0a2";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: inherit;
 }
 .novetat {
-background: url('++genweb++serveistic/icon_novetat.png') no-repeat 0 15px transparent;
+
 }
 // --- Notificacions ---
 
