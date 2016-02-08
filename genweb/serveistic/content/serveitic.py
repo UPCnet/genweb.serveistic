@@ -83,6 +83,27 @@ class IServeiTIC(form.Schema):
         required=False,
     )
 
+    ubicacioString = schema.TextLine(
+            title=_(u"ubicacioString"),
+            description=_(u"Prova ubicacio"),
+            required=False,
+        )
+
+    ubicacio = schema.List(title=_(u"Ubicacio"),
+                           description=_(u"Ubicacio per al facetat"),
+                           required=False,
+                           value_type=schema.Choice(
+                           vocabulary="genweb.serveitic.vocabularies.ubicacioFacetes")
+                           )
+
+    state = schema.Tuple(title=_(u"Workflow state"),
+                         description=_(u"Items in which workflow state to show."),
+                         default=('published', ),
+                         required=True,
+                         value_type=schema.Choice(
+                             vocabulary="plone.app.vocabularies.WorkflowStates")
+                         )
+
 
 class IInitializedPortlets(Interface):
     """

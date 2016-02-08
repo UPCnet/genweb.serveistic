@@ -105,7 +105,7 @@ class UbicacioVocabulary(object):
             facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
         res = []
         for fac in facetes_sorted:
-            if fac['faceta'].encode('utf8') == 'Ubicació':
+            if fac['faceta'].encode('utf8') == 'Ubicacio':
                 res.append(fac['valor'].encode('utf8'))
         items = [SimpleTerm(value, value, value) for value in res]
         return SimpleVocabulary(items)

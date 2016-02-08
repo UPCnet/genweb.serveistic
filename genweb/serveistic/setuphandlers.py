@@ -4,7 +4,9 @@ from Products.CMFCore.utils import getToolByName
 
 
 # Specify the indexes you want, with ('index_name', 'index_type')
-NEW_INDEXES = [('tipus', 'FieldIndex')
+NEW_INDEXES = [('tipus', 'FieldIndex'),
+               ('ubicacio', 'KeywordIndex'),
+               ('ubicacioString', 'KeywordIndex')
            ]
 
 # Afegit creació d'indexos programàticament i controladament per:
@@ -18,6 +20,7 @@ def add_catalog_indexes(catalog):
             indexables.append(name)
     if len(indexables) > 0:
         catalog.manage_reindexIndex(ids=indexables)
+
 
 def setupVarious(context):
     portal = context.getSite()
