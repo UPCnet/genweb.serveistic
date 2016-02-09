@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
-from zope.interface import Interface, Attribute
-from zope.interface import implements
 
-from OFS.SimpleItem import SimpleItem
-from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
-from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
-
-from Acquisition import aq_inner, aq_chain
-from genweb.serveistic.content.serveitic import IServeiTIC
-
-import operator
-from eea.faceted.vocabularies.utils import compare
-from eea.faceted.vocabularies.utils import IVocabularyFactory
+from zope.component import getUtility, queryUtility
+from zope.interface import Interface, Attribute, implements
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
-from Products.CMFCore.utils import getToolByName
+from plone.registry.interfaces import IRegistry
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from OFS.SimpleItem import SimpleItem
+from Acquisition import aq_inner, aq_chain
+from eea.faceted.vocabularies.utils import IVocabularyFactory
+
+from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
+from genweb.serveistic.content.serveitic import IServeiTIC
 
 
 class IKeywordsCategorizationUtility(Interface):
@@ -88,84 +84,48 @@ def get_servei(self):
     return None
 
 
-# --------------------
-# Faceted Vocabularys
-# --------------------
-class UbicacioVocabulary(object):
-    """ Return portal types as vocabulary
+class FacetVocabulary(object):
+    """
+    Base class that represents a vocabulary containing the defined values for
+    a facet taken from the 'facetes_tables' property of the Serveis TIC plugin
+    settings. The name of the facet the values of which are retrieved is
+    specified in self.facet_id.
     """
     implements(IVocabularyFactory)
 
-    def __call__(self, context):
-        """ See IVocabularyFactory interface
-        """
-
-        facetes = serveistic_config().facetes_table
-        if facetes:
-            facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-        res = []
-        for fac in facetes_sorted:
-            if fac['faceta'].encode('utf8') == 'Ubicacio':
-                res.append(fac['valor'].encode('utf8'))
-        items = [SimpleTerm(value, value, value) for value in res]
-        return SimpleVocabulary(items)
-
-
-class PrestadorVocabulary(object):
-    """ Return portal types as vocabulary
-    """
-    implements(IVocabularyFactory)
+    def __init__(self):
+        self.facet_id = ""
 
     def __call__(self, context):
-        """ See IVocabularyFactory interface
-        """
-
-        facetes = serveistic_config().facetes_table
-        if facetes:
-            facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-        res = []
-        for fac in facetes_sorted:
-            if fac['faceta'].encode('utf8') == 'Prestador':
-                res.append(fac['valor'].encode('utf8'))
-        items = [SimpleTerm(value, value, value) for value in res]
-        return SimpleVocabulary(items)
-
-
-class TipologiaVocabulary(object):
-    """ Return portal types as vocabulary
-    """
-    implements(IVocabularyFactory)
-
-    def __call__(self, context):
-        """ See IVocabularyFactory interface
-        """
-
-        facetes = serveistic_config().facetes_table
-        if facetes:
-            facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-        res = []
-        for fac in facetes_sorted:
-            if fac['faceta'].encode('utf8') == 'Tipologia':
-                res.append(fac['valor'].encode('utf8'))
-        items = [SimpleTerm(value, value, value) for value in res]
-        return SimpleVocabulary(items)
+        facets = serveistic_config().facetes_table
+        facets = [] if facets is None else facets
+        facet_values = [facet_pair['valor']
+                        for facet_pair in facets
+                        if facet_pair['faceta'] == self.facet_id]
+        return SimpleVocabulary([
+            SimpleTerm(
+                token=index,
+                value=getUtility(IIDNormalizer).normalize(
+                    value.encode('utf-8')),
+                title=value.encode('utf-8'))
+            for index, value in enumerate(facet_values)])
 
 
-class AmbitVocabulary(object):
-    """ Return portal types as vocabulary
-    """
-    implements(IVocabularyFactory)
+class PrestadorVocabulary(FacetVocabulary):
+    def __init__(self):
+        self.facet_id = "prestador"
 
-    def __call__(self, context):
-        """ See IVocabularyFactory interface
-        """
 
-        facetes = serveistic_config().facetes_table
-        if facetes:
-            facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-        res = []
-        for fac in facetes_sorted:
-            if fac['faceta'].encode('utf8') == 'Àmbit':
-                res.append(fac['valor'].encode('utf8'))
-        items = [SimpleTerm(value, value, value) for value in res]
-        return SimpleVocabulary(items)
+class UbicacioVocabulary(FacetVocabulary):
+    def __init__(self):
+        self.facet_id = "ubicacio"
+
+
+class TipologiaVocabulary(FacetVocabulary):
+    def __init__(self):
+        self.facet_id = "tipologia"
+
+
+class AmbitVocabulary(FacetVocabulary):
+    def __init__(self):
+        self.facet_id = "ambit"

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from plone.directives import dexterity
 
 from zope import schema
 from plone.directives import form
@@ -44,12 +43,8 @@ class IInitializedServeiTIC(Interface):
 
 
 class IServeiTIC(form.Schema):
-    """ Tipus Servei TIC
-    """
-
     title = schema.TextLine(
         title=_(u"Títol"),
-        description=_(u""),
         required=True,
     )
 
@@ -83,26 +78,29 @@ class IServeiTIC(form.Schema):
         required=False,
     )
 
-    ubicacioString = schema.TextLine(
-            title=_(u"ubicacioString"),
-            description=_(u"Prova ubicacio"),
-            required=False,
-        )
+    prestador = schema.List(
+        title=_(u"Prestador"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.prestador'))
 
-    ubicacio = schema.List(title=_(u"Ubicacio"),
-                           description=_(u"Ubicacio per al facetat"),
-                           required=False,
-                           value_type=schema.Choice(
-                           vocabulary="genweb.serveitic.vocabularies.ubicacioFacetes")
-                           )
+    ubicacio = schema.List(
+        title=_(u"Ubicació"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary="genweb.serveistic.vocabularies.ubicacio"))
 
-    state = schema.Tuple(title=_(u"Workflow state"),
-                         description=_(u"Items in which workflow state to show."),
-                         default=('published', ),
-                         required=True,
-                         value_type=schema.Choice(
-                             vocabulary="plone.app.vocabularies.WorkflowStates")
-                         )
+    tipologia = schema.List(
+        title=_(u"Tipologia"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary="genweb.serveistic.vocabularies.tipologia"))
+
+    ambit = schema.List(
+        title=_(u"Àmbit"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.ambit'))
 
 
 class IInitializedPortlets(Interface):
@@ -116,12 +114,6 @@ class View(HomePageBase):
     grok.context(IServeiTIC)
     grok.layer(IGenwebServeisticLayer)
     grok.template('serveitic_view')
-
-
-class Edit(dexterity.EditForm):
-    """A standard edit form.
-    """
-    grok.context(IServeiTIC)
 
 
 @grok.subscribe(IServeiTIC, IObjectAddedEvent)

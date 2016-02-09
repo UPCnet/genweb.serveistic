@@ -4,10 +4,13 @@ from Products.CMFCore.utils import getToolByName
 
 
 # Specify the indexes you want, with ('index_name', 'index_type')
-NEW_INDEXES = [('tipus', 'FieldIndex'),
-               ('ubicacio', 'KeywordIndex'),
-               ('ubicacioString', 'KeywordIndex')
-           ]
+NEW_INDEXES = [
+    ('prestador', 'KeywordIndex'),
+    ('ubicacio', 'KeywordIndex'),
+    ('tipologia', 'KeywordIndex'),
+    ('ambit', 'KeywordIndex')
+    ]
+
 
 # Afegit creació d'indexos programàticament i controladament per:
 # http://maurits.vanrees.org/weblog/archive/2009/12/catalog

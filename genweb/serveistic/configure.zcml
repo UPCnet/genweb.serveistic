@@ -63,23 +63,23 @@
     </class>
 
   <utility
-    factory=".utilities.UbicacioVocabulary"
-    name="genweb.serveitic.vocabularies.ubicacioFacetes"
+    factory=".utilities.PrestadorVocabulary"
+    name="genweb.serveistic.vocabularies.prestador"
     />
 
   <utility
-    factory=".utilities.PrestadorVocabulary"
-    name="genweb.serveitic.vocabularies.prestadorFacetes"
+    factory=".utilities.UbicacioVocabulary"
+    name="genweb.serveistic.vocabularies.ubicacio"
     />
 
   <utility
     factory=".utilities.TipologiaVocabulary"
-    name="genweb.serveitic.vocabularies.tipologiaFacetes"
+    name="genweb.serveistic.vocabularies.tipologia"
     />
 
   <utility
     factory=".utilities.AmbitVocabulary"
-    name="genweb.serveitic.vocabularies.ambitFacetes"
+    name="genweb.serveistic.vocabularies.ambit"
     />
 
 </configure>
