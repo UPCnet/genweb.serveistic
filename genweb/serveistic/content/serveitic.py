@@ -109,7 +109,7 @@ class IInitializedPortlets(Interface):
     """
 
 
-class View(HomePageBase):
+class View(grok.View):
     grok.implements(IHomePageView)
     grok.context(IServeiTIC)
     grok.layer(IGenwebServeisticLayer)

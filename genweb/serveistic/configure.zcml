@@ -9,6 +9,8 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="genweb.serveistic">
 
+    <include package="five.grok" />
+
     <!-- Zope2 initialization -->
     <five:registerPackage package="." initialize=".initialize" />
 
@@ -61,6 +63,11 @@
             interface=".widgets.interfaces.ISubjectChooserWidget"
         />
     </class>
+
+  <utility
+    factory=".utilities.FacetsVocabulary"
+    name="genweb.serveistic.vocabularies.facets"
+    />
 
   <utility
     factory=".utilities.PrestadorVocabulary"
