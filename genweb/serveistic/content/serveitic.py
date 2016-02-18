@@ -1,39 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from five import grok
-
 from zope import schema
+
 from plone.directives import form
-from plone.namedfile.file import NamedBlobImage
 from plone.namedfile.field import NamedBlobImage as BlobImage
 from plone.app.textfield import RichText
-
-from genweb.serveistic import _
+from plone.dexterity.content import Item
+from plone.app.users.userdataschema import checkEmailAddress
 
 from zope.interface import implements
-from plone.dexterity.content import Item
-
-from plone.app.users.userdataschema import checkEmailAddress
-from zope.app.container.interfaces import IObjectAddedEvent
-
-from genweb.serveistic.interfaces import IGenwebServeisticLayer
-
-from zope.component import getMultiAdapter
-from zope.component import queryUtility
-
 from zope.interface import Interface
-from zope.interface import alsoProvides
 
-from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
-from plone.dexterity.utils import createContentInContainer
-
-from plone.portlets.interfaces import IPortletManager
-
-from plone.portlets.interfaces import IPortletAssignmentMapping
-from genweb.theme.browser.interfaces import IHomePageView
-from genweb.theme.browser.views import HomePageBase
-
-import pkg_resources
+from genweb.serveistic import _
 
 
 class IInitializedServeiTIC(Interface):
@@ -107,110 +85,6 @@ class IInitializedPortlets(Interface):
     """
     Marker interface to mark wether the default portlets have been initialized
     """
-
-
-class View(grok.View):
-    grok.implements(IHomePageView)
-    grok.context(IServeiTIC)
-    grok.layer(IGenwebServeisticLayer)
-    grok.template('serveitic_view')
-
-
-@grok.subscribe(IServeiTIC, IObjectAddedEvent)
-def initialize_servei(serveitic, event):
-    egglocation = pkg_resources.get_distribution('genweb.serveistic').location
-
-    # Add navigation and banners portlets
-    target_manager = queryUtility(IPortletManager, name='plone.leftcolumn', context=serveitic)
-    target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
-    from plone.app.portlets.portlets.navigation import Assignment as navigationAssignment
-    from genweb.banners.portlets.bannersportlet import Assignment as bannersAssignment
-    target_manager_assignments['banner'] = bannersAssignment()
-    target_manager_assignments['navigation'] = navigationAssignment(topLevel=0, bottomLevel=2, currentFolderOnly='True')
-
-    target_manager = queryUtility(IPortletManager, name='genweb.portlets.HomePortletManager1', context=serveitic)
-    target_manager_assignments = getMultiAdapter((serveitic, target_manager), IPortletAssignmentMapping)
-    target_manager_assignments['banner'] = bannersAssignment()
-
-    elservei = createContentInContainer(serveitic, 'Folder', title='El servei', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Descripció del servei', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Normativa', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Procediments', checkConstraints=False)
-    createContentInContainer(elservei, 'Document', title='Evolució del servei', checkConstraints=False)
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(elservei)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
-    behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
-
-    manuals = createContentInContainer(serveitic, 'Folder', title='Manuals', checkConstraints=False)
-    createContentInContainer(manuals, 'Document', title='Manual usuari', checkConstraints=False)
-    createContentInContainer(manuals, 'Document', title='Manual administrador', checkConstraints=False)
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(manuals)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
-    behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
-
-    ajuda = createContentInContainer(serveitic, 'Folder', title='Ajuda', checkConstraints=False)
-    createContentInContainer(ajuda, 'Folder', title='FAQs', checkConstraints=False)
-    createContentInContainer(ajuda, 'Document', title='Casos us', checkConstraints=False)
-    createContentInContainer(ajuda, 'Document', title='Errors coneguts', checkConstraints=False)
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(ajuda)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
-    behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
-
-    documentacio = createContentInContainer(serveitic, 'Folder', title='Documentació', checkConstraints=False)
-    createContentInContainer(documentacio, 'Folder', title='Documentació tècnica', checkConstraints=False)
-    createContentInContainer(documentacio, 'Folder', title='Documentació de referència', checkConstraints=False)
-    links = createContentInContainer(documentacio, 'Folder', title='Enllaços', checkConstraints=False)
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(links)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Link',))
-    behavior.setImmediatelyAddableTypes(('Link',))
-
-    behavior = ISelectableConstrainTypes(documentacio)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
-    behavior.setImmediatelyAddableTypes(('Document', 'File', 'Folder'))
-
-    suggeriments = createContentInContainer(serveitic, 'Folder', title='Suggeriments', checkConstraints=False)
-    createContentInContainer(suggeriments, 'Document', title='Suggeriments', checkConstraints=False, exclude_from_nav=True, allow_discussion=True)
-    suggeriments.setDefaultPage('suggeriments')
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(suggeriments)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('Document', 'File', 'Folder'))
-    behavior.setImmediatelyAddableTypes(())
-
-    notificacions = createContentInContainer(serveitic, 'Folder', title='Notificacions', description='Notificacions del servei', exclude_from_nav=True, checkConstraints=False)
-    # Set on them the allowable content types
-    behavior = ISelectableConstrainTypes(notificacions)
-    behavior.setConstrainTypesMode(1)
-    behavior.setLocallyAllowedTypes(('notificaciotic',))
-    behavior.setImmediatelyAddableTypes(('notificaciotic',))
-
-    banners = createContentInContainer(serveitic, 'BannerContainer', title='Banners', exclude_from_nav=True, checkConstraints=False)
-    data_banner = open('{}/genweb/serveistic/resources/banner_eATIC.png'.format(egglocation)).read()
-    createContentInContainer(banners, 'Banner', title='ATIC', remoteUrl='http://eatic.upc.edu', open_link_in_new_window=True, image=NamedBlobImage(data=data_banner, filename=u'banner_eATIC.png'))
-    image_file = NamedBlobImage(data=data_banner, contentType='image/png', filename=u'banner_eATIC.png')
-    createContentInContainer(banners, 'Banner', title='ATIC', image=image_file)
-
-    # Reindex all created objects
-    elservei.reindexObject()
-    manuals.reindexObject()
-    ajuda.reindexObject()
-    documentacio.reindexObject()
-    suggeriments.reindexObject()
-    banners.reindexObject()
-    notificacions.reindexObject()
-
-    # Mark ServeiTIC as initialitzated, to avoid  previous
-    # folder creations to trigger modify event
-    alsoProvides(serveitic, IInitializedServeiTIC)
 
 
 class ServeiTIC(Item):

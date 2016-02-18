@@ -1,0 +1,22 @@
+<div class="portlet portlet-problemes"
+     tal:define="problemes view/problemes">
+
+    <h2>Problemes</h2>
+
+    <ul id="notificacions">
+      <li tal:repeat="problema problemes">
+        <span class="data" tal:content="problema/data"></span>
+        <br/>
+        <a tal:attributes="href problema/url"
+           tal:content="problema/titol"/>
+      </li>
+    </ul>
+
+    <div tal:condition="problemes" class="portlet-footer">
+        <a tal:attributes="href view/problemes_href">
+            Tots els problemes
+        </a>
+    </div>
+
+    <p tal:condition="not: problemes">No hi ha notificacions</p>
+</div>

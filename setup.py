@@ -31,6 +31,8 @@ setup(name='genweb.serveistic',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'collective.dexteritytextindexer == 2.0.1',
+          'eea.facetednavigation'
       ],
       extras_require={'test': ['plone.app.testing',
                                'plone.app.testing[robot]>=4.2.2',

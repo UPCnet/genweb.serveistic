@@ -9,4 +9,7 @@
            title="Serveistic Notificacions"/>
 
 
+  <portlet addview="serveistic.portlets.problemes"
+           title="Serveistic Problemes"/>
+
 </portlets>

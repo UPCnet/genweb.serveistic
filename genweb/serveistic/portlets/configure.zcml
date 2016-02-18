@@ -25,4 +25,12 @@
         addview=".bannersportlet.AddForm"
     />
 
+    <plone:portlet
+        name="serveistic.portlets.problemes"
+        interface=".problemes.IProblemesPortlet"
+        assignment=".problemes.Assignment"
+        renderer=".problemes.Renderer"
+        addview=".problemes.AddForm"
+        editview=".problemes.EditForm" />
+
 </configure>
