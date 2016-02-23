@@ -28,6 +28,29 @@ class IServeisTICControlPanelSettings(model.Schema):
     configuration registry and obtainable via plone.registry.
     """
 
+    model.fieldset(
+        'Servei Web Problemes',
+        _(u'Servei Web Problemes'),
+        fields=['ws_endpoint',
+                'ws_login_username', 'ws_login_password',
+                'ws_domini'])
+
+    ws_endpoint = schema.TextLine(
+        title=_(u'URL'),
+        required=False)
+
+    ws_login_username = schema.TextLine(
+        title=_(u'Usuari'),
+        required=False)
+
+    ws_login_password = schema.TextLine(
+        title=_(u'Contrasenya'),
+        required=False)
+
+    ws_domini = schema.TextLine(
+        title=_(u'Domini'),
+        required=False)
+
     model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
     form.widget(facetes_table=DataGridFieldFactory)
     facetes_table = schema.List(

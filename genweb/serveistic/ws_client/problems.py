@@ -76,31 +76,40 @@ class Client(object):
         problems = []
         for problem_dict in response['llistaProblemes']:
             if isinstance(problem_dict, dict):
+                try:
+                    date_creation = datetime.datetime.strptime(
+                        problem_dict.get(Client.KEY_DATE_CREATION, u''),
+                        '%Y-%m-%d %H:%M:%S.%f')
+                except ValueError:
+                    date_creation = u''
+
                 problems.append(Problem(
                     topic=problem_dict.get(Client.KEY_TOPIC, u''),
                     description=problem_dict.get(Client.KEY_DESCRIPTION, u''),
                     url=problem_dict.get(Client.KEY_URL, u''),
-                    date_creation=datetime.datetime.strptime(
-                        problem_dict.get(Client.KEY_DATE_CREATION),
-                        '%Y-%m-%d %H:%M:%S.%f')
-                    if Client.KEY_DATE_CREATION in problem_dict else u'',
+                    date_creation=date_creation,
                     date_fix=u''))
         return problems
 
-    def list_problems(self, product_id):
+    def list_problems(self, product_id, count=None):
         """
         Return a list of <Problem> associated with the specified product.
         """
         try:
+            if not product_id or not str(product_id).strip():
+                raise ClientException("Parameter 'product_id' cannot be empty")
             response = requests.get(
                 '{0}/{1}'.format(self.endpoint, product_id),
                 headers=self._get_headers())
             if response.status_code != requests.codes.ok:
-                raise ClientException("Status code is not OK")
-            return self._parse_response_list_problems(response.json())
+                raise ClientException("Status code is not OK ({0})".format(
+                    response.status_code))
+            problems = self._parse_response_list_problems(response.json())
+            return problems[:count] if count else problems
         except ClientException:
             raise
         except JSONDecodeError:
             raise ClientException("The response contains invalid JSON data")
         except ConnectionError:
-            raise ClientException("The connection could not be established")
+            raise ClientException("The connection with '{0}' could not be "
+                                  "established".format(self.endpoint))

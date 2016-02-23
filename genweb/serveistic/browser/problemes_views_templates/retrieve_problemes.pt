@@ -1,0 +1,24 @@
+<tal:block define="problemes view/problemes; count view/count">
+
+<!-- TODO Replace id=notificacions by a better one -->
+<ul tal:condition="problemes" id="notificacions">
+    <li tal:repeat="problema problemes">
+        <span class="data" tal:content="problema/date_creation"></span>
+        <br/>
+        <a tal:attributes="href problema/url" tal:content="problema/topic"></a>
+    </li>
+</ul>
+
+<div tal:condition="python: problemes and count" class="portlet-footer">
+  <a tal:attributes="href view/problemes_href">Tots els problemes</a>
+</div>
+
+<p tal:condition="python: problemes == []">
+    No s&apos;han trobat problemes
+</p>
+
+<p tal:condition="python: problemes is None">
+    No s&apos;han pogut recuperar els problemes
+</p>
+
+</tal:block>

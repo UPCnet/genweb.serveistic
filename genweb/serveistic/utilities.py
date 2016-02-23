@@ -3,46 +3,25 @@
 import csv
 
 from zope.component import getUtility, queryUtility
-from zope.interface import Interface, Attribute, implements
+from zope.interface import implements
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from plone.registry.interfaces import IRegistry
 from plone.i18n.normalizer.interfaces import IIDNormalizer
-from OFS.SimpleItem import SimpleItem
 from Acquisition import aq_inner, aq_chain
 from eea.faceted.vocabularies.utils import IVocabularyFactory
+from Products.CMFPlone import PloneMessageFactory as _
 
 from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.config_helper import get_absolute_path, config
+from genweb.serveistic.ws_client.problems import Client
 
 
-class IKeywordsCategorizationUtility(Interface):
-    """ Utility to manage a registry of the items used in the newsletters
-    """
-
-    categories = Attribute(u"keyword categories")
-
-
-class KeywordsCategorizationUtility(SimpleItem):
-    """
-    """
-
-    implements(IKeywordsCategorizationUtility)
-    categories = None
-
-    def __init__(self):
-        """
-        """
-
-    def update(self):
-        """
-        """
-
-    def keywords(self, checked=[]):
-        """
-        """
-        return getFacetes(self, checked)
+def build_vocabulary(values):
+    return SimpleVocabulary([
+        SimpleTerm(title=_(value), value=value, token=token)
+        for token, value in enumerate(values)])
 
 
 def serveistic_config():
@@ -51,40 +30,20 @@ def serveistic_config():
     return registry.forInterface(IServeisTICControlPanelSettings)
 
 
-def getFacetes(self, checked=[]):
-    facetes_added = []
-    keywords = []
-    header_name = ''
-    facetes = serveistic_config().facetes_table
-    if facetes:
-        facetes_sorted = sorted(facetes, key=lambda x: x['faceta'])
-
-        for tup in facetes_sorted:
-            if tup['faceta'] not in facetes_added:
-                header_name = tup['faceta']
-                keywords.append({'title': tup['faceta'],
-                                 'value': tup['faceta'],
-                                 'header': True,
-                                 'header-obj': ''})
-                facetes_added.append(tup['faceta'])
-
-            keywords.append({'title': tup['valor'],
-                             'value': tup['valor'],
-                             'header': False,
-                             'checked': tup['valor'] in checked,
-                             'header-obj': header_name})
-        return keywords
-
-    else:
-        return None
-
-
 def get_servei(self):
     context = aq_inner(self.context)
     for obj in aq_chain(context):
         if IServeiTIC.providedBy(obj):
             return obj
     return None
+
+
+def get_ws_problemes_client():
+    endpoint = serveistic_config().ws_endpoint
+    login_username = serveistic_config().ws_login_username
+    login_password = serveistic_config().ws_login_password
+    domini = serveistic_config().ws_domini
+    return Client(endpoint, login_username, login_password, domini)
 
 
 class FacetsVocabulary(object):

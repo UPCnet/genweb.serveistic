@@ -16,7 +16,7 @@ class NotificacioDataReporter(object):
         else:
             return None
 
-    def list_by_servei(self, servei):
+    def list_by_servei(self, servei, count=None):
         results = []
         notificacions = self.catalog.searchResults(
             portal_type='notificaciotic',
@@ -32,4 +32,4 @@ class NotificacioDataReporter(object):
                 "titol": notificacio.Title,
                 "descripcio": notificacio.Description,
                 "url": notificacio.getURL()})
-        return results
+        return results[:count] if count else results

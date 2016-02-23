@@ -31,11 +31,11 @@ setup(name='genweb.serveistic',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'mock',
           'collective.dexteritytextindexer == 2.0.1',
           'eea.facetednavigation'
       ],
-      extras_require={'test': ['plone.app.testing',
+      extras_require={'test': ['mock',
+                               'plone.app.testing',
                                'plone.app.testing[robot]>=4.2.2',
                                'plone.app.robotframework[debug]']},
       entry_points="""

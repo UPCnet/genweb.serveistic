@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from zope import schema
 from zope.interface import implements
 from zope.formlib import form
 
@@ -13,7 +14,10 @@ from genweb.serveistic.utilities import get_servei
 
 
 class IProblemesPortlet(IPortletDataProvider):
-    pass
+    count = schema.Int(
+        title=_(u'Nombre màxim de problemes'),
+        required=True,
+        defaultFactory=lambda: 5)
 
 
 class Assignment(base.Assignment):
@@ -32,11 +36,13 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('templates/problemes.pt')
 
     @property
-    def problemes(self):
-        return [
-            {'data': '14/02/2016', 'url': '/url1/', 'titol': 'Problema 1'},
-            {'data': '21/11/2015', 'url': '/url2/', 'titol': 'Problema 2'},
-            ]
+    def product_id(self):
+        serveitic = get_servei(self)
+        return serveitic.product_id if serveitic.product_id else ''
+
+    @property
+    def count(self):
+        return self.data.count
 
     @property
     def problemes_href(self):
@@ -57,4 +63,4 @@ class AddForm(base.AddForm):
 class EditForm(base.EditForm):
     form_fields = form.Fields(IProblemesPortlet)
     label = _(u"Edita el portlet de problemes")
-    description = _(u"Llistat de problemes associats a un Servei TIC")
+    description = _(u"Llistat de problemes associats amb un Servei TIC")

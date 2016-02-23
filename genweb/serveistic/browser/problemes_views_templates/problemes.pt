@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:metal="http://xml.zope.org/namespaces/metal"
+            xmlns:tal="http://xml.zope.org/namespaces/tal"
+            xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+            metal:use-macro="context/main_template/macros/master">
+
+<body>
+  <metal:custom_title fill-slot="content-title">
+    <h1 class="documentFirstHeading" i18n:translate="Problemes">
+    Problemes
+    </h1>
+  </metal:custom_title>
+
+  <metal:content-core fill-slot="content-core">
+    <div id="problemes"></div>
+
+    <script type="text/javascript"
+            tal:content="string:var product_id = '${view/product_id}';">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src string:${portal_url}/++genweb++serveistic/problemes.js">
+    </script>
+
+  </metal:content-core>
+</body>
+</html>

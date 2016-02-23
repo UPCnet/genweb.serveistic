@@ -57,13 +57,6 @@
       layer=".interfaces.IGenwebServeisticLayer"
         />
 
-    <class class=".widgets.subject_chooser.SubjectChooserWidget">
-        <require
-            permission="zope.Public"
-            interface=".widgets.interfaces.ISubjectChooserWidget"
-        />
-    </class>
-
   <utility
     factory=".utilities.FacetsVocabulary"
     name="genweb.serveistic.vocabularies.facets"

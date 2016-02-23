@@ -16,7 +16,7 @@ from genweb.serveistic.ws_client.problems import (
 class TestWSClient(unittest.TestCase):
     def setUp(self):
         self.client = Client(
-            endpoint='endpoint',
+            endpoint='http://endpoint',
             login_username='test-username',
             login_password='test-password',
             domini='test-domain')
@@ -147,7 +147,48 @@ class TestWSClient(unittest.TestCase):
                 date_creation=u'',
                 date_fix=u''))
 
+    def test_parse_response_list_problems_wrong_format(self):
+        response = json.loads('''
+{
+   "llistaProblemes":
+   [
+       {
+          "assumpte": "Gestió por VPN de gateway para servei atenció",
+          "descripcioProblema": "No es posible acceder a través de la vpn",
+          "dataCreacio": "2014/01/22 14:33:47.362",
+          "urlProblema": "/problemes/control/problemaDetallDadesGenerals"
+       }
+   ],
+   "resultat": "SUCCESS",
+   "resultatMissatge": "Llista problemes retornada"
+}
+''')
+        results = self.client._parse_response_list_problems(response)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(
+            results[0],
+            Problem(
+                topic=u"Gestió por VPN de gateway para servei atenció",
+                description=u"No es posible acceder a través de la vpn",
+                url=u"/problemes/control/problemaDetallDadesGenerals",
+                date_creation=u'',
+                date_fix=u''))
+
     def test_list_problems(self):
+        # Parameter product_id empty
+        try:
+            self.client.list_problems("  \n   \t  ")
+            self.fail("ClientException should have been raised")
+        except ClientException as exception:
+            self.assertEqual("Parameter 'product_id' cannot be empty",
+                             exception.message)
+        try:
+            self.client.list_problems(None)
+            self.fail("ClientException should have been raised")
+        except ClientException as exception:
+            self.assertEqual("Parameter 'product_id' cannot be empty",
+                             exception.message)
+
         # Connection error
         with patch('genweb.serveistic.ws_client.problems.requests.get',
                    side_effect=ConnectionError):
@@ -155,7 +196,8 @@ class TestWSClient(unittest.TestCase):
                 self.client.list_problems(1)
                 self.fail("ClientException should have been raised")
             except ClientException as exception:
-                self.assertEqual("The connection could not be established",
+                self.assertEqual("The connection with '{0}' could not be "
+                                 "established".format(self.client.endpoint),
                                  exception.message)
         # Response status is not OK
         response_mock = MagicMock(status_code=500)
@@ -165,7 +207,8 @@ class TestWSClient(unittest.TestCase):
                 self.client.list_problems(1)
                 self.fail("ClientException should have been raised")
             except ClientException as exception:
-                self.assertEqual("Status code is not OK", exception.message)
+                self.assertEqual("Status code is not OK (500)",
+                                 exception.message)
 
         # resultat is present
         response_mock = MagicMock(status_code=200)
@@ -174,3 +217,25 @@ class TestWSClient(unittest.TestCase):
                 'genweb.serveistic.ws_client.problems.Client._parse_response_list_problems',
                 side_effect=([],)):
             self.assertEqual([], self.client.list_problems(1))
+
+    def list_problems_count(self):
+        response_mock = MagicMock(status_code=200)
+        with patch('genweb.serveistic.ws_client.problems.requests.get',
+                   side_effect=(response_mock,)), patch(
+                'genweb.serveistic.ws_client.problems.Client._parse_response_list_problems',
+                side_effect=([1, 2, 3, 4, 5, 6, 7, 8],
+                             [1, 2, 3, 4, 5, 6, 7, 8],
+                             [1, 2, 3, 4, 5, 6, 7, 8],
+                             [1, 2, 3, 4, 5, 6, 7, 8],
+                             [1, 2, 3, 4, 5, 6, 7, 8])):
+
+            self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8],
+                             self.client.list_problems(1))
+            self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8],
+                             self.client.list_problems(1, None))
+            self.assertEqual([],
+                             self.client.list_problems(1, 0))
+            self.assertEqual([1, 2, 3, 4, 5],
+                             self.client.list_problems(1, 5))
+            self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8],
+                             self.client.list_problems(1, 10))

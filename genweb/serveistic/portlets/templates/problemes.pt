@@ -1,22 +1,19 @@
-<div class="portlet portlet-problemes"
-     tal:define="problemes view/problemes">
+<div class="portlet portlet-problemes" tal:define="portal_url context/portal_url">
 
     <h2>Problemes</h2>
 
-    <ul id="notificacions">
-      <li tal:repeat="problema problemes">
-        <span class="data" tal:content="problema/data"></span>
-        <br/>
-        <a tal:attributes="href problema/url"
-           tal:content="problema/titol"/>
-      </li>
-    </ul>
+    <div id="problemes"></div>
 
-    <div tal:condition="problemes" class="portlet-footer">
-        <a tal:attributes="href view/problemes_href">
-            Tots els problemes
-        </a>
-    </div>
+    <script type="text/javascript"
+            tal:content="string:var product_id = '${view/product_id}';">
+    </script>
 
-    <p tal:condition="not: problemes">No hi ha notificacions</p>
+    <script type="text/javascript"
+            tal:content="string:var count = ${view/count};">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src string:${portal_url}/++genweb++serveistic/portlet_problemes.js">
+    </script>
+
 </div>

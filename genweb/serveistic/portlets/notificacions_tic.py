@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from zope import schema
 from zope.interface import implements
 from zope.formlib import form
 
@@ -15,8 +16,10 @@ from genweb.serveistic.data_access.notificacio import NotificacioDataReporter
 
 
 class INotificationsPortlet(IPortletDataProvider):
-    """A portlet which can render a list of notificacions.
-    """
+    count = schema.Int(
+        title=_(u'Nombre màxim de notificacions'),
+        required=True,
+        defaultFactory=lambda: 5)
 
 
 class Assignment(base.Assignment):
@@ -42,7 +45,7 @@ class Renderer(base.Renderer):
         """
         reporter = NotificacioDataReporter(
             getToolByName(self.context, 'portal_catalog'))
-        return reporter.list_by_servei(get_servei(self))
+        return reporter.list_by_servei(get_servei(self), self.data.count)
 
     @property
     def notificacions_href(self):

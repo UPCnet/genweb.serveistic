@@ -2,10 +2,5 @@
 <componentregistry>
   <adapters/>
   <utilities>
-
-    <utility
-       interface="genweb.serveistic.utilities.IKeywordsCategorizationUtility"
-       object="portal_keywords_categorization"/>
-
-</utilities>
+  </utilities>
 </componentregistry>
