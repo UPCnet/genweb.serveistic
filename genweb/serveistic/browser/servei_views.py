@@ -23,7 +23,7 @@ from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.content.serveitic import IInitializedServeiTIC
 from genweb.serveistic.portlets.bannersportlet import Assignment as \
     BannersAssignment
-from genweb.serveistic.portlets.notificacions_tic import Assignment as \
+from genweb.serveistic.portlets.notificacions import Assignment as \
     NotificacionsAssignment
 from genweb.serveistic.portlets.problemes import Assignment as \
     ProblemesAssignment

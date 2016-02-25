@@ -13,6 +13,7 @@ from Products.CMFCore.utils import getToolByName
 
 from genweb.serveistic.utilities import get_servei
 from genweb.serveistic.data_access.notificacio import NotificacioDataReporter
+from genweb.serveistic.browser.notificacio_views import NotificacioViewHelper
 
 
 class INotificationsPortlet(IPortletDataProvider):
@@ -34,8 +35,8 @@ class Assignment(base.Assignment):
         return _(u"Notificacions TIC")
 
 
-class Renderer(base.Renderer):
-    render = ViewPageTemplateFile('templates/notificacions_tic.pt')
+class Renderer(base.Renderer, NotificacioViewHelper):
+    render = ViewPageTemplateFile('templates/notificacions.pt')
 
     @property
     def notificacions(self):
@@ -49,11 +50,7 @@ class Renderer(base.Renderer):
 
     @property
     def notificacions_href(self):
-        servei = get_servei(self)
-        path = servei.getPhysicalPath()
-        path = "/".join(path)
-        notificacio_folder = path + '/notificacions'
-        return notificacio_folder
+        return "notificacions_list"
 
 
 class AddForm(base.AddForm):

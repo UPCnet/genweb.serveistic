@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:metal="http://xml.zope.org/namespaces/metal"
+            xmlns:tal="http://xml.zope.org/namespaces/tal"
+            xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+            i18n:domain="genweb.serveistic"
+            metal:use-macro="context/main_template/macros/master">
+<body>
+  <metal:custom_title fill-slot="content-title">
+    <h1 class="documentFirstHeading" i18n:translate="Notificacions">
+    Notificacions
+    </h1>
+  </metal:custom_title>
+
+  <metal:content-core fill-slot="content-core">
+  <div class="folder-notificacions"
+       tal:define="notificacions view/notificacions">
+
+    <ul tal:condition="notificacions" id="folder-list">
+      <li tal:repeat="notificacio notificacions">
+        <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
+        <span class="data" tal:content="notificacio/data"></span>
+        <a tal:attributes="href notificacio/url" tal:content="notificacio/titol"/>
+      </li>
+    </ul>
+
+    <div tal:condition="not: notificacions" class="portlet-message">
+      <p>No hi ha notificacions</p>
+    </div>
+
+  </div>
+  </metal:content-core>
+</body>
+</html>

@@ -19,6 +19,10 @@
     </script>
 
     <script type="text/javascript"
+            tal:content="string:var count = '';">
+    </script>
+
+    <script type="text/javascript"
             tal:attributes="src string:${portal_url}/++genweb++serveistic/problemes.js">
     </script>
 

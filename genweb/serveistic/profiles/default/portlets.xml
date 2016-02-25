@@ -5,9 +5,8 @@
   <portlet addview="serveistic.portlets.banners"
            title="Serveistic Banners"/>
 
-  <portlet addview="serveistic.portlets.notificacions_tic"
+  <portlet addview="serveistic.portlets.notificacions"
            title="Serveistic Notificacions"/>
-
 
   <portlet addview="serveistic.portlets.problemes"
            title="Serveistic Problemes"/>

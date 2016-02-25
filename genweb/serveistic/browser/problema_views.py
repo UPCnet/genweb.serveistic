@@ -3,13 +3,14 @@ from five import grok
 from zope.interface import Interface
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
+from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.utilities import get_ws_problemes_client, get_servei
 from genweb.serveistic.data_access.problemes import ProblemesDataReporter
 
 
 class Problemes(grok.View):
     grok.name('problemes')
-    grok.context(Interface)
+    grok.context(IServeiTIC)
     grok.layer(IGenwebServeisticLayer)
     grok.template('problemes')
 

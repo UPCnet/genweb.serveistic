@@ -11,6 +11,8 @@
 
     <include package="five.grok" />
 
+    <i18n:registerTranslations directory="locales" />
+
     <!-- Zope2 initialization -->
     <five:registerPackage package="." initialize=".initialize" />
 

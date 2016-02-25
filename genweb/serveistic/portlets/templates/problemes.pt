@@ -1,6 +1,8 @@
+<tal:block i18n:domain="genweb.serveistic">
+
 <div class="portlet portlet-problemes" tal:define="portal_url context/portal_url">
 
-    <h2>Problemes</h2>
+    <h2 i18n:translate="Problemes">Problemes</h2>
 
     <div id="problemes"></div>
 
@@ -13,7 +15,9 @@
     </script>
 
     <script type="text/javascript"
-            tal:attributes="src string:${portal_url}/++genweb++serveistic/portlet_problemes.js">
+            tal:attributes="src string:${portal_url}/++genweb++serveistic/problemes.js">
     </script>
 
 </div>
+
+</tal:block>

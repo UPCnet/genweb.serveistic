@@ -2,11 +2,12 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      metal:use-macro="context/main_template/macros/master">
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.serveistic">
 
 <body class="homepage">
 <div metal:fill-slot="main">
-  <div class="span9">
+  <div class="span12">
     <div class="serveitic-desc span12">
       <!-- General info -->
       <h1 class="documentFirstHeading" tal:content="context/Title"/>
@@ -15,17 +16,19 @@
       <!-- Portlets -->
       <div class="row-fluid">
 
-        <div class="span3"
+        <div class="span4"
           tal:define="manager_name string:genweb.portlets.HomePortletManager3"
           tal:attributes="class python:'span' + view.getSpanValueForManager(manager_name)">
           <span tal:replace="structure python:view.renderProviderByName(manager_name)" />
         </div>
 
-        <div class="span3"
+        <div class="span4"
           tal:define="manager_name string:genweb.portlets.HomePortletManager4"
           tal:attributes="class python:'span' + view.getSpanValueForManager(manager_name)">
           <span tal:replace="structure python:view.renderProviderByName(manager_name)" />
         </div>
+
+        <div class="span4"></div>
       </div>
 
     </div>
