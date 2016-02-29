@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import csv
-
 from zope.component import getUtility, queryUtility
 from zope.interface import implements
 from zope.schema.vocabulary import SimpleVocabulary
@@ -14,7 +12,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 
 from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from genweb.serveistic.content.serveitic import IServeiTIC
-from genweb.serveistic.config_helper import get_absolute_path, config
+from genweb.serveistic.config_helper import facets_vocabulary
 from genweb.serveistic.ws_client.problems import Client
 
 
@@ -50,21 +48,10 @@ class FacetsVocabulary(object):
     implements(IVocabularyFactory)
 
     def __call__(self, context):
-        facets_file_path = get_absolute_path(config.get('facets', 'file_path'))
-        with open(facets_file_path, 'r') as facets_file:
-            facets = set([
-                row[0]
-                for row in csv.reader(
-                    facets_file, delimiter=',', quotechar='"')])
-        return SimpleVocabulary([
-            SimpleTerm(
-                title=facet.decode('utf-8'),
-                value=facet.decode('utf-8'),
-                token=index)
-            for index, facet in enumerate(facets)])
+        return facets_vocabulary
 
 
-class FacetVocabularyBase(object):
+class FacetValuesVocabularyBase(object):
     """
     Base class that represents a vocabulary containing the defined values for
     a facet taken from the 'facetes_tables' property of the Serveis TIC plugin
@@ -91,21 +78,21 @@ class FacetVocabularyBase(object):
             for index, value in enumerate(facet_values)])
 
 
-class PrestadorVocabulary(FacetVocabularyBase):
+class PrestadorVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Prestador"
 
 
-class UbicacioVocabulary(FacetVocabularyBase):
+class UbicacioVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Ubicació"
 
 
-class TipologiaVocabulary(FacetVocabularyBase):
+class TipologiaVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Tipologia"
 
 
-class AmbitVocabulary(FacetVocabularyBase):
+class AmbitVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Àmbit"

@@ -2,6 +2,7 @@
 
 from zope import schema
 
+from collective import dexteritytextindexer
 from plone.directives import form
 from plone.namedfile.field import NamedBlobImage as BlobImage
 from plone.app.textfield import RichText
@@ -21,17 +22,20 @@ class IInitializedServeiTIC(Interface):
 
 
 class IServeiTIC(form.Schema):
+    dexteritytextindexer.searchable('title')
     title = schema.TextLine(
         title=_(u"Títol"),
         required=True,
     )
 
+    dexteritytextindexer.searchable('description')
     description = schema.Text(
         title=_(u"Descripció"),
         description=_(u"Descripció del servei que es veurà al buscador"),
         required=False,
     )
 
+    dexteritytextindexer.searchable('serveiDescription')
     serveiDescription = RichText(
         title=_(u"Breu resum del servei"),
         required=False,

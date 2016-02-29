@@ -2,6 +2,7 @@
 
 <ul tal:condition="problemes" id="portlet-list">
     <li tal:repeat="problema problemes">
+        <span class="fa fa-gear"></span>
         <span class="data" tal:content="problema/date_creation"></span>
         <a tal:attributes="href problema/url" tal:content="problema/topic"></a>
     </li>

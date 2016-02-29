@@ -14,7 +14,7 @@ class NotificacioViewHelper(object):
         if notificacio["tipus"] == u"Avís":
             return "fa fa-warning"
         elif notificacio["tipus"] == u"Notificació":
-            return "fa fa-info"
+            return "fa fa-info-circle"
         elif notificacio["tipus"] == u"Novetat":
             return "fa fa-exclamation-circle"
         else:

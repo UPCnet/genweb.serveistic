@@ -2,51 +2,61 @@
 
 folder_structure = (
     (
-        # title, type, exclude_from_nav, allowed_types
-        "El servei", "Folder", False, ('Document', 'File', 'Folder'),
+        # title, type, exclude_from_nav, allow_discussion, allowed_types,
+        # layout, content
+        "El servei", "Folder", False, False, ('Document', 'File', 'Folder'),
+        'folder_index_view',
         (
-            # title, type, exclude_from_nav, allow_discussion, allowed_types
-            ("Descripció del servei", "Document", False, False),
-            ("Normativa", "Document", False, False),
-            ("Procediments", "Document", False, False),
-            ("Evolució del servei", "Document", False, False)
+            # title, type, exclude_from_nav, allow_discussion, allowed_types,
+            # layout
+            ("Descripció del servei", "Document", False, False, None, None),
+            ("Normativa", "Document", False, False, None, None),
+            ("Procediments", "Document", False, False, None, None),
+            ("Evolució del servei", "Document", False, False, None, None)
         )
     ),
     (
-        "Manuals", "Folder", False, ('Document', 'File', 'Folder'),
+        "Manuals", "Folder", False, False, ('Document', 'File', 'Folder'),
+        'folder_index_view',
         (
-            ("Manual usuari", "Document", False, False),
-            ("Manual administrador", "Document", False, False)
+            ("Manual usuari", "Document", False, False, None, None),
+            ("Manual administrador", "Document", False, False, None, None)
         )
     ),
     (
-        "Ajuda", "Folder", False, ('Document', 'File', 'Folder'),
+        "Ajuda", "Folder", False, False, ('Document', 'File', 'Folder'),
+        'folder_index_view',
         (
-            ("FAQs", "Folder", False, False),
-            ("Casos d'ús", "Document", False, False),
-            ("Errors coneguts", "Document", False, False)
+            ("FAQs", "Folder", False, False, None, 'folder_index_view'),
+            ("Casos d'ús", "Document", False, False, None, None),
+            ("Errors coneguts", "Document", False, False, None, None)
         )
     ),
     (
-        "Documentació", "Folder", False, ('Document', 'File', 'Folder'),
+        "Documentació", "Folder", False, False, ('Document', 'File', 'Folder'),
+        'folder_index_view',
         (
-            ("Documentació tècnica", "Folder", False, False),
-            ("Documentació de referència", "Folder", False, False),
-            ("Enllaços", "Folder", False, False, ('Link',))
+            ("Documentació tècnica", "Folder", False, False, None,
+                'folder_index_view'),
+            ("Documentació de referència", "Folder", False, False, None,
+                'folder_index_view'),
+            ("Enllaços", "Folder", False, False, ('Link',),
+                'folder_index_view')
         )
     ),
     (
-        "Suggeriments", "Folder", False, ('Document', 'File', 'Folder'),
-        (
-            ("Suggeriments", "Document", True, True),
-        )
-    ),
-    (
-        "Notificacions", "Folder", True, ('notificaciotic',),
+        "Suggeriments", "Folder", False, True, ('Document', 'File', 'Folder'),
+        None,
         ()
     ),
     (
-        "Banners", "BannerContainer", True, ('Banner',),
+        "Notificacions", "Folder", True, True, ('notificaciotic',),
+        None,
+        ()
+    ),
+    (
+        "Banners", "BannerContainer", True, True, ('Banner',),
+        None,
         (),
     )
 )

@@ -6,11 +6,15 @@
       i18n:domain="genweb.serveistic">
 
 <body class="homepage">
-<div metal:fill-slot="main">
+
+  <metal:custom_title fill-slot="content-title">
+    <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+  </metal:custom_title>
+
+  <metal:content-core fill-slot="content-core">
   <div class="span12">
     <div class="serveitic-desc span12">
       <!-- General info -->
-      <h1 class="documentFirstHeading" tal:content="context/Title"/>
       <div tal:replace="structure view/descripcio" />
 
       <!-- Portlets -->
@@ -33,6 +37,7 @@
 
     </div>
   </div>
-</div>
+</metal:content-core>
+
 </body>
 </html>

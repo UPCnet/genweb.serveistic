@@ -68,29 +68,36 @@ def initialize_servei(serveitic, event):
 
     # Create folder structure
     for folder_data in folder_structure:
+        folder_props = {
+            'title': folder_data[0],
+            'checkConstraints': False,
+            'exclude_from_nav': folder_data[2],
+            'allow_discussion': folder_data[3]}
+        if folder_data[5] is not None:
+            folder_props['layout'] = folder_data[5]
         folder = createContentInContainer(
-            serveitic,
-            folder_data[1],
-            title=folder_data[0],
-            checkConstraints=False,
-            exclude_from_nav=folder_data[2])
-        for folder_content in folder_data[4]:
+            serveitic, folder_data[1], **folder_props)
+
+        for folder_content in folder_data[6]:
+            content_props = {
+                'title': folder_content[0],
+                'checkConstraints': False,
+                'exclude_from_nav': folder_content[2],
+                'allow_discussion': folder_content[3]}
+            if folder_content[5] is not None:
+                content_props['layout'] = folder_content[5]
             content = createContentInContainer(
-                folder,
-                folder_content[1],
-                title=folder_content[0],
-                checkConstraints=False,
-                exclude_from_nav=folder_content[2],
-                allow_discussion=folder_content[3])
-            if len(folder_content) > 4:
+                folder, folder_content[1], **content_props)
+            if folder_content[4] is not None:
                 behavior = ISelectableConstrainTypes(content)
                 behavior.setConstrainTypesMode(1)
                 behavior.setLocallyAllowedTypes(folder_content[4])
                 behavior.setImmediatelyAddableTypes(folder_content[4])
+
         behavior = ISelectableConstrainTypes(folder)
         behavior.setConstrainTypesMode(1)
-        behavior.setLocallyAllowedTypes(folder_data[3])
-        behavior.setImmediatelyAddableTypes(folder_data[3])
+        behavior.setLocallyAllowedTypes(folder_data[4])
+        behavior.setImmediatelyAddableTypes(folder_data[4])
         folder.reindexObject()
 
     # Mark ServeiTIC as initialized to prevent previous folder creations from
