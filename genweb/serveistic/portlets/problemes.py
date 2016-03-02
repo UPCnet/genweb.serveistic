@@ -37,8 +37,13 @@ class Renderer(base.Renderer):
 
     @property
     def product_id(self):
-        serveitic = get_servei(self)
-        return serveitic.product_id if serveitic.product_id else ''
+        servei = get_servei(self)
+        return servei.product_id if servei.product_id else ''
+
+    @property
+    def servei_path(self):
+        servei = get_servei(self)
+        return '/'.join(servei.getPhysicalPath())
 
     @property
     def count(self):
@@ -46,7 +51,7 @@ class Renderer(base.Renderer):
 
     @property
     def problemes_href(self):
-        return "/".join(get_servei(self).getPhysicalPath()) + '/problemes'
+        return '/problemes_list'
 
 
 class AddForm(base.AddForm):

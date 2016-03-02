@@ -5,8 +5,8 @@ $(document).ready(function()
     var problemes = $('#problemes');
     $.ajax({
         url: retrieve_problemes_url,
-        timeout: 5000,
-        data: {product_id: product_id, count: count},
+        timeout: 15000,
+        data: {product_id: product_id, servei_path: servei_path, count: count},
         success: function(data)
         {
             problemes.html(data);

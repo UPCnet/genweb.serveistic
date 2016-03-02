@@ -11,6 +11,10 @@
     </script>
 
     <script type="text/javascript"
+            tal:content="string:var servei_path = '${view/servei_path}';">
+    </script>
+
+    <script type="text/javascript"
             tal:content="string:var count = ${view/count};">
     </script>
 

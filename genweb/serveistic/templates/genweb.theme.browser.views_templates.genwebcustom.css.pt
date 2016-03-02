@@ -185,6 +185,7 @@ div#gwsearch {
     font-size: 12px;
     margin-left: 0;
     margin-top: 15px;
+    min-height: 180px;
     padding: 10px;
 }
 .serveitic-desc #portlet-list > li {
@@ -205,11 +206,21 @@ div#gwsearch {
     margin-bottom: -5px;
 }
 #portlet-list > li .fa {
+    color: #aaa;
     display: block;
     float: left;
-    margin-right: 4px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-right: 8px;
+    margin-top: 5px;
+    text-align: center;
+    text-shadow: 1px 1px 1px white;
+    width: 20px;
 }
-
+.portlet-notificacions .portlet-footer, .portlet-problemes .portlet-footer {
+    margin-top: 0;
+    padding: 0;
+}
 
 header {
     height: 130px;
@@ -507,9 +518,10 @@ header {
     border-color: white;
     float: left;
     margin: -5px 15px 20px 0;
-    min-height: 180px;
+    height: 185px;
     padding: 0;
     width: 18.8%;
+    overflow-y: auto;
 }
 #faceted-form .widget-fieldset form {
     margin: 0;
@@ -536,6 +548,7 @@ header {
 #top-area .widget-fieldset {
     margin: 0;
     min-height: 50px;
+    height: 50px;
     width: 100%;
     background: white;
     margin: 5px 0;
@@ -561,33 +574,50 @@ display: none;
     margin-top: -10px;
 }
 div.photoAlbumEntry {
-    border: 1px solid #ddd;
+    background: #fff none repeat scroll 0 0;
+    border: 0 none;
     border-radius: 0;
-    box-shadow: none;
+    box-shadow: 1px 2px 3px #bbb;
     display: block;
     float: left;
-    height: 165px;
+    height: 175px;
     line-height: 18px;
     margin: 0 20px 20px 0;
     min-height: 165px;
-    padding: 5px;
+    padding: 0;
     text-align: center;
-    width: 163px !important;
+    width: 179px !important;
+
+}
+div.photoAlbumEntry a {
+  padding: 0;
+}
+div.photoAlbumEntry:nth-child(5) {
+    margin-right: 0;
+}
+div.photoAlbumEntry:nth-child(10) {
+    margin-right: 0;
+}
+div.photoAlbumEntry:nth-child(15) {
+    margin-right: 0;
 }
 div.photoAlbumEntry:hover {
-    border: 1px solid #bbb;
-    box-shadow: 2px 2px 2px #ddd;
+  background: #f2f2f2;
 }    
 .thumbnail .caption, .thumb-img img .caption, .photoAlbumEntry a .caption, .photoAlbumEntry a .photoAlbumEntryTitle {
     color: #444;
     padding: 0;
 }
+.subnavbar .nav-list a {
+     font-weight: normal;
+}
 .photoAlbumEntryTitle {
-    display: block;
     color: #017bbe !important;
-    font-weight: 600;
-    line-height: 15px;
-    padding: 5px 0 0 !important;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 17px;
+    padding: 5px !important;
     text-transform: uppercase;
 }
 .photoAlbumEntryDescription {
@@ -595,16 +625,22 @@ div.photoAlbumEntry:hover {
     display: block;
     font-size: 12px;
     line-height: 15px;
-    margin-top: 3px;
+    margin-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .photoAlbumEntryWrapper {
     display: block;
-    height: 63px;
+    height: 50px;
     margin-bottom: 5px;
     overflow: hidden;
 }
 .photoAlbumEntryWrapper > img {
     width: 100%;
+}
+.portlet-message > p {
+    background: #f4f4f4 none repeat scroll 0 0;
+    padding: 10px;
 }
 
 .commentBody {
@@ -683,6 +719,17 @@ margin-top:14px;
 .novetat {
 
 }
+.template-serveitic select {
+    min-height: 150px;
+    width: 438px;
+}
+.template-serveitic .textline-field {
+  min-width: 388px;
+}
+.ordered-selection-field td:nth-child(2), .ordered-selection-field td:nth-child(4) {
+    padding: 10px;
+}
+
 // --- Notificacions ---
 
 
@@ -714,9 +761,6 @@ margin-top:14px;
   background-position: -432px -144px;
 }
 
-
-
-
 // ----content type icon ---
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
   a, span  {
@@ -743,3 +787,9 @@ margin-top:14px;
   background-position: -432px -144px;
 }
 
+@media screen and (min-width: 800px) {
+.template-serveitic select {
+    min-height: 170px;
+    width:100%;
+}
+}

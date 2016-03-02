@@ -50,12 +50,17 @@ folder_structure = (
         ()
     ),
     (
-        "Notificacions", "Folder", True, True, ('notificaciotic',),
+        "Notificacions", "Folder", True, False, ('notificaciotic',),
         None,
         ()
     ),
     (
-        "Banners", "BannerContainer", True, True, ('Banner',),
+        "Problemes", "Folder", True, False, ('problema',),
+        None,
+        ()
+    ),
+    (
+        "Banners", "BannerContainer", True, False, ('Banner',),
         None,
         (),
     )

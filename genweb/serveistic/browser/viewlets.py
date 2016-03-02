@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from plone import api
 from AccessControl import getSecurityManager
 
 
 from Acquisition import aq_inner, aq_chain
 from zope.interface import Interface
+from zope.component import getMultiAdapter
 from zope.component.hooks import getSite
 from plone.memoize.view import memoize_contextless
 
@@ -22,9 +22,6 @@ from genweb.core.interfaces import IHomePage
 from genweb.core.utils import genweb_config, pref_lang
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
-
-from genweb.core import GenwebMessageFactory as _
-from DateTime.DateTime import DateTime
 
 from genweb.serveistic.content.serveitic import IServeiTIC
 from plone.app.layout.viewlets.interfaces import IBelowContent
@@ -171,6 +168,11 @@ class HeaderGWServeistic(gwHeader):
             return True
         else:
             return False
+
+    def is_authenticated(self):
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name="plone_portal_state")
+        return not portal_state.anonymous()
 
 
 class PortalHeaderGWServeistic(gwHeader):

@@ -21,6 +21,14 @@
                tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}/sitemap">
                Site Map
              </a></li>
+        <li tal:condition="viewlet/is_authenticated">
+            <a accesskey="5"
+               i18n:domain="plone"
+               i18n:translate="Manual d&apos;ús"
+               tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}/manual-dus">
+               Manual d&apos;ús
+            </a>
+        </li>
         <li><a accesskey="6"
                i18n:domain="plone"
                i18n:translate="Contact"
@@ -84,6 +92,14 @@
                tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}/sitemap">
                Site Map
              </a></li>
+        <li tal:condition="viewlet/is_authenticated">
+            <a accesskey="5"
+               i18n:domain="plone"
+               i18n:translate="Manual d&apos;ús"
+               tal:attributes="href string:${viewlet/root_url}/${viewlet/pref_lang}/manual-dus">
+               Manual d&apos;ús
+            </a>
+        </li>
         <li><a accesskey="6"
                i18n:domain="plone"
                i18n:translate="Contact"
