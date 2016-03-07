@@ -26,12 +26,8 @@ body {
     text-shadow: 1px 1px 1px #333;
  }
 
-.titol-espai h1 {
-    width: 650px;
-}
  .titol-espai a:hover {
-    color: #eee;
-    text-decoration: none;
+    color: #ddd;
 }
 .liniaBaix, .documentFirstHeading {
     border-bottom: medium none;
@@ -42,6 +38,10 @@ body {
     margin-bottom: 10px;
     min-height: 160px;
     padding: 20px;
+}
+#portal-breadcrumbs {
+    margin-bottom: -5px;
+    margin-top: 10px;
 }
 .facetes h5 {
     color: #555;
@@ -74,9 +74,26 @@ border: 1px solid #666;
     height: 130px;
     box-shadow: 0 -2px 4px #555 inset;
     }
-
 .titol-espai a {
-    color: #F7F7F7;
+    color: #f7f7f7;
+    float: left;
+    font-size: 28px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+    width: 152px;
+}
+.titol-espai .fa {
+    color: white;
+    float: left;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+}
+.serveistic-bc-level_2 > a {
+    font-size: 28px;
+    width: 82%;
+    margin-top: 3px;
+    font-weight: bold;    
 }
 #facetes legend {
     border-bottom: 1px solid #ddd;
@@ -98,6 +115,9 @@ border: 1px solid #666;
     background-color: #015b8d;
     color: white;
 }    
+.breadcrumb .active, .breadcrumb .selected, .breadcrumb .contentViews .selected:hover, .contentViews .breadcrumb .selected:hover, .breadcrumb .active a, .breadcrumb .selected a, .breadcrumb .contentViews .selected:hover a, .contentViews .breadcrumb .selected:hover a {
+     font-weight: normal;
+}
 .link-parent.link-root {
     float: right;
     font-size: 16px;
@@ -616,7 +636,7 @@ div.photoAlbumEntry:hover {
     display: block;
     font-size: 15px;
     font-weight: normal;
-    line-height: 17px;
+    line-height: 18px;
     padding: 5px !important;
     text-transform: uppercase;
 }
@@ -719,11 +739,11 @@ margin-top:14px;
 .novetat {
 
 }
-.template-serveitic select {
+.template-serveitic select, .template-edit.portaltype-serveitic .field select  {
     min-height: 150px;
     width: 438px;
 }
-.template-serveitic .textline-field {
+.template-serveitic .textline-field, .template-edit.portaltype-serveitic .field .textline-field {
   min-width: 388px;
 }
 .ordered-selection-field td:nth-child(2), .ordered-selection-field td:nth-child(4) {

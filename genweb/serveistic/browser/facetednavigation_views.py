@@ -14,8 +14,8 @@ class PreviewItem(grok.View):
     grok.layer(IGenwebServeisticLayer)
     grok.template('preview-item')
 
-    SUMMARY_MAX_LENGTH = 260
-    SHORT_SUMMARY_MAX_LENGTH = 145
+    SUMMARY_MAX_LENGTH = 210
+    SHORT_SUMMARY_MAX_LENGTH = 115
 
     def summarise(self, text, max_length):
         if text and len(text) > max_length:

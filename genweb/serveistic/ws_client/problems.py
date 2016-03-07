@@ -35,21 +35,20 @@ class Client(object):
     KEY_DESCRIPTION = 'descripcioProblema'
     KEY_URL = 'urlProblema'
     KEY_DATE_CREATION = 'dataCreacio'
+    KEY_DATE_FIX = 'dataLimitResolucioString'
 
-    def __init__(self, endpoint, login_username, login_password, domini,
+    def __init__(self, endpoint, login_username, login_password,
                  content_type='application/json'):
         self.endpoint = endpoint
         self.login_username = login_username
         self.login_password = login_password
-        self.domini = domini
         self.content_type = content_type
 
     def _get_headers(self):
         return {
             'Content-type': self.content_type,
             'login.username': self.login_username,
-            'login.password': self.login_password,
-            'domini': self.domini}
+            'login.password': self.login_password}
 
     def _parse_response_result(self, response):
         if 'resultat' not in response:
@@ -66,6 +65,12 @@ class Client(object):
         else:
             raise ClientException("Invalid value for 'resultat'")
 
+    def _parse_date(self, date):
+        try:
+            return datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S.%f')
+        except ValueError:
+            return u''
+
     def _parse_response_list_problems(self, response):
         self._parse_response_result(response)
         if 'llistaProblemes' not in response:
@@ -76,19 +81,14 @@ class Client(object):
         problems = []
         for problem_dict in response['llistaProblemes']:
             if isinstance(problem_dict, dict):
-                try:
-                    date_creation = datetime.datetime.strptime(
-                        problem_dict.get(Client.KEY_DATE_CREATION, u''),
-                        '%Y-%m-%d %H:%M:%S.%f')
-                except ValueError:
-                    date_creation = u''
-
                 problems.append(Problem(
                     topic=problem_dict.get(Client.KEY_TOPIC, u''),
                     description=problem_dict.get(Client.KEY_DESCRIPTION, u''),
                     url=problem_dict.get(Client.KEY_URL, u''),
-                    date_creation=date_creation,
-                    date_fix=u''))
+                    date_creation=self._parse_date(
+                        problem_dict.get(Client.KEY_DATE_CREATION, u'')),
+                    date_fix=self._parse_date(
+                        problem_dict.get(Client.KEY_DATE_FIX, u''))))
         return problems
 
     def list_problems(self, product_id, count=None):
@@ -100,12 +100,12 @@ class Client(object):
                 raise ClientException("Parameter 'product_id' cannot be empty")
             response = requests.get(
                 '{0}/{1}'.format(self.endpoint, product_id),
-                headers=self._get_headers())
+                headers=self._get_headers(), verify=False)
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
             problems = self._parse_response_list_problems(response.json())
-            return problems[:count] if count else problems
+            return problems[:count] if count is not None else problems
         except ClientException:
             raise
         except JSONDecodeError:

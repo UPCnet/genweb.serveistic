@@ -40,8 +40,7 @@ def get_ws_problemes_client():
     endpoint = serveistic_config().ws_endpoint
     login_username = serveistic_config().ws_login_username
     login_password = serveistic_config().ws_login_password
-    domini = serveistic_config().ws_domini
-    return Client(endpoint, login_username, login_password, domini)
+    return Client(endpoint, login_username, login_password)
 
 
 class FacetsVocabulary(object):

@@ -20,3 +20,18 @@ problema_1 = {
     'title': 'Problema 1',
     'data_creacio': datetime(2016, 1, 1)
     }
+
+problema_2 = {
+    'type': 'problema',
+    'id': 'problema-2',
+    'title': 'Problema 2',
+    'data_creacio': datetime(2016, 1, 2),
+    'url': "ueraela"
+    }
+
+problema_3 = {
+    'type': 'problema',
+    'id': 'problema-3',
+    'title': 'Problema 3',
+    'url': "ueraela3"
+    }

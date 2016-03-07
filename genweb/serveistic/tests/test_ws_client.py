@@ -18,8 +18,7 @@ class TestWSClient(unittest.TestCase):
         self.client = Client(
             endpoint='http://endpoint',
             login_username='test-username',
-            login_password='test-password',
-            domini='test-domain')
+            login_password='test-password')
 
     def test_parse_response_result_empty(self):
         response = json.loads('{}')
@@ -116,7 +115,7 @@ class TestWSClient(unittest.TestCase):
           "creatPerNom": "Jose Antonio",
           "creatPerCognom": "Tebar Garcia",
           "dataCreacio": "2014-01-22 14:33:47.362",
-          "dataResolucio": "2014-02-12 11:13:07.152",
+          "dataLimitResolucioString": "2014-02-12 11:13:07.152",
           "idEmpresa": "1123",
           "urlProblema": "/problemes/control/problemaDetallDadesGenerals"
        },
@@ -136,7 +135,8 @@ class TestWSClient(unittest.TestCase):
                 url=u"/problemes/control/problemaDetallDadesGenerals",
                 date_creation=datetime.datetime(
                     2014, 01, 22, 14, 33, 47, 362000),
-                date_fix=u''))
+                date_fix=datetime.datetime(
+                    2014, 02, 12, 11, 13, 07, 152000)))
 
         self.assertEqual(
             results[1],
@@ -218,16 +218,12 @@ class TestWSClient(unittest.TestCase):
                 side_effect=([],)):
             self.assertEqual([], self.client.list_problems(1))
 
-    def list_problems_count(self):
+    def test_list_problems_with_count_parameter(self):
         response_mock = MagicMock(status_code=200)
         with patch('genweb.serveistic.ws_client.problems.requests.get',
-                   side_effect=(response_mock,)), patch(
+                   side_effect=(response_mock for _ in range(5))), patch(
                 'genweb.serveistic.ws_client.problems.Client._parse_response_list_problems',
-                side_effect=([1, 2, 3, 4, 5, 6, 7, 8],
-                             [1, 2, 3, 4, 5, 6, 7, 8],
-                             [1, 2, 3, 4, 5, 6, 7, 8],
-                             [1, 2, 3, 4, 5, 6, 7, 8],
-                             [1, 2, 3, 4, 5, 6, 7, 8])):
+                side_effect=([1, 2, 3, 4, 5, 6, 7, 8] for _ in range(5))):
 
             self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8],
                              self.client.list_problems(1))

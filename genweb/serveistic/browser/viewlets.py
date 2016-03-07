@@ -145,6 +145,11 @@ class HeaderGWServeistic(gwHeader):
                 return obj
         return None
 
+    def get_html_title(self):
+        return getattr(
+            self.genweb_config(),
+            'html_title_{}'.format(self.pref_lang()), '')
+
     def get_title(self):
         servei = self.get_servei()
         if servei:
@@ -156,12 +161,11 @@ class HeaderGWServeistic(gwHeader):
             else:
                 return u''
 
-    def get_url(self):
-        servei = self.get_servei()
-        if servei:
-            return servei.absolute_url()
-        else:
-            return u''
+    def get_servei_title(self):
+        return self.get_servei().title if self.get_servei() else ''
+
+    def get_url_root(self):
+        return '..' if self.get_servei() else '.'
 
     def isServei(self):
         if self.get_servei():

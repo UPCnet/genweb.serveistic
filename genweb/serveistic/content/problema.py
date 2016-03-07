@@ -23,6 +23,12 @@ class IProblema(form.Schema):
         required=False,
     )
 
+    url = schema.TextLine(
+        title=_(u"URL"),
+        description=_(
+            u"Direcció URL amb informació addicional sobre el problema"),
+        required=False)
+
     data_resolucio = schema.Date(
         title=_(u"Data estimada de resolució"),
         required=False,

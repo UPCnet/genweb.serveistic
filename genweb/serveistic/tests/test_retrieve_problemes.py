@@ -129,13 +129,23 @@ class TestRetrieveProblemes(FunctionalTestCase):
         servei_1 = fixtures.create_content(self.portal, fixtures.servei_1)
         problema_1 = fixtures.create_content(
             servei_1['problemes'], fixtures.problema_1)
+        problema_2 = fixtures.create_content(
+            servei_1['problemes'], fixtures.problema_2)
+        problema_3 = fixtures.create_content(
+            servei_1['problemes'], fixtures.problema_3)
         commit()
         # ... count is not present
-        query_string = "?servei_path=" + '/'.join(problema_1.getPhysicalPath())
+        query_string = "?servei_path=" + '/'.join(servei_1.getPhysicalPath())
         self.browser.open(view.url() + query_string)
         self.assertAppearInOrder([
+            problema_2.data_creacio.strftime('%d/%m/%Y'),
+            'href="' + problema_2.url + '"',
+            problema_2.Title(),
             problema_1.data_creacio.strftime('%d/%m/%Y'),
-            problema_1.Title()],
+            'href="problemes/' + problema_1.id + '"',
+            problema_1.Title(),
+            'href="' + problema_3.url + '"',
+            problema_3.Title()],
             self.browser.contents)
         self.assertNotIn(
             "No s&apos;han trobat problemes",
