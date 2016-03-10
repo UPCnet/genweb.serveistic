@@ -165,7 +165,12 @@ class HeaderGWServeistic(gwHeader):
         return self.get_servei().title if self.get_servei() else ''
 
     def get_url_root(self):
-        return '..' if self.get_servei() else '.'
+        return getMultiAdapter(
+            (self.context, self.request),
+            name=u'plone_portal_state').portal_url()
+
+    def get_url_servei(self):
+        return self.get_servei().absolute_url_path()
 
     def isServei(self):
         if self.get_servei():

@@ -749,10 +749,57 @@ margin-top:14px;
 .ordered-selection-field td:nth-child(2), .ordered-selection-field td:nth-child(4) {
     padding: 10px;
 }
-
-// --- Notificacions ---
-
-
+.slider-notificacions {
+    background: #017bbe none repeat scroll 0 0;
+    float: left;
+    height: 26px;
+    margin: 5px 0 20px;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 6px;
+}
+#notificacions-carousel {
+  border: 0;
+  box-shadow: none;
+  text-align: center;
+  width: 100%;
+}
+#notificacions-carousel a {
+  color: white;
+  font-size: 13px;
+}
+.carousel-control {
+    background: transparent none repeat scroll 0 0;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 100;
+    height: 22px;
+    left: 10px;
+    line-height: 18px;
+    margin-top: -18px;
+    opacity: 0.1;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 22px;
+}
+.data {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#notificacions-carousel .fa {
+    font-size: 20px;
+    vertical-align: middle;
+}
+.template-facetednavigation_view .share_popover {
+  display: none;
+}
+.template-facetednavigation_view #portal-breadcrumbs {
+    display: none;
+}
 
 // ----content type icon ---
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {

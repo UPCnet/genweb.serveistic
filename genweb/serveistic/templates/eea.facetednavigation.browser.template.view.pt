@@ -19,6 +19,20 @@
 
 <body>
 
+<metal:custom_title fill-slot="content-title">
+    <div class="slider-notificacions row-fluid">
+      <div class="carousel slide span12">
+        <div id="notificacions-carousel" class="carousel-inner"></div>
+        <nav>
+          <a href="#" class="left carousel-control">&lsaquo;</a>
+          <a href="#" class="right carousel-control">&rsaquo;</a>
+        </nav>
+      </div>
+    </div>
+    <h1 class="documentFirstHeading" tal:content="context/title"></h1>
+</metal:custom_title>
+
+
 <div metal:fill-slot="content-core">
 <!-- Include here the custom content -->
 <!-- Folder contents -->
@@ -37,6 +51,10 @@
   <div style="display: none" id="faceted-version"
     tal:content="here/@@faceted_version|string:" />
 </div>
+
+<script type="text/javascript"
+        tal:attributes="src string:${portal_url}/++genweb++serveistic/homepage.js">
+</script>
 
 </div>
 </body>

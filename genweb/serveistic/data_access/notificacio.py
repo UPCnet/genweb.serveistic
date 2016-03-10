@@ -34,3 +34,21 @@ class NotificacioDataReporter(object):
                 "tipus": notificacio.tipus,
                 "url": notificacio.getURL()})
         return results[:count] if count else results
+
+    def list_by_general(self, is_general=True):
+        results = []
+        notificacions = self.catalog.searchResults(
+            portal_type="notificaciotic",
+            review_state='published',
+            is_general=is_general,
+            sort_on='effective',
+            sort_order='reverse',
+            )
+        for notificacio in notificacions:
+            results.append({
+                "data": DateTime(notificacio.effective).strftime('%d/%m/%Y'),
+                "titol": notificacio.Title,
+                "descripcio": notificacio.Description,
+                "tipus": notificacio.tipus,
+                "url": notificacio.getURL()})
+        return results

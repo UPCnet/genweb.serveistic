@@ -2,9 +2,11 @@
 
 folder_structure = (
     (
-        # title, type, exclude_from_nav, allow_discussion, allowed_types,
+        # title, type, exclude_from_nav, allow_discussion,
+        # allowed_types,
         # layout, content
-        "El servei", "Folder", False, False, ('Document', 'File', 'Folder'),
+        "El servei", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
         'folder_index_view',
         (
             # title, type, exclude_from_nav, allow_discussion, allowed_types,
@@ -16,7 +18,8 @@ folder_structure = (
         )
     ),
     (
-        "Manuals", "Folder", False, False, ('Document', 'File', 'Folder'),
+        "Manuals", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
         'folder_index_view',
         (
             ("Manual usuari", "Document", False, False, None, None),
@@ -24,7 +27,8 @@ folder_structure = (
         )
     ),
     (
-        "Ajuda", "Folder", False, False, ('Document', 'File', 'Folder'),
+        "Ajuda", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
         'folder_index_view',
         (
             ("FAQs", "Folder", False, False, None, 'folder_index_view'),
@@ -33,7 +37,8 @@ folder_structure = (
         )
     ),
     (
-        "Documentació", "Folder", False, False, ('Document', 'File', 'Folder'),
+        "Documentació", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
         'folder_index_view',
         (
             ("Documentació tècnica", "Folder", False, False, None,

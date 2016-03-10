@@ -3,8 +3,11 @@
 import csv
 
 from zope.component import getUtility
+from plone import api
 from plone.registry.interfaces import IRegistry
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
 from genweb.serveistic.config_helper import get_absolute_path, config
 from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
@@ -15,7 +18,8 @@ NEW_INDEXES = [
     ('prestador', 'KeywordIndex'),
     ('ubicacio', 'KeywordIndex'),
     ('tipologia', 'KeywordIndex'),
-    ('ambit', 'KeywordIndex')
+    ('ambit', 'KeywordIndex'),
+    ('is_general', 'FieldIndex'),
     ]
 
 
@@ -44,9 +48,42 @@ def add_default_settings():
             for row in csv.reader(facets_file, delimiter=',', quotechar='"')]
 
 
+def add_container(container, type, title,
+                  allowed_types=None, exclude_from_nav=False):
+    folder_id = getUtility(IIDNormalizer).normalize(title)
+    if folder_id not in container:
+        folder = api.content.create(
+            type=type,
+            id=folder_id,
+            title=title,
+            container=container)
+        api.content.transition(
+            obj=folder,
+            transition='publish')
+        if allowed_types:
+            behavior = ISelectableConstrainTypes(folder)
+            behavior.setConstrainTypesMode(1)
+            behavior.setLocallyAllowedTypes(allowed_types)
+            behavior.setImmediatelyAddableTypes(allowed_types)
+        folder.exclude_from_nav = exclude_from_nav
+    return container[folder_id]
+
+
+def add_default_folders():
+    portal = api.portal.get()
+    if 'ca' in portal:
+        add_container(
+            container=portal['ca'],
+            type='Folder',
+            title=u"Notificacions",
+            allowed_types=('notificaciotic',),
+            exclude_from_nav=True)
+
+
 def setupVarious(context):
     portal = context.getSite()
     catalog = getToolByName(portal, 'portal_catalog')
 
     add_catalog_indexes(catalog)
     add_default_settings()
+    add_default_folders()
