@@ -3,4 +3,5 @@
     <!-- Do not add any index definition here, do it in setuphandlers -->
     <!-- see add_catalog_indexes method -->
     <column value="tipus"/>
+    <column value="image"/>
 </object>

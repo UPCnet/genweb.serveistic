@@ -68,7 +68,13 @@
                i18n:domain="genweb"
                i18n:translate="identificat">
                Identifica't
-            </a></li>
+            </a>
+        </li>
+        <li>
+          <a tal:attributes="href viewlet/url_serveistic_servei">
+            <span class="fa fa-info-circle"></span>
+          </a>
+        </li>
         <tal:genwebpamls condition="viewlet/is_pam_installed">
           <tal:block replace="structure provider:genweb.pamls" />
         </tal:genwebpamls>

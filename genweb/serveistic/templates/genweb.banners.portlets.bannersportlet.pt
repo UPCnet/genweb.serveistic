@@ -1,7 +1,6 @@
 <tal:banners define="banners view/getBanners"
              i18n:domain="genweb.banners">
-  <div id="baners" class="portlet portlet-baners"
-       role="complementary" aria-labelledby="titol-baners"
+  <div id="baners" class="portlet portlet-baners" role="complementary" aria-labelledby="titol-baners"
        tal:condition="banners">
 
         <h2 class="goout" id="titol-baners" i18n:translate="baners">Baners</h2>

@@ -4,6 +4,9 @@ body {
     font-size: 13px;
     line-height: 20px;
 }
+a {
+    color: #00aee5;
+}
 #content-area {
     margin-top: 1em;
 }
@@ -18,7 +21,7 @@ body {
     color: #444;
  }
  h1, h2, h3 {
-    color: #017bbe;
+    color: #00aee5;
     margin-top: 27px;
 }
 .titol-espai a span {
@@ -175,7 +178,7 @@ div#gwsearch {
 .portlet h2 {
     border-bottom: 0 none;
     box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.1);
-    color: #017bbe;
+    color: #00aee5;
     font-size: 18px;
     line-height: 16px;
     margin: 0;
@@ -204,7 +207,7 @@ div#gwsearch {
     background: #f3f3f3 none repeat scroll 0 0;
     font-size: 12px;
     margin-left: 0;
-    margin-top: 15px;
+    margin-top: 0;
     min-height: 180px;
     padding: 10px;
 }
@@ -212,9 +215,10 @@ div#gwsearch {
     border-bottom: 1px solid #fff;
     list-style-type: none;
     margin-left: 0;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     padding-left: 0;
-    padding-top: 5px;
+    padding-top: 10px;
+    line-height: 14px;
 }
 .serveitic-desc #portlet-list > li:last-child {
      border-bottom: 0;
@@ -223,7 +227,7 @@ div#gwsearch {
     color: #666;
     display: block;
     font-size: 10px;
-    margin-bottom: -5px;
+    margin-bottom: 0;
 }
 #portlet-list > li .fa {
     color: #aaa;
@@ -518,12 +522,12 @@ header {
     width: 78.5%;
 }
 #faceted-top-column .searchButton {
-    background: #017bbe none repeat scroll 0 0;
+    background: #00aee5 none repeat scroll 0 0;
     border: 0 none;
     color: white;
     font-family: open sans;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     height: 40px;
     text-shadow: none;
     width: 170px !important;
@@ -541,6 +545,7 @@ header {
     height: 185px;
     padding: 0;
     width: 18.8%;
+    overflow-x: none;    
     overflow-y: auto;
 }
 #faceted-form .widget-fieldset form {
@@ -548,6 +553,7 @@ header {
 }
 #faceted-form .widget-fieldset legend {
     background: #eee none repeat scroll 0 0;
+    color: #00aee5;
     border-color: #dedede;
     font-size: 13px !important;
     font-weight: 600;
@@ -560,6 +566,7 @@ header {
     margin: 0 0 10px 10px;
 }
 .widget-fieldset ul li label {
+    color: #555;
     font-size: 11px;
     font-weight: normal;
     padding-left: 0.5em;
@@ -632,10 +639,10 @@ div.photoAlbumEntry:hover {
      font-weight: normal;
 }
 .photoAlbumEntryTitle {
-    color: #017bbe !important;
+    color: #00aee5 !important;
     display: block;
     font-size: 15px;
-    font-weight: normal;
+    font-weight: 600;
     line-height: 18px;
     padding: 5px !important;
     text-transform: uppercase;
@@ -656,6 +663,7 @@ div.photoAlbumEntry:hover {
     overflow: hidden;
 }
 .photoAlbumEntryWrapper > img {
+    height: 50px;
     width: 100%;
 }
 .portlet-message > p {
@@ -750,7 +758,7 @@ margin-top:14px;
     padding: 10px;
 }
 .slider-notificacions {
-    background: #017bbe none repeat scroll 0 0;
+    background: #00aee5 none repeat scroll 0 0;
     float: left;
     height: 26px;
     margin: 5px 0 20px;
@@ -768,6 +776,10 @@ margin-top:14px;
   color: white;
   font-size: 13px;
 }
+#notificacions-carousel a:hover {
+text-decoration: none;
+color: #f5f5f5;
+}  
 .carousel-control {
     background: transparent none repeat scroll 0 0;
     border: 2px solid #fff;
@@ -785,6 +797,9 @@ margin-top:14px;
     top: 50%;
     width: 22px;
 }
+.carousel-control:hover {
+    color: #fff;
+}
 .data {
     font-weight: bold;
     margin-left: 5px;
@@ -800,6 +815,82 @@ margin-top:14px;
 .template-facetednavigation_view #portal-breadcrumbs {
     display: none;
 }
+label {
+    color: #00aee5;
+    font-weight: bold;
+}
+.btn-primary, .context {
+    background-color: #00aee5;
+    font-family: open sans;
+    background-image: none;
+    border:none;
+    color: #fff;
+    text-shadow: none;
+}
+.btn-primary:hover, .context:hover, .btn-primary:active, .context:active, .btn-primary.active, .active.context, .context.selected, .btn-primary.selected, .contentViews .btn-primary.selected:hover, .btn-primary.disabled, .disabled.context, .btn-primary[disabled], .context[disabled] {
+    background-color: #009fd1;
+    border: 0 none;
+    box-shadow: none;
+    color: #fff;
+}
+.header-breadcrumb-image {
+    background: rgba(0,0,0,0.25) scroll 0 0 /cover;
+    background-blend-mode: darken;
+}
+.imageless-item {
+    background-image: linear-gradient(#f3f2f3, #e3e3e3);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    height: 42px;
+}
+.banner-title {
+    color: #607c95;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: -3px;
+    margin-left: 20px;
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+.banner-description {
+    color: #444;
+    font-size: 11px;
+    margin-left: 20px;
+}
+.portlet-baners li {
+    padding: 0;
+}
+#eines .fa {
+    font-size: 24px;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: -5px;
+    padding: 0;
+}
+
+
+@media screen and (min-width: 800px) {
+.template-serveitic select {
+    min-height: 170px;
+    width:100%;
+}
+}
+
+@media only screen and (max-width: 640px) {
+#center-and-left-area {
+  float: none;
+}
+#faceted-form .widget-fieldset {
+    width: 100%;
+}
+div.photoAlbumEntry {
+    width: 100% !important;
+}
+#center-area {
+    margin-left: 0;
+}    
+}
+
 
 // ----content type icon ---
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
@@ -854,9 +945,3 @@ margin-top:14px;
   background-position: -432px -144px;
 }
 
-@media screen and (min-width: 800px) {
-.template-serveitic select {
-    min-height: 170px;
-    width:100%;
-}
-}

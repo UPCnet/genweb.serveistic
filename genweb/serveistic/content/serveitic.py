@@ -55,10 +55,17 @@ class IServeiTIC(form.Schema):
     )
 
     image = BlobImage(
-        title=_(u"Imatge capcalera"),
+        title=_(u"Imatge de capçalera"),
         description=_(u"Mida recomanada de la imatge 1280x130 pixels"),
         required=False,
     )
+
+    image_item = BlobImage(
+        title=_(u"Imatge de resultat de cerca"),
+        description=_(u"Es mostrarà com a imatge del servei als resultats del "
+                      u"cercador de Serveis TIC"),
+        required=False
+        )
 
     product_id = schema.TextLine(
         title=_(u"Identificador gn6"),

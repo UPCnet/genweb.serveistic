@@ -172,6 +172,10 @@ class HeaderGWServeistic(gwHeader):
     def get_url_servei(self):
         return self.get_servei().absolute_url_path()
 
+    @property
+    def url_serveistic_servei(self):
+        return "{0}/ca/serveis-tic".format(self.get_url_root())
+
     def isServei(self):
         if self.get_servei():
             return True

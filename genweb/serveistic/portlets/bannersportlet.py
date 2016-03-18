@@ -7,6 +7,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
+from genweb.serveistic.utilities import get_servei
+from genweb.serveistic.data_access.banner import BannerDataReporter
+
 
 class IBannersPortlet(IPortletDataProvider):
     """ A portlet which can show actived.
@@ -30,15 +33,9 @@ class Renderer(base.Renderer):
         return api.portal.get()
 
     def getBanners(self):
-        """ return list of user service to show in portlet """
-
-        portal = api.portal.get()
-        path_portlet = "/".join(self.context.getPhysicalPath()) + '/banners'
-        catalog = getToolByName(portal, 'portal_catalog')
-        return catalog.searchResults(portal_type='Banner',
-                                     review_state=['published', 'intranet'],
-                                     path={'query': path_portlet},
-                                     sort_on='getObjPositionInParent')
+        reporter = BannerDataReporter(
+            getToolByName(api.portal.get(), 'portal_catalog'))
+        return reporter.list_by_servei(get_servei(self))
 
     def getAltAndTitle(self, altortitle, open_in_new_window):
         """ Funcio que extreu idioma actiu i afegeix al alt i al title de les imatges del banner

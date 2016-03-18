@@ -33,3 +33,9 @@ class PreviewItem(grok.View):
         return self.summarise(
             self.context.description,
             PreviewItem.SHORT_SUMMARY_MAX_LENGTH)
+
+    @property
+    def image_src(self):
+        return "{0}/@@images/{1}".format(
+            self.context.absolute_url(),
+            'image_item' if self.context.image_item else 'image')
