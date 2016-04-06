@@ -42,14 +42,14 @@ class IServeiTIC(form.Schema):
     )
 
     responsable = schema.TextLine(
-        title=_(u"Nom responsable"),
-        description=_(u"Nom responsable del servei"),
+        title=_(u"Nom del responsable funcional"),
+        description=_(u"Nom del responsable funcional del servei"),
         required=False,
     )
 
     responsableMail = schema.TextLine(
-        title=_(u'Email responsable'),
-        description=_(u'Adreça e-mail del responsable del servei'),
+        title=_(u'Email del responsable funcional'),
+        description=_(u'Adreça e-mail del responsable funcional del servei'),
         required=False,
         constraint=checkEmailAddress
     )
@@ -61,9 +61,10 @@ class IServeiTIC(form.Schema):
     )
 
     image_item = BlobImage(
-        title=_(u"Imatge de resultat de cerca"),
-        description=_(u"Es mostrarà com a imatge del servei als resultats del "
-                      u"cercador de Serveis TIC"),
+        title=_(u"Imatge del servei en el resultat de cerca"),
+        description=_(u"Es mostrarà com a imatge del servei en els resultats "
+                      u"del cercador de Serveis TIC (mida recomanada 180x150 "
+                      u"pixels)"),
         required=False
         )
 

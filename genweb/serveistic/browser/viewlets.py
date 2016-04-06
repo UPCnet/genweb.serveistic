@@ -2,30 +2,28 @@
 
 from five import grok
 from AccessControl import getSecurityManager
-
-
 from Acquisition import aq_inner, aq_chain
+
 from zope.interface import Interface
 from zope.component import getMultiAdapter
 from zope.component.hooks import getSite
-from plone.memoize.view import memoize_contextless
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from plone.memoize.view import memoize_contextless
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 from plone.app.layout.viewlets.interfaces import IPortalTop, IPortalHeader
 from plone.app.layout.navigation.interfaces import INavigationRoot
-
+from plone.app.layout.viewlets.interfaces import IBelowContent
+from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
 
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import genweb_config, pref_lang
+from genweb.theme.browser.viewlets import gwFooter
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
-
 from genweb.serveistic.content.serveitic import IServeiTIC
-from plone.app.layout.viewlets.interfaces import IBelowContent
-from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
 
 grok.context(Interface)
 
@@ -246,4 +244,10 @@ class gwManagePortletsFallbackViewletForIHomePage(gwManagePortletsFallbackViewle
     grok.context(IServeiTIC)
     grok.name('serveitic.manage_portlets_fallback')
     grok.viewletmanager(IBelowContent)
+    grok.layer(IGenwebServeisticLayer)
+
+
+class serveiticFooter(gwFooter):
+    grok.name('genweb.footer')
+    grok.template('footer')
     grok.layer(IGenwebServeisticLayer)
