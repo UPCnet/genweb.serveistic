@@ -55,8 +55,8 @@ def initialize_servei(serveitic, event):
     # Configure portlets
     assignments = get_portlet_assignments(
         serveitic, 'plone.leftcolumn')
-    assignments['banners'] = GenwebBannersAssignment()
-    assignments['banners_serveistic'] = BannersAssignment()
+    assignments['banners_global'] = BannersAssignment(banner_type=u"Global")
+    assignments['banners_local'] = BannersAssignment(banner_type=u"Local")
 
     assignments = get_portlet_assignments(
         serveitic, 'genweb.portlets.HomePortletManager3')
