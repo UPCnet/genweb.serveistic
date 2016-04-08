@@ -29,6 +29,17 @@ class IServeisTICControlPanelSettings(model.Schema):
     """
 
     model.fieldset(
+        'General',
+        _(u'General'),
+        fields=['url_info_serveistic'])
+
+    url_info_serveistic = schema.TextLine(
+        title=_(u"URL d'informació de Serveis TIC"),
+        description=_(u"URL on enllaça la i de la barra superior del lloc "
+                      u"web de Serveis TIC"),
+        required=False)
+
+    model.fieldset(
         'Servei Web Problemes',
         _(u'Servei Web Problemes'),
         fields=['ws_endpoint', 'ws_login_username', 'ws_login_password'])
@@ -41,7 +52,7 @@ class IServeisTICControlPanelSettings(model.Schema):
         title=_(u'Usuari'),
         required=False)
 
-    ws_login_password = schema.TextLine(
+    ws_login_password = schema.Password(
         title=_(u'Contrasenya'),
         required=False)
 

@@ -14,9 +14,9 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize.view import memoize_contextless
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 from plone.app.layout.viewlets.interfaces import IPortalTop, IPortalHeader
-from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.interfaces import IBelowContent
 from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
+from plone.app.layout.navigation.interfaces import INavigationRoot
 
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import genweb_config, pref_lang
@@ -24,6 +24,7 @@ from genweb.theme.browser.viewlets import gwFooter
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.utilities import serveistic_config
 
 grok.context(Interface)
 
@@ -172,7 +173,7 @@ class HeaderGWServeistic(gwHeader):
 
     @property
     def url_serveistic_servei(self):
-        return "{0}/ca/serveis-tic".format(self.get_url_root())
+        return serveistic_config().url_info_serveistic
 
     def isServei(self):
         if self.get_servei():
