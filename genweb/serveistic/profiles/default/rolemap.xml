@@ -321,6 +321,7 @@
     <permission name="Reply to item" acquire="True">
       <role name="Editor"/>
       <role name="Manager"/>
+      <!-- Add the Reply to item permission to Member -->
       <role name="Member"/>
       <role name="Reader"/>
       <role name="WebMaster"/>
