@@ -10,10 +10,12 @@ function configure_carousel()
     $('.slider-notificacions .carousel .left').click(function()
     {
         $('.slider-notificacions .carousel').carousel('prev');
+        return false;
     });
     $('.slider-notificacions .carousel .right').click(function()
     {
         $('.slider-notificacions .carousel').carousel('next');
+        return false;
     });
     $('.slider-notificacions .carousel').carousel('next');
 }

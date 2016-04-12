@@ -41,6 +41,11 @@ class Assignment(base.Assignment):
     def __init__(self, banner_type=u"Local"):
         self.banner_type = banner_type
 
+    @property
+    def title(self):
+        return _(u"Banners TIC ({0})".format(
+            getattr(self, 'banner_type', '?')))
+
 
 class Renderer(base.Renderer):
 

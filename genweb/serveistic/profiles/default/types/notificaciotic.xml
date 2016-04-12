@@ -4,7 +4,7 @@
 
  <!-- Basic metadata -->
  <property name="title" i18n:translate="notificaciotic">Notificació TIC</property>
- <property name="description" i18n:translate="">Serveis TIC</property>
+ <property name="description" i18n:translate="">Notificació TIC</property>
  <property name="icon_expr"></property>
  <property name="factory">notificaciotic</property>
  <property name="add_view_expr">string:${folder_url}/++add++notificaciotic</property>

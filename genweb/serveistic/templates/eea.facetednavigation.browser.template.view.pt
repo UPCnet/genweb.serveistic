@@ -24,8 +24,8 @@
       <div class="carousel slide span12">
         <div id="notificacions-carousel" class="carousel-inner"></div>
         <nav>
-          <a href="#" class="left carousel-control">&lsaquo;</a>
-          <a href="#" class="right carousel-control">&rsaquo;</a>
+          <a href="" class="left carousel-control">&lsaquo;</a>
+          <a href="" class="right carousel-control">&rsaquo;</a>
         </nav>
       </div>
     </div>
