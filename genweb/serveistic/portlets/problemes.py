@@ -10,8 +10,6 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
-from genweb.serveistic.utilities import get_servei
-
 
 class IProblemesPortlet(IPortletDataProvider):
     count = schema.Int(
@@ -36,22 +34,12 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('templates/problemes.pt')
 
     @property
-    def product_id(self):
-        servei = get_servei(self)
-        return servei.product_id if servei.product_id else ''
+    def js_define_url_retrieve(self):
+        return "var url_retrieve_problemes = 'retrieve_problemes';"
 
     @property
-    def servei_path(self):
-        servei = get_servei(self)
-        return '/'.join(servei.getPhysicalPath())
-
-    @property
-    def count(self):
-        return self.data.count
-
-    @property
-    def problemes_href(self):
-        return '/problemes_list'
+    def js_define_count(self):
+        return "var count = {0};".format(self.data.count)
 
 
 class AddForm(base.AddForm):

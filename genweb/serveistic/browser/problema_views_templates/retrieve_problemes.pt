@@ -1,4 +1,5 @@
-<tal:block define="problemes view/problemes; count view/count">
+<tal:block define="problemes view/problemes; count view/count"
+           i18n:domain="genweb.serveistic">
 
 <ul tal:condition="problemes" id="portlet-list">
     <li tal:repeat="problema problemes">
@@ -13,14 +14,14 @@
 </div>
 
 <div tal:condition="python: problemes == []" class="portlet-message">
-  <p>
-  No s&apos;han trobat problemes
+  <p i18n:translate="No hi ha cap problema enregistrat relacionat amb aquest servei">
+  No hi ha cap problema enregistrat relacionat amb aquest servei
   </p>
 </div>
 
 <div tal:condition="python: problemes is None" class="portlet-message">
-  <p>
-  No s&apos;han pogut recuperar els problemes
+  <p i18n:translate="No hi ha cap problema enregistrat relacionat amb aquest servei">
+  No hi ha cap problema enregistrat relacionat amb aquest servei
   </p>
 </div>
 

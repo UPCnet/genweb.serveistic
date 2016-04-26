@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<object name="notificaciotic" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="notificaciotic" meta_type="Dexterity FTI" i18n:domain="genweb.serveistic"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
  <!-- Basic metadata -->
- <property name="title" i18n:translate="notificaciotic">Notificació TIC</property>
- <property name="description" i18n:translate="">Notificació TIC</property>
+ <property name="title" i18n:translate="">Notificacio TIC</property>
+ <property name="description" i18n:translate="">Notificacio TIC</property>
  <property name="icon_expr"></property>
  <property name="factory">notificaciotic</property>
  <property name="add_view_expr">string:${folder_url}/++add++notificaciotic</property>
@@ -30,9 +30,13 @@
 
  <!-- enabled behaviors -->
  <property name="behaviors">
+    <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-    <element value="plone.app.relationfield.behavior.IRelatedItems"/>
+    <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes"/>
+    <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
  </property>
 
   <!-- View information -->

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import pkg_resources
 from five import grok
 
 from plone.dexterity.utils import createContentInContainer
@@ -15,8 +16,6 @@ from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
 from genweb.theme.browser.interfaces import IHomePageView
 from genweb.theme.browser.views import HomePageBase
-from genweb.banners.portlets.bannersportlet import Assignment \
-    as GenwebBannersAssignment
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
@@ -27,6 +26,8 @@ from genweb.serveistic.portlets.notificacions import Assignment as \
     NotificacionsAssignment
 from genweb.serveistic.portlets.problemes import Assignment as \
     ProblemesAssignment
+from genweb.serveistic.portlets.indicadors import Assignment as \
+    IndicadorsAssignment
 from genweb.serveistic.data.folder_structure import folder_structure
 
 
@@ -65,6 +66,10 @@ def initialize_servei(serveitic, event):
     assignments = get_portlet_assignments(
         serveitic, 'genweb.portlets.HomePortletManager4')
     assignments['problemes'] = ProblemesAssignment()
+
+    assignments = get_portlet_assignments(
+        serveitic, 'genweb.portlets.HomePortletManager5')
+    assignments['indicadors'] = IndicadorsAssignment()
 
     # Create folder structure
     for folder_data in folder_structure:

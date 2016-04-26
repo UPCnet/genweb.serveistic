@@ -11,4 +11,7 @@
   <portlet addview="serveistic.portlets.problemes"
            title="Serveistic Problemes"/>
 
+  <portlet addview="serveistic.portlets.indicadors"
+           title="Serveistic Indicadors"/>
+
 </portlets>

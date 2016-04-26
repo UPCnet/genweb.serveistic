@@ -32,7 +32,12 @@
           <span tal:replace="structure python:view.renderProviderByName(manager_name)" />
         </div>
 
-        <div class="span4"></div>
+        <div class="span4"
+          tal:define="manager_name string:genweb.portlets.HomePortletManager5"
+          tal:attributes="class python:'span' + view.getSpanValueForManager(manager_name)">
+          <span tal:replace="structure python:view.renderProviderByName(manager_name)" />
+        </div>
+
       </div>
 
     </div>

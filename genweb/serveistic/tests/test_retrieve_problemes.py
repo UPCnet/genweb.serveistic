@@ -1,4 +1,3 @@
-from datetime import datetime
 from mock import Mock, patch
 
 from plone.testing.z2 import Browser
@@ -25,166 +24,157 @@ class TestRetrieveProblemes(FunctionalTestCase):
             return subtxt_2
         reduce(assertAppearsBefore, subtxts)
 
-    def test_no_parameters(self):
+    def test_retrieve_from_path(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_without_product_id)
+        fixtures.create_content(
+            servei['problemes'], fixtures.problema_1)
+        fixtures.create_content(
+            servei['problemes'], fixtures.problema_2)
+        commit()
+
         view = api.content.get_view(
-            'retrieve_problemes', self.portal, self.layer['request'])
+            'retrieve_problemes', servei, self.layer['request'])
+
+        # problems not empty, count is present
+        query_string = "?count=5"
+        self.browser.open(view.url() + query_string)
+        self.assertAppearInOrder([
+            "02/01/2016",
+            "Problema 2",
+            "01/01/2016",
+            "Problema 1",
+            ],
+            self.browser.contents)
+        self.assertIn(
+            "Tots els problemes",
+            self.browser.contents)
+        self.assertNotIn(
+            "No hi ha cap problema enregistrat relacionat amb aquest servei",
+            self.browser.contents)
+
+        # problems not empty, count not present
         self.browser.open(view.url())
-        self.assertIn(
-            "No s&apos;han pogut recuperar els problemes",
+        self.assertAppearInOrder([
+            "02/01/2016",
+            "Problema 2",
+            "01/01/2016",
+            "Problema 1",
+            ],
+            self.browser.contents)
+        self.assertNotIn(
+            "Tots els problemes",
+            self.browser.contents)
+        self.assertNotIn(
+            "No hi ha cap problema enregistrat relacionat amb aquest servei",
             self.browser.contents)
 
-    def test_product_id(self):
+        # problems is empty
+        servei['problemes'].manage_delObjects(servei['problemes'].keys())
+        commit()
+
+        self.browser.open(view.url())
+        self.assertNotIn("02/01/2016", self.browser.contents)
+        self.assertNotIn("Problema 2", self.browser.contents)
+        self.assertNotIn("01/01/2016", self.browser.contents)
+        self.assertNotIn("Problema 1", self.browser.contents)
+        self.assertIn(
+            "No hi ha cap problema enregistrat relacionat amb aquest servei",
+            self.browser.contents)
+        self.assertNotIn(
+            "Tots els problemes",
+            self.browser.contents)
+
+    def test_retrieve_from_ws(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_product_id)
+        fixtures.create_content(
+            servei['problemes'], fixtures.problema_1)
+        fixtures.create_content(
+            servei['problemes'], fixtures.problema_2)
+        commit()
+
         view = api.content.get_view(
-            'retrieve_problemes', self.portal, self.layer['request'])
-        # problems are empty, count is not present
-        with patch('genweb.serveistic.ws_client.problems.Client.list_problems',
-                   side_effect=([],)):
-            query_string = "?product_id=1234"
-            self.browser.open(view.url() + query_string)
-            self.assertIn(
-                "No s&apos;han trobat problemes",
-                self.browser.contents)
-            self.assertNotIn(
-                "Tots els problemes",
-                self.browser.contents)
+            'retrieve_problemes', servei, self.layer['request'])
 
-        # problems are empty, count is present
-        with patch('genweb.serveistic.ws_client.problems.Client.list_problems',
-                   side_effect=([],)):
-            query_string = "?product_id=1234&count=5"
-            self.browser.open(view.url() + query_string)
-            self.assertIn(
-                "No s&apos;han trobat problemes",
-                self.browser.contents)
-            self.assertNotIn(
-                "Tots els problemes",
-                self.browser.contents)
-
-        # problems are not empty, count is not present
+        # problems not empty, count is present
         problems = [
             Mock(
-                date_creation=datetime(2016, 2, 25),
-                topic="The topic",
-                url="problem-1")]
-        with patch('genweb.serveistic.ws_client.problems.Client.list_problems',
+                date_creation="25/02/2016",
+                topic="The topic 1",
+                url="problem-1"),
+            Mock(
+                date_creation="26/02/2016",
+                topic="The topic 2",
+                url="problem-2"),
+            ]
+        with patch('genweb.serveistic.data_access.problemes.ProblemesDataReporter.list_by_product_id',
                    side_effect=(problems,)):
-            query_string = "?product_id=1234"
+            query_string = "?count=5"
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
                 "25/02/2016",
-                "The topic"],
+                "The topic",
+                "26/02/2016",
+                "The topic 2",
+                ],
                 self.browser.contents)
-            self.assertNotIn(
-                "No s&apos;han trobat problemes",
-                self.browser.contents)
-            self.assertNotIn(
+            self.assertIn(
                 "Tots els problemes",
                 self.browser.contents)
+            self.assertNotIn(
+                "No hi ha cap problema enregistrat relacionat amb aquest "
+                "servei",
+                self.browser.contents)
 
-        # problems are not empty, count is present
+        # problems not empty, count not present
         problems = [
             Mock(
-                date_creation=datetime(2016, 2, 25),
-                topic="The topic",
-                url="problem-1")]
-        with patch('genweb.serveistic.ws_client.problems.Client.list_problems',
+                date_creation="25/02/2016",
+                topic="The topic 1",
+                url="problem-1"),
+            Mock(
+                date_creation="26/02/2016",
+                topic="The topic 2",
+                url="problem-2"),
+            ]
+        with patch('genweb.serveistic.data_access.problemes.ProblemesDataReporter.list_by_product_id',
                    side_effect=(problems,)):
-            query_string = "?product_id=1234&count=10"
-            self.browser.open(view.url() + query_string)
+            self.browser.open(view.url())
             self.assertAppearInOrder([
                 "25/02/2016",
-                "The topic"],
+                "The topic",
+                "26/02/2016",
+                "The topic 2",
+                ],
                 self.browser.contents)
             self.assertNotIn(
-                "No s&apos;han trobat problemes",
+                "Tots els problemes",
                 self.browser.contents)
+            self.assertNotIn(
+                "No hi ha cap problema enregistrat relacionat amb aquest "
+                "servei",
+                self.browser.contents)
+
+        # problems is empty
+        with patch('genweb.serveistic.data_access.problemes.ProblemesDataReporter.list_by_product_id',
+                   side_effect=([],)):
+            self.browser.open(view.url())
             self.assertIn(
+                "No hi ha cap problema enregistrat relacionat amb aquest "
+                "servei",
+                self.browser.contents)
+            self.assertNotIn(
                 "Tots els problemes",
                 self.browser.contents)
 
-    def test_servei_path(self):
-        view = api.content.get_view(
-            'retrieve_problemes', self.portal, self.layer['request'])
-        # problems are empty, count is not present
-        query_string = "?servei_path=/non-existing/path"
-        self.browser.open(view.url() + query_string)
-        self.assertIn(
-            "No s&apos;han trobat problemes",
-            self.browser.contents)
-        self.assertNotIn(
-            "Tots els problemes",
-            self.browser.contents)
-
-        # problems are empty, count is present
-        query_string = "?servei_path=/non-existing/path&count=5"
-        self.browser.open(view.url() + query_string)
-        self.assertIn(
-            "No s&apos;han trobat problemes",
-            self.browser.contents)
-        self.assertNotIn(
-            "Tots els problemes",
-            self.browser.contents)
-
-        # problems are not empty
-        servei_1 = fixtures.create_content(self.portal, fixtures.servei_1)
-        problema_1 = fixtures.create_content(
-            servei_1['problemes'], fixtures.problema_1)
-        problema_2 = fixtures.create_content(
-            servei_1['problemes'], fixtures.problema_2)
-        problema_3 = fixtures.create_content(
-            servei_1['problemes'], fixtures.problema_3)
-        commit()
-        # ... count is not present
-        query_string = "?servei_path=" + '/'.join(servei_1.getPhysicalPath())
-        self.browser.open(view.url() + query_string)
-        self.assertAppearInOrder([
-            problema_2.data_creacio.strftime('%d/%m/%Y'),
-            'href="' + problema_2.url + '"',
-            problema_2.Title(),
-            problema_1.data_creacio.strftime('%d/%m/%Y'),
-            'href="problemes/' + problema_1.id + '"',
-            problema_1.Title(),
-            'href="' + problema_3.url + '"',
-            problema_3.Title()],
-            self.browser.contents)
-        self.assertNotIn(
-            "No s&apos;han trobat problemes",
-            self.browser.contents)
-        self.assertNotIn(
-            "Tots els problemes",
-            self.browser.contents)
-
-        # ... count is present
-        query_string = "?servei_path={0}&count=7".format(
-            '/'.join(problema_1.getPhysicalPath()))
-        self.browser.open(view.url() + query_string)
-        self.assertAppearInOrder([
-            problema_1.data_creacio.strftime('%d/%m/%Y'),
-            problema_1.Title()],
-            self.browser.contents)
-        self.assertNotIn(
-            "No s&apos;han trobat problemes",
-            self.browser.contents)
-        self.assertIn(
-            "Tots els problemes",
-            self.browser.contents)
-
-    def test_product_id_and_servei_path(self):
-        view = api.content.get_view(
-            'retrieve_problemes', self.portal, self.layer['request'])
-        # problems are empty, count is not present
-        servei_1 = fixtures.create_content(self.portal, fixtures.servei_1)
-        problema_1 = fixtures.create_content(
-            servei_1['problemes'], fixtures.problema_1)
-        commit()
-
-        with patch('genweb.serveistic.ws_client.problems.Client.list_problems',
-                   side_effect=([],)):
-            query_string = "?product_id=1234&servei_path={0}".format(
-                '/'.join(problema_1.getPhysicalPath()))
-            self.browser.open(view.url() + query_string)
+        # problems is None
+        with patch('genweb.serveistic.data_access.problemes.ProblemesDataReporter.list_by_product_id',
+                   side_effect=(None,)):
+            self.browser.open(view.url())
             self.assertIn(
-                "No s&apos;han trobat problemes",
+                "No hi ha cap problema enregistrat relacionat amb aquest "
+                "servei",
                 self.browser.contents)
             self.assertNotIn(
                 "Tots els problemes",

@@ -7,15 +7,11 @@
     <div id="problemes"></div>
 
     <script type="text/javascript"
-            tal:content="string:var product_id = '${view/product_id}';">
+            tal:content="view/js_define_url_retrieve">
     </script>
 
     <script type="text/javascript"
-            tal:content="string:var servei_path = '${view/servei_path}';">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="string:var count = ${view/count};">
+            tal:content="view/js_define_count">
     </script>
 
     <script type="text/javascript"

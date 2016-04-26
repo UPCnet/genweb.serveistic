@@ -6,15 +6,15 @@
 
 <body>
   <metal:custom_title fill-slot="content-title">
-    <h1 class="documentFirstHeading" i18n:translate="Problemes">
-    Problemes
+    <h1 class="documentFirstHeading" i18n:translate="Indicadors">
+    Indicadors
     </h1>
   </metal:custom_title>
 
   <metal:custom_title fill-slot="content-description"></metal:custom_title>
 
   <metal:content-core fill-slot="content-core">
-    <div id="problemes"></div>
+    <div id="indicadors"></div>
 
     <script type="text/javascript"
             tal:content="view/js_define_url_retrieve">
@@ -25,7 +25,11 @@
     </script>
 
     <script type="text/javascript"
-            tal:attributes="src string:${portal_url}/++genweb++serveistic/problemes.js">
+            tal:content="view/js_define_count_category">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src string:${portal_url}/++genweb++serveistic/indicadors.js">
     </script>
 
   </metal:content-core>

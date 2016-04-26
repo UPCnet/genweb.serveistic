@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 
 from plone import api
@@ -8,10 +10,51 @@ def create_content(container, properties):
     content_dict.update(properties)
     return api.content.create(**content_dict)
 
+servei_mylist = {
+    'type': 'serveitic',
+    'id': 'mylist',
+    'title': u'myList',
+    'description': u'Autoservei de llistes de correu electrònic',
+    'responsable': u'Santi Cortés',
+    'responsable': u'santi.cortes@gmail.com',
+    'product_id': 'mylist',
+    'service_id': 'mylist',
+    'prestador': ['upcnet'],
+    'ubicacio': ['cnord', 'csud'],
+    'tipologia': ['web', 'eines-comunicacia3', 'enines-usuari'],
+    'ambi': ['gestia3', 'lloc-de-treball-eines-usuari', 'infraestructures'],
+}
+
 servei_1 = {
     'type': 'serveitic',
     'id': 'servei-1',
     'title': 'Servei 1'
+    }
+
+servei_with_product_id = {
+    'type': 'serveitic',
+    'id': 'servei-1',
+    'title': 'Servei 1',
+    'product_id': 'myproduct'
+    }
+
+servei_without_product_id = {
+    'type': 'serveitic',
+    'id': 'servei-1',
+    'title': 'Servei 1',
+    }
+
+servei_with_service_id = {
+    'type': 'serveitic',
+    'id': 'servei-1',
+    'title': 'Servei 1',
+    'service_id': 'myservice'
+    }
+
+servei_without_service_id = {
+    'type': 'serveitic',
+    'id': 'servei-1',
+    'title': 'Servei 1',
     }
 
 problema_1 = {

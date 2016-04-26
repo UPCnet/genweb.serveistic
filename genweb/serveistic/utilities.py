@@ -13,7 +13,8 @@ from Products.CMFPlone import PloneMessageFactory as _
 from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.config_helper import facets_vocabulary
-from genweb.serveistic.ws_client.problems import Client
+from genweb.serveistic.ws_client.problems import Client as ProblemesClient
+from genweb.serveistic.ws_client.indicators import Client as IndicadorsClient
 
 
 def build_vocabulary(values):
@@ -37,10 +38,15 @@ def get_servei(self):
 
 
 def get_ws_problemes_client():
-    endpoint = serveistic_config().ws_endpoint
-    login_username = serveistic_config().ws_login_username
-    login_password = serveistic_config().ws_login_password
-    return Client(endpoint, login_username, login_password)
+    endpoint = serveistic_config().ws_problemes_endpoint
+    login_username = serveistic_config().ws_problemes_login_username
+    login_password = serveistic_config().ws_problemes_login_password
+    return ProblemesClient(endpoint, login_username, login_password)
+
+
+def get_ws_indicadors_client():
+    endpoint = serveistic_config().ws_indicadors_endpoint
+    return IndicadorsClient(endpoint)
 
 
 class FacetsVocabulary(object):

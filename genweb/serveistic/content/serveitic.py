@@ -75,6 +75,14 @@ class IServeiTIC(form.Schema):
         required=False,
         defaultFactory=lambda: u'')
 
+    service_id = schema.TextLine(
+        title=_(u"Identificador indicadors"),
+        description=_(u"Identificador del servei al servei web d'indicadors, "
+                      u"s'utilitza per a consultar els indicadors relacionats "
+                      u"amb el servei"),
+        required=False,
+        defaultFactory=lambda: u'')
+
     prestador = schema.List(
         title=_(u"Prestador"),
         required=False,

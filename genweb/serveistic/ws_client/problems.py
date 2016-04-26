@@ -7,6 +7,7 @@ administracio-sistema/serveis-web/serveis-rest/
 copy_of_descripcio-dels-serveis-web-rest#/
 """
 
+import base64
 import datetime
 
 import requests
@@ -39,7 +40,7 @@ class Client(object):
 
     def __init__(self, endpoint, login_username, login_password,
                  content_type='application/json'):
-        self.endpoint = endpoint
+        self.endpoint = endpoint.rstrip('/') if endpoint else endpoint
         self.login_username = login_username
         self.login_password = login_password
         self.content_type = content_type
@@ -48,7 +49,10 @@ class Client(object):
         return {
             'Content-type': self.content_type,
             'login.username': self.login_username,
-            'login.password': self.login_password}
+            'login.password': self.login_password,
+            'Authorization': "Basic {0}".format(
+                base64.b64encode(':'.join(
+                    [self.login_username, self.login_password])))}
 
     def _parse_response_result(self, response):
         if 'resultat' not in response:

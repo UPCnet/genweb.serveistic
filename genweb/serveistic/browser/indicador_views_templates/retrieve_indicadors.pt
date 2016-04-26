@@ -1,0 +1,32 @@
+<tal:block define="indicadors view/indicadors; count view/count"
+           i18n:domain="genweb.serveistic">
+
+<ul tal:condition="indicadors" id="portlet-list">
+  <li tal:repeat="indicador indicadors">
+    <h3 class="title-indicador" tal:content="indicador/description"></h3>
+    <dl>
+      <tal:block tal:repeat="category indicador/categories">
+        <dt tal:content="category/description"></dt>
+        <dd tal:content="category/value"></dd>
+      </tal:block>
+    </dl>
+  </li>
+</ul>
+
+<div tal:condition="python: indicadors and count" class="portlet-footer">
+  <a tal:attributes="href view/indicadors_href">Tots els indicadors</a>
+</div>
+
+<div tal:condition="python: indicadors == []" class="portlet-message">
+  <p i18n:translate="No hi ha cap indicador enregistrat relacionat amb aquest servei">
+  No hi ha cap indicador enregistrat relacionat amb aquest servei
+  </p>
+</div>
+
+<div tal:condition="python: indicadors is None" class="portlet-message">
+  <p i18n:translate="No hi ha cap indicador enregistrat relacionat amb aquest servei">
+  No hi ha cap indicador enregistrat relacionat amb aquest servei
+  </p>
+</div>
+
+</tal:block>

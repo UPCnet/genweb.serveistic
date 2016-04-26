@@ -1,11 +1,10 @@
 from five import grok
 
-from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
-from genweb.serveistic.utilities import get_ws_problemes_client, get_servei
+from genweb.serveistic.utilities import get_ws_problemes_client
 from genweb.serveistic.data_access.problemes import ProblemesDataReporter
 
 
@@ -16,34 +15,30 @@ class Problemes(grok.View):
     grok.template('problemes')
 
     @property
-    def product_id(self):
-        servei = get_servei(self)
-        return servei.product_id if servei.product_id else ''
+    def js_define_url_retrieve(self):
+        return "var url_retrieve_problemes = 'retrieve_problemes';"
 
     @property
-    def servei_path(self):
-        servei = get_servei(self)
-        return '/'.join(servei.getPhysicalPath())
+    def js_define_count(self):
+        return "var count = '';"
 
 
 class RetrieveProblemes(grok.View):
     grok.name('retrieve_problemes')
-    grok.context(Interface)
+    grok.context(IServeiTIC)
     grok.layer(IGenwebServeisticLayer)
     grok.template('retrieve_problemes')
 
     def parse_parameters(self):
-        product_id = self.request.form.get('product_id', None)
-        servei_path = self.request.form.get('servei_path', None)
         try:
             count = int(self.request.form.get('count', None))
         except (TypeError, ValueError):
             count = None
-        return product_id, servei_path, count
+        return count
 
     @property
     def count(self):
-        return self.parse_parameters()[2]
+        return self.parse_parameters()
 
     @property
     def problemes_href(self):
@@ -55,7 +50,9 @@ class RetrieveProblemes(grok.View):
         ws_client = get_ws_problemes_client()
         reporter = ProblemesDataReporter(catalog, ws_client)
 
-        product_id, servei_path, count = self.parse_parameters()
+        product_id = self.context.product_id
+        servei_path = '/'.join(self.context.getPhysicalPath())
+        count = self.parse_parameters()
 
         if product_id:
             return reporter.list_by_product_id(product_id, count)

@@ -33,4 +33,12 @@
         addview=".problemes.AddForm"
         editview=".problemes.EditForm" />
 
+    <plone:portlet
+        name="serveistic.portlets.indicadors"
+        interface=".indicadors.IIndicadorsPortlet"
+        assignment=".indicadors.Assignment"
+        renderer=".indicadors.Renderer"
+        addview=".indicadors.AddForm"
+        editview=".indicadors.EditForm" />
+
 </configure>

@@ -11,6 +11,8 @@
     </h1>
   </metal:custom_title>
 
+  <metal:custom_title fill-slot="content-description"></metal:custom_title>
+
   <metal:content-core fill-slot="content-core">
   <div class="folder-notificacions"
        tal:define="notificacions view/notificacions">

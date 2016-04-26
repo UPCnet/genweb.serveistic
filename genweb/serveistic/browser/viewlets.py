@@ -181,10 +181,10 @@ class HeaderGWServeistic(gwHeader):
         else:
             return False
 
-    def is_authenticated(self):
+    def is_anonymous(self):
         portal_state = getMultiAdapter(
             (self.context, self.request), name="plone_portal_state")
-        return not portal_state.anonymous()
+        return portal_state.anonymous()
 
 
 class PortalHeaderGWServeistic(gwHeader):

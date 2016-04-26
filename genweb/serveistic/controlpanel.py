@@ -42,18 +42,28 @@ class IServeisTICControlPanelSettings(model.Schema):
     model.fieldset(
         'Servei Web Problemes',
         _(u'Servei Web Problemes'),
-        fields=['ws_endpoint', 'ws_login_username', 'ws_login_password'])
+        fields=['ws_problemes_endpoint',
+                'ws_problemes_login_username', 'ws_problemes_login_password'])
 
-    ws_endpoint = schema.TextLine(
+    ws_problemes_endpoint = schema.TextLine(
         title=_(u'URL'),
         required=False)
 
-    ws_login_username = schema.TextLine(
+    ws_problemes_login_username = schema.TextLine(
         title=_(u'Usuari'),
         required=False)
 
-    ws_login_password = schema.Password(
+    ws_problemes_login_password = schema.TextLine(
         title=_(u'Contrasenya'),
+        required=False)
+
+    model.fieldset(
+        'Servei Web Indicadors',
+        _(u'Servei Web Indicadors'),
+        fields=['ws_indicadors_endpoint'])
+
+    ws_indicadors_endpoint = schema.TextLine(
+        title=_(u'URL'),
         required=False)
 
     model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])

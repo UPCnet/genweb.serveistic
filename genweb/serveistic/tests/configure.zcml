@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="collective.monkeypatcher">
+
+    <include package="collective.monkeypatcher" />
+
+    <monkey:patch
+       module="genweb.serveistic.utilities"
+       original="get_ws_indicadors_client"
+       replacement=".patches.get_ws_indicadors_client"
+       docstringWarning="false"
+    />
+
+</configure>
