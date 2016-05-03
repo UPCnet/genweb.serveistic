@@ -22,3 +22,6 @@ msgstr "No hi ha cap problema enregistrat relacionat amb aquest servei"
 
 msgid "No hi ha cap indicador enregistrat relacionat amb aquest servei"
 msgstr "No hi ha cap indicador enregistrat relacionat amb aquest servei"
+
+msgid "comparteix_rss"
+msgstr "Subscriu-te al canal RSS"

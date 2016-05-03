@@ -646,7 +646,7 @@ div.photoAlbumEntry:hover {
     font-weight: 600;
     line-height: 18px;
     padding: 5px !important;
-    text-transform: uppercase;
+    text-transform: none;
 }
 .photoAlbumEntryDescription {
     color: #888;
@@ -843,21 +843,24 @@ label {
     background-image: linear-gradient(#f3f2f3, #e3e3e3);
     border: 1px solid #aaa;
     border-radius: 5px;
-    height: 42px;
+}
+.imageless-item > a > img {
+    display: none;
 }
 .banner-title {
     color: #607c95;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: -3px;
+    margin-bottom: 2px;
     margin-left: 20px;
     margin-top: 6px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 .banner-description {
     color: #444;
     font-size: 11px;
     margin-left: 20px;
+    line-height: 13px;
 }
 .portlet-baners li {
     padding: 0;
