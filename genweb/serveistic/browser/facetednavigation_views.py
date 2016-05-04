@@ -37,10 +37,10 @@ class PreviewItem(grok.View):
     @property
     def image_src(self):
         if self.context.image_item:
-            return "{0}/@@images/image_item".format(
+            return "{0}/@@images/image_item/mini".format(
                 self.context.absolute_url())
         elif self.context.image:
-            return "{0}/@@images/image".format(
+            return "{0}/@@images/image/mini".format(
                 self.context.absolute_url())
         else:
-            return "++genweb++serveistic/capcalera.jpg"
+            return "++genweb++serveistic/capcalera_mini.jpg"
