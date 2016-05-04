@@ -1,11 +1,17 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2016-05-04)
 ----------------
 
-- Nothing changed yet.
-
+* Utilitzar imatges reduïdes als resultats de cerca [Santiago Cortes]
+* Afegir icona RSS i altres millores [Santiago Cortes]
+*  [Santiago Cortes]
+* - Afegir una icona RSS al pop-up de "Comparteix" d'un servei. [Santiago Cortes]
+* - Mostrar els títols dels serveis amb el seu cas natural de [Santiago Cortes]
+* majúscules/minúscules. [Santiago Cortes]
+* - Millorar els banners sense imatge per a que s'adapten a l'altura [Santiago Cortes]
+* del seu contingut i no mostren la icona d'obrir en una pestanya nova. [Santiago Cortes]
 
 1.1 (2016-04-26)
 ----------------
