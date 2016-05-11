@@ -1,7 +1,12 @@
 from five import grok
 
+from Products.CMFCore.utils import getToolByName
+from eea.facetednavigation.browser.app.view import FacetedContainerView
+
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.data_access.notificacio import NotificacioDataReporter
+from genweb.serveistic.browser.notificacio_views import NotificacioViewHelper
 
 
 class PreviewItem(grok.View):
@@ -44,3 +49,11 @@ class PreviewItem(grok.View):
                 self.context.absolute_url())
         else:
             return "++genweb++serveistic/capcalera_mini.jpg"
+
+
+class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
+    @property
+    def notificacions(self):
+        reporter = NotificacioDataReporter(
+            getToolByName(self.context, 'portal_catalog'))
+        return reporter.list_by_general()

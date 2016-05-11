@@ -193,11 +193,22 @@ class PortalHeaderGWServeistic(gwHeader):
     grok.template('portal_header')
     grok.layer(IGenwebServeisticLayer)
 
+    IMAGE_CROPPED_WIDTH = 1280
+    IMAGE_CROPPED_HEIGHT = 130
+
     def get_servei(self):
         context = aq_inner(self.context)
         for obj in aq_chain(context):
             if IServeiTIC.providedBy(obj):
                 return obj
+
+    @property
+    def img_cropped_url(self):
+        return self.context.restrictedTraverse('@@images').scale(
+            'image',
+            width=PortalHeaderGWServeistic.IMAGE_CROPPED_WIDTH,
+            height=PortalHeaderGWServeistic.IMAGE_CROPPED_HEIGHT,
+            direction="down").absolute_url()
 
 
 class gwManagePortletsFallbackViewletMixin(object):

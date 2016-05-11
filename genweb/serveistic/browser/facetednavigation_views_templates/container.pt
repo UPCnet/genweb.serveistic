@@ -22,16 +22,41 @@
 <metal:custom_title fill-slot="content-title">
     <div class="slider-notificacions row-fluid">
       <div class="carousel slide span12">
-        <div id="notificacions-carousel" class="carousel-inner"></div>
+        <div id="notificacions-carousel" class="carousel-inner">
+          <div class="item" tal:repeat="notificacio view/notificacions">
+            <a tal:attributes="href notificacio/url">
+              <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
+              <span class="data" tal:content="notificacio/data"></span>
+              <span class="titol" tal:content="notificacio/titol"></span>
+            </a>
+          </div>
+        </div>
         <nav>
           <a href="" class="left carousel-control">&lsaquo;</a>
           <a href="" class="right carousel-control">&rsaquo;</a>
         </nav>
       </div>
     </div>
+    <script>
+    $('.slider-notificacions .carousel').carousel(
+    {
+        interval: 8000
+    });
+    $('.slider-notificacions .carousel').carousel('cycle');
+    $('.slider-notificacions .carousel .left').click(function()
+    {
+        $('.slider-notificacions .carousel').carousel('prev');
+        return false;
+    });
+    $('.slider-notificacions .carousel .right').click(function()
+    {
+        $('.slider-notificacions .carousel').carousel('next');
+        return false;
+    });
+    $('.slider-notificacions .carousel').carousel('next');
+    </script>
     <h1 class="documentFirstHeading" tal:content="context/title"></h1>
 </metal:custom_title>
-
 
 <div metal:fill-slot="content-core">
 <!-- Include here the custom content -->
@@ -51,10 +76,6 @@
   <div style="display: none" id="faceted-version"
     tal:content="here/@@faceted_version|string:" />
 </div>
-
-<script type="text/javascript"
-        tal:attributes="src string:${portal_url}/++genweb++serveistic/homepage.js">
-</script>
 
 </div>
 </body>

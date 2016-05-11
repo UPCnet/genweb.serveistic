@@ -14,4 +14,13 @@
       layer="..interfaces.IGenwebServeisticLayer"
       />
 
+  <browser:page
+    for="eea.facetednavigation.interfaces.IFacetedNavigable"
+    layer="..interfaces.IGenwebServeisticLayer"
+    name="facetednavigation_view"
+    template="facetednavigation_views_templates/container.pt"
+    class=".facetednavigation_views.FacetedContainerView"
+    permission="zope2.View"
+    />
+
 </configure>

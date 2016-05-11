@@ -18,7 +18,7 @@
                     class_show_image python:genweb_config.treu_imatge_capsalera and 'no-image' or None;
                     servei viewlet/get_servei"
         tal:attributes="class string:header-breadcrumb-image;
-                        style string:background-image: url(${servei/absolute_url}/@@images/image)"
+                        style string:background-image: url(${viewlet/img_cropped_url})"
         tal:condition="nocall:servei/image | nothing">
     <div>
         <tal:rep tal:replace="structure provider:plone.portalheader">

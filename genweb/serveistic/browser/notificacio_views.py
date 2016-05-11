@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
@@ -33,16 +32,3 @@ class Notificacions(grok.View, NotificacioViewHelper):
         reporter = NotificacioDataReporter(
             getToolByName(self.context, 'portal_catalog'))
         return reporter.list_by_servei(get_servei(self))
-
-
-class RetrieveNotificacionsGenerals(grok.View, NotificacioViewHelper):
-    grok.name('retrieve_notificacions_generals')
-    grok.context(Interface)
-    grok.layer(IGenwebServeisticLayer)
-    grok.template('retrieve_notificacions_generals')
-
-    @property
-    def notificacions(self):
-        reporter = NotificacioDataReporter(
-            getToolByName(self.context, 'portal_catalog'))
-        return reporter.list_by_general()

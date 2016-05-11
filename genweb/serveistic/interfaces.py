@@ -3,6 +3,5 @@
 
 from genweb.upc.browser.interfaces import IGenwebUPC
 
-
 class IGenwebServeisticLayer(IGenwebUPC):
     """Marker interface that defines a Zope 3 browser layer."""
