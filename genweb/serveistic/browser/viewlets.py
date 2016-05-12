@@ -204,7 +204,7 @@ class PortalHeaderGWServeistic(gwHeader):
 
     @property
     def img_cropped_url(self):
-        return self.context.restrictedTraverse('@@images').scale(
+        return self.get_servei().restrictedTraverse('@@images').scale(
             'image',
             width=PortalHeaderGWServeistic.IMAGE_CROPPED_WIDTH,
             height=PortalHeaderGWServeistic.IMAGE_CROPPED_HEIGHT,

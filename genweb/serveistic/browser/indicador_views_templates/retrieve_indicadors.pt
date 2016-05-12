@@ -1,15 +1,16 @@
 <tal:block define="indicadors view/indicadors; count view/count"
            i18n:domain="genweb.serveistic">
 
-<ul tal:condition="indicadors" id="portlet-list">
+<ul tal:condition="indicadors" class="indicador-list">
   <li tal:repeat="indicador indicadors">
     <h3 class="title-indicador" tal:content="indicador/description"></h3>
-    <dl>
-      <tal:block tal:repeat="category indicador/categories">
-        <dt tal:content="category/description"></dt>
-        <dd tal:content="category/value"></dd>
-      </tal:block>
-    </dl>
+    <ul class="indicador-category-list">
+      <li tal:repeat="category indicador/categories">
+        <span class="fa fa-bar-chart"></span>
+        <span class="indicador-category-description" tal:content="category/description"></span>
+        <span class="indicador-category-value pull-right" tal:content="category/value"></span>
+      </li>
+    </ul>
   </li>
 </ul>
 

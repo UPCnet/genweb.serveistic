@@ -6,17 +6,7 @@
 
     <div id="problemes"></div>
 
-    <script type="text/javascript"
-            tal:content="view/js_define_url_retrieve">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="view/js_define_count">
-    </script>
-
-    <script type="text/javascript"
-            tal:attributes="src string:${portal_url}/++genweb++serveistic/problemes.js">
-    </script>
+    <script type="text/javascript" tal:content="view/js_retrieve"></script>
 
 </div>
 

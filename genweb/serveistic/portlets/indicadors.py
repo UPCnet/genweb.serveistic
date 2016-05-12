@@ -39,20 +39,20 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('templates/indicadors.pt')
 
-    @property
-    def js_define_url_retrieve(self):
-        return "var url_retrieve_indicadors = 'retrieve_indicadors';"
-
-    @property
-    def js_define_count(self):
-        return "var count = {0};".format(self.data.count)
-
-    @property
-    def js_define_count_category(self):
-        if self.data.count_category:
-            return "var count_category = {0};".format(self.data.count_category)
-        else:
-            return "var count_category = '';"
+    def js_retrieve(self):
+        return """
+    $(document).ready(function()
+    {{
+        var url = '{url}';
+        var count = {count};
+        var count_category = {count_category};
+        retrieve_indicadors(url, count, count_category);
+    }});
+       """.format(
+            url="retrieve_indicadors",
+            count=self.data.count,
+            count_category=self.data.count_category
+            if self.data.count_category else "''")
 
 
 class AddForm(base.AddForm):

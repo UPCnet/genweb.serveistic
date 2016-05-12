@@ -14,24 +14,12 @@
   <metal:custom_title fill-slot="content-description"></metal:custom_title>
 
   <metal:content-core fill-slot="content-core">
+
     <div id="indicadors"></div>
 
-    <script type="text/javascript"
-            tal:content="view/js_define_url_retrieve">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="view/js_define_count">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="view/js_define_count_category">
-    </script>
-
-    <script type="text/javascript"
-            tal:attributes="src string:${portal_url}/++genweb++serveistic/indicadors.js">
-    </script>
+    <script type="text/javascript" tal:content="view/js_retrieve"></script>
 
   </metal:content-core>
+
 </body>
 </html>

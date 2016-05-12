@@ -14,13 +14,15 @@ class Problemes(grok.View):
     grok.layer(IGenwebServeisticLayer)
     grok.template('problemes')
 
-    @property
-    def js_define_url_retrieve(self):
-        return "var url_retrieve_problemes = 'retrieve_problemes';"
-
-    @property
-    def js_define_count(self):
-        return "var count = '';"
+    def js_retrieve(self):
+        return """
+    $(document).ready(function()
+    {{
+        var url = '{url}';
+        retrieve_problemes(url, '');
+    }});
+       """.format(
+            url="retrieve_problemes")
 
 
 class RetrieveProblemes(grok.View):

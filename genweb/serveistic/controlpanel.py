@@ -53,7 +53,7 @@ class IServeisTICControlPanelSettings(model.Schema):
         title=_(u'Usuari'),
         required=False)
 
-    ws_problemes_login_password = schema.TextLine(
+    ws_problemes_login_password = schema.Password(
         title=_(u'Contrasenya'),
         required=False)
 
@@ -94,12 +94,24 @@ class ServeisTICControlPanelSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(ServeisTICControlPanelSettingsForm, self).updateWidgets()
 
+    def fix_password_fields(self, data):
+        """
+        Keep the stored value for the password fields not updated in the
+        current request, i.e. those containing a None value.
+        This method is needed since the password fields are not filled with
+        their stored value when the edit form is loaded.
+        """
+        if not data['ws_problemes_login_password']:
+            data['ws_problemes_login_password'] = \
+                self.getContent().ws_problemes_login_password
+
     @button.buttonAndHandler(_('Save'), name=None)
     def handleSave(self, action):
         data, errors = self.extractData()
         if errors:
             self.status = self.formErrorsMessage
             return
+        self.fix_password_fields(data)
         self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u'Changes saved'),
                                                       'info')

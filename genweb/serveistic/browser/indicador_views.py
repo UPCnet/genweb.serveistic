@@ -12,17 +12,14 @@ class Indicadors(grok.View):
     grok.layer(IGenwebServeisticLayer)
     grok.template('indicadors')
 
-    @property
-    def js_define_url_retrieve(self):
-        return "var url_retrieve_indicadors = 'retrieve_indicadors';"
-
-    @property
-    def js_define_count(self):
-        return "var count = '';"
-
-    @property
-    def js_define_count_category(self):
-        return "var count_category = '';"
+    def js_retrieve(self):
+        return """
+    $(document).ready(function()
+    {{
+        var url = '{url}';
+        retrieve_indicadors(url, '', '');
+    }});
+       """.format(url="retrieve_indicadors")
 
 
 class RetrieveIndicadors(grok.View):

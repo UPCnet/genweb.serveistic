@@ -1,26 +1,12 @@
 <tal:block i18n:domain="genweb.serveistic">
 
-<div class="portlet portlet-indicadors" tal:define="portal_url context/portal_url">
+<div class="portlet portlet-indicadors">
 
     <h2 i18n:translate="Indicadors">Indicadors</h2>
 
     <div id="indicadors"></div>
 
-    <script type="text/javascript"
-            tal:content="view/js_define_url_retrieve">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="view/js_define_count">
-    </script>
-
-    <script type="text/javascript"
-            tal:content="view/js_define_count_category">
-    </script>
-
-    <script type="text/javascript"
-            tal:attributes="src string:${portal_url}/++genweb++serveistic/indicadors.js">
-    </script>
+    <script type="text/javascript" tal:content="view/js_retrieve"></script>
 
 </div>
 

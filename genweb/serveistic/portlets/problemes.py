@@ -33,13 +33,17 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('templates/problemes.pt')
 
-    @property
-    def js_define_url_retrieve(self):
-        return "var url_retrieve_problemes = 'retrieve_problemes';"
-
-    @property
-    def js_define_count(self):
-        return "var count = {0};".format(self.data.count)
+    def js_retrieve(self):
+        return """
+    $(document).ready(function()
+    {{
+        var url = '{url}';
+        var count = {count};
+        retrieve_problemes(url, count);
+    }});
+       """.format(
+            url="retrieve_problemes",
+            count=self.data.count)
 
 
 class AddForm(base.AddForm):
