@@ -3,21 +3,23 @@
 
     <h2>Notificacions</h2>
 
-    <ul tal:condition="notificacions" id="portlet-list">
-      <li tal:repeat="notificacio notificacions">
-        <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
-        <span class="data" tal:content="notificacio/data"></span>
-        <a tal:attributes="href notificacio/url" tal:content="notificacio/titol"/>
-      </li>
-    </ul>
+    <div id="notificacions">
+      <ul tal:condition="notificacions" class="portlet-list">
+        <li tal:repeat="notificacio notificacions">
+          <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
+          <span class="data" tal:content="notificacio/data"></span>
+          <a tal:attributes="href notificacio/url" tal:content="notificacio/titol"/>
+        </li>
+      </ul>
 
-    <div tal:condition="notificacions" class="portlet-footer">
-      <a tal:attributes="href view/notificacions_href">
-        Totes les notificacions
-      </a>
-    </div>
+      <div tal:condition="notificacions" class="portlet-footer">
+        <a tal:attributes="href view/notificacions_href">
+          Totes les notificacions
+        </a>
+      </div>
 
-    <div tal:condition="not: notificacions" class="portlet-message">
-      <p>No hi ha notificacions</p>
+      <div tal:condition="not: notificacions" class="portlet-message">
+        <p>No hi ha notificacions</p>
+      </div>
     </div>
 </div>

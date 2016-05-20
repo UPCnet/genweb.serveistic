@@ -9,6 +9,11 @@ class IndicadorsDataReporter(object):
     def __init__(self, client):
         self.client = client
 
+    def _remove_prefix(self, text, prefix):
+        if text.startswith(prefix + ' -'):
+            return text[len(prefix + ' -'):]
+        return text
+
     def list_by_service_id(self, service_id, count, count_category_max=None):
         indicators = []
         count_category = 0
@@ -19,7 +24,8 @@ class IndicadorsDataReporter(object):
                         service_id, indicator.identifier):
                     categories.append({
                         'identifier': category.identifier,
-                        'description': category.description,
+                        'description': self._remove_prefix(
+                            category.description, indicator.description),
                         'date_modified': category.date_modified,
                         'value': category.value})
                     count_category += 1

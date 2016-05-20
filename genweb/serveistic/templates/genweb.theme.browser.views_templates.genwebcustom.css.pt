@@ -204,33 +204,33 @@ border: 1px solid #666;
 .portlet-baners {
     margin-bottom: 0;
 }
-.serveitic-desc #portlet-list {
+.serveitic-desc .portlet-list {
     background: #f3f3f3 none repeat scroll 0 0;
     font-size: 12px;
     margin-left: 0;
     margin-top: 0;
-    min-height: 180px;
+    min-height: 202px;
     padding: 10px;
 }
-.serveitic-desc #portlet-list > li {
+.serveitic-desc .portlet-list > li {
     border-bottom: 1px solid #fff;
+    line-height: 14px;
     list-style-type: none;
     margin-left: 0;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     padding-left: 0;
     padding-top: 10px;
-    line-height: 14px;
 }
-.serveitic-desc #portlet-list > li:last-child {
+.serveitic-desc .portlet-list > li:last-child {
      border-bottom: 0;
 }
-#portlet-list > li .data {
+.portlet-list > li .data {
     color: #666;
     display: block;
     font-size: 10px;
     margin-bottom: 0;
 }
-#portlet-list > li .fa {
+.portlet-list > li .fa {
     color: #aaa;
     display: block;
     float: left;
@@ -242,10 +242,12 @@ border: 1px solid #666;
     text-shadow: 1px 1px 1px white;
     width: 20px;
 }
-.portlet-notificacions .portlet-footer, .portlet-problemes .portlet-footer {
+.portlet-notificacions .portlet-footer, .portlet-problemes .portlet-footer, .portlet-indicadors .portlet-footer  {
     margin-top: 0;
     padding: 0;
 }
+
+
 
 header {
     height: 130px;
@@ -704,34 +706,7 @@ div.photoAlbumEntry:hover {
     font-size: 100% !important;
 }
 
-// --- Notificacions ---
 
-#notificacions li {
-color: #555555;
-font-size:11px;
-font-weight:normal;
-}
-#notificacions li a {
-color:#555555 !important;
-font-weight:bold;
-border-bottom:0 !important;
-text-decoration:underline;
-}
-#notificacions li .data {
-color: #9a9a9a;
-display: block;
-font-size:11px;
-font-weight:normal;
-}
-#notificacions {
-    background: #f4f4f4 none repeat scroll 0 0;
-    margin: 15px 0 0 !important;
-    padding: 0 10px 10px;
-}
-#notificacions li {
-display:block;
-margin-top:14px;
-}
 .avis, .notificacio, .novetat {
 
 }
@@ -748,9 +723,9 @@ margin-top:14px;
 .novetat {
 
 }
-.template-serveitic select, .template-edit.portaltype-serveitic .field select  {
+.template-serveitic .list-field, .template-edit.portaltype-serveitic .list-field  {
     min-height: 150px;
-    width: 438px;
+    width: 400px;
 }
 .template-serveitic .textline-field, .template-edit.portaltype-serveitic .field .textline-field {
   min-width: 388px;
@@ -843,6 +818,7 @@ label {
     background-image: linear-gradient(#f3f2f3, #e3e3e3);
     border: 1px solid #aaa;
     border-radius: 5px;
+    min-height: 45px;
 }
 .imageless-item > a > img {
     display: none;
@@ -937,18 +913,66 @@ float: left;
     font-size: 12px;
     margin-bottom: 5px;
     margin-top: 0 !important;
-    text-transform: uppercase;
+    line-height: 12px;
 }
-#portlet-list dl {
+.indicador-category-list {
+    margin: 0;
+}
+.indicador-category-list > li {
+    border-bottom: 1px solid #fff;
+    list-style-type: none;
+    line-height: 13px;
+    min-height: 35px;
+    position: relative;
+    padding-top: 5px;
+}
+.indicador-category-list > li:last-child {
+  border: 0;
+}
+.indicador-category-value {
+    display: table-cell;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 12px;
+}
+.indicador-category-description {
+    display: table-cell;
+    height: 20px;
+    vertical-align: bottom;
+    padding-right: 20px;
+}
+.portlet-list dl {
     margin-bottom: 0;
 }
-#portlet-list dt {
+.portlet-list dt {
     font-weight: normal;
 }
-#portlet-list  dd {
+.portlet-list  dd {
     margin-left: 0;
     font-weight: bold;
     margin-bottom: 10px;
+}
+.template-indicadors_list .portlet-list {
+  list-style-type: none;
+  margin:0;
+}
+.template-indicadors_list .portlet-list > li {
+    margin-bottom: 20px;
+}
+.template-indicadors_list .indicador-category-list > li {
+    border-bottom: 1px solid #eee;
+}    
+.template-indicadors_list .title-indicador {
+  font-size: 14px;
+}
+.template-indicadors_list .portlet-list > li .fa {
+    font-size: 20px;
+    margin-right: 15px;
+}
+.template-indicadors_list .indicador-category-value {
+font-size: 14px;
 }
 
 @media screen and (min-width: 800px) {
@@ -956,6 +980,9 @@ float: left;
     min-height: 170px;
     width:100%;
     text-shadow:1px 1px 1px black;
+}
+.template-serveitic .list-field {
+  text-shadow:none;
 }
 }
 

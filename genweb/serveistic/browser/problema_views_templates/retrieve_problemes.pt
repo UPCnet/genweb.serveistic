@@ -1,7 +1,7 @@
 <tal:block define="problemes view/problemes; count view/count"
            i18n:domain="genweb.serveistic">
 
-<ul tal:condition="problemes" id="portlet-list">
+<ul tal:condition="problemes" class="portlet-list">
     <li tal:repeat="problema problemes">
         <span class="fa fa-gear"></span>
         <span class="data" tal:content="problema/date_creation"></span>
