@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.4 (unreleased)
-----------------
+1.3.1 (2016-05-20)
+------------------
 
-- Nothing changed yet.
-
+* Processar respostes buides del WS d'Indicadors [Santiago Cortes]
+*  [Santiago Cortes]
+* - Considerar les respostes HTTP amb el cos buit com a llista [Santiago Cortes]
+* JSON buida. [Santiago Cortes]
 
 1.3 (2016-05-20)
 ----------------
