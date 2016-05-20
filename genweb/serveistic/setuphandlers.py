@@ -42,10 +42,15 @@ def add_default_settings():
 
     facets_file_path = get_absolute_path(config.get('facets', 'file_path'))
 
-    with open(facets_file_path, 'r') as facets_file:
-        settings.facetes_table = [
-            {'faceta': row[0].decode('utf-8'), 'valor': row[1].decode('utf-8')}
-            for row in csv.reader(facets_file, delimiter=',', quotechar='"')]
+    if hasattr(settings, 'facetes_table') and settings.facetes_table:
+        pass
+    else:
+        with open(facets_file_path, 'r') as facets_file:
+            settings.facetes_table = [
+                {'faceta': row[0].decode('utf-8'),
+                 'valor': row[1].decode('utf-8')}
+                for row in csv.reader(
+                    facets_file, delimiter=',', quotechar='"')]
 
 
 def add_container(container, type, title,
