@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.3.2 (unreleased)
+1.3.2 (2016-05-20)
 ------------------
 
-- Nothing changed yet.
-
+* Evitar que la reinstal·lació elimine les facetes [Santiago Cortes]
 
 1.3.1 (2016-05-20)
 ------------------
