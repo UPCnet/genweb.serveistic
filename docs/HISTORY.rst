@@ -1,11 +1,35 @@
 Changelog
 =========
 
-1.3 (unreleased)
+1.3 (2016-05-20)
 ----------------
 
-- Nothing changed yet.
-
+* Millorar l'aspecte del portlet d'indicadors [Santiago Cortes]
+*  [Santiago Cortes]
+* - Canviar l'estructura HTML del portlet d'indicadors i també dels [Santiago Cortes]
+* portlets de problemes i notificacions per a que siguen consistents. [Santiago Cortes]
+* - Eliminar el prefix de les categories que comencen amb el nom del [Santiago Cortes]
+* seu indicador. [Santiago Cortes]
+* - Corregir els estils CSS dels formularis de creació i edició d'un [Santiago Cortes]
+* Servei TIC. [Santiago Cortes]
+* Corregir problemes i simplificar codi JS [Santiago Cortes]
+*  [Santiago Cortes]
+* - Fer que el valor dels camps de contrasenya de la secció Serveis TIC [Santiago Cortes]
+* del panell de control no es perden quan es desa el formulari. [Santiago Cortes]
+* - Corregir un problema amb la visualització de la versió retallada de [Santiago Cortes]
+* la imatge de capçalera d'un servei. [Santiago Cortes]
+* - Canviar l'estructura HTML del indicadors. [Santiago Cortes]
+* - Moure el codi JavaScript a un sol fitxer i simplificar el codi JS de [Santiago Cortes]
+* les plantilles HTML. [Santiago Cortes]
+* Millorar el rendiment [Santiago Cortes]
+*  [Santiago Cortes]
+* - Mostrar una versió retallada de la imatge de capçalera [Santiago Cortes]
+* de cada servei. [Santiago Cortes]
+* - Eliminar una petició asíncrona a la pàgina d'inici. [Santiago Cortes]
+* - Eliminar codi JavaScript no utilitzat. [Santiago Cortes]
+* - Utilitzar una versió comprimida sense pèrdua de la imatge [Santiago Cortes]
+* de capçalera de la pàgina d'inici. [Santiago Cortes]
+* - Especificar la mida de les imatges de la barra de compartir. [Santiago Cortes]
 
 1.2 (2016-05-04)
 ----------------
