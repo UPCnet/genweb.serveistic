@@ -122,6 +122,8 @@ class Client(object):
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
+            if response.text == u'':
+                return []
             indicators = self._parse_response_list_indicators(response.json())
             return indicators[:count] if count is not None else indicators
         except ClientException:
@@ -151,6 +153,8 @@ class Client(object):
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
+            if response.text == u'':
+                return []
             categories = self._parse_response_list_categories(response.json())
             return categories[:count] if count is not None else categories
         except ClientException:

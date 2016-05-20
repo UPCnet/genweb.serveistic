@@ -232,6 +232,17 @@ class TestWSClient(unittest.TestCase):
                 side_effect=([],)):
             self.assertEqual([], self.client.list_indicators(1))
 
+        # Response text is empty
+        response_mock = MagicMock(status_code=200, text=u'')
+        with patch('genweb.serveistic.ws_client.indicators.requests.get',
+                   side_effect=(response_mock,)):
+            self.assertEqual([], self.client.list_indicators(1))
+
+        response_mock = MagicMock(status_code=200, text='')
+        with patch('genweb.serveistic.ws_client.indicators.requests.get',
+                   side_effect=(response_mock,)):
+            self.assertEqual([], self.client.list_indicators(1))
+
     def test_list_indicators_with_count_parameter(self):
         response_mock = MagicMock(status_code=200)
         with patch('genweb.serveistic.ws_client.indicators.requests.get',
@@ -306,6 +317,17 @@ class TestWSClient(unittest.TestCase):
                    side_effect=(response_mock,)), patch(
                 'genweb.serveistic.ws_client.indicators.Client._parse_response_list_categories',
                 side_effect=([],)):
+            self.assertEqual([], self.client.list_categories(1, 1))
+
+        # Response text is empty
+        response_mock = MagicMock(status_code=200, text=u'')
+        with patch('genweb.serveistic.ws_client.indicators.requests.get',
+                   side_effect=(response_mock,)):
+            self.assertEqual([], self.client.list_categories(1, 1))
+
+        response_mock = MagicMock(status_code=200, text='')
+        with patch('genweb.serveistic.ws_client.indicators.requests.get',
+                   side_effect=(response_mock,)):
             self.assertEqual([], self.client.list_categories(1, 1))
 
     def test_list_categories_with_count_parameter(self):
