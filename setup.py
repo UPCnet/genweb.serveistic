@@ -32,7 +32,8 @@ setup(name='genweb.serveistic',
       install_requires=[
           'setuptools',
           'collective.dexteritytextindexer == 2.0.1',
-          'eea.facetednavigation'
+          'eea.facetednavigation',
+          'simplejson'
       ],
       extras_require={'test': ['mock',
                                'plone.app.testing',
