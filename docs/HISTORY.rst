@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.3.3 (unreleased)
+1.3.3 (2016-05-25)
 ------------------
 
-- Nothing changed yet.
-
+* Include simplejson as requirement [Santiago Cortes]
 
 1.3.2 (2016-05-20)
 ------------------
