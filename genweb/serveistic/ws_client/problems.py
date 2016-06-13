@@ -46,13 +46,14 @@ class Client(object):
         self.content_type = content_type
 
     def _get_headers(self):
+        login_username = self.login_username if self.login_username else ""
+        login_password = self.login_password if self.login_password else ""
         return {
             'Content-type': self.content_type,
-            'login.username': self.login_username,
-            'login.password': self.login_password,
+            'login.username': login_username,
+            'login.password': login_password,
             'Authorization': "Basic {0}".format(
-                base64.b64encode(':'.join(
-                    [self.login_username, self.login_password])))}
+                base64.b64encode(':'.join([login_username, login_password])))}
 
     def _parse_response_result(self, response):
         if 'resultat' not in response:

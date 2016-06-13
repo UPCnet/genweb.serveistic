@@ -2,6 +2,7 @@
 
 """Unit tests for the Web Service client."""
 
+import base64
 import datetime
 import json
 import unittest
@@ -19,6 +20,46 @@ class TestWSClient(unittest.TestCase):
             endpoint='http://endpoint',
             login_username='test-username',
             login_password='test-password')
+
+    def test_get_headers(self):
+        # All header params are given
+        client = Client(
+            endpoint='#',
+            login_username='username',
+            login_password='password',
+            content_type='application/xml')
+        headers = client._get_headers()
+        self.assertEqual(headers, {
+            'Content-type': 'application/xml',
+            'login.username': 'username',
+            'login.password': 'password',
+            'Authorization': "Basic {0}".format(
+                base64.b64encode("username:password"))})
+
+        # Only mandatory params are given
+        client = Client(
+            endpoint='#',
+            login_username='username',
+            login_password='password')
+        headers = client._get_headers()
+        self.assertEqual(headers, {
+            'Content-type': 'application/json',
+            'login.username': 'username',
+            'login.password': 'password',
+            'Authorization': "Basic {0}".format(
+                base64.b64encode("username:password"))})
+
+        # login.username and login.password are None
+        client = Client(
+            endpoint='#',
+            login_username=None,
+            login_password=None)
+        headers = client._get_headers()
+        self.assertEqual(headers, {
+            'Content-type': 'application/json',
+            'login.username': '',
+            'login.password': '',
+            'Authorization': "Basic {0}".format(base64.b64encode(':'))})
 
     def test_parse_response_result_empty(self):
         response = json.loads('{}')

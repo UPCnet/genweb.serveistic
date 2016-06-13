@@ -14,26 +14,8 @@ folder_structure = (
             ("Descripció del servei", "Document", False, False, None, None),
             ("Normativa", "Document", False, False, None, None),
             ("Procediments", "Document", False, False, None, None),
-            ("Evolució del servei", "Document", False, False, None, None)
-        )
-    ),
-    (
-        "Manuals", "Folder", False, False,
-        ('Document', 'File', 'Folder', 'Image'),
-        'folder_index_view',
-        (
-            ("Manual usuari", "Document", False, False, None, None),
-            ("Manual administrador", "Document", False, False, None, None)
-        )
-    ),
-    (
-        "Ajuda", "Folder", False, False,
-        ('Document', 'File', 'Folder', 'Image'),
-        'folder_index_view',
-        (
-            ("FAQs", "Folder", False, False, None, 'folder_index_view'),
-            ("Casos d'ús", "Document", False, False, None, None),
-            ("Errors coneguts", "Document", False, False, None, None)
+            ("Evolució del servei", "Document", False, False, None, None),
+            ("Errors coneguts", "Document", False, False, None, None),
         )
     ),
     (
@@ -41,12 +23,26 @@ folder_structure = (
         ('Document', 'File', 'Folder', 'Image'),
         'folder_index_view',
         (
-            ("Documentació tècnica", "Folder", False, False, None,
-                'folder_index_view'),
-            ("Documentació de referència", "Folder", False, False, None,
-                'folder_index_view'),
-            ("Enllaços", "Folder", False, False, ('Link',),
-                'folder_index_view')
+            ("Manuals", "Folder", False, False,
+                ('Document', 'File', 'Folder', 'Image'), 'folder_index_view'),
+            ("Casos d'ús", "Document", False, False, None, None),
+        )
+    ),
+    (
+        "FAQ", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
+        'folder_index_view',
+        (),
+    ),
+    (
+        "Doc tècnica", "Folder", False, False,
+        ('Document', 'File', 'Folder', 'Image'),
+        'folder_index_view',
+        (
+            ("Documentació tècnica", "Document", False, False, None, None),
+            ("Documentació de referència", "Document", False, False, None,
+                None),
+            ("Enllaços", "Document", False, False, None, None)
         )
     ),
     (
