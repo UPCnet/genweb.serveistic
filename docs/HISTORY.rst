@@ -1,11 +1,16 @@
 Changelog
 =========
 
-1.3.4 (unreleased)
+1.3.4 (2016-06-13)
 ------------------
 
-- Nothing changed yet.
-
+* Canviar estructura de servei TIC [Santiago Cortes]
+*  [Santiago Cortes]
+* - Canviar l'estructura de carpetes d'un servei TIC d'acord amb la [Santiago Cortes]
+* proposta del tiquet 670697. [Santiago Cortes]
+* - Millorar el client del WS de Problemes per a que suporte el valor [Santiago Cortes]
+* None per a username i password. [Santiago Cortes]
+* - Afegir tests d'aceptació per al buscador facetat. [Santiago Cortes]
 
 1.3.3 (2016-05-25)
 ------------------
