@@ -3,6 +3,7 @@
 
 <ul tal:condition="indicadors" class="portlet-list">
   <li tal:repeat="indicador indicadors">
+    <span class="data" tal:content="indicador/date_modified"></span>
     <h3 class="title-indicador" tal:content="indicador/description"></h3>
     <ul class="indicador-category-list">
       <li tal:repeat="category indicador/categories">

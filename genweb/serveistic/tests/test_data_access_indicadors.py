@@ -5,6 +5,7 @@
 import unittest
 from mock import Mock
 import math
+import datetime
 
 from genweb.serveistic.data_access.indicadors import IndicadorsDataReporter
 
@@ -22,7 +23,7 @@ class TestDataAccessIndicadors(unittest.TestCase):
             Mock(
                 identifier="indicator-{0}".format(i),
                 description="indicator-{0} desc".format(i),
-                date_modified="indicator-{0} date".format(i))
+                date_modified=datetime.datetime(2016, 1, 15, 13, 35, 10))
             for i in range(count)
             ]
 
@@ -31,7 +32,7 @@ class TestDataAccessIndicadors(unittest.TestCase):
             Mock(
                 identifier="category-{0}".format(i),
                 description="description-{0}".format(i),
-                date_modified="data_modified-{0}".format(i),
+                date_modified=datetime.datetime(2016, 1, 15, 13, 35, 10),
                 value="value-{0}")
             for i in range(3)
         ]

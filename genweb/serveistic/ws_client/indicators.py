@@ -7,6 +7,7 @@ https://entornjavapre2.upc.edu/indicadorstic/swagger-ui.html
 import requests
 from requests.exceptions import ConnectionError
 from simplejson.decoder import JSONDecodeError
+from datetime import datetime
 
 
 class Indicator(object):
@@ -64,6 +65,14 @@ class Client(object):
             raise ClientException("Error status {0}: {1}".format(
                 response['status'], response['message']))
 
+    def _parse_date_modified(self, date_modified_str):
+        try:
+            date_modified = datetime.strptime(
+                date_modified_str[:19], '%Y-%m-%dT%H:%M:%S')
+        except (TypeError, ValueError):
+            date_modified = None
+        return date_modified
+
     def _parse_response_list_indicators(self, response):
         self._parse_response_result(response)
         if Client.KEY_INDICATOR_LIST not in response:
@@ -81,8 +90,9 @@ class Client(object):
                         Client.KEY_INDICATOR_IDENTIFIER, u''),
                     description=indicator_dict.get(
                         Client.KEY_INDICATOR_DESCRIPTION, u''),
-                    date_modified=indicator_dict.get(
-                        Client.KEY_INDICATOR_DATE_MODIFIED, u'')))
+                    date_modified=self._parse_date_modified(
+                        indicator_dict.get(
+                            Client.KEY_INDICATOR_DATE_MODIFIED, None))))
         return indicators
 
     def _parse_response_list_categories(self, response):
@@ -104,8 +114,9 @@ class Client(object):
                         Client.KEY_CATEGORY_DESCRIPTION, u''),
                     value=category_dict.get(
                         Client.KEY_CATEGORY_VALUE, u''),
-                    date_modified=category_dict.get(
-                        Client.KEY_CATEGORY_DATE_MODIFIED, u'')))
+                    date_modified=self._parse_date_modified(
+                        category_dict.get(
+                            Client.KEY_CATEGORY_DATE_MODIFIED, None))))
         return categories
 
     def list_indicators(self, service_id, count=None):

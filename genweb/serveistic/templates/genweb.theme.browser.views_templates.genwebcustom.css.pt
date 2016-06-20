@@ -913,10 +913,11 @@ float: left;
     font-size: 12px;
     margin-bottom: 5px;
     margin-top: 0 !important;
+    margin-left: 5px;
     line-height: 12px;
 }
 .indicador-category-list {
-    margin: 0;
+    margin-left: 5px;
 }
 .indicador-category-list > li {
     border-bottom: 1px solid #fff;

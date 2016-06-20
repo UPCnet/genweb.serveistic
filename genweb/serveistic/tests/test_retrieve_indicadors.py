@@ -36,6 +36,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         indicadors = [
             Mock(
                 identifier="id-1",
+                date_modified="5/2/2015",
                 description="Indicador 1",
                 categories=[
                     Mock(description="Categoria 1.1", value="v1.1"),
@@ -44,6 +45,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
                 ),
             Mock(
                 identifier="id-2",
+                date_modified="6/2/2015",
                 description="Indicador 2",
                 categories=[
                     Mock(description="Categoria 2.1", value="v2.1"),
@@ -57,9 +59,11 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             query_string = "?count=5"
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
+                "5/2/2015",
                 "Indicador 1",
                 "Categoria 1.1", "v1.1",
                 "Categoria 1.2", "v1.2",
+                "6/2/2015",
                 "Indicador 2",
                 "Categoria 2.1", "v2.1",
                 "Categoria 2.2", "v2.2",
@@ -78,6 +82,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         indicadors = [
             Mock(
                 identifier="id-1",
+                date_modified="5/2/2015",
                 description="Indicador 1",
                 categories=[
                     Mock(description="Categoria 1.1", value="v1.1"),
@@ -86,6 +91,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
                 ),
             Mock(
                 identifier="id-2",
+                date_modified="6/2/2015",
                 description="Indicador 2",
                 categories=[
                     Mock(description="Categoria 2.1", value="v2.1"),
@@ -98,9 +104,11 @@ class TestRetrieveIndicadors(FunctionalTestCase):
                    side_effect=(indicadors,)):
             self.browser.open(view.url())
             self.assertAppearInOrder([
+                "5/2/2015",
                 "Indicador 1",
                 "Categoria 1.1", "v1.1",
                 "Categoria 1.2", "v1.2",
+                "6/2/2015",
                 "Indicador 2",
                 "Categoria 2.1", "v2.1",
                 "Categoria 2.2", "v2.2",

@@ -5,6 +5,7 @@
 import json
 import unittest
 from mock import patch, MagicMock
+import datetime
 
 from requests.exceptions import ConnectionError
 
@@ -16,6 +17,69 @@ class TestWSClient(unittest.TestCase):
     def setUp(self):
         self.client = Client(
             url_base='http://url_base')
+
+    def test_parse_date_modified(self):
+        date_modified_str = '2016-06-13T17:39:44.545+02:00'
+        date_modified_gold = datetime.datetime(2016, 6, 13, 17, 39, 44)
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+    def test_parse_date_modified_is_empty(self):
+        date_modified_str = ''
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+    def test_parse_date_modified_is_none(self):
+        date_modified_str = None
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+    def test_parse_date_modified_has_wrong_type(self):
+        date_modified_str = 20160613
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+        date_modified_str = [20160613]
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+    def test_parse_date_modified_has_wrong_format(self):
+        # Time not provided
+        date_modified_str = '2016-06-13'
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+        # Seconds not provided
+        date_modified_str = '2016-06-13T17:39'
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+        # Month is not zero-padded
+        date_modified_str = '2016-6-13T17:39:44.545+02:00'
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
+
+        # Date separator is not dash
+        date_modified_str = '2016/06/13T17:39:44.545+02:00'
+        date_modified_gold = None
+        self.assertEqual(
+            date_modified_gold,
+            self.client._parse_date_modified(date_modified_str))
 
     def test_parse_response_result_with_defined_exception(self):
         response = json.loads('''
@@ -61,7 +125,7 @@ class TestWSClient(unittest.TestCase):
    "idServei": "7887",
    "indicadors":
    {
-      "dataModificacioIndicador": "2016-04-13 15:35:00.123",
+      "dataModificacioIndicador": "2016-04-13T15:35:00.123",
       "descripcioIndicador": "centenars de centenars",
       "idIndicador": "Nombre d'usuaris"
    }
@@ -94,7 +158,7 @@ class TestWSClient(unittest.TestCase):
    "idIndicador": "indicador_1",
    "categories":
    {
-      "dataModificacioCategoria": "2015-12-03 19:15:50.231",
+      "dataModificacioCategoria": "2015-12-03T19:15:50.231",
       "descripcioCategoria": "categoria important",
       "idCategoria": "Nombre d'usuaris",
       "valor": "578"
@@ -129,27 +193,39 @@ class TestWSClient(unittest.TestCase):
    "indicadors":
    [
        {
-          "dataModificacioIndicador": "2016-04-13 15:35:00.123",
+          "dataModificacioIndicador": "2016-04-13T15:35:00.123",
           "descripcioIndicador": "centenars de centenars",
           "idIndicador": "Nombre d'usuaris"
+       },
+       {
+          "dataModificacioIndicador": "wrong format",
+          "descripcioIndicador": "centenars de centenars 2",
+          "idIndicador": "Nombre d'usuaris 2"
        },
        {}
    ]
 }
 ''')
         results = self.client._parse_response_list_indicators(response)
-        self.assertEqual(len(results), 2)
+        self.assertEqual(len(results), 3)
         self.assertEqual(
             results[0],
             Indicator(
-                date_modified=u"2016-04-13 15:35:00.123",
+                date_modified=datetime.datetime(2016, 4, 13, 15, 35, 0),
                 description=u"centenars de centenars",
                 identifier=u"Nombre d'usuaris"))
 
         self.assertEqual(
             results[1],
             Indicator(
-                date_modified=u'',
+                date_modified=None,
+                description=u"centenars de centenars 2",
+                identifier=u"Nombre d'usuaris 2"))
+
+        self.assertEqual(
+            results[2],
+            Indicator(
+                date_modified=None,
                 description=u'',
                 identifier=u''))
 
@@ -161,21 +237,27 @@ class TestWSClient(unittest.TestCase):
    "categories":
    [
        {
-          "dataModificacioCategoria": "2015-12-03 19:15:50.231",
+          "dataModificacioCategoria": "2015-12-03T19:15:50.231",
           "descripcioCategoria": "categoria important",
           "idCategoria": "categoria-1",
           "valor": "578"
+       },
+       {
+          "dataModificacioCategoria": "wrong date",
+          "descripcioCategoria": "categoria important 2",
+          "idCategoria": "categoria-2",
+          "valor": "678"
        },
        {}
    ]
 }
 ''')
         results = self.client._parse_response_list_categories(response)
-        self.assertEqual(len(results), 2)
+        self.assertEqual(len(results), 3)
         self.assertEqual(
             results[0],
             Category(
-                date_modified=u"2015-12-03 19:15:50.231",
+                date_modified=datetime.datetime(2015, 12, 3, 19, 15, 50),
                 description=u"categoria important",
                 identifier=u"categoria-1",
                 value=u"578"))
@@ -183,7 +265,15 @@ class TestWSClient(unittest.TestCase):
         self.assertEqual(
             results[1],
             Category(
-                date_modified=u'',
+                date_modified=None,
+                description=u'categoria important 2',
+                identifier=u'categoria-2',
+                value=u'678'))
+
+        self.assertEqual(
+            results[2],
+            Category(
+                date_modified=None,
                 description=u'',
                 identifier=u'',
                 value=u''))
