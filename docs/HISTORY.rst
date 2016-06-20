@@ -1,11 +1,14 @@
 Changelog
 =========
 
-1.3.5 (unreleased)
+1.3.5 (2016-06-20)
 ------------------
 
-- Nothing changed yet.
-
+* Mostrar darrera modificació dels indicadors [Santiago Cortes]
+*  [Santiago Cortes]
+* Mostrar la data de darrera modificació de cada indicador tant al [Santiago Cortes]
+* portlet d'indicadors com a la vista de tots els indicadors. [Santiago Cortes]
+* Afegir tests per a Servei TIC [Santiago Cortes]
 
 1.3.4 (2016-06-13)
 ------------------
