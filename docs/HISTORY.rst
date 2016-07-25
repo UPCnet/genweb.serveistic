@@ -1,11 +1,21 @@
 Changelog
 =========
 
-1.3.6 (unreleased)
+1.3.6 (2016-07-25)
 ------------------
 
-- Nothing changed yet.
-
+* Canviar cercador, redefinir notificació i altres [Santiago Cortes]
+*  [Santiago Cortes]
+* - El cercador de la part superior dreta cerca elements dins del [Santiago Cortes]
+* path des d'on s'utilitza. [Santiago Cortes]
+* - La vista de notificació sols mostra el cos, que es un camp de [Santiago Cortes]
+* text enriquit. [Santiago Cortes]
+* - La caixa de text del cercador facetat mostra per defecte "Cerca [Santiago Cortes]
+* un Servei TIC" [Santiago Cortes]
+* - La pàgina d'inici no mostra el títol. [Santiago Cortes]
+* - L'alçada de les caixes de les facetes del cercador és menor. [Santiago Cortes]
+* changed comments to <tal:comment replace="nothing"> [root@peterpre]
+* Millorar README [Santiago Cortes]
 
 1.3.5 (2016-06-20)
 ------------------
