@@ -9,6 +9,8 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Acquisition import aq_inner, aq_chain
 from eea.faceted.vocabularies.utils import IVocabularyFactory
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.browser.navtree import getNavigationRoot
 
 from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from genweb.serveistic.content.serveitic import IServeiTIC
@@ -47,6 +49,37 @@ def get_ws_problemes_client():
 def get_ws_indicadors_client():
     endpoint = serveistic_config().ws_indicadors_endpoint
     return IndicadorsClient(endpoint)
+
+
+def get_referer_path(context, request):
+    if referer_is_current(request):
+        return getNavigationRoot(context)
+    try:
+        return request.getHeader('referer').replace(
+            get_site_url(context), get_site_path(context))
+    except (AttributeError, TypeError):
+        return None
+
+
+def referer_is_current(request):
+    if request.getHeader('referer'):
+        return (get_clean_url(request.getHeader('referer')) ==
+                get_clean_url(request.getURL()))
+    return True
+
+
+def get_clean_url(url):
+    return url.split('?')[0].split('@')[0]
+
+
+def get_site_url(context):
+    portal_url = getToolByName(context, 'portal_url')
+    return portal_url.getPortalObject().absolute_url()
+
+
+def get_site_path(context):
+    portal_url = getToolByName(context, 'portal_url')
+    return '/'.join(portal_url.getPortalObject().getPhysicalPath())
 
 
 class FacetsVocabulary(object):

@@ -23,4 +23,12 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="*"
+    layer="..interfaces.IGenwebServeisticLayer"
+    name="gw_type_ahead_search"
+    class=".searchbox_views.TypeAheadSearch"
+    permission="zope2.View"
+    />
+
 </configure>

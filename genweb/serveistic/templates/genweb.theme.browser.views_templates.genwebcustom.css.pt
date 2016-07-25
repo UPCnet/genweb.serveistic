@@ -545,7 +545,7 @@ header {
     border-color: white;
     float: left;
     margin: -5px 15px 20px 0;
-    height: 185px;
+    height: 150px;
     padding: 0;
     width: 18.8%;
     overflow-x: none;    

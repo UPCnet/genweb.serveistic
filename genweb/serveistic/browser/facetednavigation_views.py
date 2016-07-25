@@ -57,3 +57,12 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
         reporter = NotificacioDataReporter(
             getToolByName(self.context, 'portal_catalog'))
         return reporter.list_by_general()
+
+    def js_searchbox_placeholder(self):
+        return """
+    $(document).ready(function()
+    {{
+        $("#c7").attr("placeholder", "{0}")
+    }});
+       """.format(self.context.translate(
+            'search_serveitic', domain='genweb.serveistic'))

@@ -55,7 +55,6 @@
     });
     $('.slider-notificacions .carousel').carousel('next');
     </script>
-    <h1 class="documentFirstHeading" tal:content="context/title"></h1>
 </metal:custom_title>
 
 <div metal:fill-slot="content-core">
@@ -75,6 +74,8 @@
   <!-- Faceted version -->
   <div style="display: none" id="faceted-version"
     tal:content="here/@@faceted_version|string:" />
+
+  <script type="text/javascript" tal:content="view/js_searchbox_placeholder"></script>
 </div>
 
 </div>

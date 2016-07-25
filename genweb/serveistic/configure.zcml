@@ -44,6 +44,7 @@
         />
 
     <include file="subscribers.zcml" />
+    <include file="patches.zcml" />
 
     <include package="z3c.jbot" file="meta.zcml" />
 

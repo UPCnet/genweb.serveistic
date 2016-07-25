@@ -7,6 +7,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 from z3c.form import interfaces
 from plone.directives import form, dexterity
 from plone.dexterity.content import Item
+from plone.app.textfield import RichText
 from Products.CMFPlone import PloneMessageFactory as _
 
 from genweb.serveistic.utilities import build_vocabulary, get_servei
@@ -21,6 +22,11 @@ class INotificacioTIC(form.Schema):
         required=True)
 
     description = schema.Text(
+        title=_(u"Descripció"),
+        required=False,
+    )
+
+    cos = RichText(
         title=_(u"Cos de la notificació"),
         required=True,
     )

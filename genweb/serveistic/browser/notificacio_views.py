@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
+from plone.directives import dexterity
 from Products.CMFCore.utils import getToolByName
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.content.notificaciotic import INotificacioTIC
 from genweb.serveistic.data_access.notificacio import NotificacioDataReporter
 from genweb.serveistic.utilities import get_servei
+
+
+class View(dexterity.DisplayForm):
+    grok.context(INotificacioTIC)
+    grok.layer(IGenwebServeisticLayer)
 
 
 class NotificacioViewHelper(object):
