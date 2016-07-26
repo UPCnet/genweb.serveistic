@@ -17,6 +17,7 @@
       </div>
     </div>
     <tal:block replace="structure provider:genweb.search_manager" />
+    <script tal:content="viewlet/js_search"></script>
   </div>
   <div class="titol-espai clearfix">
     <h1 class="serveistic-bc-level_1">

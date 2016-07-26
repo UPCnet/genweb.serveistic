@@ -1,6 +1,6 @@
 body {
     color: #444;
-    font-family: "open sans",arial;
+    font-family: "open sans", arial;
     font-size: 13px;
     line-height: 20px;
 }
@@ -517,7 +517,7 @@ header {
 
 #c7 {
     border-color: #dedede;
-    font-family: open sans;
+    font-family: "open sans", arial;
     font-size: 15px;
     margin-right: 8px;
     padding: 10px;
@@ -528,7 +528,7 @@ header {
     background: #00aee5 none repeat scroll 0 0;
     border: 0 none;
     color: white;
-    font-family: open sans;
+    font-family: "open sans", arial;
     font-size: 16px;
     font-weight: 500;
     height: 40px;
@@ -797,7 +797,7 @@ label {
 }
 .btn-primary, .context {
     background-color: #00aee5;
-    font-family: open sans;
+    font-family: "open sans", arial;
     background-image: none;
     border:none;
     color: #fff;

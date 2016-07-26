@@ -186,6 +186,27 @@ class HeaderGWServeistic(gwHeader):
             (self.context, self.request), name="plone_portal_state")
         return portal_state.anonymous()
 
+    @property
+    def js_search(self):
+        return """
+        $(function(){{
+            $(window).load(function(){{
+                typeahead_dom = $('input.typeahead.tt-input');
+                $(typeahead_dom).off('keyup');
+                $(typeahead_dom).keyup(function(event){{
+                    if (event.keyCode === 13){{
+                        var text = $(this).val();
+                        window.location.href = \
+                            $(typeahead_dom).attr('data-search-url') +
+                            '?SearchableText=' + text + '&path={path}';
+                    }}
+                }});
+            }});
+        }});""".format(path=self.get_search_path())
+
+    def get_search_path(self):
+        return '/'.join(self.context.getPhysicalPath())
+
 
 class PortalHeaderGWServeistic(gwHeader):
     grok.name('plone.header')
