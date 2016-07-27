@@ -1,11 +1,18 @@
 Changelog
 =========
 
-1.3.7 (unreleased)
+1.3.7 (2016-07-27)
 ------------------
 
-- Nothing changed yet.
-
+* Corregir alineació de faceted checkbox↔label [Santiago Cortes]
+* Mostrar data de categoria i ocultar la d'indicador [Santiago Cortes]
+* Ocultar paginació superior del cercador facetat [Santiago Cortes]
+* Corregir el cercador general i altres canvis [Santiago Cortes]
+*  [Santiago Cortes]
+* - Treure el patch de filter_query i especificar el path de la cerca [Santiago Cortes]
+* utilitzant codi JS. [Santiago Cortes]
+* - Corregir la propietat CSS font-family per a mostrar sempre el [Santiago Cortes]
+* mateix tipus de lletra. [Santiago Cortes]
 
 1.3.6 (2016-07-25)
 ------------------
