@@ -28,3 +28,6 @@ msgstr "Subscriu-te al canal RSS"
 
 msgid "search_serveitic"
 msgstr "Cerca un Servei TIC"
+
+msgid "updated_on"
+msgstr "Actualitzat el"

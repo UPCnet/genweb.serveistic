@@ -16,7 +16,9 @@ class TestRetrieveIndicadors(FunctionalTestCase):
     def assertAppearsBefore(self, subtxt_1, subtxt_2, txt):
         self.assertIn(subtxt_1, txt)
         self.assertIn(subtxt_2, txt)
-        self.assertTrue(txt.find(subtxt_1) < txt.find(subtxt_2))
+        self.assertTrue(
+            txt.find(subtxt_1) < txt.find(subtxt_2),
+            "{0} does not appear before {1}".format(subtxt_1, subtxt_2))
 
     def assertAppearInOrder(self, subtxts, txt):
         def assertAppearsBefore(subtxt_1, subtxt_2):
@@ -59,11 +61,9 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             query_string = "?count=5"
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
-                "5/2/2015",
                 "Indicador 1",
                 "Categoria 1.1", "v1.1",
                 "Categoria 1.2", "v1.2",
-                "6/2/2015",
                 "Indicador 2",
                 "Categoria 2.1", "v2.1",
                 "Categoria 2.2", "v2.2",
@@ -104,11 +104,9 @@ class TestRetrieveIndicadors(FunctionalTestCase):
                    side_effect=(indicadors,)):
             self.browser.open(view.url())
             self.assertAppearInOrder([
-                "5/2/2015",
                 "Indicador 1",
                 "Categoria 1.1", "v1.1",
                 "Categoria 1.2", "v1.2",
-                "6/2/2015",
                 "Indicador 2",
                 "Categoria 2.1", "v2.1",
                 "Categoria 2.2", "v2.2",
@@ -163,3 +161,70 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         self.assertNotIn(
             "Tots els indicadors",
             self.browser.contents)
+
+    def test_retrieve_from_ws_should_show_category_dates(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        indicadors = [
+            Mock(
+                identifier="id-1",
+                date_modified="1/2/2015",
+                description="Indicador 1",
+                categories=[
+                    Mock(
+                        description="Categoria 1.1",
+                        value="v1.1",
+                        date_modified="2/2/2015"),
+                    Mock(
+                        description="Categoria 1.2",
+                        value="v1.2",
+                        date_modified="3/2/2015"),
+                    ]
+                ),
+            Mock(
+                identifier="id-2",
+                date_modified="4/2/2015",
+                description="Indicador 2",
+                categories=[
+                    Mock(
+                        description="Categoria 2.1",
+                        value="v2.1",
+                        date_modified="5/2/2015"),
+                    Mock(
+                        description="Categoria 2.2",
+                        value="v2.2",
+                        date_modified="6/2/2015"),
+                    Mock(
+                        description="Categoria 2.3",
+                        value="v2.3",
+                        date_modified="7/2/2015"),
+                    ]
+                ),
+            ]
+        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
+                   side_effect=(indicadors,)):
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
+            self.assertAppearInOrder([
+                "Indicador 1",
+                "Categoria 1.1", "v1.1", "2/2/2015",
+                "Categoria 1.2", "v1.2", "3/2/2015",
+                "Indicador 2",
+                "Categoria 2.1", "v2.1", "5/2/2015",
+                "Categoria 2.2", "v2.2", "6/2/2015",
+                "Categoria 2.3", "v2.3", "7/2/2015",
+                ],
+                self.browser.contents)
+            self.assertIn(
+                "Tots els indicadors",
+                self.browser.contents)
+            self.assertNotIn(
+                "No hi ha cap indicador enregistrat relacionat amb "
+                "aquest servei",
+                self.browser.contents)
+

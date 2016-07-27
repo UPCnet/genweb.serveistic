@@ -27,7 +27,7 @@ class IndicadorsDataReporter(object):
                         'description': self._remove_prefix(
                             category.description, indicator.description),
                         'date_modified': category.date_modified.strftime(
-                            "%d/%m/%Y") if category.date_modified else '',
+                            "%d/%m/%Y %H:%M") if category.date_modified else '',
                         'value': category.value})
                     count_category += 1
                     if (count_category_max and
