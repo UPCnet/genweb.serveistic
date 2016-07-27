@@ -603,6 +603,9 @@ display: none;
     margin-bottom: 15px;
     margin-top: -10px;
 }
+#faceted-results > div > div:nth-child(1).listingBar {
+    display: none;
+}
 div.photoAlbumEntry {
     background: #fff none repeat scroll 0 0;
     border: 0 none;
