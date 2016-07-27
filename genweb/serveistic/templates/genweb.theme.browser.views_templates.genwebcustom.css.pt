@@ -576,6 +576,9 @@ header {
     list-style: outside none none !important;
     margin: 0 0 10px 10px;
 }
+#faceted-form .widget-fieldset input[type=checkbox] {
+   margin-top: 2px;
+}
 .widget-fieldset ul li label {
     color: #555;
     font-size: 11px;
