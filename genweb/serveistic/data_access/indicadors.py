@@ -1,6 +1,6 @@
 import logging
 
-from genweb.serveistic.ws_client.indicators import ClientException
+from genweb.core.indicators.client import ClientException
 
 logger = logging.getLogger(name='genweb.serveistic')
 
@@ -8,11 +8,6 @@ logger = logging.getLogger(name='genweb.serveistic')
 class IndicadorsDataReporter(object):
     def __init__(self, client):
         self.client = client
-
-    def _remove_prefix(self, text, prefix):
-        if text.startswith(prefix + ' -'):
-            return text[len(prefix + ' -'):]
-        return text
 
     def list_by_service_id(self, service_id, count, count_category_max=None):
         indicators = []
@@ -24,8 +19,7 @@ class IndicadorsDataReporter(object):
                         service_id, indicator.identifier):
                     categories.append({
                         'identifier': category.identifier,
-                        'description': self._remove_prefix(
-                            category.description, indicator.description),
+                        'description': category.description,
                         'date_modified': category.date_modified.strftime(
                             "%d/%m/%Y %H:%M") if category.date_modified else '',
                         'value': category.value})

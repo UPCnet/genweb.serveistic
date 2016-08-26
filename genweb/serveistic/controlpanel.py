@@ -60,10 +60,20 @@ class IServeisTICControlPanelSettings(model.Schema):
     model.fieldset(
         'Servei Web Indicadors',
         _(u'Servei Web Indicadors'),
-        fields=['ws_indicadors_endpoint'])
+        fields=['ws_indicadors_service_id',
+                'ws_indicadors_endpoint', 'ws_indicadors_key'])
+
+    ws_indicadors_service_id = schema.TextLine(
+        title=_(u"Identificador al servei web d'Indicadors"),
+        description=_(u"Identificador de Serveis TIC al servei web"),
+        required=False)
 
     ws_indicadors_endpoint = schema.TextLine(
         title=_(u'URL'),
+        required=False)
+
+    ws_indicadors_key = schema.Password(
+        title=_(u'API key'),
         required=False)
 
     model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
@@ -104,6 +114,10 @@ class ServeisTICControlPanelSettingsForm(controlpanel.RegistryEditForm):
         if not data['ws_problemes_login_password']:
             data['ws_problemes_login_password'] = \
                 self.getContent().ws_problemes_login_password
+
+        if not data['ws_indicadors_key']:
+            data['ws_indicadors_key'] = \
+                self.getContent().ws_indicadors_key
 
     @button.buttonAndHandler(_('Save'), name=None)
     def handleSave(self, action):

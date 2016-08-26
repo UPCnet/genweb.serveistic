@@ -16,7 +16,7 @@ from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.config_helper import facets_vocabulary
 from genweb.serveistic.ws_client.problems import Client as ProblemesClient
-from genweb.serveistic.ws_client.indicators import Client as IndicadorsClient
+from genweb.core.indicators.client import Client as IndicadorsClient
 
 
 def build_vocabulary(values):
