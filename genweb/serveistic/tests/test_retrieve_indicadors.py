@@ -5,13 +5,17 @@ from plone import api
 from transaction import commit
 
 from genweb.serveistic.testing import FunctionalTestCase
-from genweb.serveistic.tests.fixtures import fixtures
+from genweb.serveistic.tests.fixtures import (
+    fixtures as fixtures,
+    retrieve_indicadors as fixtures_retrieve)
 
 
 class TestRetrieveIndicadors(FunctionalTestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.browser = Browser(self.portal)
+        self.browser.handleErrors = False
+        # Full error log can be found in self.portal.error_log.getLogEntries()
 
     def assertAppearsBefore(self, subtxt_1, subtxt_2, txt):
         self.assertIn(subtxt_1, txt)
@@ -26,7 +30,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             return subtxt_2
         reduce(assertAppearsBefore, subtxts)
 
-    def test_retrieve_from_ws(self):
+    def test_allindicators_text_should_appear_when_count_specified_and_indicadors_not_empty(self):
         servei = fixtures.create_content(
             self.portal, fixtures.servei_with_service_id)
         commit()
@@ -34,118 +38,133 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         view = api.content.get_view(
             'retrieve_indicadors', servei, self.layer['request'])
 
-        # indicadors not empty, count is present
-        indicadors = [
-            Mock(
-                identifier="id-1",
-                date_modified="5/2/2015",
-                description="Indicador 1",
-                categories=[
-                    Mock(description="Categoria 1.1", value="v1.1"),
-                    Mock(description="Categoria 1.2", value="v1.2"),
-                    ]
-                ),
-            Mock(
-                identifier="id-2",
-                date_modified="6/2/2015",
-                description="Indicador 2",
-                categories=[
-                    Mock(description="Categoria 2.1", value="v2.1"),
-                    Mock(description="Categoria 2.2", value="v2.2"),
-                    Mock(description="Categoria 2.3", value="v2.3"),
-                    ]
-                ),
-            ]
-        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
-                   side_effect=(indicadors,)):
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
+                   side_effect=(fixtures_retrieve.indicadors,)):
             query_string = "?count=5"
             self.browser.open(view.url() + query_string)
-            self.assertAppearInOrder([
-                "Indicador 1",
-                "Categoria 1.1", "v1.1",
-                "Categoria 1.2", "v1.2",
-                "Indicador 2",
-                "Categoria 2.1", "v2.1",
-                "Categoria 2.2", "v2.2",
-                "Categoria 2.3", "v2.3"
-                ],
-                self.browser.contents)
             self.assertIn(
                 "Tots els indicadors",
                 self.browser.contents)
-            self.assertNotIn(
-                "No hi ha cap indicador enregistrat relacionat amb "
-                "aquest servei",
-                self.browser.contents)
 
-        # indicadors not empty, count not present
-        indicadors = [
-            Mock(
-                identifier="id-1",
-                date_modified="5/2/2015",
-                description="Indicador 1",
-                categories=[
-                    Mock(description="Categoria 1.1", value="v1.1"),
-                    Mock(description="Categoria 1.2", value="v1.2"),
-                    ]
-                ),
-            Mock(
-                identifier="id-2",
-                date_modified="6/2/2015",
-                description="Indicador 2",
-                categories=[
-                    Mock(description="Categoria 2.1", value="v2.1"),
-                    Mock(description="Categoria 2.2", value="v2.2"),
-                    Mock(description="Categoria 2.3", value="v2.3"),
-                    ]
-                ),
-            ]
-        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
-                   side_effect=(indicadors,)):
-            self.browser.open(view.url())
-            self.assertAppearInOrder([
-                "Indicador 1",
-                "Categoria 1.1", "v1.1",
-                "Categoria 1.2", "v1.2",
-                "Indicador 2",
-                "Categoria 2.1", "v2.1",
-                "Categoria 2.2", "v2.2",
-                "Categoria 2.3", "v2.3"
-                ],
-                self.browser.contents)
-            self.assertNotIn(
-                "Tots els indicadors",
-                self.browser.contents)
-            self.assertNotIn(
-                "No hi ha cap indicador enregistrat relacionat amb "
-                "aquest servei",
-                self.browser.contents)
+    def test_allindicators_text_should_not_appear_when_indicadors_empty(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
 
-        # indicators is empty
-        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
                    side_effect=([],)):
-            self.browser.open(view.url())
-            self.assertIn(
-                "No hi ha cap indicador enregistrat relacionat amb "
-                "aquest servei",
-                self.browser.contents)
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
             self.assertNotIn(
                 "Tots els indicadors",
                 self.browser.contents)
 
-        # indicadors is None
-        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
+    def test_allindicators_text_should_not_appear_when_indicadors_is_none(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
                    side_effect=(None,)):
-            self.browser.open(view.url())
-            self.assertIn(
-                "No hi ha cap indicador enregistrat relacionat amb "
-                "aquest servei",
-                self.browser.contents)
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
             self.assertNotIn(
                 "Tots els indicadors",
                 self.browser.contents)
 
-    def test_retrieve_from_ws_when_servei_has_no_service_id(self):
+    def test_allindicators_text_should_not_appear_when_count_not_specified(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
+                   side_effect=(fixtures_retrieve.indicadors,)):
+            self.browser.open(view.url())
+            self.assertNotIn(
+                "Tots els indicadors",
+                self.browser.contents)
+
+    def test_allindicators_text_should_not_appear_when_no_service_id(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_without_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+        self.browser.open(view.url())
+
+        self.assertNotIn(
+            "Tots els indicadors",
+            self.browser.contents)
+
+    def test_noindicators_text_should_not_appear_when_indicadors_not_empty(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)):
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
+            self.assertNotIn(
+                "No hi ha cap indicador enregistrat relacionat amb "
+                "aquest servei",
+                self.browser.contents)
+
+    def test_noindicators_text_should_appear_when_indicadors_empty(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id',
+                   side_effect=([],)):
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
+            self.assertIn(
+                "No hi ha cap indicador enregistrat relacionat amb "
+                "aquest servei",
+                self.browser.contents)
+
+    def test_noindicators_text_should_appear_when_indicadors_none(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id',
+                   side_effect=(None,)):
+            query_string = "?count=5"
+            self.browser.open(view.url() + query_string)
+            self.assertIn(
+                "No hi ha cap indicador enregistrat relacionat amb "
+                "aquest servei",
+                self.browser.contents)
+
+    def test_noindicators_text_should_appear_when_no_service_id(self):
         servei = fixtures.create_content(
             self.portal, fixtures.servei_without_service_id)
         commit()
@@ -155,14 +174,10 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         self.browser.open(view.url())
 
         self.assertIn(
-            "No hi ha cap indicador enregistrat relacionat amb "
-            "aquest servei",
-            self.browser.contents)
-        self.assertNotIn(
-            "Tots els indicadors",
+            "No hi ha cap indicador enregistrat relacionat amb aquest servei",
             self.browser.contents)
 
-    def test_retrieve_from_ws_should_show_category_dates(self):
+    def test_indicators_data_should_appear_when_indicadors_not_empty(self):
         servei = fixtures.create_content(
             self.portal, fixtures.servei_with_service_id)
         commit()
@@ -170,44 +185,9 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         view = api.content.get_view(
             'retrieve_indicadors', servei, self.layer['request'])
 
-        indicadors = [
-            Mock(
-                identifier="id-1",
-                date_modified="1/2/2015",
-                description="Indicador 1",
-                categories=[
-                    Mock(
-                        description="Categoria 1.1",
-                        value="v1.1",
-                        date_modified="2/2/2015"),
-                    Mock(
-                        description="Categoria 1.2",
-                        value="v1.2",
-                        date_modified="3/2/2015"),
-                    ]
-                ),
-            Mock(
-                identifier="id-2",
-                date_modified="4/2/2015",
-                description="Indicador 2",
-                categories=[
-                    Mock(
-                        description="Categoria 2.1",
-                        value="v2.1",
-                        date_modified="5/2/2015"),
-                    Mock(
-                        description="Categoria 2.2",
-                        value="v2.2",
-                        date_modified="6/2/2015"),
-                    Mock(
-                        description="Categoria 2.3",
-                        value="v2.3",
-                        date_modified="7/2/2015"),
-                    ]
-                ),
-            ]
-        with patch('genweb.serveistic.data_access.indicadors.IndicadorsDataReporter.list_by_service_id',
-                   side_effect=(indicadors,)):
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)):
             query_string = "?count=5"
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
@@ -217,14 +197,12 @@ class TestRetrieveIndicadors(FunctionalTestCase):
                 "Indicador 2",
                 "Categoria 2.1", "v2.1", "5/2/2015",
                 "Categoria 2.2", "v2.2", "6/2/2015",
-                "Categoria 2.3", "v2.3", "7/2/2015",
+                "Categoria 2.3", "v2.3", "7/2/2015"
                 ],
                 self.browser.contents)
-            self.assertIn(
-                "Tots els indicadors",
-                self.browser.contents)
-            self.assertNotIn(
-                "No hi ha cap indicador enregistrat relacionat amb "
-                "aquest servei",
-                self.browser.contents)
 
+    def test_indicators_number_should_be_limited_by_parameter_count(self):
+        pass
+
+    def test_categories_number_should_be_limited_by_parameter_count_category(self):
+        pass

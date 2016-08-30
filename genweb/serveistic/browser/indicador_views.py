@@ -1,9 +1,14 @@
+import logging
+
 from five import grok
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.utilities import get_ws_indicadors_client
-from genweb.serveistic.data_access.indicadors import IndicadorsDataReporter
+from genweb.serveistic.data_access.indicadors import (
+    IndicadorsDataReporter, IndicadorsDataReporterException)
+
+logger = logging.getLogger(name='genweb.serveistic')
 
 
 class Indicadors(grok.View):
@@ -51,14 +56,20 @@ class RetrieveIndicadors(grok.View):
 
     @property
     def indicadors(self):
-        ws_client = get_ws_indicadors_client()
-        reporter = IndicadorsDataReporter(ws_client)
+        reporter = IndicadorsDataReporter(get_ws_indicadors_client())
 
         service_id = self.context.service_id
-        count, count_category = self.parse_parameters()
+        service_indicators_order = self.context.service_indicators_order
+        count_indicator, count_category = self.parse_parameters()
 
-        if service_id:
-            return reporter.list_by_service_id(
-                service_id, count, count_category)
-        else:
+        if not service_id:
+            return None
+
+        try:
+            return reporter.list_by_service_id_and_indicators_order(
+                service_id, service_indicators_order,
+                count_indicator, count_category)
+        except IndicadorsDataReporterException as e:
+            logger.warning(
+                "Error when reporting indicators ({0})".format(e))
             return None
