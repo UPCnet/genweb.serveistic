@@ -1,11 +1,20 @@
 Changelog
 =========
 
-1.3.8 (unreleased)
+1.3.8 (2016-08-31)
 ------------------
 
-- Nothing changed yet.
-
+* Afegir ordre de visualització d'indicadors [Santiago Cortes]
+*  [Santiago Cortes]
+* El tipus de dades 'serveitic' defineix a través del camp [Santiago Cortes]
+* 'service_indicators_order' l'ordre en el qual han de mostrar-se [Santiago Cortes]
+* els indicadors dels serveis al portlet 'indicadors' i a la vista [Santiago Cortes]
+* 'indicadors_list'. [Santiago Cortes]
+* Afegir actualització d'indicadors [Santiago Cortes]
+*  [Santiago Cortes]
+* - Utilitzar API indicadors de genweb.core. [Santiago Cortes]
+* - Afegir definició i actualització de l'indicador "Nombre [Santiago Cortes]
+* de serveis". [Santiago Cortes]
 
 1.3.7 (2016-07-27)
 ------------------
