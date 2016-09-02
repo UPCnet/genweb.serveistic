@@ -41,7 +41,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         with patch('genweb.serveistic.data_access.indicadors.'
                    'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
                    side_effect=(fixtures_retrieve.indicadors,)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertIn(
                 "Tots els indicadors",
@@ -58,7 +58,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         with patch('genweb.serveistic.data_access.indicadors.'
                    'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
                    side_effect=([],)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertNotIn(
                 "Tots els indicadors",
@@ -75,7 +75,7 @@ class TestRetrieveIndicadors(FunctionalTestCase):
         with patch('genweb.serveistic.data_access.indicadors.'
                    'IndicadorsDataReporter.list_by_service_id_and_indicators_order',
                    side_effect=(None,)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertNotIn(
                 "Tots els indicadors",
@@ -119,9 +119,10 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             'retrieve_indicadors', servei, self.layer['request'])
 
         with patch('genweb.serveistic.data_access.indicadors.'
-                   'IndicadorsDataReporter.list_by_service_id',
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id_and_indicators_order',
                    side_effect=(fixtures_retrieve.indicadors,)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertNotIn(
                 "No hi ha cap indicador enregistrat relacionat amb "
@@ -137,9 +138,10 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             'retrieve_indicadors', servei, self.layer['request'])
 
         with patch('genweb.serveistic.data_access.indicadors.'
-                   'IndicadorsDataReporter.list_by_service_id',
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id_and_indicators_order',
                    side_effect=([],)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertIn(
                 "No hi ha cap indicador enregistrat relacionat amb "
@@ -155,9 +157,10 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             'retrieve_indicadors', servei, self.layer['request'])
 
         with patch('genweb.serveistic.data_access.indicadors.'
-                   'IndicadorsDataReporter.list_by_service_id',
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id_and_indicators_order',
                    side_effect=(None,)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertIn(
                 "No hi ha cap indicador enregistrat relacionat amb "
@@ -186,9 +189,10 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             'retrieve_indicadors', servei, self.layer['request'])
 
         with patch('genweb.serveistic.data_access.indicadors.'
-                   'IndicadorsDataReporter.list_by_service_id',
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id_and_indicators_order',
                    side_effect=(fixtures_retrieve.indicadors,)):
-            query_string = "?count=5"
+            query_string = "?count_indicator=5"
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
                 "Indicador 1",
@@ -206,3 +210,69 @@ class TestRetrieveIndicadors(FunctionalTestCase):
 
     def test_categories_number_should_be_limited_by_parameter_count_category(self):
         pass
+
+    def test_indicators_order_should_be_applied_when_order_defined_and_apply_order_specified(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id_and_indicators_order)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)) as list_by_service_id:
+            with patch('genweb.serveistic.data_access.indicadors.'
+                       'IndicadorsMatrixDataReporter', autospec=True):
+                query_string = "?apply_order=yes&count_indicator=5"
+                self.browser.open(view.url() + query_string)
+                self.assertFalse(list_by_service_id.called)
+
+    def test_indicators_order_should_not_be_applied_when_apply_order_not_specified(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id_and_indicators_order)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)) as list_by_service_id:
+            query_string = "?count_indicator=5"
+            self.browser.open(view.url() + query_string)
+            self.assertTrue(list_by_service_id.called)
+
+    def test_indicators_order_should_not_be_applied_when_apply_order_set_as_no(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id_and_indicators_order)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)) as list_by_service_id:
+            query_string = "?apply_order=no&count_indicator=5"
+            self.browser.open(view.url() + query_string)
+            self.assertTrue(list_by_service_id.called)
+
+    def test_indicators_order_should_not_be_applied_when_order_not_defined(self):
+        servei = fixtures.create_content(
+            self.portal, fixtures.servei_with_service_id)
+        commit()
+
+        view = api.content.get_view(
+            'retrieve_indicadors', servei, self.layer['request'])
+
+        with patch('genweb.serveistic.data_access.indicadors.'
+                   'IndicadorsDataReporter.'
+                   'list_by_service_id',
+                   side_effect=(fixtures_retrieve.indicadors,)) as list_by_service_id:
+            query_string = "?apply_order=yes&count_indicator=5"
+            self.browser.open(view.url() + query_string)
+            self.assertTrue(list_by_service_id.called)

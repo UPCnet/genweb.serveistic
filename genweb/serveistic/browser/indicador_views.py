@@ -22,7 +22,7 @@ class Indicadors(grok.View):
     $(document).ready(function()
     {{
         var url = '{url}';
-        retrieve_indicadors(url, '', '');
+        retrieve_indicadors(url, '', '', 'no');
     }});
        """.format(url="retrieve_indicadors")
 
@@ -35,16 +35,20 @@ class RetrieveIndicadors(grok.View):
 
     def parse_parameters(self):
         try:
-            count = int(self.request.form.get('count', None))
+            count_indicator = int(
+                self.request.form.get('count_indicator', None))
         except (TypeError, ValueError):
-            count = None
+            count_indicator = None
 
         try:
             count_category = int(self.request.form.get('count_category', None))
         except (TypeError, ValueError):
             count_category = None
 
-        return count, count_category
+        apply_order = True if self.request.form.get(
+            'apply_order', 'no') in ('yes', 'true') else False
+
+        return count_indicator, count_category, apply_order
 
     @property
     def count(self):
@@ -58,9 +62,10 @@ class RetrieveIndicadors(grok.View):
     def indicadors(self):
         reporter = IndicadorsDataReporter(get_ws_indicadors_client())
 
+        count_indicator, count_category, apply_order = self.parse_parameters()
         service_id = self.context.service_id
-        service_indicators_order = self.context.service_indicators_order
-        count_indicator, count_category = self.parse_parameters()
+        service_indicators_order = (
+            self.context.service_indicators_order if apply_order else None)
 
         if not service_id:
             return None

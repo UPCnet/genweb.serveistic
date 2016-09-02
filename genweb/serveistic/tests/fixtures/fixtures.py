@@ -123,6 +123,14 @@ servei_with_service_id = {
     'service_id': 'myservice'
     }
 
+servei_with_service_id_and_indicators_order = {
+    'type': 'serveitic',
+    'id': 'servei-1',
+    'title': 'Servei 1',
+    'service_id': 'myservice',
+    'service_indicators_order': '1.1, 1.2, 2.2'
+    }
+
 servei_without_service_id = {
     'type': 'serveitic',
     'id': 'servei-1',

@@ -1,9 +1,12 @@
-function retrieve_indicadors(url, count, count_category)
+function retrieve_indicadors(url, count_indicator, count_category, apply_order)
 {
     $.ajax({
         url: url,
         timeout: 15000,
-        data: {count: count, count_category: count_category},
+        data: {
+            count_indicator: count_indicator,
+            count_category: count_category,
+            apply_order: apply_order},
         success: function(data)
         {
             $('#indicadors').html(data);

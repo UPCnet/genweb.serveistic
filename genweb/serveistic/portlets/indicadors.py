@@ -12,7 +12,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 
 
 class IIndicadorsPortlet(IPortletDataProvider):
-    count = schema.Int(
+    count_indicator = schema.Int(
         title=_(u"Nombre màxim d'indicadors"),
         required=True,
         defaultFactory=lambda: 5)
@@ -26,8 +26,8 @@ class IIndicadorsPortlet(IPortletDataProvider):
 class Assignment(base.Assignment):
     implements(IIndicadorsPortlet)
 
-    def __init__(self, count=5, count_category=None, showdata=True):
-        self.count = count
+    def __init__(self, count_indicator=5, count_category=None, showdata=True):
+        self.count_indicator = count_indicator
         self.count_category = count_category
         self.showdata = showdata
 
@@ -44,13 +44,14 @@ class Renderer(base.Renderer):
     $(document).ready(function()
     {{
         var url = '{url}';
-        var count = {count};
+        var count_indicator = {count_indicator};
         var count_category = {count_category};
-        retrieve_indicadors(url, count, count_category);
+        var apply_order = 'yes';
+        retrieve_indicadors(url, count_indicator, count_category, apply_order);
     }});
        """.format(
             url="retrieve_indicadors",
-            count=self.data.count,
+            count_indicator=self.data.count_indicator,
             count_category=self.data.count_category
             if self.data.count_category else "''")
 
@@ -62,7 +63,7 @@ class AddForm(base.AddForm):
 
         def create(self, data):
             return Assignment(
-                count=data.get('count', 5),
+                count_indicator=data.get('count_indicator', 5),
                 count_category=data.get('count_category', None),
                 showdata=data.get('showdata', True))
 
