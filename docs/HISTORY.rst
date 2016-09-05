@@ -1,11 +1,14 @@
 Changelog
 =========
 
-1.3.9 (unreleased)
+1.3.9 (2016-09-05)
 ------------------
 
-- Nothing changed yet.
-
+* Aplicar odre d'indicadors solament al portlet [Santiago Cortes]
+*  [Santiago Cortes]
+* L'ordre de visualització dels indicadors s'aplica només al portlet [Santiago Cortes]
+* d'indicadors i deixa per tant d'aplicar-se a la vista de tots els [Santiago Cortes]
+* indicadors. [Santiago Cortes]
 
 1.3.8 (2016-08-31)
 ------------------
