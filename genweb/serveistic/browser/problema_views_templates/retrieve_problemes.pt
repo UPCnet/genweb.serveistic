@@ -5,7 +5,8 @@
     <li tal:repeat="problema problemes">
         <span class="fa fa-gear"></span>
         <span class="data" tal:content="problema/date_creation"></span>
-        <a tal:attributes="href problema/url" tal:content="problema/topic"></a>
+        <a tal:attributes="href problema/url; target string:_blank"
+           tal:content="problema/topic"></a>
     </li>
 </ul>
 
