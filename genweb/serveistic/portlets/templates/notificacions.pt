@@ -8,7 +8,9 @@
         <li tal:repeat="notificacio notificacions">
           <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
           <span class="data" tal:content="notificacio/data"></span>
-          <a tal:attributes="href notificacio/url" tal:content="notificacio/titol"/>
+          <span class="notificacio-link">
+              <a tal:attributes="href notificacio/url" tal:content="notificacio/titol"/>
+          </span>
         </li>
       </ul>
 

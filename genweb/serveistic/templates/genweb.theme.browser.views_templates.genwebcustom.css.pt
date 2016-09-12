@@ -1,3 +1,4 @@
+
 body {
     color: #444;
     font-family: "open sans", arial;
@@ -245,7 +246,7 @@ border: 1px solid #666;
     font-size: 18px;
     margin-bottom: 10px;
     margin-right: 8px;
-    margin-top: 5px;
+/*    margin-top: 5px;*/
     text-align: center;
     text-shadow: 1px 1px 1px white;
     width: 20px;
@@ -262,7 +263,7 @@ header {
     box-shadow: 0 -2px 4px #555 inset;
 }
 
-// ---- search view ----
+/* ---- search view ---- */
 
 #librarysearch h2 {
   float: left;
@@ -499,7 +500,7 @@ header {
 }
 
 
-// ---- end search view ----
+/* ---- end search view ---- */
 
 .principal-facetes {
     margin: 10px;
@@ -556,7 +557,7 @@ header {
     height: 150px;
     padding: 0;
     width: 18.8%;
-    overflow-x: none;    
+    overflow-x: hidden;
     overflow-y: auto;
 }
 #faceted-form .widget-fieldset form {
@@ -720,13 +721,10 @@ div.photoAlbumEntry:hover {
     font-size: 100% !important;
 }
 
-
-.avis, .notificacio, .novetat {
-
+span.problema-link, span.notificacio-link {
+    display: table;
 }
-.avis {
 
-}
 .notificacio:before {
   content:"\f0a2";
     font-family: FontAwesome;
@@ -734,9 +732,7 @@ div.photoAlbumEntry:hover {
     font-weight: 400;
     text-decoration: inherit;
 }
-.novetat {
 
-}
 .template-serveitic .list-field, .template-edit.portaltype-serveitic .list-field  {
     min-height: 150px;
     width: 400px;
@@ -940,24 +936,27 @@ float: left;
     line-height: 13px;
     min-height: 35px;
     position: relative;
-    padding-top: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 .indicador-category-list > li:last-child {
   border: 0;
 }
+
 .indicador-category-value {
-    display: table-cell;
-    font-size: 14px;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    top: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #555;
+    padding-bottom: 5px;
+    vertical-align: sub;
 }
 .indicador-category-description {
     display: table-cell;
-    height: 20px;
-    vertical-align: bottom;
-    padding-right: 20px;
+}
+.fa-bar-chart-o:before, .fa-bar-chart:before {
+    content: "\f080";
+    font-size: 15px;
+    vertical-align: text-top;
 }
 .portlet-list dl {
     margin-bottom: 0;
@@ -988,7 +987,6 @@ float: left;
     margin-right: 15px;
 }
 .template-indicadors_list .indicador-category-value {
-font-size: 14px;
 }
 
 @media screen and (min-width: 800px) {
@@ -1098,7 +1096,7 @@ div.photoAlbumEntry {
 }
 }
 
-// ----content type icon ---
+/* ----content type icon --- */
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
   a, span  {
     &
@@ -1125,7 +1123,7 @@ div.photoAlbumEntry {
   background-position: -432px -144px;
 }
 
-// ----content type icon ---
+/* ----content type icon --- */
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
   a, span  {
     &[class^="contenttype-"], &[class*=" contenttype-"] {
@@ -1146,6 +1144,7 @@ div.photoAlbumEntry {
                 float: left;
     }
         &.contenttype-serveitic:before      {background-position: -432px    -144px;}
+}
 
 .icon-serveitic {
   background-position: -432px -144px;

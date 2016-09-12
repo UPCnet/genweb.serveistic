@@ -6,9 +6,9 @@
     <h3 class="title-indicador" tal:content="indicador/description"></h3>
     <ul class="indicador-category-list">
       <li tal:repeat="category indicador/categories">
-        <span class="fa fa-bar-chart"></span>
+        <span class="indicador-category-icon fa fa-bar-chart"></span>
+        <span class="indicador-category-value" tal:content="category/value"></span>
         <span class="indicador-category-description" tal:content="category/description"></span>
-        <span class="indicador-category-value pull-right" tal:content="category/value"></span>
         <span class="data-inline">
           <tal:prefix i18n:translate="updated_on">Updated on</tal:prefix>
           <time tal:attributes="datetime category/date_modified"
