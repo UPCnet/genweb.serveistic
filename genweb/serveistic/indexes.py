@@ -1,5 +1,8 @@
 from five import grok
 from plone.indexer import indexer
+from plone.app.dexterity.behaviors.metadata import ICategorization
+from collective.dexteritytextindexer.utils import searchable
+
 from genweb.serveistic.content.notificaciotic import INotificacioTIC
 
 
@@ -10,3 +13,6 @@ def notifTipus(context):
     """
     return context.tipus
 grok.global_adapter(notifTipus, name='tipus')
+
+# Include content tags in the SearchableText index
+searchable(ICategorization, 'subjects')
