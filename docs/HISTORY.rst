@@ -1,11 +1,28 @@
 Changelog
 =========
 
-1.3.10 (unreleased)
--------------------
+1.4 (2016-09-19)
+----------------
 
-- Nothing changed yet.
-
+* Afegir actualització d'indicadors TIC [Santiago Cortes]
+*  [Santiago Cortes]
+* Afegir actualització dels indicadors: [Santiago Cortes]
+* - servei-n, [Santiago Cortes]
+* - visita-n-data_mes, [Santiago Cortes]
+* - visita-n-data_setmana, [Santiago Cortes]
+* - visita-n-data_ahir. [Santiago Cortes]
+* Fer que el cercador facetat cerque per etiquetes [Santiago Cortes]
+*  [Santiago Cortes]
+* El cercador facetat inclou als resultats els serveis TIC que tenen [Santiago Cortes]
+* etiquetes que apareixen en el text introduït en la caixa de cerca. [Santiago Cortes]
+* Més informació al tiquet 688713. [Santiago Cortes]
+* Millorar aspecte dels portlets [Santiago Cortes]
+*  [Santiago Cortes]
+* - Reestructurar portlet d'indicadors per a mostrar el valor i [Santiago Cortes]
+* la descripció de l'indicador en línies diferents. [Santiago Cortes]
+* - Afegir marge als portlets de problemes i notificacios. [Santiago Cortes]
+* Fer els links als problemes target=_blank [Santiago Cortes]
+* Add portlet touchers [Santiago Cortes]
 
 1.3.9 (2016-09-05)
 ------------------
