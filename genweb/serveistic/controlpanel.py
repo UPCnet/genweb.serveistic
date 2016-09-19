@@ -76,6 +76,45 @@ class IServeisTICControlPanelSettings(model.Schema):
         title=_(u'API key'),
         required=False)
 
+    model.fieldset(
+        'Actualitzacio Indicadors',
+        _(u"Actualització d'Indicadors"),
+        fields=['update_indicadors_passphrase']
+    )
+
+    update_indicadors_passphrase = schema.TextLine(
+        title=_(u"Contrasenya"),
+        description=_(
+            u"Contrasenya necessària per a fer servir la vista "
+            u"d'actualització (valor del paràmetre 'passphrase')"),
+        required=False
+    )
+
+    model.fieldset(
+        'Google Analytics',
+        _(u"Google Analytics"),
+        fields=['ga_email', 'ga_key_path', 'ga_view_id']
+    )
+
+    ga_email = schema.TextLine(
+        title=_(u"Compte Google Analytics"),
+        description=_(u"Compte de correu client de la API"),
+        required=False
+    )
+
+    ga_key_path = schema.TextLine(
+        title=_(u"Path de la clau"),
+        description=_(u"Path absolut del fitxer amb la clau de la API"),
+        required=False
+    )
+
+    ga_view_id = schema.TextLine(
+        title=_(u"Id de visualització"),
+        description=_(
+            u"Identificador de la visualització de serveistic.upc.edu"),
+        required=False
+    )
+
     model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
     form.widget(facetes_table=DataGridFieldFactory)
     facetes_table = schema.List(

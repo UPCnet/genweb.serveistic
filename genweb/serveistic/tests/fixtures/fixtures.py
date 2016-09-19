@@ -13,6 +13,16 @@ def create_content(container, properties):
     return api.content.create(**content_dict)
 
 
+def create_and_publish_content(container, properties):
+    content_dict = {'container': container}
+    content_dict.update(properties)
+    content = api.content.create(**content_dict)
+    api.content.transition(
+        obj=content,
+        transition='publish')
+    return content
+
+
 def normalize_facet_values(obj):
     normalizer = getUtility(IIDNormalizer)
     for facet in ('prestador', 'ubicacio', 'tipologia', 'ambit'):

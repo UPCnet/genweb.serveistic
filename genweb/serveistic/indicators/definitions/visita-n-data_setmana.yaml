@@ -1,0 +1,16 @@
+id: visita-n-data_setmana
+description: Nombre de visites a l'última setmana
+service: serveistic
+categories:
+  - id: total
+    description: Total
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeek
+  - id: target_home
+    description: Al cercador
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekTargetHome
+  - id: source_servei
+    description: Des d'un servei TIC
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekSourceServei
+  - id: source_searchengine
+    description: Des d'un cercador
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekSourceSearchEngine

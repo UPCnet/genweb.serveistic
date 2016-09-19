@@ -8,7 +8,8 @@ unificada dels Serveis TIC que s'ofereixen a la universitat.
 How it works
 ============
 
-Quan s'instal·la el paquet a un lloc Genweb, una sèrie de tipus de dades, vistes i *portlets* es fan automàticament disponibles.
+Quan s'instal·la el paquet a un lloc Genweb, una sèrie de components com ara
+tipus de dades, vistes, *portlets*, etc. es fan automàticament disponibles.
 
 Tipus de dades
 ##############
@@ -22,6 +23,8 @@ Vistes
 
 * **homepage**: cercador *facetat* de serveis.
 * **serveistic-controlpanel**: paràmetres de configuració del paquet.
+* **update_indicadors**: actualitza els indicadors relacionats amb el nombre
+  de visites.
 
 Portlets
 ########
@@ -32,7 +35,19 @@ Portlets
 * **problemes**: mostra els problemes associats a un servei TIC.
 
 Per a recollir la informació sobre els indicadors i problemes associats als
-serveis, el paquet disposa de dos clients web configurables mitjançant la vista *serveistic-controlpanel*.
+serveis, el paquet disposa de dos clients web configurables mitjançant la vista
+*serveistic-controlpanel*.
+
+Subscriptors
+############
+
+* **IServeiTIC on IObjectRemovedEvent**: Actualitza els indicadors.
+* **IServeiTIC on IActionSucceededEvent**: Actualitza els indicadors.
+
+Camps de registre
+#################
+
+Afegeix al registre els camps definits en ``genweb.serveistic.controlpanel.IServeisTICControlPanelSettings``.
 
 Installation
 ============

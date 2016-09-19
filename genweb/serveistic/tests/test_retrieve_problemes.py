@@ -25,11 +25,11 @@ class TestRetrieveProblemes(FunctionalTestCase):
         reduce(assertAppearsBefore, subtxts)
 
     def test_retrieve_from_path(self):
-        servei = fixtures.create_content(
+        servei = fixtures.create_and_publish_content(
             self.portal, fixtures.servei_without_product_id)
-        fixtures.create_content(
+        fixtures.create_and_publish_content(
             servei['problemes'], fixtures.problema_1)
-        fixtures.create_content(
+        fixtures.create_and_publish_content(
             servei['problemes'], fixtures.problema_2)
         commit()
 

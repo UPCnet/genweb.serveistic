@@ -30,6 +30,8 @@ class GenwebServeisticLayer(PloneSandboxLayer):
         import genweb.serveistic
         self.loadZCML(package=genweb.upc)
         self.loadZCML(package=genweb.serveistic)
+
+        z2.installProduct(app, 'Products.CMFPlone')
         z2.installProduct(app, 'Products.DateRecurringIndex')
         z2.installProduct(app, 'plone.app.contenttypes')
         z2.installProduct(app, 'plone.app.multilingual')
@@ -42,6 +44,7 @@ class GenwebServeisticLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
+        applyProfile(portal, 'Products.CMFPlone:plone')
         applyProfile(portal, 'plone.app.contenttypes:default')
         applyProfile(portal, 'plone.app.multilingual:default')
         applyProfile(portal, 'genweb.controlpanel:default')

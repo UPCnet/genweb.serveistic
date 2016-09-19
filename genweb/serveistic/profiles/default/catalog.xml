@@ -4,4 +4,5 @@
     <!-- see add_catalog_indexes method -->
     <column value="tipus"/>
     <column value="image"/>
+    <column value="website_url"/>
 </object>

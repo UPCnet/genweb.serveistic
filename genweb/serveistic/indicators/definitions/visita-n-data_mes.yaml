@@ -1,0 +1,16 @@
+id: visita-n-data_mes
+description: Nombre de visites a l'últim mes
+service: serveistic
+categories:
+  - id: total
+    description: Total
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaMonth
+  - id: target_home
+    description: Al cercador
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaMonthTargetHome
+  - id: source_servei
+    description: Des d'un servei TIC
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaMonthSourceServei
+  - id: source_searchengine
+    description: Des d'un cercador
+    calculator: genweb.serveistic.indicators.calculators.SessionsDeltaMonthSourceSearchEngine

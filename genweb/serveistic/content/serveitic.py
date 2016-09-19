@@ -78,6 +78,13 @@ class IServeiTIC(form.Schema):
         required=False,
     )
 
+    dexteritytextindexer.searchable('website_url')
+    website_url = schema.TextLine(
+        title=_(u"URL"),
+        description=_(u"Direcció URL del web del servei"),
+        required=False,
+    )
+
     responsable = schema.TextLine(
         title=_(u"Nom del responsable funcional"),
         description=_(u"Nom del responsable funcional del servei"),

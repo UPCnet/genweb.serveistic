@@ -1,4 +1,4 @@
-from mock import Mock, patch
+from mock import patch
 
 from plone.testing.z2 import Browser
 from plone import api
@@ -196,12 +196,12 @@ class TestRetrieveIndicadors(FunctionalTestCase):
             self.browser.open(view.url() + query_string)
             self.assertAppearInOrder([
                 "Indicador 1",
-                "Categoria 1.1", "v1.1", "2/2/2015",
-                "Categoria 1.2", "v1.2", "3/2/2015",
+                "v1.1", "Categoria 1.1", "2/2/2015",
+                "v1.2", "Categoria 1.2", "3/2/2015",
                 "Indicador 2",
-                "Categoria 2.1", "v2.1", "5/2/2015",
-                "Categoria 2.2", "v2.2", "6/2/2015",
-                "Categoria 2.3", "v2.3", "7/2/2015"
+                "v2.1", "Categoria 2.1", "5/2/2015",
+                "v2.2", "Categoria 2.2", "6/2/2015",
+                "v2.3", "Categoria 2.3", "7/2/2015"
                 ],
                 self.browser.contents)
 
