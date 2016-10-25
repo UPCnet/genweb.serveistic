@@ -64,7 +64,8 @@ class RetrieveIndicadors(grok.View):
 
     @property
     def indicadors(self):
-        reporter = IndicadorsDataReporter(get_ws_indicadors_client())
+        reporter = IndicadorsDataReporter(
+            get_ws_indicadors_client(), self.context)
 
         count_indicator, count_category, apply_order = self.parse_parameters()
         service_id = self.context.service_id

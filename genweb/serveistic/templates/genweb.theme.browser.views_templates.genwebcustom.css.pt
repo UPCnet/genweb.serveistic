@@ -949,6 +949,7 @@ float: left;
     color: #555;
     padding-bottom: 5px;
     vertical-align: sub;
+    display: block;
 }
 .indicador-category-description {
     display: table-cell;
@@ -984,9 +985,20 @@ float: left;
 }
 .template-indicadors_list .portlet-list > li .fa {
     font-size: 20px;
-    margin-right: 15px;
 }
 .template-indicadors_list .indicador-category-value {
+}
+
+#indicadors i.fa.fa-fw {
+    font-size: 27px;
+    color: #00aee5;
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+#indicadors i.fa.fa-fw:hover {
+    cursor: pointer;
 }
 
 @media screen and (min-width: 800px) {
@@ -1149,4 +1161,5 @@ div.photoAlbumEntry {
 .icon-serveitic {
   background-position: -432px -144px;
 }
+
 

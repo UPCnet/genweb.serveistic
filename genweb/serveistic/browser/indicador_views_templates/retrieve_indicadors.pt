@@ -6,18 +6,50 @@
     <h3 class="title-indicador" tal:content="indicador/description"></h3>
     <ul class="indicador-category-list">
       <li tal:repeat="category indicador/categories">
+        <i class="fa fa-angle-down fa-fw update-info" aria-hidden="true"></i>
         <span class="indicador-category-icon fa fa-bar-chart"></span>
         <span class="indicador-category-value" tal:content="category/value"></span>
         <span class="indicador-category-description" tal:content="category/description"></span>
-        <span class="data-inline">
-          <tal:prefix i18n:translate="updated_on">Updated on</tal:prefix>
-          <time tal:attributes="datetime category/date_modified"
-                tal:content="category/date_modified"></time>
+        <section class="indicador-category-update-info" style="display: none;">
+        <tal:block tal:condition="not:category/is_online">
+          <span class="data-inline">
+            <tal:prefix i18n:translate="updated_on">Updated on</tal:prefix>
+            <time tal:attributes="datetime category/date_modified"
+                  tal:content="category/date_modified"></time>
+          </span>
+          <span tal:condition="category/frequency" class="data-inline">
+            <tal:prefix i18n:translate="update_frequency">Update frequency</tal:prefix>
+            <tal:frequency tal:content="category/frequency">Daily</tal:frequency>
+          </span>
+        </tal:block>
+
+        <span tal:condition="category/is_online" class="data-inline">
+          <tal:prefix i18n:translate="updated_now">Updated now</tal:prefix>
         </span>
       </li>
     </ul>
   </li>
 </ul>
+
+<script>
+$('.update-info').each(function(index, element) {
+    $(element).click(function(event) {
+        var update_info = $(event.target).siblings(".indicador-category-update-info");
+        if (update_info.is(':visible'))
+        {
+            update_info.hide("fast");
+            $(event.target).removeClass('fa-angle-up');
+            $(event.target).addClass('fa-angle-down');
+        }
+        else
+        {
+            update_info.show("fast");
+            $(event.target).removeClass('fa-angle-down');
+            $(event.target).addClass('fa-angle-up');
+        }
+    });
+});
+</script>
 
 <div tal:condition="python: indicadors and count" class="portlet-footer">
   <a tal:attributes="href view/indicadors_href">Tots els indicadors</a>

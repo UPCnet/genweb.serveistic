@@ -93,18 +93,12 @@ class IServeisTICControlPanelSettings(model.Schema):
     model.fieldset(
         'Google Analytics',
         _(u"Google Analytics"),
-        fields=['ga_email', 'ga_key_path', 'ga_view_id']
+        fields=['ga_key_json', 'ga_view_id']
     )
 
-    ga_email = schema.TextLine(
-        title=_(u"Compte Google Analytics"),
-        description=_(u"Compte de correu client de la API"),
-        required=False
-    )
-
-    ga_key_path = schema.TextLine(
-        title=_(u"Path de la clau"),
-        description=_(u"Path absolut del fitxer amb la clau de la API"),
+    ga_key_json = schema.Text(
+        title=_(u"Clau de la API"),
+        description=_(u"Contingut JSON de la clau de la API"),
         required=False
     )
 

@@ -31,3 +31,36 @@ msgstr "Cerca un Servei TIC"
 
 msgid "updated_on"
 msgstr "Actualitzat el"
+
+msgid "updated_now"
+msgstr "Actualitzat ara"
+
+msgid "update_frequency"
+msgstr "Freqüència d'actualització:"
+
+msgid "category_freq_unknown"
+msgstr "Desconeguda"
+
+msgid "category_freq_horaria"
+msgstr "Horària"
+
+msgid "category_freq_diaria"
+msgstr "Diària"
+
+msgid "category_freq_setmanal"
+msgstr "Setmanal"
+
+msgid "category_freq_mensual"
+msgstr "Mensual"
+
+msgid "category_freq_trimestral"
+msgstr "Trimestral"
+
+msgid "category_freq_quadrimestral"
+msgstr "Quadrimestral"
+
+msgid "category_freq_semestral"
+msgstr "Semestral"
+
+msgid "category_freq_anual"
+msgstr "Anual"

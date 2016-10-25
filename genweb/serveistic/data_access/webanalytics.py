@@ -15,20 +15,18 @@ class GoogleAnalyticsReporter(object):
     API_VERSION = 'v3'
     SCOPE = ['https://www.googleapis.com/auth/analytics.readonly']
 
-    def __init__(self, service_account_email, key_file_location):
+    def __init__(self, json_keyfile_dict):
         self._service = GoogleAnalyticsReporter.get_service(
             api_name=GoogleAnalyticsReporter.API_NAME,
             api_version=GoogleAnalyticsReporter.API_VERSION,
             scope=GoogleAnalyticsReporter.SCOPE,
-            service_account_email=service_account_email,
-            key_file_location=key_file_location)
+            json_keyfile_dict=json_keyfile_dict)
 
     @staticmethod
-    def get_service(api_name, api_version, scope, service_account_email,
-                    key_file_location):
+    def get_service(api_name, api_version, scope, json_keyfile_dict):
         try:
-            credentials = ServiceAccountCredentials.from_p12_keyfile(
-                service_account_email, key_file_location, scopes=scope)
+            credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+                json_keyfile_dict, scopes=scope)
             return build(
                 api_name,
                 api_version,

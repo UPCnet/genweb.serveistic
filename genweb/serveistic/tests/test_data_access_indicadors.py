@@ -59,14 +59,16 @@ class TestDataAccessIndicadors(unittest.TestCase):
 
     # Test list_by_service_id (lbsi)
     def test_lbsi_count_category_should_not_limit_if_not_specified(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         count_indicator = 10
         indicadors = reporter.list_by_service_id(
             'mock-id', count_indicator=count_indicator)
         self.assertEqual(len(indicadors), 10)
 
     def test_lbsi_count_category_should_limit_if_specified(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         count_indicator = 10
         for count_category in (1, 3, 4):
             indicators = reporter.list_by_service_id(
@@ -79,7 +81,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
             self.assertEqual(count_category, total_categories)
 
     def test_lbsi_count_category_should_not_limit_if_count_indicator_is_more_restrictive(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         count_indicator = 1
         count_category = 4
         indicators = reporter.list_by_service_id(
@@ -88,7 +91,7 @@ class TestDataAccessIndicadors(unittest.TestCase):
         total_categories = sum(
             [len(indicator['categories']) for indicator in indicators])
         self.assertEqual(count_indicator, len(indicators))
-        self.assertEqual(total_categories, total_categories)
+        self.assertLess(total_categories, count_category)
 
     # Test list_by_service_id_and_indicators_order (lbso)
     def test_lbso_should_delegate_when_order_is_none(self):
@@ -145,7 +148,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
                 count_category=0))
 
     def test_lbso_should_only_return_valid_index_indicators_in_the_right_order(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         indicators = reporter.list_by_service_id_and_indicators_order(
             '3x2-service',
             indicators_order="0.1, 0.2, 3.0, 3.1, 3.2, 3.3, 4.1, 4.2, 2.0")
@@ -154,7 +158,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
         self.assertEqual('indicator-2', indicators[1]['identifier'])
 
     def test_lbso_should_only_return_valid_index_categories_in_the_right_order(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         indicators = reporter.list_by_service_id_and_indicators_order(
             '3x2-service',
             indicators_order="0.1, 0.2, 3.0, 3.2, 3.1, 3.3, 4.1, 4.2, 2.0")
@@ -166,7 +171,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
         self.assertEqual(0, len(indicators[1]['categories']))
 
     def test_lbso_should_limit_indicators_if_count_specified(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         indicators = reporter.list_by_service_id_and_indicators_order(
             '3x2-service',
             indicators_order="3.2, 2.1, 1.2",
@@ -201,7 +207,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
         self.assertEqual('indicator-1', indicators[2]['identifier'])
 
     def test_lbso_should_limit_categories_if_count_specified(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         indicators = reporter.list_by_service_id_and_indicators_order(
             '3x2-service',
             indicators_order="3.2, 2.1, 1.2",
@@ -235,7 +242,8 @@ class TestDataAccessIndicadors(unittest.TestCase):
         self.assertEqual(3, total_categories)
 
     def test_lbso_count_category_should_not_limit_if_count_indicator_is_more_restrictive(self):
-        reporter = IndicadorsDataReporter(self.client)
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=lambda msgid: ''))
         indicators = reporter.list_by_service_id_and_indicators_order(
             '3x2-service',
             indicators_order="3.2, 2.1, 1.2",
@@ -245,3 +253,31 @@ class TestDataAccessIndicadors(unittest.TestCase):
         total_categories = sum(
             [len(indicator['categories']) for indicator in indicators])
         self.assertEqual(2, total_categories)
+
+    @patch('genweb.serveistic.data_access.indicadors._')
+    def test_translate_frequency_should_translate_unk_if_freq_not_in_values(self, mock_):
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=Mock()))
+        reporter._translate_frequency('Invalid frequency')
+        mock_.assert_called_with('category_freq_unknown')
+
+    @patch('genweb.serveistic.data_access.indicadors._')
+    def test_translate_frequency_should_translate_unk_if_freq_is_none(self, mock_):
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=Mock()))
+        reporter._translate_frequency(None)
+        mock_.assert_called_with('category_freq_unknown')
+
+    @patch('genweb.serveistic.data_access.indicadors._')
+    def test_translate_frequency_should_translate_unk_if_freq_not_str(self, mock_):
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=Mock()))
+        reporter._translate_frequency(123)
+        mock_.assert_called_with('category_freq_unknown')
+
+    @patch('genweb.serveistic.data_access.indicadors._')
+    def test_translate_frequency_should_translate_lowercased_freq_if_freq_in_values(self, mock_):
+        reporter = IndicadorsDataReporter(
+            self.client, context=Mock(translate=Mock()))
+        reporter._translate_frequency(u'Horaria')
+        mock_.assert_called_with('category_freq_horaria')

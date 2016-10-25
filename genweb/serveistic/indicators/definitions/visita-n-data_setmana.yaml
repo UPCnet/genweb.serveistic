@@ -4,13 +4,21 @@ service: serveistic
 categories:
   - id: total
     description: Total
+    type: diferit
+    frequency: diaria
     calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeek
   - id: target_home
     description: Al cercador
+    type: diferit
+    frequency: diaria
     calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekTargetHome
   - id: source_servei
     description: Des d'un servei TIC
+    type: diferit
+    frequency: diaria
     calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekSourceServei
   - id: source_searchengine
     description: Des d'un cercador
+    type: diferit
+    frequency: diaria
     calculator: genweb.serveistic.indicators.calculators.SessionsDeltaWeekSourceSearchEngine

@@ -1,8 +1,9 @@
 import re
+import json
 
 from Products.CMFCore.utils import getToolByName
 
-from genweb.core.indicators import Calculator, ReporterException
+from genweb.core.indicators import Calculator, CalculatorException
 from genweb.serveistic.utilities import serveistic_config
 from genweb.serveistic.data_access.servei import ServeiDataReporter
 from genweb.serveistic.data_access.webanalytics import (
@@ -20,10 +21,12 @@ class GoogleAnalyticsCalculator(Calculator):
     def _get_reporter(self):
         try:
             return GoogleAnalyticsReporter(
-                serveistic_config().ga_email,
-                serveistic_config().ga_key_path)
+                json.loads(serveistic_config().ga_key_json))
+        except (TypeError, ValueError) as e:
+            raise CalculatorException(
+                "Invalid GA JSON key ({0})".format(e))
         except GoogleAnalyticsReporterException as e:
-            raise ReporterException(
+            raise CalculatorException(
                 "Cannot instantiate GA reporter ({0})".format(e))
 
     def _get_ids(self):
@@ -49,7 +52,7 @@ class SessionsCalculator(GoogleAnalyticsCalculator):
                 filters=self._filters))
             return int(results['totalsForAllResults']['ga:sessions'])
         except GoogleAnalyticsReporterException as e:
-            raise ReporterException("Error when querying GA ({0})".format(e))
+            raise CalculatorException("Error when querying GA ({0})".format(e))
 
 
 class SessionsDeltaMonth(SessionsCalculator):

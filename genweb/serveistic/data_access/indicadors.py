@@ -1,6 +1,7 @@
 import logging
 
 from genweb.core.indicators.client import ClientException
+from genweb.serveistic import _
 from genweb.serveistic.content.serveitic import (
     is_valid_service_indicators_order,
     parse_service_indicators_order)
@@ -13,8 +14,19 @@ class IndicadorsDataReporterException(Exception):
 
 
 class IndicadorsDataReporter(object):
-    def __init__(self, client):
+    FREQUENCY_VALUES = (
+        u'Horaria',
+        u'Diaria',
+        u'Setmanal',
+        u'Mensual',
+        u'Trimestral',
+        u'Quadrimestral',
+        u'Semestral',
+        u'Anual')
+
+    def __init__(self, client, context=None):
         self.client = client
+        self.context = context
 
     def list_by_service_id_and_indicators_order(
             self, service_id, indicators_order,
@@ -94,7 +106,17 @@ class IndicadorsDataReporter(object):
             description=category.description,
             date_modified=category.date_modified.strftime(
                             "%d/%m/%Y %H:%M") if category.date_modified else '',
+            is_online=category.type == 'online',
+            frequency=self._translate_frequency(category.frequency),
             value=category.value)
+
+    def _translate_frequency(self, frequency):
+        frequency_msgid = (
+            frequency.lower()
+            if frequency in IndicadorsDataReporter.FREQUENCY_VALUES
+            else u'unknown')
+        return self.context.translate(
+                _(u'category_freq_{0}'.format(frequency_msgid)))
 
     def _indicator_to_dict(self, indicator, categories):
         return dict(
