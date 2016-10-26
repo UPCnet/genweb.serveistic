@@ -1,11 +1,20 @@
 Changelog
 =========
 
-1.4.1 (unreleased)
-------------------
+1.5 (2016-10-26)
+----------------
 
-- Nothing changed yet.
-
+* Afegir freqüència d'indicadors i altres canvis [Santi]
+*  [Santi]
+* - Afegir tipus i freqüència a les definicions dels indicadors. [Santi]
+* - Mostrar informació de freqüència al portlet d'indicadors. [Santi]
+* - Transformar ReporterException en CalculatorException quan siga [Santi]
+* convenient. [Santi]
+* - Legir el certificat de Google Analytics des del panell de [Santi]
+* configuración en comptes de fer-lo des d'un fitxer. [Santi]
+* - Corregir la situació en la qual la toolbar de l'usuari oculta [Santi]
+* part del fragment d'una pàgina quan s'accedeix mitjançant una [Santi]
+* URL amb #. [Santi]
 
 1.4 (2016-09-19)
 ----------------
