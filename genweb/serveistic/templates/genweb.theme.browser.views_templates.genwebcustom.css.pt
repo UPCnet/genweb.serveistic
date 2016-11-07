@@ -851,6 +851,7 @@ label {
 }
 .portlet-baners li {
     padding: 0;
+    margin-bottom: 9px;
 }
 #eines {
     margin: 5px 20px 0 0;
