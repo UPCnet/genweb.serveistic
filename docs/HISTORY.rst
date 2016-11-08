@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.1 (unreleased)
+1.6.1 (2016-11-08)
 ------------------
 
-- Nothing changed yet.
-
+* Afegir espai entre banners al portlet [Santi]
 
 1.5 (2016-10-26)
 ----------------
