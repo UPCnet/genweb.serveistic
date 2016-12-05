@@ -29,32 +29,32 @@ class TestIndicatorsCalculatorsIntegration(IntegrationTestCase):
             self.portal, serveis.servei_domain_empty)
         commit()
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
-        self.assertEqual('^$', source_re)
+        source_re = calculator._build_filters()
+        self.assertEqual('ga:source=~^$', source_re)
 
     def test_sss_source_re_should_not_include_service_with_none_url(self):
         fixtures.create_and_publish_content(
             self.portal, serveis.servei_domain_none)
         commit()
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
-        self.assertEqual('^$', source_re)
+        source_re = calculator._build_filters()
+        self.assertEqual('ga:source=~^$', source_re)
 
     def test_sss_source_re_should_not_include_service_not_published(self):
         fixtures.create_content(self.portal, serveis.servei_domain_none)
         fixtures.create_content(self.portal, serveis.servei_domain_1)
         commit()
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
-        self.assertEqual('^$', source_re)
+        source_re = calculator._build_filters()
+        self.assertEqual('ga:source=~^$', source_re)
 
     def test_sss_source_re_should_include_service_with_url_and_published(self):
         fixtures.create_and_publish_content(
             self.portal, serveis.servei_domain_1)
         commit()
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
-        self.assertEqual('^domain1\\.com$', source_re)
+        source_re = calculator._build_filters()
+        self.assertEqual('ga:source=~^domain1\\.com$', source_re)
 
     def test_sss_source_re_should_only_include_services_if_published_and_with_urls(self):
         fixtures.create_and_publish_content(
@@ -70,9 +70,9 @@ class TestIndicatorsCalculatorsIntegration(IntegrationTestCase):
         commit()
 
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
+        source_re = calculator._build_filters()
         self.assertEqual(
-            '^domain1\\.com|domain3\\.com$', source_re)
+            'ga:source=~^domain1\\.com$,ga:source=~^domain3\\.com$', source_re)
 
     def test_sss_source_re_should_be_empty_if_all_services_not_published_or_urls_empty_or_none(self):
         fixtures.create_and_publish_content(
@@ -84,5 +84,5 @@ class TestIndicatorsCalculatorsIntegration(IntegrationTestCase):
         commit()
 
         calculator = SessionsSourceServei(self.portal)
-        source_re = calculator._build_source_re()
-        self.assertEqual('^$', source_re)
+        source_re = calculator._build_filters()
+        self.assertEqual('ga:source=~^$', source_re)

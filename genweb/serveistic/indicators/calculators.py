@@ -90,17 +90,21 @@ class SessionsSourceSearchEngine(SessionsCalculator):
 
 class SessionsSourceServei(SessionsCalculator):
     def calculate(self):
-        self._filters = 'ga:source=~{0}'.format(self._build_source_re())
+        self._filters = self._build_filters()
         return super(SessionsSourceServei, self).calculate()
 
-    def _build_source_re(self):
+    def _build_filters(self):
         catalog = getToolByName(self.context, 'portal_catalog')
         reporter = ServeiDataReporter(catalog)
-        servei_url_res = [
-            self._extract_url_domain_re(servei.website_url)
+        servei_filters = [
+            self._build_filter_from_url(servei.website_url)
             for servei in reporter.list_by_review_state('published')
             if servei.website_url]
-        return '^{0}$'.format('|'.join(servei_url_res))
+        return ",".join(servei_filters) if servei_filters else "ga:source=~^$"
+
+    def _build_filter_from_url(self, url):
+        return "ga:source=~^{0}$".format(
+            self._extract_url_domain_re(url))
 
     def _extract_url_domain_re(self, url):
         return re.escape(self._remove_path(self._remove_protocol(url)))
