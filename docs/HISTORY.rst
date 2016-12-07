@@ -1,11 +1,17 @@
 Changelog
 =========
 
-1.6.2 (unreleased)
+1.6.2 (2016-12-07)
 ------------------
 
-- Nothing changed yet.
-
+* Corregir error durant el càlcul d'indicadors [Santi]
+*  [Santi]
+* L'expressió regular utilitzada per comptabilitzar les visites [Santi]
+* vingudes d'un servei TIC superava la llargària permesa per GA API. [Santi]
+*  [Santi]
+* Ara, en comptes d'utilitzar un sol filtre amb una expressió [Santi]
+* composta per les URLs dels N serveis TIC, s'utilitzen N filtres, [Santi]
+* cadascú amb una expressió regular composta per una sola URL. [Santi]
 
 1.6.1 (2016-11-08)
 ------------------
