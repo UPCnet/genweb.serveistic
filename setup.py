@@ -31,7 +31,7 @@ setup(name='genweb.serveistic',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.dexteritytextindexer == 2.0.1',
+          'collective.dexteritytextindexer',
           'eea.facetednavigation',
           'simplejson',
           'google-api-python-client',
