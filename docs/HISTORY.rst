@@ -1,11 +1,18 @@
 Changelog
 =========
 
-1.6.3 (unreleased)
+1.6.3 (2017-01-24)
 ------------------
 
-- Nothing changed yet.
-
+* Add packet to serveitic.allowed_content_types [Santi]
+* Make section.allowed_types=serveitic.allowed_types [Santi]
+*  [Santi]
+* Sections of the nav bar showed on top of serveitic's view are [Santi]
+* filtered by: [Santi]
+* portal_type=serveitic.allowed_types [Santi]
+* Add Link to serveitic.allowed_content_types [Santi]
+* Add IDexterityTranslatable to content types [Santi]
+* removed fixed version in package [Roberto Diaz]
 
 1.6.2 (2016-12-07)
 ------------------
