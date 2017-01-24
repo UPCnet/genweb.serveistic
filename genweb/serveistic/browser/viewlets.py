@@ -54,7 +54,7 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
     @property
     def allowed_section_types(self):
         return [
-            content_type.title
+            content_type.id
             for content_type in self.context.allowedContentTypes()]
 
     def get_servei(self):

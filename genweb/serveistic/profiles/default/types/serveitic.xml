@@ -19,6 +19,7 @@
    <element value="File"/>
    <element value="Image"/>
    <element value="Link"/>
+   <element value="packet"/>
  </property>
 
  <property name="allow_discussion">True</property>
