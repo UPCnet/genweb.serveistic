@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.4 (unreleased)
+1.6.4 (2017-02-01)
 ------------------
 
-- Nothing changed yet.
-
+* Set timeout of Problemes WS client [Santi]
 
 1.6.3 (2017-01-24)
 ------------------
