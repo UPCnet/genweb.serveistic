@@ -11,7 +11,7 @@ import base64
 import datetime
 
 import requests
-from requests.exceptions import ConnectionError
+from requests.exceptions import ConnectionError, ReadTimeout
 from simplejson.decoder import JSONDecodeError
 
 
@@ -39,11 +39,12 @@ class Client(object):
     KEY_DATE_FIX = 'dataLimitResolucioString'
 
     def __init__(self, endpoint, login_username, login_password,
-                 content_type='application/json'):
+                 content_type='application/json', timeout=5):
         self.endpoint = endpoint.rstrip('/') if endpoint else endpoint
         self.login_username = login_username
         self.login_password = login_password
         self.content_type = content_type
+        self.timeout = timeout
 
     def _get_headers(self):
         login_username = self.login_username if self.login_username else ""
@@ -105,7 +106,7 @@ class Client(object):
                 raise ClientException("Parameter 'product_id' cannot be empty")
             response = requests.get(
                 '{0}/{1}'.format(self.endpoint, product_id),
-                headers=self._get_headers(), verify=False)
+                headers=self._get_headers(), verify=False, timeout=self.timeout)
             if response.status_code != requests.codes.ok:
                 raise ClientException("Status code is not OK ({0})".format(
                     response.status_code))
@@ -118,3 +119,7 @@ class Client(object):
         except ConnectionError:
             raise ClientException("The connection with '{0}' could not be "
                                   "established".format(self.endpoint))
+        except ReadTimeout:
+            raise ClientException(
+                "There was a timeout while waiting for '{0}'".format(
+                    self.endpoint))

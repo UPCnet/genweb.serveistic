@@ -55,10 +55,15 @@ class IndicadorsDataReporter(object):
                         break
                 except IndexError:
                     logger.warning(
-                        "IndexError when accessing category {0}, {1} in "
+                        "IndexError when accessing category ({0}, {1}) in "
                         "list_by_service_id_and_indicators_order".format(
                             indicator_i, category_i))
                     continue
+                except ClientException as e:
+                    raise IndicadorsDataReporterException(
+                        "Error when accessing category ({0}, {1}) in "
+                        "list_by_service_id_and_indicators_order ({2})".format(
+                            indicator_i, category_i, e))
             try:
                 indicators.append(
                     self._indicator_to_dict(m[indicator_i], categories))
@@ -72,6 +77,11 @@ class IndicadorsDataReporter(object):
                     "list_by_service_id_and_indicators_order".format(
                         indicator_i))
                 continue
+            except ClientException as e:
+                raise IndicadorsDataReporterException(
+                    "Error when accessing indicator {0} in "
+                    "list_by_service_id_and_indicators_order ({1})".format(
+                        indicator_i, e))
         return indicators
 
     def list_by_service_id(
