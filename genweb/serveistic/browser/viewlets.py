@@ -51,11 +51,8 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
 
     index = ViewPageTemplateFile('viewlets_templates/sections.pt')
 
-    @property
-    def allowed_section_types(self):
-        return [
-            content_type.id
-            for content_type in self.context.allowedContentTypes()]
+    allowed_section_types = [
+        'Folder', 'Collection', 'Document', 'serveitic', 'packet']
 
     def get_servei(self):
         context = aq_inner(self.context)
