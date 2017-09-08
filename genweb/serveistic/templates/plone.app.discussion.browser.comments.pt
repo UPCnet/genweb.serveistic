@@ -13,7 +13,7 @@
            i18n:domain="plone">
 
     <div class="reply"
-         tal:condition="python:isAnon and not isAnonymousDiscussionAllowed">
+         tal:condition="python:isDiscussionAllowed and (isAnon and not isAnonymousDiscussionAllowed)">
         <form tal:attributes="action view/login_action">
             <input class="standalone loginbutton"
                    type="submit"
@@ -52,7 +52,7 @@
                  canEdit python:view.can_edit(reply)"
                  tal:attributes="class python:'comment replyTreeLevel'+str(depth)+' state-'+str(review_state);
                                  id string:${reply/getId}"
-                 tal:condition="python:canReview or review_state == 'published'">
+                 tal:condition="python:isDiscussionAllowed and (canReview or review_state == 'published')">
 
                 <div class="commentImage" tal:condition="showCommenterImage">
                     <a href="" tal:condition="has_author_link"
@@ -171,7 +171,7 @@
     </div>
 
     <div class="reply"
-         tal:condition="python:has_replies and (isAnon and not isAnonymousDiscussionAllowed)">
+         tal:condition="python:isDiscussionAllowed and (isAnon and not isAnonymousDiscussionAllowed)">
         <form tal:attributes="action view/login_action">
             <input class="standalone loginbutton"
                    type="submit"

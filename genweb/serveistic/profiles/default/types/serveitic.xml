@@ -45,6 +45,7 @@
     <element value="plone.app.multilingual.dx.interfaces.IDexterityTranslatable" />
     <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes"/>
     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
+    <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion" />
  </property>
 
   <!-- View information -->
@@ -75,4 +76,3 @@
  </action>
 
 </object>
-
