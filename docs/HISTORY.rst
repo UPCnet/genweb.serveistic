@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.6 (unreleased)
+1.6.6 (2017-10-02)
 ------------------
 
-- Nothing changed yet.
-
+* Change homeupc protocol [Corina Riba]
+* Afegir botó per habilitar/deshabilitar comentaris al tipus de contingut serveitic [iago.lopez]
 
 1.6.5 (2017-02-07)
 ------------------
