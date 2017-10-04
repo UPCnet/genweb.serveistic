@@ -14,7 +14,7 @@
   </criterion>
   <criterion name="c5">
    <property name="widget">checkbox</property>
-   <property name="title">Tipologia</property>
+   <property name="title">Tipus d'eina o servei</property>
    <property name="position">center</property>
    <property name="section">default</property>
    <property name="hidden">0</property>
@@ -51,7 +51,7 @@
   </criterion>
   <criterion name="c6">
    <property name="widget">checkbox</property>
-   <property name="title">Ubicació</property>
+   <property name="title">Usuaris</property>
    <property name="position">center</property>
    <property name="section">default</property>
    <property name="hidden">0</property>
@@ -70,7 +70,7 @@
   </criterion>
   <criterion name="c3">
    <property name="widget">checkbox</property>
-   <property name="title">Prestador</property>
+   <property name="title">Proveïdor</property>
    <property name="position">center</property>
    <property name="section">default</property>
    <property name="hidden">0</property>

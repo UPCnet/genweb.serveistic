@@ -64,3 +64,15 @@ msgstr "Semestral"
 
 msgid "category_freq_anual"
 msgstr "Anual"
+
+msgid "Prestador"
+msgstr "Proveïdor"
+
+msgid "Ubicació"
+msgstr "Usuaris"
+
+msgid "Tipologia"
+msgstr "Tipus d'eina o servei"
+
+msgid "Àmbit"
+msgstr "Àmbit"

@@ -118,17 +118,17 @@ class FacetValuesVocabularyBase(object):
 
 class PrestadorVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
-        self.facet_id = u"Prestador"
+        self.facet_id = u"Proveïdor"
 
 
 class UbicacioVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
-        self.facet_id = u"Ubicació"
+        self.facet_id = u"Usuaris"
 
 
 class TipologiaVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
-        self.facet_id = u"Tipologia"
+        self.facet_id = u"Tipus d'eina o servei"
 
 
 class AmbitVocabulary(FacetValuesVocabularyBase):
