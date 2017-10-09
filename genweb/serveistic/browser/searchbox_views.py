@@ -2,6 +2,7 @@
 import json
 
 from five import grok
+from plone import api
 from zope.interface import Interface
 from Products.CMFPlone.utils import safe_unicode
 from Products.CMFCore.utils import getToolByName
@@ -69,6 +70,11 @@ class TypeAheadSearch(TypeAheadSearchBase):
         if path is None:
             # useful for subsides
             params['path'] = get_referer_path(self.context, self.request)
+            if len(params['path'].split('/')) >= 4:
+                serveistic_path = '/'.join(params['path'].split('/')[0:4])
+                portal = api.portal.get()
+                if portal.restrictedTraverse(serveistic_path).portal_type == 'serveitic':
+                    params['path'] = serveistic_path
         else:
             params['path'] = path
 
@@ -120,4 +126,3 @@ class TypeAheadSearch(TypeAheadSearchBase):
                 queryElements.append(too_many_results)
 
         return json.dumps(queryElements)
-

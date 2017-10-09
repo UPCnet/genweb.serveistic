@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
+from plone import api
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner, aq_chain
 
@@ -206,7 +207,14 @@ class HeaderGWServeistic(gwHeader):
         }});""".format(path=self.get_search_path())
 
     def get_search_path(self):
-        return '/'.join(self.context.getPhysicalPath())
+        folder_path = '/'.join(self.context.getPhysicalPath())
+        if len(folder_path.split('/')) >= 4:
+            serveistic_path = '/'.join(folder_path.split('/')[0:4])
+            portal = api.portal.get()
+            if portal.restrictedTraverse(serveistic_path).portal_type == 'serveitic':
+                folder_path = serveistic_path
+
+        return folder_path
 
 
 class PortalHeaderGWServeistic(gwHeader):
