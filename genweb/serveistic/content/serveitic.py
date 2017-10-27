@@ -2,14 +2,17 @@
 
 import re
 
+from five import grok
 from zope import schema
 from zope.interface import Interface, implements, Invalid
 from collective import dexteritytextindexer
 from plone.directives import form
+from plone.directives import dexterity
 from plone.namedfile.field import NamedBlobImage as BlobImage
 from plone.app.textfield import RichText
 from plone.dexterity.content import Item
 from plone.app.users.userdataschema import checkEmailAddress
+from plone.app.contenttypes.behaviors.richtext import IRichText
 
 from genweb.serveistic import _
 
@@ -70,12 +73,22 @@ class IServeiTIC(form.Schema):
         title=_(u"Descripció"),
         description=_(u"Descripció del servei que es veurà al buscador"),
         required=False,
+        default=u'Explica en poques paraules la funcionalitat principal del servei. Aquesta és la frase que apareix en el cercador de serveis',
     )
 
     dexteritytextindexer.searchable('serveiDescription')
     serveiDescription = RichText(
         title=_(u"Breu resum del servei"),
         required=False,
+        default=IRichText['text'].fromUnicode(
+            u"""<p><strong>RESPON A LA PREGUNTA: Quin és el benefici per l'usuari d'utilitzar el servei</strong></p>
+                <p>Emplena la descripció del servei amb la proposta de valor del servei.</p>
+                <p>Explica-hi per quina raó ha d’utilitzar el servei l’usuari. Utilitza les següents fórmules de redacció:</p>
+                <p>-          <b>Acció</b> (imperatiu, segona persona del singular) + <b>objecte + [qualitat/avantatge]</b></p>
+                <p>“Rep i envia missatges de correu electrònic des de qualsevol lloc” “Llegeix llibres amb el mòbil” “Obre, edita i crea documents en línia”</p>
+                <p> </p>
+                <p>Nota: en les etiquetes posa totes les paraules que puguin identificar el servei </p>"""
+        ),
     )
 
     dexteritytextindexer.searchable('website_url')

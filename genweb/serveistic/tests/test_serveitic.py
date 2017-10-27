@@ -58,20 +58,30 @@ class TestServeiTic(IntegrationTestCase):
             'Folder',
             'Manuals')
         self.assert_content_in(
+            serveitic['documentacio']['manuals'],
+            'manual',
+            'Document',
+            'Manual')
+        self.assert_content_in(
             serveitic['documentacio'],
             'casos-dus',
             'Document',
             "Casos d'ús")
 
         self.assert_content_in(serveitic, 'faq', 'Folder', 'FAQ')
+        self.assert_content_in(
+            serveitic['faq'],
+            'faq-1',
+            'Document',
+            'FAQ-1')
 
         self.assert_content_in(serveitic, 'doc-tecnica', 'Folder',
                                'Doc tècnica')
         self.assert_content_in(
             serveitic['doc-tecnica'],
-            'documentacio-tecnica',
+            'fitxa-tecnica',
             'Document',
-            'Documentació tècnica')
+            'Fitxa tècnica')
         self.assert_content_in(
             serveitic['doc-tecnica'],
             'documentacio-de-referencia',
