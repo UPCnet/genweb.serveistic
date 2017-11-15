@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.6.7 (unreleased)
+1.6.7 (2017-11-15)
 ------------------
 
-- Nothing changed yet.
-
+* Cambio de la estroctura de documentos al crear un ServeiTIC [iago.lopez]
+* Eliminar boton de login para comentar repetido [iago.lopez]
+* Updated search input inside Servei TIC [iago.lopez]
+* Change literals and updated csv [iago.lopez]
 
 1.6.6 (2017-10-02)
 ------------------
