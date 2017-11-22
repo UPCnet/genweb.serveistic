@@ -209,7 +209,7 @@ class HeaderGWServeistic(gwHeader):
     def get_search_path(self):
         folder_path = '/'.join(self.context.getPhysicalPath())
         if len(folder_path.split('/')) >= 4:
-            serveistic_path = '/'.join(folder_path.split('/')[0:4])
+            serveistic_path = '/'.join(folder_path.split('/')[0:5])
             portal = api.portal.get()
             if portal.restrictedTraverse(serveistic_path).portal_type == 'serveitic':
                 folder_path = serveistic_path

@@ -71,7 +71,7 @@ class TypeAheadSearch(TypeAheadSearchBase):
             # useful for subsides
             params['path'] = get_referer_path(self.context, self.request)
             if len(params['path'].split('/')) >= 4:
-                serveistic_path = '/'.join(params['path'].split('/')[0:4])
+                serveistic_path = '/'.join(params['path'].split('/')[0:5])
                 portal = api.portal.get()
                 if portal.restrictedTraverse(serveistic_path).portal_type == 'serveitic':
                     params['path'] = serveistic_path
