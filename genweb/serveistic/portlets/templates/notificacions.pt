@@ -14,14 +14,14 @@
         </li>
       </ul>
 
-      <div tal:condition="notificacions" class="portlet-footer">
+      <div tal:condition="not: notificacions" class="portlet-message">
+        <p>No hi ha notificacions</p>
+      </div>
+
+      <div class="portlet-footer">
         <a tal:attributes="href view/notificacions_href">
           Totes les notificacions
         </a>
-      </div>
-
-      <div tal:condition="not: notificacions" class="portlet-message">
-        <p>No hi ha notificacions</p>
       </div>
     </div>
 </div>
