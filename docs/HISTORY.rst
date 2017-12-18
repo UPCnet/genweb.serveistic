@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.8 (unreleased)
+1.6.8 (2017-12-18)
 ------------------
 
-- Nothing changed yet.
-
+* Portlet Notificacions: Mostrar enlace cuando no hay notificaciones [iago.lopez]
+* Updated search input inside Servei TIC [iago.lopez]
 
 1.6.7 (2017-11-15)
 ------------------
