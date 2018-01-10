@@ -6,7 +6,7 @@
     <h3 class="title-indicador" tal:content="indicador/description"></h3>
     <ul class="indicador-category-list">
       <li tal:repeat="category indicador/categories">
-        <i class="fa fa-angle-down fa-fw update-info" aria-hidden="true"></i>
+        <span class="fa fa-angle-down fa-fw update-info" aria-hidden="true"></span>
         <span class="indicador-category-icon fa fa-bar-chart"></span>
         <span class="indicador-category-value" tal:content="category/value"></span>
         <span class="indicador-category-description" tal:content="category/description"></span>
