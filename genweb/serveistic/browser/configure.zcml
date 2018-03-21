@@ -31,4 +31,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="*"
+    name="sitemap"
+    layer="..interfaces.IGenwebServeisticLayer"
+    class=".sitemap.SitemapView"
+    template="templates/sitemap.pt"
+    permission="zope.Public"
+    />
+
 </configure>
