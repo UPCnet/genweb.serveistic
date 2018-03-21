@@ -1,11 +1,14 @@
 Changelog
 =========
 
-1.6.9 (unreleased)
+1.6.9 (2018-03-21)
 ------------------
 
-- Nothing changed yet.
-
+* Override de la vista sitemap para mostrar solo el primer nivel [iago.lopez]
+* WCAG: Etiqueta <i> utilizada para añadir iconos a <span> [iago.lopez]
+* WCAG: Etiqueta <b> utilizada para añadir iconos a <span> [iago.lopez]
+* WCAG: Modal login: h3 a h2 [iago.lopez]
+* WCAG: añadido atributo alt en etiqueta <img> del footer [iago.lopez]
 
 1.6.8 (2017-12-18)
 ------------------
