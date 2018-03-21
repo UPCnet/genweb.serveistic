@@ -16,7 +16,7 @@ a {
   font-size: 12px;
   padding-top: 3px;
 }
-#eines > li > a:hover { 
+#eines > li > a:hover {
     color: black;
 }
 .nav > li > a:hover, .contentViews > li > a:hover, .configlets > li > a:hover, .formTabs > li > a:hover {
@@ -60,7 +60,7 @@ a {
 .facetes .span12 > input {
     margin-right: 6px;
     margin-top: 0;
-}    
+}
 .selectpicker {
     background: white none repeat scroll 0 0;
     border: 1px solid #ddd;
@@ -102,7 +102,7 @@ border: 1px solid #666;
     font-size: 30px;
     width: 53%;
     margin-top: 5px;
-    font-weight: bold;    
+    font-weight: bold;
 }
 #facetes legend {
     border-bottom: 1px solid #ddd;
@@ -123,7 +123,7 @@ border: 1px solid #666;
 .btn-info:hover, .link-parent:hover, .btn-info:active, .link-parent:active, .btn-info.active, .btn-info.selected, .selected.link-parent, .active.link-parent, .btn-info.disabled, .disabled.link-parent, .btn-info[disabled], .link-parent[disabled] {
     background-color: #015b8d;
     color: white;
-}    
+}
 .breadcrumb .active, .breadcrumb .selected, .breadcrumb .contentViews .selected:hover, .contentViews .breadcrumb .selected:hover, .breadcrumb .active a, .breadcrumb .selected a, .breadcrumb .contentViews .selected:hover a, .contentViews .breadcrumb .selected:hover a {
      font-weight: normal;
 }
@@ -365,7 +365,7 @@ header {
   font-size: 18px;
   text-decoration: none; }
 
-#tagslist .eines i {
+#tagslist .eines span {
   padding-right: 2px; }
 
 #tagslist ul {
@@ -398,7 +398,7 @@ header {
 #tagslist a h4 {
   font-size: 16px;
   margin-bottom: 0;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 #tagslist a h4:hover {
@@ -648,7 +648,7 @@ div.photoAlbumEntry:nth-child(15) {
 }
 div.photoAlbumEntry:hover {
   background: #f2f2f2;
-}    
+}
 .thumbnail .caption, .thumb-img img .caption, .photoAlbumEntry a .caption, .photoAlbumEntry a .photoAlbumEntryTitle {
     color: #444;
     padding: 0;
@@ -765,7 +765,7 @@ span.problema-link, span.notificacio-link {
 #notificacions-carousel a:hover {
 text-decoration: none;
 color: #f5f5f5;
-}  
+}
 .carousel-control {
     background: transparent none repeat scroll 0 0;
     border: 2px solid #fff;
@@ -892,7 +892,7 @@ input.typeahead {
 }
 .header-eines-info, .header-eines-login {
   float:left;
-  color: white; 
+  color: white;
   text-shadow: 1px 1px 1px black;
 }
 .header-eines .fa-info-circle {
@@ -980,7 +980,7 @@ float: left;
 }
 .template-indicadors_list .indicador-category-list > li {
     border-bottom: 1px solid #eee;
-}    
+}
 .template-indicadors_list .title-indicador {
   font-size: 14px;
 }
@@ -990,7 +990,7 @@ float: left;
 .template-indicadors_list .indicador-category-value {
 }
 
-#indicadors i.fa.fa-fw {
+#indicadors span.fa.fa-fw {
     font-size: 27px;
     color: #00aee5;
     position: absolute;
@@ -998,7 +998,7 @@ float: left;
     right: 0;
 }
 
-#indicadors i.fa.fa-fw:hover {
+#indicadors span.fa.fa-fw:hover {
     cursor: pointer;
 }
 
@@ -1025,7 +1025,7 @@ div.photoAlbumEntry {
 }
 #center-area {
     margin-left: 0;
-}    
+}
 #gwsearch {
   display: none;
 }
@@ -1060,7 +1060,7 @@ div.photoAlbumEntry {
 }
 .photoAlbumEntryWrapper > img {
     height: 50px;
-}    
+}
 div.photoAlbumEntry:nth-child(5) {
     margin-right: 20px;
 }
@@ -1162,5 +1162,3 @@ div.photoAlbumEntry {
 .icon-serveitic {
   background-position: -432px -144px;
 }
-
-
