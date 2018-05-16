@@ -94,9 +94,9 @@
    <property name="section">default</property>
    <property name="hidden">1</property>
    <property name="start"></property>
-   <property name="end">20</property>
-   <property name="step">5</property>
-   <property name="default">15</property>
+   <property name="end">1000</property>
+   <property name="step">50</property>
+   <property name="default">100</property>
   </criterion>
   <criterion name="c1">
    <property name="widget">checkbox</property>

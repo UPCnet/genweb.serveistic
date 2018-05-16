@@ -19,56 +19,36 @@
 
 <body>
 
-<metal:custom_title fill-slot="content-title">
-    <div class="slider-notificacions row-fluid">
-      <div class="carousel slide span12">
-        <div id="notificacions-carousel" class="carousel-inner">
-          <div class="item" tal:repeat="notificacio view/notificacions">
-            <a tal:attributes="href notificacio/url">
-              <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
-              <span class="data" tal:content="notificacio/data"></span>
-              <span class="titol" tal:content="notificacio/titol"></span>
-            </a>
-          </div>
-        </div>
-        <nav>
-          <a href="" class="left carousel-control">&lsaquo;</a>
-          <a href="" class="right carousel-control">&rsaquo;</a>
-        </nav>
-      </div>
-    </div>
-    <script>
-    $('.slider-notificacions .carousel').carousel(
-    {
-        interval: 8000
-    });
-    $('.slider-notificacions .carousel').carousel('cycle');
-    $('.slider-notificacions .carousel .left').click(function()
-    {
-        $('.slider-notificacions .carousel').carousel('prev');
-        return false;
-    });
-    $('.slider-notificacions .carousel .right').click(function()
-    {
-        $('.slider-notificacions .carousel').carousel('next');
-        return false;
-    });
-    $('.slider-notificacions .carousel').carousel('next');
-    </script>
-</metal:custom_title>
-
 <div metal:fill-slot="content-core">
 <!-- Include here the custom content -->
+<metal:block tal:define="doctext view/page_content;">
+    <span tal:replace="structure doctext"></span>
+</metal:block>
 <!-- Folder contents -->
 <div class="faceted-form" metal:define-macro="widgets" id="faceted-form"
   tal:define="mode view/mode | string:view" tal:attributes="data-mode mode">
 
   <!-- Basic/Extended search -->
   <div class="faceted-sections-buttons">
-    <a href="#" class="faceted-sections-buttons-more" i18n:translate="">More filters</a>
-    <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Less filters</a>
+    <a href="#" class="faceted-sections-buttons-more" i18n:translate="">Mostrar filtres</a>
+    <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Amagar filtres</a>
   </div>
-
+  <!--metal:block tal:condition="" TODO -->
+      <h2>Els més populars</h2>
+      <div id="faceted-populars" class="eea-preview-items">
+          <div class="photoAlbumEntry">
+              <a href="http://localhost:8080/278/serveis-tic/ca/indicadors-tic" title="Publica, coneix i utilitza els indicadors TIC de la UPC">
+                  <span class="photoAlbumEntryWrapper">
+                   <img style="border: none" src="http://localhost:8080/278/serveis-tic/ca/indicadors-tic/@@images/image_item/mini" alt="API d'indicadors TIC" title="Publica, coneix i utilitza els indicadors TIC de la UPC">
+                   </span>
+                <span class="photoAlbumEntryTitle">API d'indicadors TIC</span>
+                <span class="photoAlbumEntryDescription">Publica, coneix i utilitza els indicadors TIC de la UPC</span>
+              </a>
+            </div>
+      </div>
+  <!--/metal:block-->
+  <br/>
+  <h2>Tots els serveis</h2>
   <metal:widgets use-macro="here/@@faceted_widgets_macros/macros/widgets" />
 
   <!-- Faceted version -->
@@ -76,6 +56,11 @@
     tal:content="here/@@faceted_version|string:" />
 
   <script type="text/javascript" tal:content="view/js_searchbox_placeholder"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+      $("#top-area").append('<a id="show-more-filters" onclick="$(\'body\').toggleClass(\'show-filters\')">Filtrar els resultats</a>');
+  });
+  </script>
 </div>
 
 </div>

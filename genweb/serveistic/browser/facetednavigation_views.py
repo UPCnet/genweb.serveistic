@@ -62,7 +62,19 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
         return """
     $(document).ready(function()
     {{
-        $("#c7").attr("placeholder", "{0}")
+        $("#c7").attr("placeholder", "{0}");
     }});
        """.format(self.context.translate(
             'search_serveitic', domain='genweb.serveistic'))
+
+    def page_content(self):
+        try:
+            return self.context["benvingut"].text.raw
+        except KeyError:
+            return None
+    
+    def get_populars(self):
+        # TODO
+        # portal = getToolByName(self.context, 'portal_catalog')
+        return None
+
