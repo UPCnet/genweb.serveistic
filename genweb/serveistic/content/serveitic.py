@@ -13,6 +13,8 @@ from plone.app.textfield import RichText
 from plone.dexterity.content import Item
 from plone.app.users.userdataschema import checkEmailAddress
 from plone.app.contenttypes.behaviors.richtext import IRichText
+from plone.autoform.directives import read_permission
+from plone.autoform.directives import write_permission
 
 from genweb.serveistic import _
 
@@ -122,8 +124,7 @@ class IServeiTIC(form.Schema):
         description=_(u"Es mostrarà com a imatge del servei en els resultats "
                       u"del cercador de Serveis TIC (mida recomanada 180x150 "
                       u"pixels)"),
-        required=False
-        )
+        required=False)
 
     product_id = schema.TextLine(
         title=_(u"Identificador gn6"),
@@ -149,6 +150,13 @@ class IServeiTIC(form.Schema):
             u"després l'ordre original de la categoria"),
         required=False,
         constraint=validate_service_indicators_order)
+
+    read_permission(popular='cmf.ManagePortal')
+    write_permission(popular='cmf.ManagePortal')
+    popular = schema.Bool(
+        title=_("Popular"),
+        required=False,
+        default=False)
 
     prestador = schema.List(
         title=_(u"Prestador"),

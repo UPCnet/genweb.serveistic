@@ -33,20 +33,30 @@
     <a href="#" class="faceted-sections-buttons-more" i18n:translate="">Mostrar filtres</a>
     <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Amagar filtres</a>
   </div>
-  <!--metal:block tal:condition="" TODO -->
-      <h2>Els més populars</h2>
+  <div id="popular" tal:condition="populars" tal:define="populars view/get_populars">
+      <h2 i18n:translate="">Serveis més populars</h2>
       <div id="faceted-populars" class="eea-preview-items">
-          <div class="photoAlbumEntry">
-              <a href="http://localhost:8080/278/serveis-tic/ca/indicadors-tic" title="Publica, coneix i utilitza els indicadors TIC de la UPC">
-                  <span class="photoAlbumEntryWrapper">
-                   <img style="border: none" src="http://localhost:8080/278/serveis-tic/ca/indicadors-tic/@@images/image_item/mini" alt="API d'indicadors TIC" title="Publica, coneix i utilitza els indicadors TIC de la UPC">
-                   </span>
-                <span class="photoAlbumEntryTitle">API d'indicadors TIC</span>
-                <span class="photoAlbumEntryDescription">Publica, coneix i utilitza els indicadors TIC de la UPC</span>
-              </a>
-            </div>
+        <div class="photoAlbumEntry" tal:repeat="popular populars">
+            <a tal:attributes="href popular/absolute_url; title popular/title">
+              <span class="photoAlbumEntryWrapper">
+                <tal:if define="cond popular/image_item; cond2 popular/image">
+                  <tal:then condition="cond">
+                    <img tal:attributes="src string:${popular/absolute_url}/@@images/image_item/mini; alt popular/title; title popular/description" />
+                  </tal:then>
+                  <tal:then condition="cond2">
+                    <img tal:attributes="src string:${popular/absolute_url}/@@images/image/mini; alt popular/title; title popular/description" />
+                  </tal:then>
+                  <tal:then condition="python: not cond or not cond2">
+                    <img tal:attributes="src string:${popular/absolute_url}/++genweb++serveistic/capcalera_mini.jpg; alt popular/title; title popular/description" />
+                  </tal:then>
+                </tal:if>
+              </span>
+            <span class="photoAlbumEntryTitle" tal:content="popular/title"></span>
+            <span class="photoAlbumEntryDescription" tal:content="popular/description"></span>
+          </a>
+        </div>
       </div>
-  <!--/metal:block-->
+  </div>
   <br/>
   <h2>Tots els serveis</h2>
   <metal:widgets use-macro="here/@@faceted_widgets_macros/macros/widgets" />

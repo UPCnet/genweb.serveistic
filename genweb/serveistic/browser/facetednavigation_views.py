@@ -2,6 +2,7 @@ from five import grok
 
 from Products.CMFCore.utils import getToolByName
 from eea.facetednavigation.browser.app.view import FacetedContainerView
+from zope.component import getMultiAdapter
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
@@ -69,12 +70,26 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
 
     def page_content(self):
         try:
-            return self.context["benvingut"].text.raw
+            benvingut = self.context["benvingut"]
+            wf_tool = getToolByName(self.context, 'portal_workflow')
+            tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+            workflows = tools.workflow().getWorkflowsFor(benvingut)[0]
+            benvingut_workflow = wf_tool.getWorkflowsFor(benvingut)[0].id
+            benvingut_status = wf_tool.getStatusOf(benvingut_workflow, benvingut)
+            if workflows['states'][benvingut_status['review_state']].id in ['published', 'intranet']:
+                return benvingut.text.raw
+            else:
+                return None
         except KeyError:
             return None
-    
+
     def get_populars(self):
-        # TODO
-        # portal = getToolByName(self.context, 'portal_catalog')
-        return None
+        catalog = getToolByName(self.context, 'portal_catalog')
+        serveitics = catalog(portal_type='serveitic', sort_on='sortable_title')
+        populars = []
+        for item in serveitics:
+            serveitic = item.getObject()
+            if serveitic.popular:
+                populars.append(serveitic)
+        return populars
 
