@@ -37,7 +37,7 @@
       <h2 i18n:translate="">Serveis més populars</h2>
       <div id="faceted-populars" class="eea-preview-items">
         <div class="photoAlbumEntry" tal:repeat="popular populars">
-            <a tal:attributes="href popular/absolute_url; title popular/title">
+            <a tal:attributes="href popular/absolute_url; title popular/description">
               <span class="photoAlbumEntryWrapper">
                 <tal:if define="cond popular/image_item; cond2 popular/image">
                   <tal:then condition="cond">
@@ -51,8 +51,8 @@
                   </tal:then>
                 </tal:if>
               </span>
-            <span class="photoAlbumEntryTitle" tal:content="popular/title"></span>
-            <span class="photoAlbumEntryDescription" tal:content="popular/description"></span>
+            <span class="photoAlbumEntryTitle" tal:content="popular/pretty_title_or_id|string:"></span>
+            <span class="photoAlbumEntryDescription" tal:content="python: view.description_short_summary(popular.description)"></span>
           </a>
         </div>
       </div>

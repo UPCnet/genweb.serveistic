@@ -53,6 +53,9 @@ class PreviewItem(grok.View):
 
 
 class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
+
+    SHORT_SUMMARY_MAX_LENGTH = 115
+
     @property
     def notificacions(self):
         reporter = NotificacioDataReporter(
@@ -93,3 +96,10 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
                 populars.append(serveitic)
         return populars
 
+    def summarise(self, text, max_length):
+        if text and len(text) > max_length:
+            return text[:max_length - 3] + "..."
+        return text
+
+    def description_short_summary(self, text):
+        return self.summarise(text, FacetedContainerView.SHORT_SUMMARY_MAX_LENGTH)
