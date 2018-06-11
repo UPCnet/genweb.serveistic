@@ -69,8 +69,7 @@ a {
     width: 200px;
 }
 
-body.template-facetednavigation_view .documentFirstHeading,
-body.template-facetednavigation_view div#gwsearch{
+body.template-facetednavigation_view .documentFirstHeading {
     display: none;
 }
 
