@@ -612,9 +612,9 @@ display: none;
     clear: both;
     padding-top: 25px;
 }
-.faceted-title {
+.faceted-results::before {
     color: #888;
-    //content: "Resultats:";
+    content: "Resultats:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
@@ -623,12 +623,28 @@ display: none;
 #faceted-results > div > div:nth-child(1).listingBar {
     display: none;
 }
-.template-facetednavigation_view #center-top-area {
-    display: none;
+#popular {
+  background-color: #f5f5f5;
+  padding: 10px 0px;
+  width: 99vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -49.75vw;
+  margin-right: -49.75vw;
 }
-.show-filters #center-top-area {
-    display: block;
+#popular h2 {
+  color: #888;
+  display: block;
+  font-size: 18px;
+  font-weight: normal;
+}
+body.template-facetednavigation_view #center-top-area {
+    display: none;
     padding-top: 10px;
+}
+body.template-facetednavigation_view.show-filters #center-top-area {
+    display: block;
 }
 #show-more-filters {
     cursor: pointer;

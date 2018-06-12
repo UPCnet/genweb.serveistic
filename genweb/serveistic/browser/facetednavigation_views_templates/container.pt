@@ -34,6 +34,7 @@
     <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Amagar filtres</a>
   </div>
   <div id="popular" tal:condition="populars" tal:define="populars view/get_populars">
+    <div class="container">
       <h2 i18n:translate="">Serveis més populars</h2>
       <div id="faceted-populars" class="eea-preview-items">
         <div class="photoAlbumEntry" tal:repeat="popular populars">
@@ -56,9 +57,9 @@
           </a>
         </div>
       </div>
+    </div>
   </div>
   <br/>
-  <h2>Tots els serveis</h2>
   <metal:widgets use-macro="here/@@faceted_widgets_macros/macros/widgets" />
 
   <!-- Faceted version -->
@@ -69,6 +70,7 @@
   <script type="text/javascript">
   $(document).ready(function(){
       $("#top-area").append('<a id="show-more-filters" onclick="$(\'body\').toggleClass(\'show-filters\')">Filtrar els resultats</a>');
+      $("#show-more-filters").trigger("click");
   });
   </script>
 </div>
