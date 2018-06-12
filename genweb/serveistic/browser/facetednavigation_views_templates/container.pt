@@ -71,6 +71,8 @@
   $(document).ready(function(){
       $("#top-area").append('<a id="show-more-filters" onclick="$(\'body\').toggleClass(\'show-filters\')">Filtrar els resultats</a>');
       $("#show-more-filters").trigger("click");
+
+      $("#cercador").attr("placeholder", "Cerca a tot el web");
   });
   </script>
 </div>

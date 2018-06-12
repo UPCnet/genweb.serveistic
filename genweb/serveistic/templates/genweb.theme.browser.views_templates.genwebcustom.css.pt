@@ -614,7 +614,7 @@ display: none;
 }
 .faceted-results::before {
     color: #888;
-    content: "Resultats:";
+    content: "Tots els resultats:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
