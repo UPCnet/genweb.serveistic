@@ -2,12 +2,15 @@ from five import grok
 
 from Products.CMFCore.utils import getToolByName
 from eea.facetednavigation.browser.app.view import FacetedContainerView
+from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
+from zope.component import queryUtility
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
 from genweb.serveistic.data_access.notificacio import NotificacioDataReporter
 from genweb.serveistic.browser.notificacio_views import NotificacioViewHelper
+from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
 
 
 class PreviewItem(grok.View):
@@ -103,3 +106,8 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
 
     def description_short_summary(self, text):
         return self.summarise(text, FacetedContainerView.SHORT_SUMMARY_MAX_LENGTH)
+
+    def showFilters(self):
+        registry = queryUtility(IRegistry)
+        serveistic_tool = registry.forInterface(IServeisTICControlPanelSettings)
+        return serveistic_tool.show_filters

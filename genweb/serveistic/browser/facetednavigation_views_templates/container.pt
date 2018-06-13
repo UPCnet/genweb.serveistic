@@ -70,11 +70,16 @@
   <script type="text/javascript">
   $(document).ready(function(){
       $("#top-area").append('<a id="show-more-filters" onclick="$(\'body\').toggleClass(\'show-filters\')">Filtrar els resultats</a>');
-      $("#show-more-filters").trigger("click");
-
       $("#cercador").attr("placeholder", "Cerca a tot el web");
   });
   </script>
+  <script type="text/javascript" tal:condition="view/showFilters">
+    $(document).ready(function(){
+      $("#show-more-filters").trigger("click");
+    });
+  </script>
+
+
 </div>
 
 </div>

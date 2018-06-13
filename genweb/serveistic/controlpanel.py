@@ -31,12 +31,18 @@ class IServeisTICControlPanelSettings(model.Schema):
     model.fieldset(
         'General',
         _(u'General'),
-        fields=['url_info_serveistic'])
+        fields=['url_info_serveistic', 'show_filters'])
 
     url_info_serveistic = schema.TextLine(
         title=_(u"URL d'informació de Serveis TIC"),
         description=_(u"URL on enllaça la i de la barra superior del lloc "
                       u"web de Serveis TIC"),
+        required=False)
+
+    show_filters = schema.Bool(
+        title=_(u"Desplegar filtres de cerca"),
+        description=_(u"Desplega el filtres de cerca que trobem a la pàgina  "
+                      u"principal"),
         required=False)
 
     model.fieldset(
