@@ -864,27 +864,35 @@ label {
     background-position: center;
 }
 .imageless-item {
-    background-image: linear-gradient(#f3f2f3, #e3e3e3);
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    min-height: 45px;
+    background-image: linear-gradient(to right, #e2effc, #007bc1);
+    width: auto;
+    height: 60px;
+    padding: 5px;
+    cursor: pointer;
+
+}
+.imageless-item > a {
+    text-decoration: none;
 }
 .imageless-item > a > img {
     display: none;
 }
+.imageless-item > a > p {
+    color: #000000;
+    margin-left: 14px;
+    text-align: left;
+}
 .banner-title {
     color: #607c95;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 2px;
-    margin-left: 20px;
-    margin-top: 6px;
+    margin-bottom: 5px;
+    padding-top: 12px;
     text-transform: none;
 }
 .banner-description {
     color: #444;
-    font-size: 11px;
-    margin-left: 20px;
+    font-size: 16px;
     line-height: 13px;
 }
 .portlet-baners li {
@@ -1055,6 +1063,12 @@ float: left;
 }
 }
 
+@media only screen and (max-width: 980px) {
+.imageless-item {
+  width: 265px;
+}
+}
+
 @media only screen and (max-width: 640px) {
 #center-and-left-area {
   float: none;
@@ -1148,6 +1162,11 @@ div.photoAlbumEntry {
     margin-left: 3px;
     margin-right: 10px;
     width: 45% !important;
+}
+.portlet-baners li {
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 9px;
 }
 }
 
