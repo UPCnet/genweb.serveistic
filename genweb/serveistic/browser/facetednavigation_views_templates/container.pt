@@ -33,6 +33,7 @@
     <a href="#" class="faceted-sections-buttons-more" i18n:translate="">Mostrar filtres</a>
     <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Amagar filtres</a>
   </div>
+  <div id="serveisticSearch"></div>
   <div id="popular" tal:condition="populars" tal:define="populars view/get_populars">
     <div class="container">
       <h2 i18n:translate="">Serveis més populars</h2>
@@ -68,18 +69,45 @@
 
   <script type="text/javascript" tal:content="view/js_searchbox_placeholder"></script>
   <script type="text/javascript">
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results ? results[1] : false;
+  }
+
+  $.stCheckResults = function(){
+    setTimeout(function(){
+      $.checkResults();
+    }, 500);
+  }
+
+  $.checkResults = function(){
+    if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7')){
+      $('.faceted-results').addClass('results');
+    }else{
+      $('.faceted-results').removeClass('results');
+    }
+  }
+
   $(document).ready(function(){
-      $("#top-area").append('<a id="show-more-filters" onclick="$(\'body\').toggleClass(\'show-filters\')">Filtrar els resultats</a>');
-      $("#cercador").attr("placeholder", "Cerca a tot el web");
+    $("#center-top-area").before('<a id="show-more-filters">Filtra els resultats</a>');
+    $("#cercador").attr("placeholder", "Cerca a tot el web");
+    $("#top-area").appendTo("#serveisticSearch");
+
+    $("#show-more-filters").on('click', function(){
+      $('body').toggleClass('show-filters');
+    });
+
+    $.checkResults();
+    $('.faceted-noborder').on('click', $.stCheckResults);
+    $('.faceted-widget form').submit($.stCheckResults);
   });
+
   </script>
   <script type="text/javascript" tal:condition="view/showFilters">
     $(document).ready(function(){
       $("#show-more-filters").trigger("click");
     });
   </script>
-
-
 </div>
 
 </div>

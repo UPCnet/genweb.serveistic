@@ -594,6 +594,7 @@ header {
 }
 #top-area {
     padding-bottom: 10px;
+    height: 50px;
 }
 #top-area .widget-fieldset {
     margin: 0;
@@ -614,14 +615,18 @@ display: none;
     border-top: 1px solid #ddd;
     clear: both;
     padding-top: 35px;
+    margin-top: 15px;
 }
 .faceted-results::before {
     color: #888;
-    content: "Tots els resultats:";
+    content: "Tots els serveis:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
     margin-top: -10px;
+}
+.faceted-results.results::before {
+    content: "Resultats:";
 }
 #faceted-results > div > div:nth-child(1).listingBar {
     display: none;
