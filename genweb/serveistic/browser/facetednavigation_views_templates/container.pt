@@ -60,7 +60,6 @@
       </div>
     </div>
   </div>
-  <br/>
   <metal:widgets use-macro="here/@@faceted_widgets_macros/macros/widgets" />
 
   <!-- Faceted version -->
@@ -83,8 +82,10 @@
   $.checkResults = function(){
     if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7')){
       $('.faceted-results').addClass('results');
+      $('#popular').hide();
     }else{
       $('.faceted-results').removeClass('results');
+      $('#popular').show()
     }
   }
 
