@@ -634,7 +634,7 @@ display: none;
     display: none;
 }
 #popular {
-  background-color: #f5f5f5;
+  background-color: #edf1f2;
   padding: 10px 0px;
   margin: 10px 0px;
   width: 99vw;
@@ -875,9 +875,8 @@ label {
     background-image: linear-gradient(to right, #e2effc, #007bc1);
     width: auto;
     height: 60px;
-    padding: 5px;
     cursor: pointer;
-
+    max-width: 265px;
 }
 .imageless-item > a {
     text-decoration: none;
@@ -885,13 +884,13 @@ label {
 .imageless-item > a > img {
     display: none;
 }
-.imageless-item > a > p {
-    color: #000000;
-    margin-left: 14px;
+.imageless-item p {
+    color: #333333;
     text-align: left;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 .banner-title {
-    color: #607c95;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -899,7 +898,6 @@ label {
     text-transform: none;
 }
 .banner-description {
-    color: #444;
     font-size: 16px;
     line-height: 13px;
 }
