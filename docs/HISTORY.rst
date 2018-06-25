@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.6.10 (unreleased)
+1.6.10 (2018-06-25)
 -------------------
 
-- Nothing changed yet.
-
+* Add oauth2client required [Corina Riba]
+*  [Corina Riba]
+* The new release of 'google-api-python-client' drops the hard requirement on oauth2client but it is still supported and need to be explicitly installed. [Corina Riba]
 
 1.6.9 (2018-03-21)
 ------------------
