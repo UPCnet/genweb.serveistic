@@ -536,7 +536,7 @@ header {
     margin-right: 8px;
     padding: 10px;
     vertical-align: top;
-    width: 82.5%;
+    width: 82%;
 }
 #faceted-top-column .searchButton {
     background: #00aee5 none repeat scroll 0 0;
@@ -683,7 +683,7 @@ div.photoAlbumEntry {
     min-height: 165px;
     padding: 0px !important;
     text-align: center;
-    width: 172px !important;
+    width: 178px !important;
 
 }
 div.photoAlbumEntry a {
