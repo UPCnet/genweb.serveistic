@@ -887,8 +887,8 @@ label {
 .imageless-item p {
     color: #333333;
     text-align: left;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
 }
 .banner-title {
     font-size: 18px;
@@ -896,6 +896,9 @@ label {
     margin-bottom: 5px;
     padding-top: 12px;
     text-transform: none;
+}
+.banner-title.center {
+    padding-top: 20px;
 }
 .banner-description {
     font-size: 16px;

@@ -19,8 +19,13 @@
                            tal:attributes="src string:${banner/getURL}/@@images/image;
                                            alt banner_literal;" />
                       <tal:block tal:condition="not: banner/image">
-                        <p class="banner-title" tal:content="banner/Title"></p>
-                        <p class="banner-description" tal:content="banner/Description"></p>
+                        <tal:block tal:condition="banner/Description">
+                          <p class="banner-title" tal:content="banner/Title"></p>
+                          <p class="banner-description" tal:content="banner/Description"></p>
+                        </tal:block>
+                        <tal:block tal:condition="not: banner/Description">
+                          <p class="banner-title center" tal:content="banner/Title"></p>
+                        </tal:block>
                       </tal:block>
                     </a>
                </li>
