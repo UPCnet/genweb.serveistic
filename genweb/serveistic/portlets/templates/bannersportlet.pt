@@ -6,25 +6,30 @@
 
         <h2 class="goout" id="titol-baners" i18n:translate="baners">Baners</h2>
         <ul class="unstyled" role="list">
-            <li role="listitem"
-                tal:repeat="banner banners"
-                tal:attributes="class python: 'imageless-item' if not banner.image else ''">
-                <a tal:define="target python:banner.open_link_in_new_window and '_blank' or None;
-                               banner_literal python:view.getAltAndTitle(banner.Title, banner.open_link_in_new_window)"
-                   tal:attributes="href banner/getRemoteUrl;
-                                   target target | nothing"
-                   tal:omit-tag="not:banner/getRemoteUrl">
-                  <img tal:condition="banner/image"
-                       rel="tooltip"
-                       tal:attributes="src string:${banner/getURL}/@@images/image;
-                                       alt banner_literal;
-                                       title banner_literal" />
-                  <tal:block tal:condition="not: banner/image">
-                    <div class="banner-title" tal:content="banner/Title"></div>
-                    <div class="banner-description" tal:content="banner/Description"></div>
-                  </tal:block>
-                </a>
-            </li>
+            <tal:block tal:repeat="banner banners">
+                <li role="listitem" rel="tooltip"
+                    tal:define="banner_literal python:view.getAltAndTitle(banner.Title, banner.open_link_in_new_window)"
+                    tal:attributes="class python: 'imageless-item' if not banner.image else '';
+                                    title banner_literal">
+                    <a tal:define="target python:banner.open_link_in_new_window and '_blank' or None;"
+                       tal:attributes="href banner/getRemoteUrl;
+                                       target target | nothing;"
+                       tal:omit-tag="not:banner/getRemoteUrl">
+                      <img tal:condition="banner/image"
+                           tal:attributes="src string:${banner/getURL}/@@images/image;
+                                           alt banner_literal;" />
+                      <tal:block tal:condition="not: banner/image">
+                        <tal:block tal:condition="banner/Description">
+                          <p class="banner-title" tal:content="banner/Title"></p>
+                          <p class="banner-description" tal:content="banner/Description"></p>
+                        </tal:block>
+                        <tal:block tal:condition="not: banner/Description">
+                          <p class="banner-title center" tal:content="banner/Title"></p>
+                        </tal:block>
+                      </tal:block>
+                    </a>
+               </li>
+            </tal:block>
         </ul>
   </div>
 </tal:banners>

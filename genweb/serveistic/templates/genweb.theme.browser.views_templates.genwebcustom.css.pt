@@ -68,6 +68,11 @@ a {
     height: 35px;
     width: 200px;
 }
+
+body.template-facetednavigation_view .documentFirstHeading {
+    display: none;
+}
+
 .selectpicker:hover, .selectpicker:active, .selectpicker:focus {
 border: 1px solid #666;
 }
@@ -531,7 +536,7 @@ header {
     margin-right: 8px;
     padding: 10px;
     vertical-align: top;
-    width: 78.5%;
+    width: 82%;
 }
 #faceted-top-column .searchButton {
     background: #00aee5 none repeat scroll 0 0;
@@ -587,6 +592,12 @@ header {
     padding-left: 0.5em;
     cursor: pointer;
 }
+#serveisticSearch {
+    display: flow-root;
+}
+#top-area {
+    padding-bottom: 10px;
+}
 #top-area .widget-fieldset {
     margin: 0;
     min-height: 50px;
@@ -605,45 +616,80 @@ display: none;
 .faceted-results {
     border-top: 1px solid #ddd;
     clear: both;
-    padding-top: 25px;
+    padding-top: 35px;
+    margin-top: 15px;
 }
 .faceted-results::before {
     color: #888;
-    content: "Resultats:";
+    content: "Tots els serveis:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
     margin-top: -10px;
 }
+.faceted-results.results::before {
+    content: "Resultats:";
+}
 #faceted-results > div > div:nth-child(1).listingBar {
     display: none;
+}
+#popular {
+  background-color: #edf1f2;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  width: 99vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -49.75vw;
+  margin-right: -49.75vw;
+}
+#popular h2 {
+  color: #888;
+  display: block;
+  font-size: 18px;
+  font-weight: normal;
+}
+body.template-facetednavigation_view #center-top-area {
+    display: none;
+    padding-top: 10px;
+}
+body.template-facetednavigation_view.show-filters #center-top-area {
+    display: block;
+}
+#show-more-filters {
+    cursor: pointer;
+}
+a#show-more-filters:after {
+    content: " \f0d7";
+    font-family: "FontAwesome";
+    color: #007bc0;
+}
+.show-filters a#show-more-filters:after {
+    content: " \f0d8";
+    font-family: "FontAwesome";
+    color: #007bc0;
 }
 div.photoAlbumEntry {
     background: #fff none repeat scroll 0 0;
     border: 0 none;
     border-radius: 0;
-    box-shadow: 1px 2px 3px #bbb;
+    box-shadow: 1px 2px 3px #bbb !important;
     display: block;
     float: left;
     height: 175px;
     line-height: 18px;
     margin: 0 20px 20px 0;
     min-height: 165px;
-    padding: 0;
+    padding: 0px !important;
     text-align: center;
-    width: 179px !important;
+    width: 178px !important;
 
 }
 div.photoAlbumEntry a {
   padding: 0;
 }
-div.photoAlbumEntry:nth-child(5) {
-    margin-right: 0;
-}
-div.photoAlbumEntry:nth-child(10) {
-    margin-right: 0;
-}
-div.photoAlbumEntry:nth-child(15) {
+div.photoAlbumEntry:nth-child(6n) {
     margin-right: 0;
 }
 div.photoAlbumEntry:hover {
@@ -826,32 +872,45 @@ label {
     background-position: center;
 }
 .imageless-item {
-    background-image: linear-gradient(#f3f2f3, #e3e3e3);
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    min-height: 45px;
+    background-image: linear-gradient(to right, #e2effc, #007bc1);
+    width: auto;
+    height: 60px;
+    cursor: pointer;
+    max-width: 265px;
+}
+.imageless-item > a {
+    text-decoration: none;
 }
 .imageless-item > a > img {
     display: none;
 }
+.imageless-item p {
+    color: #333333;
+    text-align: left;
+    padding-left: 14px;
+    padding-right: 14px;
+}
 .banner-title {
-    color: #607c95;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 2px;
-    margin-left: 20px;
-    margin-top: 6px;
+    margin-bottom: 5px;
+    padding-top: 12px;
     text-transform: none;
 }
+.banner-title.center {
+    padding-top: 20px;
+}
 .banner-description {
-    color: #444;
-    font-size: 11px;
-    margin-left: 20px;
+    font-size: 16px;
     line-height: 13px;
 }
 .portlet-baners li {
     padding: 0;
     margin-bottom: 9px;
+}
+.portlet-baners img {
+    width: 265px;
+    height: 60px;
 }
 #eines {
     margin: 5px 20px 0 0;
@@ -1003,13 +1062,19 @@ float: left;
 }
 
 @media screen and (min-width: 800px) {
-.template-serveitic select {
+.template-serveitic select:not(.datetime-widget) {
     min-height: 170px;
     width:100%;
     text-shadow:1px 1px 1px black;
 }
 .template-serveitic .list-field {
   text-shadow:none;
+}
+}
+
+@media only screen and (max-width: 980px) {
+.imageless-item {
+  width: 265px;
 }
 }
 
@@ -1106,6 +1171,12 @@ div.photoAlbumEntry {
     margin-left: 3px;
     margin-right: 10px;
     width: 45% !important;
+    padding: 0px !important;
+}
+.portlet-baners li {
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 9px;
 }
 }
 

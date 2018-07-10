@@ -19,56 +19,47 @@
 
 <body>
 
-<metal:custom_title fill-slot="content-title">
-    <div class="slider-notificacions row-fluid">
-      <div class="carousel slide span12">
-        <div id="notificacions-carousel" class="carousel-inner">
-          <div class="item" tal:repeat="notificacio view/notificacions">
-            <a tal:attributes="href notificacio/url">
-              <span tal:attributes="class python: view.get_awesome_icon_class(notificacio)"></span>
-              <span class="data" tal:content="notificacio/data"></span>
-              <span class="titol" tal:content="notificacio/titol"></span>
-            </a>
-          </div>
-        </div>
-        <nav>
-          <a href="" class="left carousel-control">&lsaquo;</a>
-          <a href="" class="right carousel-control">&rsaquo;</a>
-        </nav>
-      </div>
-    </div>
-    <script>
-    $('.slider-notificacions .carousel').carousel(
-    {
-        interval: 8000
-    });
-    $('.slider-notificacions .carousel').carousel('cycle');
-    $('.slider-notificacions .carousel .left').click(function()
-    {
-        $('.slider-notificacions .carousel').carousel('prev');
-        return false;
-    });
-    $('.slider-notificacions .carousel .right').click(function()
-    {
-        $('.slider-notificacions .carousel').carousel('next');
-        return false;
-    });
-    $('.slider-notificacions .carousel').carousel('next');
-    </script>
-</metal:custom_title>
-
 <div metal:fill-slot="content-core">
 <!-- Include here the custom content -->
+<metal:block tal:define="doctext view/page_content;">
+    <span tal:replace="structure doctext"></span>
+</metal:block>
 <!-- Folder contents -->
 <div class="faceted-form" metal:define-macro="widgets" id="faceted-form"
   tal:define="mode view/mode | string:view" tal:attributes="data-mode mode">
 
   <!-- Basic/Extended search -->
   <div class="faceted-sections-buttons">
-    <a href="#" class="faceted-sections-buttons-more" i18n:translate="">More filters</a>
-    <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Less filters</a>
+    <a href="#" class="faceted-sections-buttons-more" i18n:translate="">Mostrar filtres</a>
+    <a href="#" class="faceted-sections-buttons-less" i18n:translate="">Amagar filtres</a>
   </div>
-
+  <div id="serveisticSearch"></div>
+  <div id="popular" tal:condition="populars" tal:define="populars view/get_populars">
+    <div class="container">
+      <h2 i18n:translate="">Serveis més populars</h2>
+      <div id="faceted-populars" class="eea-preview-items">
+        <div class="photoAlbumEntry" tal:repeat="popular populars">
+            <a tal:attributes="href popular/absolute_url; title popular/description">
+              <span class="photoAlbumEntryWrapper">
+                <tal:if define="cond popular/image_item; cond2 popular/image">
+                  <tal:then condition="cond">
+                    <img tal:attributes="src string:${popular/absolute_url}/@@images/image_item/mini; alt popular/title; title popular/description" />
+                  </tal:then>
+                  <tal:then condition="cond2">
+                    <img tal:attributes="src string:${popular/absolute_url}/@@images/image/mini; alt popular/title; title popular/description" />
+                  </tal:then>
+                  <tal:then condition="python: not cond or not cond2">
+                    <img tal:attributes="src string:${popular/absolute_url}/++genweb++serveistic/capcalera_mini.jpg; alt popular/title; title popular/description" />
+                  </tal:then>
+                </tal:if>
+              </span>
+            <span class="photoAlbumEntryTitle" tal:content="popular/pretty_title_or_id|string:"></span>
+            <span class="photoAlbumEntryDescription" tal:content="python: view.description_short_summary(popular.description)"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   <metal:widgets use-macro="here/@@faceted_widgets_macros/macros/widgets" />
 
   <!-- Faceted version -->
@@ -76,6 +67,48 @@
     tal:content="here/@@faceted_version|string:" />
 
   <script type="text/javascript" tal:content="view/js_searchbox_placeholder"></script>
+  <script type="text/javascript">
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results ? results[1] : false;
+  }
+
+  $.stCheckResults = function(){
+    setTimeout(function(){
+      $.checkResults();
+    }, 500);
+  }
+
+  $.checkResults = function(){
+    if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7')){
+      $('.faceted-results').addClass('results');
+      $('#popular').hide();
+    }else{
+      $('.faceted-results').removeClass('results');
+      $('#popular').show()
+    }
+  }
+
+  $(document).ready(function(){
+    $("#center-top-area").before('<a id="show-more-filters">Filtra els resultats</a>');
+    $("#cercador").attr("placeholder", "Cerca a tot el web");
+    $("#top-area").appendTo("#serveisticSearch");
+
+    $("#show-more-filters").on('click', function(){
+      $('body').toggleClass('show-filters');
+    });
+
+    $.checkResults();
+    $('.faceted-noborder').on('click', $.stCheckResults);
+    $('.faceted-widget form').submit($.stCheckResults);
+  });
+
+  </script>
+  <script type="text/javascript" tal:condition="view/showFilters">
+    $(document).ready(function(){
+      $("#show-more-filters").trigger("click");
+    });
+  </script>
 </div>
 
 </div>
