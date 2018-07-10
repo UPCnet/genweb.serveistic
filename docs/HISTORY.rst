@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.6.11 (unreleased)
+1.6.11 (2018-07-10)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/redesign' [Corina Riba]
+* Nuuevos banner + Centrar titulo banner si no hay descripcion [iago.lopez]
+* Estilos [iago.lopez]
+* Estilo div.photoAlbumEntry [iago.lopez]
 
 1.6.10 (2018-06-25)
 -------------------
