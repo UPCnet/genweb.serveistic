@@ -287,9 +287,3 @@ class gwManagePortletsFallbackViewletForIHomePage(gwManagePortletsFallbackViewle
     grok.name('serveitic.manage_portlets_fallback')
     grok.viewletmanager(IBelowContent)
     grok.layer(IGenwebServeisticLayer)
-
-
-class serveiticFooter(gwFooter):
-    grok.name('genweb.footer')
-    grok.template('footer')
-    grok.layer(IGenwebServeisticLayer)
