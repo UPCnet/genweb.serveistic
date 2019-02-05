@@ -11,28 +11,12 @@ a {
 #content-area {
     margin-top: 1em;
 }
-#eines > li > a {
-  color: white;
-  font-size: 12px;
-  padding-top: 3px;
-}
-#eines > li > a:hover {
-    color: black;
-}
 .nav > li > a:hover, .contentViews > li > a:hover, .configlets > li > a:hover, .formTabs > li > a:hover {
     color: #444;
  }
  h1, h2, h3 {
     color: #00aee5;
     margin-top: 27px;
-}
-.titol-espai a span {
-    font-size: 34px;
-    text-shadow: 1px 1px 1px #333;
- }
-
- .titol-espai a:hover {
-    color: #ddd;
 }
 .liniaBaix, .documentFirstHeading {
     border-bottom: medium none;
@@ -75,34 +59,6 @@ body.template-facetednavigation_view .documentFirstHeading {
 
 .selectpicker:hover, .selectpicker:active, .selectpicker:focus {
 border: 1px solid #666;
-}
-
-#portal-header-gwst {
-    background: rgba(0, 0, 0, 0) url("++genweb++serveistic/capcalera.jpg") scroll 0 0 / cover;
-    border-bottom: 1px solid #d7d5d2;
-    border-top: 0;
-    height: 130px;
-    box-shadow: 0 -2px 4px #555 inset;
-    }
-#portal-header-gwst .container, .header-breadcrumb-image .container {
-  position: relative;
-}
-
-.titol-espai a {
-    color: #f7f7f7;
-    float: left;
-    font-size: 34px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
-    width: auto;
-    margin-right: 10px;
-}
-.titol-espai .fa {
-    color: white;
-    float: left;
-    font-size: 20px;
-    margin-right: 10px;
-    margin-top: 7px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
 }
 .serveistic-bc-level_2 > a {
     font-size: 30px;
@@ -164,6 +120,7 @@ border: 1px solid #666;
 #portal-globalnav {
     background: #eee none repeat scroll 0 0;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 #portal-globalnav .navbar-inner {
@@ -261,12 +218,38 @@ border: 1px solid #666;
     margin-top: 0;
     padding: 0;
 }
+#portal-header .container:not(:first-child){
+  border-top: 0px;
+}
+#portal-header:not(.no-image) + #portal-globalnav .navbar-inner {
+  margin-top: 0px !important;
+}
+#portal-header .nav > li > a:hover {
+  background-color: transparent;
+}
+#portal-header .header-info {
+  font-size: 18px;
+   padding-top: 4px;
+}
+#portal-header .titol-servei {
+  margin-top: 0px;
+}
+#portal-header .titol-servei h2 {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  display: table !important;
+  width: 100%;
+  font-weight: 200;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
 
+#portal-header .titol-servei h2 a {
+  color: #333;
+}
 
-
-header {
-    height: 130px;
-    box-shadow: 0 -2px 4px #555 inset;
+#portal-header .titol-servei h2 a:hover {
+  text-decoration: none;
+  color: #007bc0;
 }
 
 /* ---- search view ---- */
@@ -779,7 +762,9 @@ span.problema-link, span.notificacio-link {
     font-weight: 400;
     text-decoration: inherit;
 }
-
+body.portaltype-serveitic .documentFirstHeading {
+  display: none;
+}
 .template-serveitic .list-field, .template-edit.portaltype-serveitic .list-field  {
     min-height: 150px;
     width: 400px;
@@ -867,11 +852,11 @@ label {
     box-shadow: none;
     color: #fff;
 }
-.header-breadcrumb-image {
+<!-- .header-breadcrumb-image {
     background: rgba(0,0,0,0.25) scroll 0 0 /cover;
     background-blend-mode: darken;
     background-position: center;
-}
+} -->
 .imageless-item {
     background-image: linear-gradient(to right, #e2effc, #007bc1);
     width: auto;
@@ -913,19 +898,6 @@ label {
     width: 265px;
     height: 60px;
 }
-#eines {
-    margin: 5px 20px 0 0;
-}
-#eines .fa {
-    font-size: 20px;
-    margin-left: 5px;
-    margin-right: -5px;
-    margin-top: -2px;
-    padding: 0;
-}
-.titol-espai h1 {
-  margin-top: 34px;
-}
 #footer-upc-logo {
     padding-top: 10px;
 }
@@ -934,37 +906,6 @@ label {
     float: left;
     height: 35px;
     width: 100%;
-}
-div#gwsearch {
-    position: absolute;
-    right: 0;
-    top: 60px;
-}
-input.typeahead {
-    border-color: #777;
-    font-size: 16px;
-    height: 24px;
-    width: 245px;
-}
-.header-eines {
-    margin-top: 20px;
-    width: auto;
-}
-.header-eines-info, .header-eines-login {
-  float:left;
-  color: white;
-  text-shadow: 1px 1px 1px black;
-}
-.header-eines .fa-info-circle {
-    color: white;
-    font-size: 24px;
-    margin-left: 20px;
-}
-.header-eines-login > a {
-    color: white;
-}
-.titol-espai h1 {
-    margin-top: 60px;
 }
 #cookies {
 float: left;
@@ -1092,30 +1033,11 @@ div.photoAlbumEntry {
 #center-area {
     margin-left: 0;
 }
-#gwsearch {
-  display: none;
-}
-.serveistic-bc-level_2 > a {
-    font-size: 24px;
-    margin-top: 10px;
-    width: 100%;
-}
-.titol-espai {
-    margin-left: 10px;
- }
- header {
-    height: 115px;
-    margin-top: -35px;
-    padding-top: 0;
-}
 #c7 {
     width: 55%;
 }
 #faceted-top-column .searchButton {
      width: 100px !important;
-}
-.template-facetednavigation_view .titol-espai {
-    margin-top: 28px;
 }
 .photoAlbumEntryWrapper > img {
     height: auto;
@@ -1136,21 +1058,6 @@ div.photoAlbumEntry:nth-child(5) {
 }
 #faceted-form .widget-fieldset legend {
     width: 97.7%;
-}
-header {
-    height: 130px;
-}
-.header-eines {
-    margin-right: 15px;
-    margin-top: 100px;
-    width: auto;
-}
-.titol-espai {
-    margin-left: 10px;
-    position: absolute;
-}
-.titol-espai .fa.fa-caret-right {
-    display: none;
 }
 .serveistic-bc-level_2 {
   margin-top: -20px;

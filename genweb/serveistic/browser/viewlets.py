@@ -21,6 +21,7 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import genweb_config, pref_lang
+from genweb.theme.browser.viewlets import gwHeader
 from genweb.theme.browser.viewlets import gwFooter
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
@@ -127,8 +128,6 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
 
         return results
 
-from genweb.theme.browser.viewlets import gwHeader
-
 
 class HeaderGWServeistic(gwHeader):
     grok.name('genweb.header')
@@ -152,15 +151,11 @@ class HeaderGWServeistic(gwHeader):
             'html_title_{}'.format(self.pref_lang()), '')
 
     def get_title(self):
-        servei = self.get_servei()
-        if servei:
-            return servei.title
+        title = getattr(self.genweb_config(), 'html_title_{}'.format(self.pref_lang()))
+        if title:
+            return title
         else:
-            title = getattr(self.genweb_config(), 'html_title_{}'.format(self.pref_lang()))
-            if title:
-                return title
-            else:
-                return u''
+            return u''
 
     def get_servei_title(self):
         return self.get_servei().title if self.get_servei() else ''
@@ -216,29 +211,17 @@ class HeaderGWServeistic(gwHeader):
 
         return folder_path
 
-
-class PortalHeaderGWServeistic(gwHeader):
-    grok.name('plone.header')
-    grok.viewletmanager(IPortalTop)
-    grok.template('portal_header')
-    grok.layer(IGenwebServeisticLayer)
-
-    IMAGE_CROPPED_WIDTH = 1280
-    IMAGE_CROPPED_HEIGHT = 130
-
-    def get_servei(self):
-        context = aq_inner(self.context)
-        for obj in aq_chain(context):
-            if IServeiTIC.providedBy(obj):
-                return obj
-
     @property
     def img_cropped_url(self):
-        return self.get_servei().unrestrictedTraverse('@@images').scale(
-            'image',
-            width=PortalHeaderGWServeistic.IMAGE_CROPPED_WIDTH,
-            height=PortalHeaderGWServeistic.IMAGE_CROPPED_HEIGHT,
-            direction="down").absolute_url()
+        servei = self.get_servei()
+        if servei:
+            return servei.unrestrictedTraverse('@@images').scale(
+                'image',
+                width=1280,
+                height=120,
+                direction="down").absolute_url()
+        else:
+            return '++genweb++serveistic/capcalera.jpg'
 
 
 class gwManagePortletsFallbackViewletMixin(object):
