@@ -224,8 +224,15 @@ border: 1px solid #666;
 #portal-header:not(.no-image) + #portal-globalnav .navbar-inner {
   margin-top: 0px !important;
 }
-#portal-header .nav > li > a:hover {
+#portal-header .nav > li.open > a,
+#portal-header .nav > li > a:hover{
   background-color: transparent;
+  color: #444;
+}
+#portal-header .nav > li.open > a > .caret,
+#portal-header .nav > li > a:hover > .caret {
+  border-top-color: #444;
+  border-bottom-color: #444;
 }
 #portal-header .header-info {
   font-size: 18px;

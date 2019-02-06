@@ -22,7 +22,6 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import genweb_config, pref_lang
 from genweb.theme.browser.viewlets import gwHeader
-from genweb.theme.browser.viewlets import gwFooter
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
@@ -214,7 +213,7 @@ class HeaderGWServeistic(gwHeader):
     @property
     def img_cropped_url(self):
         servei = self.get_servei()
-        if servei:
+        if servei and servei.image:
             return servei.unrestrictedTraverse('@@images').scale(
                 'image',
                 width=1280,
