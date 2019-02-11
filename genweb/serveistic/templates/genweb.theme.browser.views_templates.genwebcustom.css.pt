@@ -1095,6 +1095,50 @@ div.photoAlbumEntry {
 }
 }
 
+@media only screen and (max-width: 979px) and (orientation: portrait),
+only screen and (max-width: 768px) and (orientation: landscape) {
+  #portal-globalnav .nav-collapse .nav > li > a,
+  #portal-globalnav .nav-collapse .dropdown-menu a {
+    padding: 3px;
+  }
+
+  #portal-globalnav .nav-collapse .dropdown-menu,
+  .nav-collapse-eines.nav-collapse .dropdown-menu {
+    display: block;
+  }
+
+  .titol-servei h2 {
+    font-size: 130%;
+  }
+
+  #portal-globalnav .navbar .nav > li > a {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 979px) and (orientation: portrait),
+only screen and (max-width: 979px) and (orientation: landscape) {
+  #portal-globalnav .hidden-desktop {
+      display: none !important;
+  }
+}
+@media only screen and (max-width: 636px) and (orientation: portrait),
+only screen and (max-width: 636px) and (orientation: landscape) {
+  .titol-espai h1 {
+    font-weight: bold;
+  }
+
+  .titol-servei h2 {
+    margin-top: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #portal-globalnav .hidden-desktop {
+      display: inherit !important;
+  }
+}
+
 /* ----content type icon --- */
 #listing-table, .template-folder_tabular_view .listing, .contenttreeWidget > .navTree, .collage-content-menu {
   a, span  {

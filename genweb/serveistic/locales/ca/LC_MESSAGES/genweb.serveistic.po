@@ -76,3 +76,6 @@ msgstr "Tipus d'eina o servei"
 
 msgid "Àmbit"
 msgstr "Àmbit"
+
+msgid "Menu"
+msgstr "Menú"
