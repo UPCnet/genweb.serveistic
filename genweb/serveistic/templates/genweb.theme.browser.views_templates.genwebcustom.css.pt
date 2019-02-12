@@ -218,34 +218,45 @@ border: 1px solid #666;
     margin-top: 0;
     padding: 0;
 }
+
 #portal-header .container:not(:first-child){
   border-top: 0px;
 }
+
 #portal-header:not(.no-image) + #portal-globalnav .navbar-inner {
   margin-top: 0px !important;
 }
+
+#portal-header .titol-espai h1 {
+  margin-bottom: 0px;
+}
+
 #portal-header .nav > li.open > a,
 #portal-header .nav > li > a:hover{
   background-color: transparent;
   color: #444;
 }
+
 #portal-header .nav > li.open > a > .caret,
 #portal-header .nav > li > a:hover > .caret {
   border-top-color: #444;
   border-bottom-color: #444;
 }
+
 #portal-header .header-info {
   font-size: 18px;
-   padding-top: 4px;
+  padding-top: 4px;
 }
+
 #portal-header .titol-servei {
   margin-top: 0px;
 }
+
 #portal-header .titol-servei h2 {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   display: table !important;
   width: 100%;
-  font-weight: 200;
+  font-weight: 600;
   margin-top: 14px;
   margin-bottom: 14px;
 }
@@ -257,6 +268,18 @@ border: 1px solid #666;
 #portal-header .titol-servei h2 a:hover {
   text-decoration: none;
   color: #007bc0;
+}
+
+#portal-header.no-image .container {
+  padding-bottom: 0px;
+}
+
+#portal-header.no-image .titol-espai h1 {
+  border-bottom: 3px solid #656565;
+}
+
+#portal-header.no-image + #portal-globalnav .navbar-inner {
+  margin-top: 0px;
 }
 
 /* ---- search view ---- */
@@ -1108,7 +1131,7 @@ only screen and (max-width: 768px) and (orientation: landscape) {
   }
 
   .titol-servei h2 {
-    font-size: 130%;
+    font-size: 135%;
   }
 
   #portal-globalnav .navbar .nav > li > a {
@@ -1128,8 +1151,12 @@ only screen and (max-width: 636px) and (orientation: landscape) {
     font-weight: bold;
   }
 
+  #portal-header:not(.no-image) .titol-espai h1 {
+    border-bottom: 1px solid #656565;
+  }
+
   .titol-servei h2 {
-    margin-top: 0px !important;
+    margin-top: 5px !important;
   }
 }
 

@@ -1,31 +1,33 @@
 # -*- coding: utf-8 -*-
-
-from five import grok
-from plone import api
 from AccessControl import getSecurityManager
-from Acquisition import aq_inner, aq_chain
-
-from zope.interface import Interface
-from zope.component import getMultiAdapter
-from zope.component.hooks import getSite
-
+from Acquisition import aq_chain
+from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from plone.memoize.view import memoize_contextless
-from plone.app.layout.viewlets.common import GlobalSectionsViewlet
-from plone.app.layout.viewlets.interfaces import IPortalTop, IPortalHeader
-from plone.app.layout.viewlets.interfaces import IBelowContent
-from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
+from five import grok
+from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.app.layout.viewlets.common import GlobalSectionsViewlet
+from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
+from plone.app.layout.viewlets.interfaces import IBelowContent
+from plone.app.layout.viewlets.interfaces import IPortalHeader
+from plone.app.layout.viewlets.interfaces import IPortalTop
+from plone.memoize.view import memoize_contextless
+from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
+from zope.component import queryUtility
+from zope.component.hooks import getSite
+from zope.interface import Interface
 
+from genweb.controlpanel.interface import IGenwebControlPanelSettings
 from genweb.core.interfaces import IHomePage
-from genweb.core.utils import genweb_config, pref_lang
-from genweb.theme.browser.viewlets import gwHeader
-
-from genweb.serveistic.interfaces import IGenwebServeisticLayer
+from genweb.core.utils import genweb_config
+from genweb.core.utils import pref_lang
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.utilities import serveistic_config
+from genweb.theme.browser.viewlets import gwHeader
 
 grok.context(Interface)
 
@@ -221,6 +223,11 @@ class HeaderGWServeistic(gwHeader):
                 direction="down").absolute_url()
         else:
             return '++genweb++serveistic/capcalera.jpg'
+
+    def remove_header_imatge(self):
+        registry = queryUtility(IRegistry)
+        settings = registry.forInterface(IGenwebControlPanelSettings)
+        return settings.treu_imatge_capsalera
 
 
 class gwManagePortletsFallbackViewletMixin(object):

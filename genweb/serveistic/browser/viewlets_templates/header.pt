@@ -1,4 +1,4 @@
-<div i18n:domain="genweb"
+<tal:block i18n:domain="genweb"
      tal:define="portal_url context/@@plone_portal_state/portal_url;
                  portal_https context/@@genweb.utils/portal_url_https;
                  custom_link viewlet/getCustomLink;
@@ -200,21 +200,19 @@
         </a>
       </h1>
     </div>
-
-  </div>
-
-  <div class="header-image l3-image"
+    <div class="header-image l3-image"
+       tal:condition="not:viewlet/remove_header_imatge"
        tal:attributes="class string:header-image ${viewlet/get_image_class};
-                       style string:background-image: url(${viewlet/img_cropped_url})"></div>
-
-  <div class="container titol-servei" tal:condition="viewlet/isServei">
-    <h2>
-      <a tal:attributes="href viewlet/get_url_servei"
-         tal:content="viewlet/get_servei_title">
-        Servei de <b>Comunicació i Promoció</b>
-      </a>
-    </h2>
-
+                       style string:background-image: url(${viewlet/img_cropped_url})">
+    </div>
+    <div class="titol-servei" tal:condition="viewlet/isServei">
+      <h2>
+        <a tal:attributes="href viewlet/get_url_servei"
+           tal:content="viewlet/get_servei_title">
+          Servei de <b>Comunicació i Promoció</b>
+        </a>
+      </h2>
+    </div>
   </div>
   <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
        i18n:domain="genweb">
@@ -229,4 +227,4 @@
       <button class="btn" data-dismiss="modal" aria-hidden="true">Tanca</button>
     </div>
   </div>
-</div>
+</tal:block>
