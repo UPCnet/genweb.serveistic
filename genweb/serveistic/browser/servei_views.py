@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import pkg_resources
 from five import grok
 
 from plone.app.contenttypes.behaviors.richtext import IRichText
@@ -106,7 +105,7 @@ def createFolderAndContents(folder_directori, folder_data):
 def initialize_servei(serveitic, event):
     # Configure portlets
     assignments = get_portlet_assignments(
-        serveitic, 'plone.leftcolumn')
+        serveitic, 'plone.rightcolumn')
     assignments['banners_global'] = BannersAssignment(banner_type=u"Global")
     assignments['banners_local'] = BannersAssignment(banner_type=u"Local")
 

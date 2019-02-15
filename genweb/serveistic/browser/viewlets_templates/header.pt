@@ -200,11 +200,26 @@
         </a>
       </h1>
     </div>
-    <div class="header-image l3-image"
-       tal:condition="not:viewlet/remove_header_imatge"
-       tal:attributes="class string:header-image ${viewlet/get_image_class};
+  </div>
+  <tal:block tal:define="isServei viewlet/isServei">
+    <div class="header-image-serveistic l3-image"
+       tal:condition="isServei"
+       tal:attributes="class string:header-image-serveistic ${viewlet/get_image_class};
                        style string:background-image: url(${viewlet/img_cropped_url})">
     </div>
+    <tal:cond condition="not:isServei"
+              tal:define="remove_header_imatge viewlet/remove_header_imatge">
+      <div class="header-image l3-image"
+         tal:condition="not:remove_header_imatge"
+         tal:attributes="class string:header-image ${viewlet/get_image_class};
+                         style string:background-image: url(${viewlet/img_cropped_url})">
+      </div>
+      <div class="separator"
+         tal:condition="remove_header_imatge">
+      </div>
+    </tal:cond>
+  </tal:block>
+  <div class="container">
     <div class="titol-servei" tal:condition="viewlet/isServei">
       <h2>
         <a tal:attributes="href viewlet/get_url_servei"

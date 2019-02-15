@@ -243,6 +243,13 @@ border: 1px solid #666;
   border-bottom-color: #444;
 }
 
+#portal-header .header-image-serveistic {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 0px;
+  padding-top: 6.63%;
+}
+
 #portal-header .header-info {
   font-size: 18px;
   padding-top: 4px;
@@ -274,12 +281,14 @@ border: 1px solid #666;
   padding-bottom: 0px;
 }
 
-#portal-header.no-image .titol-espai h1 {
-  border-bottom: 3px solid #656565;
-}
-
 #portal-header.no-image + #portal-globalnav .navbar-inner {
   margin-top: 0px;
+}
+
+#portal-header .separator {
+  min-height: 3px;
+  height: 3px;
+  background-color: #4e4e4e;
 }
 
 /* ---- search view ---- */
@@ -545,6 +554,7 @@ border: 1px solid #666;
 
 #c7 {
     border-color: #dedede;
+    box-shadow: 1px 2px 3px #bbb !important;
     font-family: "open sans", arial;
     font-size: 15px;
     margin-right: 8px;
@@ -555,6 +565,7 @@ border: 1px solid #666;
 #faceted-top-column .searchButton {
     background: #00aee5 none repeat scroll 0 0;
     border: 0 none;
+    box-shadow: 1px 2px 3px #bbb !important;
     color: white;
     font-family: "open sans", arial;
     font-size: 16px;
@@ -1120,9 +1131,13 @@ div.photoAlbumEntry {
 
 @media only screen and (max-width: 979px) and (orientation: portrait),
 only screen and (max-width: 768px) and (orientation: landscape) {
+  #portal-globalnav .nav {
+    border-top: 0px;
+  }
+
   #portal-globalnav .nav-collapse .nav > li > a,
   #portal-globalnav .nav-collapse .dropdown-menu a {
-    padding: 3px;
+    padding: 8px 3px;
   }
 
   #portal-globalnav .nav-collapse .dropdown-menu,
@@ -1144,15 +1159,25 @@ only screen and (max-width: 979px) and (orientation: landscape) {
   #portal-globalnav .hidden-desktop {
       display: none !important;
   }
+
+  #portal-globalnav {
+    background-color: transparent;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
 }
 @media only screen and (max-width: 636px) and (orientation: portrait),
 only screen and (max-width: 636px) and (orientation: landscape) {
-  .titol-espai h1 {
-    font-weight: bold;
+
+  #portal-header .header-image-serveistic {
+    background-image: none !important;
+    padding-top: 0%;
+    margin-bottom: 5px;
+    height: 0px;
   }
 
   #portal-header:not(.no-image) .titol-espai h1 {
-    border-bottom: 1px solid #656565;
+    border-bottom: 1px solid #ddd;
   }
 
   .titol-servei h2 {
