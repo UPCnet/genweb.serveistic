@@ -246,8 +246,7 @@ border: 1px solid #666;
 #portal-header .header-image-serveistic {
   background-repeat: no-repeat;
   width: 100%;
-  height: 0px;
-  padding-top: 6.63%;
+  height: 82px;
 }
 
 #portal-header .header-info {
@@ -1160,14 +1159,26 @@ only screen and (max-width: 979px) and (orientation: landscape) {
       display: none !important;
   }
 
+  #portal-columns {
+    display: grid;
+  }
+
+  #portal-column-one {
+    order: 2;
+  }
+
+  #portal-column-content {
+    order: 1;
+  }
+}
+@media only screen and (max-width: 636px) and (orientation: portrait),
+only screen and (max-width: 636px) and (orientation: landscape) {
+
   #portal-globalnav {
     background-color: transparent;
     padding-left: 5px !important;
     padding-right: 5px !important;
   }
-}
-@media only screen and (max-width: 636px) and (orientation: portrait),
-only screen and (max-width: 636px) and (orientation: landscape) {
 
   #portal-header .header-image-serveistic {
     background-image: none !important;
