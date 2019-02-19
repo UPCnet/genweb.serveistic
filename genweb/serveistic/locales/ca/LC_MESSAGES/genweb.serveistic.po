@@ -15,7 +15,7 @@ msgstr ""
 "Domain: genweb.serveistic\n"
 
 msgid "Notificacio TIC"
-msgstr "Notificació TIC"
+msgstr "Notificació"
 
 msgid "No hi ha cap problema enregistrat relacionat amb aquest servei"
 msgstr "No hi ha cap problema enregistrat relacionat amb aquest servei"
