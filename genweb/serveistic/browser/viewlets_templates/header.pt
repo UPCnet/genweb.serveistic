@@ -195,14 +195,14 @@
     <div class="header-image-serveistic l3-image"
        tal:condition="isServei"
        tal:attributes="class string:header-image-serveistic ${viewlet/get_image_class};
-                       style string:background: url(${viewlet/img_cropped_url}) scroll 0 0 / cover">
+                       style string:background: url(${viewlet/img_cropped_url}) scroll center 0 / cover">
     </div>
     <tal:cond condition="not:isServei"
               tal:define="remove_header_imatge viewlet/remove_header_imatge">
       <div class="header-image-serveistic l3-image"
          tal:condition="not:remove_header_imatge"
          tal:attributes="class string:header-image-serveistic ${viewlet/get_image_class};
-                         style string:background: url(${viewlet/img_cropped_url}) scroll 0 0 / cover">
+                         style string:background: url(${viewlet/img_cropped_url}) scroll center 0 / cover">
       </div>
       <div class="separator"
          tal:condition="remove_header_imatge">
