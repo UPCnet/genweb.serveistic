@@ -131,6 +131,7 @@ border: 1px solid #666;
     box-shadow: none;
     padding: 0;
     border-color: #ddd;
+    border-bottom: 3px solid #666 !important;
 }
 
 .portlet {
@@ -524,6 +525,14 @@ border: 1px solid #666;
   }
 #portal-globalnav .navbar .nav > li > a:focus, #portal-globalnav .navbar .contentViews > li > a:focus, #portal-globalnav .navbar .configlets > li > a:focus, #portal-globalnav .navbar .formTabs > li > a:focus, #portal-globalnav .navbar .nav > li > a:hover, #portal-globalnav .navbar .contentViews > li > a:hover, #portal-globalnav .navbar .configlets > li > a:hover, #portal-globalnav .navbar .formTabs > li > a:hover {
     box-shadow: none;
+}
+
+.dropdown-menu a {
+    border-bottom: 0px !important;
+}
+
+.dropdown-menu a:hover {
+  color: #FFF !important;
 }
 
 

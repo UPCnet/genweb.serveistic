@@ -22,7 +22,8 @@
                 <a href="" class="dropdown-toggle"
                    tal:attributes="href tab/url;
                                    title tab/description|nothing;
-                                   alt   tab/description|nothing;">
+                                   alt   tab/description|nothing;
+                                   class string:state-${tab/review_state}">
                    <tal:tab content="tab/name"></tal:tab>
                    <span tal:condition="showSubfolders" class="caret"></span>
                 </a>
@@ -33,7 +34,8 @@
                             tal:content="subitem/name"
                             tal:attributes="href  subitem/url;
                                             alt   subitem/description|nothing;
-                                            title subitem/description|nothing;">SUBMENU</a>
+                                            title subitem/description|nothing;
+                                            class string:state-${subitem/review_state}">SUBMENU</a>
                     </li>
                 </ul>
 

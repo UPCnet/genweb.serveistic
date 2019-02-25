@@ -86,7 +86,8 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
                     results.append(dict(name=fold.Title,
                                         url=fold.getURL(),
                                         id=fold.getId,
-                                        description=fold.Description))
+                                        description=fold.Description,
+                                        review_state=fold.review_state))
 
         return results
 
@@ -125,7 +126,8 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
                     results.append(dict(name=fold.Title,
                                         url=fold.getURL(),
                                         id=fold.getId,
-                                        description=fold.Description))
+                                        description=fold.Description,
+                                        review_state=fold.review_state))
 
         return results
 
