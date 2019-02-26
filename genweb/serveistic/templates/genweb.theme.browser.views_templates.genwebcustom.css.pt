@@ -126,7 +126,7 @@ border: 1px solid #666;
 #portal-globalnav .navbar-inner {
     background-image: none;
     border-bottom: 0;
-    border-radius: 0;
+    border-radius: 0px !important;
     border-top: 0 none;
     box-shadow: none;
     padding: 0;
@@ -226,6 +226,7 @@ border: 1px solid #666;
 
 #portal-header:not(.no-image) + #portal-globalnav .navbar-inner {
   margin-top: 0px !important;
+  border-radius: 0px !important;
 }
 
 #portal-header .titol-espai h1 {
