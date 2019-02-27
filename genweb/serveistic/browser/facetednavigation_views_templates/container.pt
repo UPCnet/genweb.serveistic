@@ -49,7 +49,7 @@
                     <img tal:attributes="src string:${popular/absolute_url}/@@images/image/mini; alt popular/title; title popular/description" />
                   </tal:then>
                   <tal:then condition="python: not cond or not cond2">
-                    <img tal:attributes="src string:${popular/absolute_url}/++genweb++serveistic/capcalera_mini.jpg; alt popular/title; title popular/description" />
+                    <img tal:attributes="src string:${popular/absolute_url}/capcalera_mini.jpg; alt popular/title; title popular/description" />
                   </tal:then>
                 </tal:if>
               </span>

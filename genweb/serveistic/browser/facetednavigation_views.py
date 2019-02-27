@@ -52,7 +52,7 @@ class PreviewItem(grok.View):
             return "{0}/@@images/image/mini".format(
                 self.context.absolute_url())
         else:
-            return "++genweb++serveistic/capcalera_mini.jpg"
+            return "capcalera_mini.jpg"
 
 
 class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):

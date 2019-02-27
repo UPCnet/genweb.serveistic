@@ -224,7 +224,7 @@ class HeaderGWServeistic(gwHeader):
                 height=120,
                 direction="down").absolute_url()
         else:
-            return '++genweb++serveistic/capcalera.jpg'
+            return 'capcalera.jpg'
 
     def remove_header_imatge(self):
         registry = queryUtility(IRegistry)

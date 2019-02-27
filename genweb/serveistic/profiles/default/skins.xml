@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_skins" default_skin="GenwebServeistic">
+ <object name="genwebserveistic_images"
+    meta_type="Filesystem Directory View"
+    directory="genweb.serveistic:skins/genwebserveistic_images"/>
+
+ <skin-path name="GenwebServeistic" based-on="GenwebTheme">
+  <layer name="genwebserveistic_images" insert-after="custom"/>
+ </skin-path>
+
+</object>
