@@ -1,11 +1,25 @@
 Changelog
 =========
 
-1.6.12 (unreleased)
+1.6.12 (2019-02-28)
 -------------------
 
-- Nothing changed yet.
-
+* Add packages to install [Corina Riba]
+* Imagen capcalera y capcalera_mini personalizada por el manage [Iago López Fernández]
+* Estilo: Quitar redondeado en el borde del menu [Iago López Fernández]
+* Colores menu - review_state [Iago López Fernández]
+* viewlets.xml [Iago López Fernández]
+* Centrar horizontalmente imagen cabecera [Iago López Fernández]
+* Traducción [Iago López Fernández]
+* Cabecera [Iago López Fernández]
+* Imagen cabecera resposive + Orden portlets dispositivos tables y moviles [Iago López Fernández]
+* Cabecera [Iago López Fernández]
+* Estilos cabecera [Iago López Fernández]
+* Resposive menu in mobile [Iago López Fernández]
+* Cabecera [Iago López Fernández]
+* Cabecera [root muntanyeta]
+* Eliminar personalización del footer del paquete [root muntanyeta]
+* Estilo titulo cabecera [iago.lopez]
 
 1.6.11 (2018-07-10)
 -------------------
