@@ -115,14 +115,14 @@ class IServeiTIC(form.Schema):
 
     image = BlobImage(
         title=_(u"Imatge de capçalera"),
-        description=_(u"Mida recomanada de la imatge 1280x130 pixels"),
+        description=_(u"Mida recomanada de la imatge 1920x82 pixels"),
         required=False,
     )
 
     image_item = BlobImage(
         title=_(u"Imatge del servei en el resultat de cerca"),
         description=_(u"Es mostrarà com a imatge del servei en els resultats "
-                      u"del cercador de Serveis TIC (mida recomanada 180x150 "
+                      u"del cercador de Serveis TIC (mida recomanada 180x50 "
                       u"pixels)"),
         required=False)
 
