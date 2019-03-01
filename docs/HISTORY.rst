@@ -10,6 +10,11 @@ Changelog
 1.6.12 (2019-02-28)
 -------------------
 
+
+
+1.6.12 (2019-02-28)
+-------------------
+
 * Add packages to install [Corina Riba]
 * Imagen capcalera y capcalera_mini personalizada por el manage [Iago López Fernández]
 * Estilo: Quitar redondeado en el borde del menu [Iago López Fernández]
