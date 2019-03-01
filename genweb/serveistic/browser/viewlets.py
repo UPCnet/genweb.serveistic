@@ -215,14 +215,10 @@ class HeaderGWServeistic(gwHeader):
         return folder_path
 
     @property
-    def img_cropped_url(self):
+    def img_url(self):
         servei = self.get_servei()
         if servei and servei.image:
-            return servei.unrestrictedTraverse('@@images').scale(
-                'image',
-                width=1280,
-                height=120,
-                direction="down").absolute_url()
+            return self.get_url_servei() + "/@@images/image"
         else:
             return 'capcalera.jpg'
 
