@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.6.13 (unreleased)
+1.6.13 (2019-03-07)
 -------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/master' into develop [Iago López Fernández]
+* No reducir la imagen de cabecera [Iago López Fernández]
+* Cambiar literales [Iago López Fernández]
 
 1.6.12 (2019-02-28)
 -------------------
