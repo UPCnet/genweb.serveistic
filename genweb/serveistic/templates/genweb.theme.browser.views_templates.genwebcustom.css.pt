@@ -627,7 +627,7 @@ border: 1px solid #666;
     cursor: pointer;
 }
 #serveisticSearch {
-    display: flow-root;
+    display: grid;
 }
 #top-area {
     padding-bottom: 10px;
