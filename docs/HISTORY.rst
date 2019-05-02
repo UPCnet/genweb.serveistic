@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.14 (unreleased)
+1.6.14 (2019-05-02)
 -------------------
 
-- Nothing changed yet.
-
+* display style fixed in Safari browser [r.ventura]
 
 1.6.13 (2019-03-07)
 -------------------
