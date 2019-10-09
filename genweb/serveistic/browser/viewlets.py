@@ -6,7 +6,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from five import grok
-from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
@@ -171,6 +170,9 @@ class HeaderGWServeistic(gwHeader):
     def get_url_servei(self):
         return self.get_servei().absolute_url_path()
 
+    def get_search_url_servei(self):
+        return '/'.join(self.get_servei().getPhysicalPath()[0:5])
+
     @property
     def url_serveistic_servei(self):
         return serveistic_config().url_info_serveistic
@@ -198,21 +200,11 @@ class HeaderGWServeistic(gwHeader):
                         var text = $(this).val();
                         window.location.href = \
                             $(typeahead_dom).attr('data-search-url') +
-                            '?SearchableText=' + text + '&path={path}';
+                            '?SearchableText=' + text + '{path}';
                     }}
                 }});
             }});
-        }});""".format(path=self.get_search_path())
-
-    def get_search_path(self):
-        folder_path = '/'.join(self.context.getPhysicalPath())
-        if len(folder_path.split('/')) >= 4:
-            serveistic_path = '/'.join(folder_path.split('/')[0:5])
-            portal = api.portal.get()
-            if portal.restrictedTraverse(serveistic_path).portal_type == 'serveitic':
-                folder_path = serveistic_path
-
-        return folder_path
+        }});""".format(path="&path=" + self.get_search_url_servei() if self.isServei() else '')
 
     @property
     def img_url(self):

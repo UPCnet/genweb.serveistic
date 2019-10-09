@@ -90,6 +90,7 @@
               <li class="divider"> </li>
               <li>
                 <tal:block replace="structure provider:genweb.search_manager" />
+                <script tal:content="viewlet/js_search"></script>
               </li>
         </ul>
       </div>
@@ -100,6 +101,7 @@
         <ul id="eines" class="nav nav-pills pull-right">
         <li>
             <tal:block replace="structure provider:genweb.search_manager" />
+            <script tal:content="viewlet/js_search"></script>
         </li>
          <li tal:condition="custom_link/enable"
              tal:define="oinw custom_link/oinw">
