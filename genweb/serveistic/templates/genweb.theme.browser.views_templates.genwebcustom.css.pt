@@ -1064,9 +1064,20 @@ float: left;
 }
 }
 
+@media only screen and (max-width: 1200px) {
+#c7 {
+    width: 66%;
+}
+}
+
 @media only screen and (max-width: 980px) {
 .imageless-item {
   width: 265px;
+}
+
+#popular {
+  width: calc(98vw - 30px);
+  padding: 15px;
 }
 }
 
