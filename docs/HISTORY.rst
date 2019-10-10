@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.15 (unreleased)
+1.6.15 (2019-10-10)
 -------------------
 
-- Nothing changed yet.
-
+* Adaptar página principal a pantallas más pequeñas [Iago López Fernández]
+* Solucionar error setup_home [Iago López Fernández]
 
 1.6.14 (2019-05-02)
 -------------------
