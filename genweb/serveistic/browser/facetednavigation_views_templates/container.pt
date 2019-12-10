@@ -101,6 +101,10 @@
     $.checkResults();
     $('.faceted-noborder').on('click', $.stCheckResults);
     $('.faceted-widget form').submit($.stCheckResults);
+
+    if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7')){
+      $("#show-more-filters").trigger("click");
+    }
   });
 
   </script>
