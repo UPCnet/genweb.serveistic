@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.17 (unreleased)
+1.6.17 (2019-12-10)
 -------------------
 
-- Nothing changed yet.
-
+* Renombrar titulos filtros buscador [Iago López Fernández]
+* Desplegar filtros si hay alguno seleccionado (al refrescar página) [Iago López Fernández]
 
 1.6.16 (2019-11-06)
 -------------------
