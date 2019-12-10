@@ -66,13 +66,13 @@ msgid "category_freq_anual"
 msgstr "Anual"
 
 msgid "Prestador"
-msgstr "Proveïdor"
+msgstr "Proveïdor / Unitat"
 
 msgid "Ubicació"
 msgstr "Usuaris"
 
 msgid "Tipologia"
-msgstr "Tipus d'eina o servei"
+msgstr "Servei / Àrea"
 
 msgid "Àmbit"
 msgstr "Àmbit"
