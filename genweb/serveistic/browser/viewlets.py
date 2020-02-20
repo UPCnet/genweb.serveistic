@@ -54,7 +54,7 @@ class gwGlobalSectionsViewlet(GlobalSectionsViewlet, viewletBase):
     index = ViewPageTemplateFile('viewlets_templates/sections.pt')
 
     allowed_section_types = [
-        'Folder', 'Collection', 'Document', 'serveitic', 'packet']
+        'Folder', 'Collection', 'Document', 'serveitic', 'packet', 'FormFolder', 'Link', 'Window', 'genweb.upc.subhome']
 
     def get_servei(self):
         context = aq_inner(self.context)
