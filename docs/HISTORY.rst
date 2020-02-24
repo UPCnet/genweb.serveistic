@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.18 (unreleased)
+1.6.18 (2020-02-24)
 -------------------
 
-- Nothing changed yet.
-
+* Añadir nuevos tipos de contenido visibles en el menu superior [Iago López Fernández]
 
 1.6.17 (2019-12-10)
 -------------------
