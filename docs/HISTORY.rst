@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.19 (unreleased)
+1.6.19 (2020-03-26)
 -------------------
 
-- Nothing changed yet.
-
+* Activar la Graella de portlets dentro de un Serveistic (a primer nivel) [Iago López Fernández]
 
 1.6.18 (2020-02-24)
 -------------------
