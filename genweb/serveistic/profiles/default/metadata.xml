@@ -3,6 +3,7 @@
   <version>1</version>
   <dependencies>
       <dependency>profile-genweb.cleantheme:default</dependency>
+      <dependency>profile-genweb.robtheme:default</dependency>
       <dependency>profile-eea.facetednavigation:default</dependency>
   </dependencies>
 </metadata>
