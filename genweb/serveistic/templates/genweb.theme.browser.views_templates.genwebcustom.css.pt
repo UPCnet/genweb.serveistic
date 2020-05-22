@@ -127,7 +127,7 @@ body.template-facetednavigation_view .documentFirstHeading {
 }
 
 .selectpicker:hover, .selectpicker:active, .selectpicker:focus {
-border: 1px solid #666;
+border: 1px solid #636363;
 }
 
 .serveistic-bc-level_2 > a {
@@ -206,7 +206,7 @@ border: 1px solid #666;
     box-shadow: none;
     padding: 0;
     border-color: #ddd;
-    border-bottom: 3px solid #666 !important;
+    border-bottom: 3px solid #636363 !important;
 }
 
 .portlet {
@@ -276,13 +276,13 @@ border: 1px solid #666;
 }
 
 .portlet-list > li .data {
-    color: #666;
+    color: #636363;
     display: block;
     font-size: 10px;
     margin-bottom: 0;
 }
 .portlet-list > li .data-inline {
-    color: #666;
+    color: #636363;
     display: block;
     font-size: 10px;
     margin-bottom: 0;
@@ -350,19 +350,20 @@ border: 1px solid #666;
   margin-top: 0px;
 }
 
-#portal-header .titol-servei h2 {
+#portal-header .titol-servei h1 {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   display: table !important;
   width: 100%;
   margin-top: 14px;
   margin-bottom: 14px;
+  font-weight: 300;
 }
 
-#portal-header .titol-servei h2 a {
+#portal-header .titol-servei h1 a {
   color: #333;
 }
 
-#portal-header .titol-servei h2 a:hover {
+#portal-header .titol-servei h1 a:hover {
   text-decoration: none;
   color: #007bc0;
 }
@@ -821,7 +822,7 @@ div.photoAlbumEntry:hover {
      font-weight: normal;
 }
 .photoAlbumEntryTitle {
-    color: #00aee5 !important;
+    color: #333 !important;
     display: block;
     font-size: 15px;
     font-weight: 600;
@@ -830,7 +831,7 @@ div.photoAlbumEntry:hover {
     text-transform: none;
 }
 .photoAlbumEntryDescription {
-    color: #888;
+    color: #4A4A4A;
     display: block;
     font-size: 12px;
     line-height: 15px;
@@ -874,7 +875,7 @@ div.photoAlbumEntry:hover {
     border-top: 1px solid #ddd;
 }
 #commenting p {
-    color: #666;
+    color: #636363;
     font-size: 12px;
     line-height: 14px;
 }
@@ -1246,7 +1247,7 @@ only screen and (max-width: 768px) and (orientation: landscape) {
     display: block;
   }
 
-  .titol-servei h2 {
+  .titol-servei h1 {
     font-size: 135%;
   }
 
@@ -1293,7 +1294,7 @@ only screen and (max-width: 636px) and (orientation: landscape) {
     border-bottom: 1px solid #ddd;
   }
 
-  .titol-servei h2 {
+  .titol-servei h1 {
     margin-top: 5px !important;
   }
 }
