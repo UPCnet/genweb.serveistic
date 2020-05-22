@@ -822,7 +822,7 @@ div.photoAlbumEntry:hover {
      font-weight: normal;
 }
 .photoAlbumEntryTitle {
-    color: #333 !important;
+    color: #00aee5 !important;
     display: block;
     font-size: 15px;
     font-weight: 600;
