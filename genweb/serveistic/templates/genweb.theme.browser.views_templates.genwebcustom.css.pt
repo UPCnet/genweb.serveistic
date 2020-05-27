@@ -219,7 +219,7 @@ border: 1px solid #636363;
 .portlet h2 {
     border-bottom: 0 none;
     box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.1);
-    color: #00aee5;
+    color: #4A4A4A;
     font-size: 18px;
     line-height: 16px;
     margin: 0;
@@ -357,6 +357,7 @@ border: 1px solid #636363;
   margin-top: 14px;
   margin-bottom: 14px;
   font-weight: 300;
+  font-size: 26px !important;
 }
 
 #portal-header .titol-servei h1 a {
@@ -739,12 +740,13 @@ display: none;
     margin-top: 15px;
 }
 .faceted-results::before {
-    color: #888;
+    color: #4A4A4A;
     content: "Tots els serveis:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
     margin-top: -10px;
+    font-weight: normal;
 }
 .faceted-results.results::before {
     content: "Resultats:";
@@ -764,7 +766,7 @@ display: none;
   margin-right: -49.75vw;
 }
 #popular h2 {
-  color: #888;
+  color: #4A4A4A;
   display: block;
   font-size: 18px;
   font-weight: normal;
@@ -1247,8 +1249,8 @@ only screen and (max-width: 768px) and (orientation: landscape) {
     display: block;
   }
 
-  .titol-servei h1 {
-    font-size: 135%;
+  #portal-header .titol-servei h1 {
+    font-size: 135% !important;
   }
 
   #portal-globalnav .navbar .nav > li > a {
