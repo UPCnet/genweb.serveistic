@@ -1,5 +1,13 @@
 /* --- FIX ROBTHEME --- */
 
+header#portal-header .titol-espai.clearfix h1 {
+    margin: 14px 0 !important;
+}
+
+.titol-espai a {
+    min-height: initial !important;
+}
+
 nav#portal-personaltools-wrapper .navbar .nav > li > a {
     padding: 8px 4px !important;
 }
