@@ -1,11 +1,14 @@
 Changelog
 =========
 
-1.6.20 (unreleased)
+1.6.20 (2020-06-03)
 -------------------
 
-- Nothing changed yet.
-
+* Estilos título cabecera [Iago López Fernández]
+* Estilos contraste [Iago López Fernández]
+* Estilos [Iago López Fernández]
+* Instalar robtheme con el paquete [Iago López Fernández]
+* Adaptar estilos a Robtheme [Iago López Fernández]
 
 1.6.19 (2020-03-26)
 -------------------
