@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.21 (unreleased)
+1.6.21 (2020-10-13)
 -------------------
 
-- Nothing changed yet.
-
+* Fix RSS: Añadir campos de texto dentro del tag <content:encoded> [Iago López Fernández]
 
 1.6.20 (2020-06-03)
 -------------------
