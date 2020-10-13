@@ -1,0 +1,15 @@
+<tal:block tal:condition="python:context.portal_type == 'serveitic'">
+    <div id="parent-fieldname-text" tal:condition="context/serveiDescription|nothing">
+        <tal:block tal:content="structure context/serveiDescription/output"></tal:block>
+    </div>
+</tal:block>
+
+<tal:block tal:condition="python:context.portal_type == 'notificaciotic'">
+    <div id="parent-fieldname-text" tal:condition="context/cos|nothing">
+        <tal:block tal:content="structure context/cos/output"></tal:block>
+    </div>
+</tal:block>
+
+<div id="parent-fieldname-text" tal:condition="context/text|nothing">
+    <tal:block tal:content="structure context/text/output"></tal:block>
+</div>
