@@ -105,7 +105,7 @@ def createFolderAndContents(folder_directori, folder_data):
 def initialize_servei(serveitic, event):
     # Configure portlets
     assignments = get_portlet_assignments(
-        serveitic, 'plone.rightcolumn')
+        serveitic, 'plone.leftcolumn')
     assignments['banners_global'] = BannersAssignment(banner_type=u"Global")
     assignments['banners_local'] = BannersAssignment(banner_type=u"Local")
 
