@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.22 (unreleased)
+1.6.22 (2020-11-23)
 -------------------
 
-- Nothing changed yet.
-
+* Fix setup serveistic [Iago López Fernández]
+* Estilos portlets serveistic para que se vean correctamente en la banda izquierda [Iago López Fernández]
 
 1.6.21 (2020-10-13)
 -------------------
