@@ -48,9 +48,9 @@ class Renderer(base.Renderer, NotificacioViewHelper):
             getToolByName(self.context, 'portal_catalog'))
         return reporter.list_by_servei(get_servei(self), self.data.count)
 
-    @property
     def notificacions_href(self):
-        return "notificacions_list"
+        servei = get_servei(self)
+        return servei.absolute_url() + "/notificacions_list"
 
 
 class AddForm(base.AddForm):

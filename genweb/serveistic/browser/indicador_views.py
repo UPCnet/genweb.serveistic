@@ -6,6 +6,7 @@ from Products.CMFCore.interfaces import IFolderish
 from genweb.core.indicators import RegistryException, ReporterException
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.utilities import get_servei
 from genweb.serveistic.utilities import (
     get_ws_indicadors_client, serveistic_config)
 from genweb.serveistic.data_access.indicadors import (
@@ -60,7 +61,8 @@ class RetrieveIndicadors(grok.View):
 
     @property
     def indicadors_href(self):
-        return "indicadors_list"
+        servei = get_servei(self)
+        return servei.absolute_url() + "/indicadors_list"
 
     @property
     def indicadors(self):

@@ -4,6 +4,7 @@ from Products.CMFCore.utils import getToolByName
 
 from genweb.serveistic.interfaces import IGenwebServeisticLayer
 from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.utilities import get_servei
 from genweb.serveistic.utilities import get_ws_problemes_client
 from genweb.serveistic.data_access.problemes import ProblemesDataReporter
 
@@ -44,7 +45,8 @@ class RetrieveProblemes(grok.View):
 
     @property
     def problemes_href(self):
-        return "problemes_list"
+        servei = get_servei(self)
+        return servei.absolute_url() + "/problemes_list"
 
     @property
     def problemes(self):
