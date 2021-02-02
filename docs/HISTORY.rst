@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.23 (unreleased)
+1.6.23 (2021-02-02)
 -------------------
 
-- Nothing changed yet.
-
+* Fix urls de ver todos en los portlets de indicadores, problemas y notificaciones [Iago López Fernández]
 
 1.6.22 (2020-11-23)
 -------------------
