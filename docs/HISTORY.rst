@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.24 (unreleased)
+1.6.24 (2021-06-07)
 -------------------
 
-- Nothing changed yet.
-
+* Añadir File como tipo de contenido visible en el menu superior [Iago López Fernández]
 
 1.6.23 (2021-02-02)
 -------------------
