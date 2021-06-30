@@ -101,7 +101,7 @@ def createFolderAndContents(folder_directori, folder_data):
         folder.setDefaultPage(folder_data[6])
 
 
-@grok.subscribe(IServeiTIC, IObjectAddedEvent)
+# @grok.subscribe(IServeiTIC, IObjectAddedEvent)
 def initialize_servei(serveitic, event):
     # Configure portlets
     assignments = get_portlet_assignments(
