@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.25 (unreleased)
+1.6.25 (2021-06-30)
 -------------------
 
-- Nothing changed yet.
-
+* http -> https [Iago López Fernández]
 
 1.6.24 (2021-06-07)
 -------------------
