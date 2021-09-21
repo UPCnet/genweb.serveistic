@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.26 (unreleased)
+1.6.26 (2021-09-21)
 -------------------
 
-- Nothing changed yet.
-
+* Activar grok [Iago López Fernández]
 
 1.6.25 (2021-06-30)
 -------------------
