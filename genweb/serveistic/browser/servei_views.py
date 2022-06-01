@@ -103,6 +103,10 @@ def createFolderAndContents(folder_directori, folder_data):
 
 @grok.subscribe(IServeiTIC, IObjectAddedEvent)
 def initialize_servei(serveitic, event):
+    # If it is a copy do not execute
+    if 'copy_of_' in event.newName:
+        return
+
     # Configure portlets
     assignments = get_portlet_assignments(
         serveitic, 'plone.leftcolumn')
