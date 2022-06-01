@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.6.27 (unreleased)
+1.6.27 (2022-06-01)
 -------------------
 
-- Nothing changed yet.
-
+* Fix error copy serveistic [Iago López]
+* Cambiar autor [Iago López Fernández]
 
 1.6.26 (2021-09-21)
 -------------------
