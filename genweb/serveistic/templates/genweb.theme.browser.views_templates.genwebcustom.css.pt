@@ -706,7 +706,7 @@ border: 1px solid #636363;
 
 #faceted-form #center---default---widgets .faceted-widget {
     flex-grow: 1;
-    min-width: 23%;
+    min-width: 23.5%;
 }
 
 #faceted-form .widget-fieldset {
