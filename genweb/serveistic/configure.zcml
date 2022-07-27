@@ -61,29 +61,149 @@
       layer=".interfaces.IGenwebServeisticLayer"
         />
 
-  <utility
-    factory=".utilities.FacetsVocabulary"
-    name="genweb.serveistic.vocabularies.facets"
-    />
+    <utility
+      factory=".utilities.FacetsVocabulary"
+      name="genweb.serveistic.vocabularies.facets"
+      />
 
-  <utility
-    factory=".utilities.PrestadorVocabulary"
-    name="genweb.serveistic.vocabularies.prestador"
-    />
+    <utility
+      factory=".utilities.PrestadorVocabulary"
+      name="genweb.serveistic.vocabularies.prestador"
+      />
 
-  <utility
-    factory=".utilities.UbicacioVocabulary"
-    name="genweb.serveistic.vocabularies.ubicacio"
-    />
+    <utility
+      factory=".utilities.UbicacioVocabulary"
+      name="genweb.serveistic.vocabularies.ubicacio"
+      />
 
-  <utility
-    factory=".utilities.TipologiaVocabulary"
-    name="genweb.serveistic.vocabularies.tipologia"
-    />
+    <utility
+      factory=".utilities.TipologiaVocabulary"
+      name="genweb.serveistic.vocabularies.tipologia"
+      />
 
-  <utility
-    factory=".utilities.AmbitVocabulary"
-    name="genweb.serveistic.vocabularies.ambit"
-    />
+    <utility
+      factory=".utilities.AmbitVocabulary"
+      name="genweb.serveistic.vocabularies.ambit"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta1Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta1"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta2Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta2"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta3Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta3"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta4Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta4"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta5Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta5"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta6Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta6"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta7Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta7"
+      />
+
+    <utility
+      factory=".utilities.CAFaceta8Vocabulary"
+      name="genweb.serveistic.vocabularies.cafaceta8"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta1Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta1"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta2Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta2"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta3Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta3"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta4Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta4"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta5Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta5"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta6Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta6"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta7Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta7"
+      />
+
+    <utility
+      factory=".utilities.ESFaceta8Vocabulary"
+      name="genweb.serveistic.vocabularies.esfaceta8"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta1Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta1"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta2Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta2"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta3Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta3"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta4Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta4"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta5Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta5"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta6Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta6"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta7Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta7"
+      />
+
+    <utility
+      factory=".utilities.ENFaceta8Vocabulary"
+      name="genweb.serveistic.vocabularies.enfaceta8"
+      />
 
 </configure>

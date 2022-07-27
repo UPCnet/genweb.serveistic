@@ -18,8 +18,17 @@ class ITableFacetes(form.Schema):
         title=_(u'Faceta'),
         vocabulary='genweb.serveistic.vocabularies.facets',
         required=False)
+
     valor = schema.TextLine(
         title=_(u'Valor'),
+        required=False)
+
+    valor_es = schema.TextLine(
+        title=_(u'Valor ES'),
+        required=False)
+
+    valor_en = schema.TextLine(
+        title=_(u'Valor EN'),
         required=False)
 
 

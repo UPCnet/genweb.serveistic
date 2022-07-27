@@ -100,37 +100,186 @@ class FacetValuesVocabularyBase(object):
 
     def __init__(self):
         self.facet_id = ""
+        self.lang = ""
 
     def __call__(self, context):
         facets = serveistic_config().facetes_table
         facets = [] if facets is None else facets
-        facet_values = [facet_pair['valor']
-                        for facet_pair in facets
-                        if facet_pair['faceta'] == self.facet_id]
-        return SimpleVocabulary([
-            SimpleTerm(
-                token=index,
-                value=getUtility(IIDNormalizer).normalize(
-                    value.encode('utf-8')),
-                title=value.encode('utf-8'))
-            for index, value in enumerate(facet_values)])
+
+        vocabulary = []
+        for facet in facets:
+            if facet['faceta'] == self.facet_id and facet['valor']:
+                vocabulary.append(SimpleTerm(
+                    value=getUtility(IIDNormalizer).normalize(facet['valor'].encode('utf-8')),
+                    title=facet['valor' + self.lang].encode('utf-8') if facet['valor' + self.lang] else '-'
+                ))
+
+        return SimpleVocabulary(vocabulary)
 
 
 class PrestadorVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Proveïdor / Unitat"
+        self.lang = u""
 
 
 class UbicacioVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Usuaris"
+        self.lang = u""
 
 
 class TipologiaVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Servei / Àrea"
+        self.lang = u""
 
 
 class AmbitVocabulary(FacetValuesVocabularyBase):
     def __init__(self):
         self.facet_id = u"Àmbit"
+        self.lang = u""
+
+
+class CAFaceta1Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 1"
+        self.lang = u""
+
+
+class CAFaceta2Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 2"
+        self.lang = u""
+
+
+class CAFaceta3Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 3"
+        self.lang = u""
+
+
+class CAFaceta4Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 4"
+        self.lang = u""
+
+
+class CAFaceta5Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 5"
+        self.lang = u""
+
+
+class CAFaceta6Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 6"
+        self.lang = u""
+
+
+class CAFaceta7Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 7"
+        self.lang = u""
+
+
+class CAFaceta8Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 8"
+        self.lang = u""
+
+
+class ESFaceta1Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 1"
+        self.lang = u"_es"
+
+
+class ESFaceta2Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 2"
+        self.lang = u"_es"
+
+
+class ESFaceta3Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 3"
+        self.lang = u"_es"
+
+
+class ESFaceta4Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 4"
+        self.lang = u"_es"
+
+
+class ESFaceta5Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 5"
+        self.lang = u"_es"
+
+
+class ESFaceta6Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 6"
+        self.lang = u"_es"
+
+
+class ESFaceta7Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 7"
+        self.lang = u"_es"
+
+
+class ESFaceta8Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 8"
+        self.lang = u"_es"
+
+
+class ENFaceta1Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 1"
+        self.lang = u"_en"
+
+
+class ENFaceta2Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 2"
+        self.lang = u"_en"
+
+
+class ENFaceta3Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 3"
+        self.lang = u"_en"
+
+
+class ENFaceta4Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 4"
+        self.lang = u"_en"
+
+
+class ENFaceta5Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 5"
+        self.lang = u"_en"
+
+
+class ENFaceta6Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 6"
+        self.lang = u"_en"
+
+
+class ENFaceta7Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 7"
+        self.lang = u"_en"
+
+
+class ENFaceta8Vocabulary(FacetValuesVocabularyBase):
+    def __init__(self):
+        self.facet_id = u"Faceta 8"
+        self.lang = u"_en"

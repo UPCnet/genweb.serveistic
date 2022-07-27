@@ -33,6 +33,32 @@ def serveiModifyAddSubjects(content, event):
         obj = brain.getObject()
         addTagsToObject(servei_tags, obj)
 
+    content.es_faceta_1 = content.ca_faceta_1
+    content.en_faceta_1 = content.ca_faceta_1
+
+    content.es_faceta_2 = content.ca_faceta_2
+    content.en_faceta_2 = content.ca_faceta_2
+
+    content.es_faceta_3 = content.ca_faceta_3
+    content.en_faceta_3 = content.ca_faceta_3
+
+    content.es_faceta_4 = content.ca_faceta_4
+    content.en_faceta_4 = content.ca_faceta_4
+
+    content.es_faceta_5 = content.ca_faceta_5
+    content.en_faceta_5 = content.ca_faceta_5
+
+    content.es_faceta_6 = content.ca_faceta_6
+    content.en_faceta_6 = content.ca_faceta_6
+
+    content.es_faceta_7 = content.ca_faceta_7
+    content.en_faceta_7 = content.ca_faceta_7
+
+    content.es_faceta_8 = content.ca_faceta_8
+    content.en_faceta_8 = content.ca_faceta_8
+
+    content.reindexObject()
+
 
 # --------------- helpers ---------------
 

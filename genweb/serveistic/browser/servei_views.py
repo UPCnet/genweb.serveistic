@@ -132,3 +132,30 @@ def initialize_servei(serveitic, event):
     # Mark ServeiTIC as initialized to prevent previous folder creations from
     # triggering the modify event
     alsoProvides(serveitic, IInitializedServeiTIC)
+
+    # Facetas
+    serveitic.es_faceta_1 = serveitic.ca_faceta_1
+    serveitic.en_faceta_1 = serveitic.ca_faceta_1
+
+    serveitic.es_faceta_2 = serveitic.ca_faceta_2
+    serveitic.en_faceta_2 = serveitic.ca_faceta_2
+
+    serveitic.es_faceta_3 = serveitic.ca_faceta_3
+    serveitic.en_faceta_3 = serveitic.ca_faceta_3
+
+    serveitic.es_faceta_4 = serveitic.ca_faceta_4
+    serveitic.en_faceta_4 = serveitic.ca_faceta_4
+
+    serveitic.es_faceta_5 = serveitic.ca_faceta_5
+    serveitic.en_faceta_5 = serveitic.ca_faceta_5
+
+    serveitic.es_faceta_6 = serveitic.ca_faceta_6
+    serveitic.en_faceta_6 = serveitic.ca_faceta_6
+
+    serveitic.es_faceta_7 = serveitic.ca_faceta_7
+    serveitic.en_faceta_7 = serveitic.ca_faceta_7
+
+    serveitic.es_faceta_8 = serveitic.ca_faceta_8
+    serveitic.en_faceta_8 = serveitic.ca_faceta_8
+
+    serveitic.reindexObject()

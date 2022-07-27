@@ -40,4 +40,12 @@
     permission="zope.Public"
     />
 
+  <browser:page
+    for="*"
+    name="migracioFacetes"
+    layer="..interfaces.IGenwebServeisticLayer"
+    class=".migracio_facetes.MigracioFacetes"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>

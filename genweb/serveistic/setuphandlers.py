@@ -19,6 +19,30 @@ NEW_INDEXES = [
     ('ubicacio', 'KeywordIndex'),
     ('tipologia', 'KeywordIndex'),
     ('ambit', 'KeywordIndex'),
+    ('ca_faceta_1', 'KeywordIndex'),
+    ('ca_faceta_2', 'KeywordIndex'),
+    ('ca_faceta_3', 'KeywordIndex'),
+    ('ca_faceta_4', 'KeywordIndex'),
+    ('ca_faceta_5', 'KeywordIndex'),
+    ('ca_faceta_6', 'KeywordIndex'),
+    ('ca_faceta_7', 'KeywordIndex'),
+    ('ca_faceta_8', 'KeywordIndex'),
+    ('es_faceta_1', 'KeywordIndex'),
+    ('es_faceta_2', 'KeywordIndex'),
+    ('es_faceta_3', 'KeywordIndex'),
+    ('es_faceta_4', 'KeywordIndex'),
+    ('es_faceta_5', 'KeywordIndex'),
+    ('es_faceta_6', 'KeywordIndex'),
+    ('es_faceta_7', 'KeywordIndex'),
+    ('es_faceta_8', 'KeywordIndex'),
+    ('en_faceta_1', 'KeywordIndex'),
+    ('en_faceta_2', 'KeywordIndex'),
+    ('en_faceta_3', 'KeywordIndex'),
+    ('en_faceta_4', 'KeywordIndex'),
+    ('en_faceta_5', 'KeywordIndex'),
+    ('en_faceta_6', 'KeywordIndex'),
+    ('en_faceta_7', 'KeywordIndex'),
+    ('en_faceta_8', 'KeywordIndex'),
     ('is_general', 'FieldIndex'),
     ]
 
@@ -46,11 +70,17 @@ def add_default_settings():
         pass
     else:
         with open(facets_file_path, 'r') as facets_file:
-            settings.facetes_table = [
-                {'faceta': row[0].decode('utf-8'),
-                 'valor': row[1].decode('utf-8')}
-                for row in csv.reader(
-                    facets_file, delimiter=',', quotechar='"')]
+            try:
+                settings.facetes_table = [
+                    {'faceta': row[0].decode('utf-8'),
+                     'valor': row[1].decode('utf-8'),
+                     'valor_es': row[2].decode('utf-8'),
+                     'valor_en': row[3].decode('utf-8'),
+                     }
+                    for row in csv.reader(
+                        facets_file, delimiter=',', quotechar='"')]
+            except:
+                pass
 
 
 def add_container(container, type, title,
@@ -86,6 +116,9 @@ def add_default_folders():
 
 
 def setupVarious(context):
+    if context.readDataFile('genweb.serveistic.txt') is None:
+        return
+
     portal = context.getSite()
     catalog = getToolByName(portal, 'portal_catalog')
 

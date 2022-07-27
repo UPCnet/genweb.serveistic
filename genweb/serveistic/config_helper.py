@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 import os
 import ConfigParser
-import csv
 
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
@@ -12,12 +12,19 @@ def get_absolute_path(relative_path):
 
 
 def build_facets_vocabulary():
-    facets_file_path = get_absolute_path(config.get('facets', 'file_path'))
-    with open(facets_file_path, 'r') as facets_file:
-        facets = set([
-            row[0]
-            for row in csv.reader(
-                facets_file, delimiter=',', quotechar='"')])
+    facets = ["Proveïdor / Unitat",
+              "Usuaris",
+              "Servei / Àrea",
+              "Àmbit",
+              "Faceta 1",
+              "Faceta 2",
+              "Faceta 3",
+              "Faceta 4",
+              "Faceta 5",
+              "Faceta 6",
+              "Faceta 7",
+              "Faceta 8"]
+
     return SimpleVocabulary([
         SimpleTerm(
             title=facet.decode('utf-8'),

@@ -2,19 +2,21 @@
 
 import re
 
-from five import grok
-from zope import schema
-from zope.interface import Interface, implements, Invalid
 from collective import dexteritytextindexer
-from plone.directives import form
-from plone.directives import dexterity
-from plone.namedfile.field import NamedBlobImage as BlobImage
-from plone.app.textfield import RichText
-from plone.dexterity.content import Item
-from plone.app.users.userdataschema import checkEmailAddress
 from plone.app.contenttypes.behaviors.richtext import IRichText
+from plone.app.textfield import RichText
+from plone.app.users.userdataschema import checkEmailAddress
+from plone.autoform import directives
 from plone.autoform.directives import read_permission
 from plone.autoform.directives import write_permission
+from plone.dexterity.content import Item
+from plone.directives import form
+from plone.namedfile.field import NamedBlobImage as BlobImage
+from plone.supermodel.directives import fieldset
+from zope import schema
+from zope.interface import implements
+from zope.interface import Interface
+from zope.interface import Invalid
 
 from genweb.serveistic import _
 
@@ -158,29 +160,193 @@ class IServeiTIC(form.Schema):
         required=False,
         default=False)
 
+    directives.omitted('prestador')
     prestador = schema.List(
         title=_(u"Prestador"),
         required=False,
         value_type=schema.Choice(
             vocabulary='genweb.serveistic.vocabularies.prestador'))
 
+    directives.omitted('ubicacio')
     ubicacio = schema.List(
         title=_(u"Ubicació"),
         required=False,
         value_type=schema.Choice(
             vocabulary="genweb.serveistic.vocabularies.ubicacio"))
 
+    directives.omitted('tipologia')
     tipologia = schema.List(
         title=_(u"Tipologia"),
         required=False,
         value_type=schema.Choice(
             vocabulary="genweb.serveistic.vocabularies.tipologia"))
 
+    directives.omitted('ambit')
     ambit = schema.List(
         title=_(u"Àmbit"),
         required=False,
         value_type=schema.Choice(
             vocabulary='genweb.serveistic.vocabularies.ambit'))
+
+    ca_faceta_1 = schema.List(
+        title=_(u"Faceta 1"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta1'))
+
+    ca_faceta_2 = schema.List(
+        title=_(u"Faceta 2"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta2'))
+
+    ca_faceta_3 = schema.List(
+        title=_(u"Faceta 3"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta3'))
+
+    ca_faceta_4 = schema.List(
+        title=_(u"Faceta 4"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta4'))
+
+    ca_faceta_5 = schema.List(
+        title=_(u"Faceta 5"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta5'))
+
+    ca_faceta_6 = schema.List(
+        title=_(u"Faceta 6"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta6'))
+
+    ca_faceta_7 = schema.List(
+        title=_(u"Faceta 7"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta7'))
+
+    ca_faceta_8 = schema.List(
+        title=_(u"Faceta 8"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.cafaceta8'))
+
+    directives.omitted('es_faceta_1')
+    es_faceta_1 = schema.List(
+        title=_(u"Faceta 1"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta1'))
+
+    directives.omitted('es_faceta_2')
+    es_faceta_2 = schema.List(
+        title=_(u"Faceta 2"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta2'))
+
+    directives.omitted('es_faceta_3')
+    es_faceta_3 = schema.List(
+        title=_(u"Faceta 3"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta3'))
+
+    directives.omitted('es_faceta_4')
+    es_faceta_4 = schema.List(
+        title=_(u"Faceta 4"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta4'))
+
+    directives.omitted('es_faceta_5')
+    es_faceta_5 = schema.List(
+        title=_(u"Faceta 5"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta5'))
+
+    directives.omitted('es_faceta_6')
+    es_faceta_6 = schema.List(
+        title=_(u"Faceta 6"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta6'))
+
+    directives.omitted('es_faceta_7')
+    es_faceta_7 = schema.List(
+        title=_(u"Faceta 7"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta7'))
+
+    directives.omitted('es_faceta_8')
+    es_faceta_8 = schema.List(
+        title=_(u"Faceta 8"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.esfaceta8'))
+
+    directives.omitted('en_faceta_1')
+    en_faceta_1 = schema.List(
+        title=_(u"Faceta 1"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta1'))
+
+    directives.omitted('en_faceta_2')
+    en_faceta_2 = schema.List(
+        title=_(u"Faceta 2"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta2'))
+
+    directives.omitted('en_faceta_3')
+    en_faceta_3 = schema.List(
+        title=_(u"Faceta 3"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta3'))
+
+    directives.omitted('en_faceta_4')
+    en_faceta_4 = schema.List(
+        title=_(u"Faceta 4"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta4'))
+
+    directives.omitted('en_faceta_5')
+    en_faceta_5 = schema.List(
+        title=_(u"Faceta 5"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta5'))
+
+    directives.omitted('en_faceta_6')
+    en_faceta_6 = schema.List(
+        title=_(u"Faceta 6"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta6'))
+
+    directives.omitted('en_faceta_7')
+    en_faceta_7 = schema.List(
+        title=_(u"Faceta 7"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta7'))
+
+    directives.omitted('en_faceta_8')
+    en_faceta_8 = schema.List(
+        title=_(u"Faceta 8"),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='genweb.serveistic.vocabularies.enfaceta8'))
 
 
 class IInitializedPortlets(Interface):
