@@ -783,15 +783,29 @@ display: none;
 }
 .faceted-results::before {
     color: #4A4A4A;
-    content: "Tots els serveis:";
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
     margin-top: -10px;
     font-weight: normal;
 }
-.faceted-results.results::before {
+body.site-ca .faceted-results::before {
+    content: "Tots els serveis:";
+}
+body.site-es .faceted-results::before {
+    content: "Todos los servicios:";
+}
+body.site-en .faceted-results::before {
+    content: "All the services:";
+}
+body.site-ca .faceted-results.results::before {
     content: "Resultats:";
+}
+body.site-es .faceted-results.results::before {
+    content: "Resultados:";
+}
+body.site-en .faceted-results.results::before {
+    content: "Results:";
 }
 #faceted-results > div > div:nth-child(1).listingBar {
     display: none;

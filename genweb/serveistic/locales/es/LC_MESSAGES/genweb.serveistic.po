@@ -9,8 +9,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: ca\n"
-"Language-Name: Catalan\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb.serveistic\n"
 
@@ -20,41 +20,41 @@ msgstr "API key"
 
 #: ./genweb/serveistic/controlpanel.py:96
 msgid "Actualització d'Indicadors"
-msgstr "Actualització d'Indicadors"
+msgstr "Actualización de Indicadores"
 
 #: ./genweb/serveistic/content/serveitic.py:113
 msgid "Adreça e-mail del responsable funcional del servei"
-msgstr "Adreça e-mail del responsable funcional del servei"
+msgstr "Dirección e-mail del responsable funcional del servicio"
 
 #: ./genweb/serveistic/portlets/indicadors.py:61
 msgid "Afegeix portlet d'indicadors"
-msgstr "Afegeix portlet d'indicadors"
+msgstr "Agregar portlet de indicadores"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:84
 #: ./genweb/serveistic/portlets/notificacions.py:59
 msgid "Afegeix portlet de notifications"
-msgstr "Afegeix portlet de notifications"
+msgstr "Agregar portlet de notificaciones"
 
 #: ./genweb/serveistic/portlets/problemes.py:51
 msgid "Afegeix portlet de problemes"
-msgstr "Afegeix portlet de problemes"
+msgstr "Agregar portlet de problemas"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:95
 msgid "Aquest portlet mostra els banners TIC"
-msgstr "Aquest portlet mostra els banners TIC"
+msgstr "Este portlet muestra los banners TIC"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:85
 #: ./genweb/serveistic/portlets/notificacions.py:60
 msgid "Aquest portlet mostra les notificacions"
-msgstr "Aquest portlet mostra les notificacions"
+msgstr "Este portlet muestra las notificaciones"
 
 #: ./genweb/serveistic/portlets/notificacions.py:71
 msgid "Aquest portlet mostra les notificacions d'un servei TIC"
-msgstr "Aquest portlet mostra les notificacions d'un Servei TIC"
+msgstr "Este portlet muestra las notificaciones de un Servicio TIC"
 
 #: ./genweb/serveistic/content/problema.py:12
 msgid "Assumpte"
-msgstr "Assumpte"
+msgstr "Asunto"
 
 #. Default: "banner_type"
 #: ./genweb/serveistic/portlets/bannersportlet.py:46
@@ -63,69 +63,69 @@ msgstr "Banners TIC ({0})"
 
 #: ./genweb/serveistic/content/serveitic.py:85
 msgid "Breu resum del servei"
-msgstr "Breu resum del servei"
+msgstr "Breve resumen del servicio"
 
 #: ./genweb/serveistic/controlpanel.py:182
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancelar"
 
 #: ./genweb/serveistic/controlpanel.py:178
 msgid "Changes saved"
-msgstr "Canvis guardats"
+msgstr "Cambios guardados"
 
 #: ./genweb/serveistic/controlpanel.py:115
 msgid "Clau de la API"
-msgstr "Clau de la API"
+msgstr "Clave de la API"
 
 #: ./genweb/serveistic/controlpanel.py:116
 msgid "Contingut JSON de la clau de la API"
-msgstr "Contingut JSON de la clau de la API"
+msgstr "Contenido JSON de la clave de la API"
 
 #: ./genweb/serveistic/controlpanel.py:72
 msgid "Contrasenya"
-msgstr "Contrasenya"
+msgstr "Contraseña"
 
 #: ./genweb/serveistic/controlpanel.py:102
 msgid "Contrasenya necessària per a fer servir la vista d'actualització (valor del paràmetre 'passphrase')"
-msgstr "Contrasenya necessària per a fer servir la vista d'actualització (valor del paràmetre 'passphrase')"
+msgstr "Contraseña necesaria para utilizar la vista de actualización (valor del parámetro 'passphrase')"
 
 #: ./genweb/serveistic/content/notificaciotic.py:30
 msgid "Cos de la notificació"
-msgstr "Cos de la notificació"
+msgstr "Cuerpo de la notificación"
 
 #: ./genweb/serveistic/content/problema.py:22
 msgid "Data de creació"
-msgstr "Data de creació"
+msgstr "Fecha de creación"
 
 #: ./genweb/serveistic/content/problema.py:33
 msgid "Data estimada de resolució"
-msgstr "Data estimada de resolució"
+msgstr "Fecha estimada de resolución"
 
 #: ./genweb/serveistic/content/notificaciotic.py:25
 #: ./genweb/serveistic/content/problema.py:17
 #: ./genweb/serveistic/content/serveitic.py:77
 msgid "Descripció"
-msgstr "Descripció"
+msgstr "Descripción"
 
 #: ./genweb/serveistic/content/serveitic.py:78
 msgid "Descripció del servei que es veurà al buscador"
-msgstr "Descripció del servei que es veurà al buscador"
+msgstr "Descripción del servicio que se verá en el buscador"
 
 #: ./genweb/serveistic/controlpanel.py:53
 msgid "Desplega el filtres de cerca que trobem a la pàgina  principal"
-msgstr "Desplega el filtres de cerca que trobem a la pàgina  principal"
+msgstr "Despliega los filtros de búsqueda que encontramos en la página principal"
 
 #: ./genweb/serveistic/controlpanel.py:52
 msgid "Desplegar filtres de cerca"
-msgstr "Desplegar filtres de cerca"
+msgstr "Desplegar filtros de búsqueda"
 
 #: ./genweb/serveistic/content/problema.py:28
 msgid "Direcció URL amb informació addicional sobre el problema"
-msgstr "Direcció URL amb informació addicional sobre el problema"
+msgstr "Dirección URL con información adicional sobre el problema"
 
 #: ./genweb/serveistic/content/serveitic.py:101
 msgid "Direcció URL del web del servei"
-msgstr "Direcció URL del web del servei"
+msgstr "Dirección URL de la web del servicio"
 
 #: ./genweb/serveistic/controlpanel.py:184
 msgid "Edit cancelled"
@@ -133,23 +133,23 @@ msgstr "Edit cancelled"
 
 #: ./genweb/serveistic/portlets/indicadors.py:73
 msgid "Edita el portlet d'indicadors"
-msgstr "Edita el portlet d'indicadors"
+msgstr "Editar el portlet de indicadores"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:94
 msgid "Edita el portlet de banners TIC"
-msgstr "Edita el portlet de banners TIC"
+msgstr "Editar el portlet de banners TIC"
 
 #: ./genweb/serveistic/portlets/notificacions.py:70
 msgid "Edita el portlet de notificacions"
-msgstr "Edita el portlet de notificacions"
+msgstr "Editar el portlet de notificaciones"
 
 #: ./genweb/serveistic/portlets/problemes.py:62
 msgid "Edita el portlet de problemes"
-msgstr "Edita el portlet de problemes"
+msgstr "Editar el portlet de problemas"
 
 #: ./genweb/serveistic/content/serveitic.py:39
 msgid "El format ha de ser 3.1, 1.2, 1.3"
-msgstr "El format ha de ser 3.1, 1.2, 1.3"
+msgstr "El formato debe ser 3.1, 1.2, 1.3"
 
 #: ./genweb/serveistic/content/serveitic.py:112
 msgid "Email del responsable funcional"
@@ -157,7 +157,7 @@ msgstr "Email del responsable funcional"
 
 #: ./genweb/serveistic/content/serveitic.py:126
 msgid "Es mostrarà com a imatge del servei en els resultats del cercador de Serveis TIC (mida recomanada 180x50 pixels)"
-msgstr "Es mostrarà com a imatge del servei en els resultats del cercador de Serveis TIC (mida recomanada 180x50 pixels)"
+msgstr "Se mostrará como imagen del servicio en los resultados del buscador de Servicios TIC (tamaño recomendado 180x50 pixels)"
 
 #: ./genweb/serveistic/configure.zcml:46
 msgid "Extension profile for genweb.serveistic."
@@ -201,11 +201,11 @@ msgstr "Faceta 8"
 
 #: ./genweb/serveistic/controlpanel.py:127
 msgid "Facetes"
-msgstr "Facetes"
+msgstr "Facetas"
 
 #: ./genweb/serveistic/content/notificaciotic.py:40
 msgid "Fes que aparegui a la pàgina d'inici"
-msgstr "Fes que aparegui a la pàgina d'inici"
+msgstr "Haz que aparezca en la página de inicio"
 
 #: ./genweb/serveistic/controlpanel.py:42
 msgid "General"
@@ -213,7 +213,7 @@ msgstr "General"
 
 #: ./genweb/serveistic/controlpanel.py:145
 msgid "Genweb ServeisTIC settings"
-msgstr "Configuració Genweb Serveis TIC"
+msgstr "Configuración Genweb Servicios TIC"
 
 #: ./genweb/serveistic/configure.zcml:46
 msgid "Genweb Serveistic"
@@ -225,146 +225,146 @@ msgstr "Google Analytics"
 
 #: ./genweb/serveistic/controlpanel.py:121
 msgid "Id de visualització"
-msgstr "Id de visualització"
+msgstr "Id de visualización"
 
 #: ./genweb/serveistic/controlpanel.py:82
 msgid "Identificador al servei web d'Indicadors"
-msgstr "Identificador al servei web d'Indicadors"
+msgstr "Identificador en el servicio web de Indicadores"
 
 #: ./genweb/serveistic/controlpanel.py:83
 msgid "Identificador de Serveis TIC al servei web"
-msgstr "Identificador de Serveis TIC al servei web"
+msgstr "Identificador de Servicios TIC en el servicio web"
 
 #: ./genweb/serveistic/controlpanel.py:122
 msgid "Identificador de la visualització de serveistic.upc.edu"
-msgstr "Identificador de la visualització de serveistic.upc.edu"
+msgstr "Identificador de la visualización de serveistic.upc.edu"
 
 #: ./genweb/serveistic/content/serveitic.py:133
 msgid "Identificador del servei al gn6, s'utilitza per a consultar els problemes relacionats amb el servei"
-msgstr "Identificador del servei al gn6, s'utilitza per a consultar els problemes relacionats amb el servei"
+msgstr "Identificador del servicio en gn6, se utiliza para consultar los problemas relacionados con el servicio"
 
 #: ./genweb/serveistic/content/serveitic.py:140
-msgid "Identificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el serveiIdentificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el"
-msgstr ""
+msgid "Identificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el servei"
+msgstr "Identificador gn6"
 
 #: ./genweb/serveistic/content/serveitic.py:132
 msgid "Identificador gn6"
-msgstr "Identificador gn6"
+msgstr "Identificador indicadores"
 
 #: ./genweb/serveistic/content/serveitic.py:139
 msgid "Identificador indicadors"
-msgstr "Identificador indicadors"
+msgstr "Imagen de cabecera"
 
 #: ./genweb/serveistic/content/serveitic.py:119
 msgid "Imatge de capçalera"
-msgstr "Imatge de capçalera"
+msgstr "Imagen del servicio en el resultado de búsqueda"
 
 #: ./genweb/serveistic/content/serveitic.py:125
 msgid "Imatge del servei en el resultat de cerca"
-msgstr "Imatge del servei en el resultat de cerca"
+msgstr "Indicadores"
 
 #: ./genweb/serveistic/browser/indicador_views_templates/indicadors.pt:9
 #: ./genweb/serveistic/portlets/indicadors.py:36
 #: ./genweb/serveistic/portlets/templates/indicadors.pt:5
 msgid "Indicadors"
-msgstr "Indicadors"
+msgstr "Listado de indicadores asociados a un Servicio TIC"
 
 #: ./genweb/serveistic/portlets/indicadors.py:62
 msgid "Llistat d'indicadors associats a un Servei TIC"
-msgstr "Llistat d'indicadors associats a un Servei TIC"
+msgstr "Listado de indicadores asociados con un Servicio TIC"
 
 #: ./genweb/serveistic/portlets/indicadors.py:74
 msgid "Llistat d'indicadors associats amb un Servei TIC"
-msgstr "Llistat d'indicadors associats amb un Servei TIC"
+msgstr "Listado de problemas asociados a un Servicio TIC"
 
 #: ./genweb/serveistic/portlets/problemes.py:52
 msgid "Llistat de problemes associats a un Servei TIC"
-msgstr "Llistat de problemes associats a un Servei TIC"
+msgstr "Listado de problemas asociados con un Servicio TIC"
 
 #: ./genweb/serveistic/portlets/problemes.py:63
 msgid "Llistat de problemes associats amb un Servei TIC"
-msgstr "Llistat de problemes associats amb un Servei TIC"
+msgstr "Marca la caja si quieres que la notificación aparezca también en la página de inicio"
 
 #: ./genweb/serveistic/content/notificaciotic.py:41
 msgid "Marca la caixa si vols que la notificació aparegui també a la pàgina d'inici"
-msgstr "Marca la caixa si vols que la notificació aparegui també a la pàgina d'inici"
+msgstr "Menú"
 
 #: ./genweb/serveistic/browser/viewlets_templates/sections.pt:14
 msgid "Menu"
-msgstr "Menú"
+msgstr "Tamaño recomendado de la imagen 1920x82 pixels"
 
 #: ./genweb/serveistic/content/serveitic.py:120
 msgid "Mida recomanada de la imatge 1920x82 pixels"
-msgstr "Mida recomanada de la imatge 1920x82 pixels"
+msgstr "No hay ningún indicador registrado relacionado con este servicio"
 
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:59
 msgid "No hi ha cap indicador enregistrat relacionat amb aquest servei"
-msgstr "No hi ha cap indicador enregistrat relacionat amb aquest servei"
+msgstr "No hay ningún problema registrado relacionado con este servicio"
 
 #: ./genweb/serveistic/browser/problema_views_templates/retrieve_problemes.pt:20
 msgid "No hi ha cap problema enregistrat relacionat amb aquest servei"
-msgstr "No hi ha cap problema enregistrat relacionat amb aquest servei"
+msgstr "Nombre del responsable funcional"
 
 #: ./genweb/serveistic/content/serveitic.py:106
 msgid "Nom del responsable funcional"
-msgstr "Nom del responsable funcional"
+msgstr "Nombre del responsable funcional del servicio"
 
 #: ./genweb/serveistic/content/serveitic.py:107
 msgid "Nom del responsable funcional del servei"
-msgstr "Nom del responsable funcional del servei"
+msgstr "Número máximo de indicadores"
 
 #: ./genweb/serveistic/portlets/indicadors.py:16
 msgid "Nombre màxim d'indicadors"
-msgstr "Nombre màxim d'indicadors"
+msgstr "Número máximo de categorías"
 
 #: ./genweb/serveistic/portlets/indicadors.py:21
 msgid "Nombre màxim de categories"
-msgstr "Nombre màxim de categories"
+msgstr "Número máximo de notificaciones"
 
 #: ./genweb/serveistic/portlets/notificacions.py:21
 msgid "Nombre màxim de notificacions"
-msgstr "Nombre màxim de notificacions"
+msgstr "Número máximo de problemas"
 
 #: ./genweb/serveistic/portlets/problemes.py:16
 msgid "Nombre màxim de problemes"
-msgstr "Nombre màxim de problemes"
+msgstr "Notificación"
 
 #: ./genweb/serveistic/profiles/default/types/notificaciotic.xml
 msgid "Notificacio TIC"
-msgstr "Notificació"
+msgstr "Notificaciones"
 
 #: ./genweb/serveistic/browser/notificacio_views_templates/notificacions.pt:9
 msgid "Notificacions"
-msgstr "Notificacions"
+msgstr "Notificaciones TIC"
 
 #: ./genweb/serveistic/portlets/notificacions.py:35
 msgid "Notificacions TIC"
-msgstr "Notificacions TIC"
+msgstr "Popular"
 
 #: ./genweb/serveistic/content/serveitic.py:159
 msgid "Popular"
-msgstr "Popular"
+msgstr "Proveedor / Unidad"
 
 #: ./genweb/serveistic/content/serveitic.py:165
 msgid "Prestador"
-msgstr "Proveïdor / Unitat"
+msgstr "Problemas"
 
 #: ./genweb/serveistic/portlets/problemes.py:30
 #: ./genweb/serveistic/portlets/templates/problemes.pt:5
 msgid "Problemes"
-msgstr "Problemes"
+msgstr "Guardar"
 
 #: ./genweb/serveistic/controlpanel.py:170
 msgid "Save"
-msgstr "Guardar"
+msgstr "Servicio Web Indicadores"
 
 #: ./genweb/serveistic/controlpanel.py:77
 msgid "Servei Web Indicadors"
-msgstr "Servei Web Indicadors"
+msgstr "Servicio Web Problemas"
 
 #: ./genweb/serveistic/controlpanel.py:59
 msgid "Servei Web Problemes"
-msgstr "Servei Web Problemes"
+msgstr "Servicio / Área"
 
 #: ./genweb/serveistic/content/serveitic.py:179
 msgid "Tipologia"
@@ -372,16 +372,16 @@ msgstr "Servei / Àrea"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:31
 msgid "Tipus"
-msgstr "Tipus"
+msgstr "Tipo"
 
 #: ./genweb/serveistic/content/notificaciotic.py:35
 msgid "Tipus de notificació"
-msgstr "Tipus de notificació"
+msgstr "Tipo de notificación"
 
 #: ./genweb/serveistic/content/notificaciotic.py:21
 #: ./genweb/serveistic/content/serveitic.py:71
 msgid "Títol"
-msgstr "Títol"
+msgstr "Título"
 
 #: ./genweb/serveistic/content/problema.py:27
 #: ./genweb/serveistic/content/serveitic.py:100
@@ -391,19 +391,19 @@ msgstr "URL"
 
 #: ./genweb/serveistic/controlpanel.py:46
 msgid "URL d'informació de Serveis TIC"
-msgstr "URL d'informació de Serveis TIC"
+msgstr "URL de información de Servicios TIC"
 
 #: ./genweb/serveistic/controlpanel.py:47
 msgid "URL on enllaça la i de la barra superior del lloc web de Serveis TIC"
-msgstr "URL on enllaça la i de la barra superior del lloc web de Serveis TIC"
+msgstr "URL donde enlaza la y de la barra superior del sitio web de Serveis TIC"
 
 #: ./genweb/serveistic/content/serveitic.py:172
 msgid "Ubicació"
-msgstr "Ubicació"
+msgstr "Ubicación"
 
 #: ./genweb/serveistic/controlpanel.py:68
 msgid "Usuari"
-msgstr "Usuari"
+msgstr "Usuario"
 
 #: ./genweb/serveistic/controlpanel.py:23
 msgid "Valor"
@@ -423,48 +423,48 @@ msgstr "category_freq_{0}"
 
 #: ./genweb/serveistic/browser/socialtools_viewlets_templates/socialtools.pt:48
 msgid "comparteix_rss"
-msgstr "Subscriu-te al canal RSS"
+msgstr "Suscríbete al canal RSS"
 
 #. Default: "Afegir els valors per facetes de cerca"
 #: ./genweb/serveistic/controlpanel.py:131
 msgid "help_facetes_table"
-msgstr "Afegir els valors per facetes de cerca"
+msgstr "Añadir valores por facetas de búsqueda"
 
 #. Default: "ServeisTIC configuration."
 #: ./genweb/serveistic/controlpanel.py:146
 msgid "help_serveistic_settings_editform"
-msgstr "Configuració Serveis TIC"
+msgstr "Configuración Servicios TIC"
 
 #. Default: "Serveis Tic Banners"
 #: ./genweb/serveistic/portlets/bannersportlet.py:39
 msgid "label_banner_serveis"
-msgstr "Serveis TIC Banners "
+msgstr "Servicios TIC Banners"
 
 #. Default: "Show all items"
 #: ./genweb/serveistic/browser/searchbox_views.py:89
 msgid "label_show_all"
-msgstr "Mostrar tots els items"
+msgstr "Mostrar todos los items"
 
 #. Default: "(obriu en una finestra nova)"
 #: ./genweb/serveistic/portlets/bannersportlet.py:77
 msgid "obrir_link_finestra_nova"
-msgstr "(obriu en una finestra nova)"
+msgstr "(abre en ventana nueva)"
 
 #. Default: "Update frequency"
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:21
 msgid "update_frequency"
-msgstr "Freqüència d'actualització:"
+msgstr "Frecuencia de actualización:"
 
 #. Default: "Updated now"
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:27
 msgid "updated_now"
-msgstr "Actualitzat ara"
+msgstr "Actualizado ahora"
 
 #. Default: "Updated on"
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:16
 msgid "updated_on"
-msgstr "Actualitzat el"
+msgstr "Actualizado el"
 
 #: ./genweb/serveistic/content/serveitic.py:186
 msgid "Àmbit"
-msgstr "Àmbit"
+msgstr "Ámbito"
