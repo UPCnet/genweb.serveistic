@@ -90,8 +90,21 @@
   }
 
   $(document).ready(function(){
-    $("#center-top-area").before('<a id="show-more-filters">Filtra els resultats</a>');
-    $("#cercador").attr("placeholder", "Cerca a tot el web");
+    if($("body").hasClass("site-ca")){
+      $("#center-top-area").before('<a id="show-more-filters">Filtra els resultats</a>');
+      $("#cercador").attr("placeholder", "Cerca a tot el web");
+    }
+
+    if($("body").hasClass("site-es")){
+      $("#center-top-area").before('<a id="show-more-filters">Filtra los resultados/a>');
+      $("#cercador").attr("placeholder", "Busca en toda la web");
+    }
+
+    if($("body").hasClass("site-en")){
+      $("#center-top-area").before('<a id="show-more-filters">Filter the results</a>');
+      $("#cercador").attr("placeholder", "Search the entire web");
+    }
+
     $("#top-area").appendTo("#serveisticSearch");
 
     $("#show-more-filters").on('click', function(){
@@ -102,7 +115,7 @@
     $('.faceted-noborder').on('click', $.stCheckResults);
     $('.faceted-widget form').submit($.stCheckResults);
 
-    if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7')){
+    if($.urlParam('c3') || $.urlParam('c4') || $.urlParam('c5') || $.urlParam('c6') || $.urlParam('c7') || $.urlParam('c8') || $.urlParam('c9') || $.urlParam('c10') || $.urlParam('c11')){
       $("#show-more-filters").trigger("click");
     }
   });
