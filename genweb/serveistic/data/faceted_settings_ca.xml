@@ -26,7 +26,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta1</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -44,7 +44,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta2</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -62,7 +62,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta3</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -80,7 +80,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta4</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -98,7 +98,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta5</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -116,7 +116,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta6</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -134,7 +134,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta7</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>
@@ -152,7 +152,7 @@
       <property name="operator_visible">0</property>
       <property name="vocabulary">genweb.serveistic.vocabularies.cafaceta8</property>
       <property name="catalog" />
-      <property name="maxitems" />
+      <property name="maxitems">20</property>
       <property name="sortreversed">0</property>
       <property name="default" />
     </criterion>

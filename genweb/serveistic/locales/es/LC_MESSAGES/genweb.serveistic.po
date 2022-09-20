@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: genweb.serveistic\n"
-"POT-Creation-Date: 2022-07-28 07:07+0000\n"
+"POT-Creation-Date: 2022-09-19 09:23+0000\n"
 "PO-Revision-Date: 2016-04-20 10:00+0000\n"
 "Last-Translator: Santi Cortés <santiago.cortes.vaillo@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
@@ -38,6 +38,10 @@ msgstr "Agregar portlet de notificaciones"
 #: ./genweb/serveistic/portlets/problemes.py:51
 msgid "Afegeix portlet de problemes"
 msgstr "Agregar portlet de problemas"
+
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:34
+msgid "Amagar filtres"
+msgstr "Esconder filtros"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:95
 msgid "Aquest portlet mostra els banners TIC"
@@ -297,6 +301,10 @@ msgstr "Tamaño recomendado de la imagen 1920x82 pixels"
 msgid "Mida recomanada de la imatge 1920x82 pixels"
 msgstr "No hay ningún indicador registrado relacionado con este servicio"
 
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:33
+msgid "Mostrar filtres"
+msgstr "Mostrar filtros"
+
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:59
 msgid "No hi ha cap indicador enregistrat relacionat amb aquest servei"
 msgstr "No hay ningún problema registrado relacionado con este servicio"
@@ -349,6 +357,7 @@ msgstr "Proveedor / Unidad"
 msgid "Prestador"
 msgstr "Problemas"
 
+#: ./genweb/serveistic/browser/problema_views_templates/problemes.pt:9
 #: ./genweb/serveistic/portlets/problemes.py:30
 #: ./genweb/serveistic/portlets/templates/problemes.pt:5
 msgid "Problemes"
@@ -445,10 +454,20 @@ msgstr "Servicios TIC Banners"
 msgid "label_show_all"
 msgstr "Mostrar todos los items"
 
+#. Default: "Serveis més populars"
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:40
+msgid "most_popular"
+msgstr "Servicios más populares"
+
 #. Default: "(obriu en una finestra nova)"
 #: ./genweb/serveistic/portlets/bannersportlet.py:77
 msgid "obrir_link_finestra_nova"
 msgstr "(abre en ventana nueva)"
+
+#. Default: "Cerca un servei"
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:39
+msgid "search_serveitic"
+msgstr "Busca un servicio"
 
 #. Default: "Update frequency"
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:21

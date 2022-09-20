@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: genweb.serveistic\n"
-"POT-Creation-Date: 2022-07-28 07:07+0000\n"
+"POT-Creation-Date: 2022-09-19 09:23+0000\n"
 "PO-Revision-Date: 2016-04-20 10:00+0000\n"
 "Last-Translator: Santi Cortés <santiago.cortes.vaillo@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
@@ -38,6 +38,10 @@ msgstr "Add notifications portlet"
 #: ./genweb/serveistic/portlets/problemes.py:51
 msgid "Afegeix portlet de problemes"
 msgstr "Add Issues Portlet"
+
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:34
+msgid "Amagar filtres"
+msgstr "Hide filters"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:95
 msgid "Aquest portlet mostra els banners TIC"
@@ -297,6 +301,10 @@ msgstr "Recommended image size 1920x82 pixels"
 msgid "Mida recomanada de la imatge 1920x82 pixels"
 msgstr "There are no recorded indicators related to this service"
 
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:33
+msgid "Mostrar filtres"
+msgstr "Show filters"
+
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:59
 msgid "No hi ha cap indicador enregistrat relacionat amb aquest servei"
 msgstr "There are no recorded issues related to this service"
@@ -349,6 +357,7 @@ msgstr "Supplier / Unit"
 msgid "Prestador"
 msgstr "problems"
 
+#: ./genweb/serveistic/browser/problema_views_templates/problemes.pt:9
 #: ./genweb/serveistic/portlets/problemes.py:30
 #: ./genweb/serveistic/portlets/templates/problemes.pt:5
 msgid "Problemes"
@@ -445,10 +454,20 @@ msgstr "ServeisTIC Banners"
 msgid "label_show_all"
 msgstr "Show all items"
 
+#. Default: "Serveis més populars"
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:40
+msgid "most_popular"
+msgstr "Most popular services"
+
 #. Default: "(obriu en una finestra nova)"
 #: ./genweb/serveistic/portlets/bannersportlet.py:77
 msgid "obrir_link_finestra_nova"
 msgstr "(opens in a new window)"
+
+#. Default: "Cerca un servei"
+#: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:39
+msgid "search_serveitic"
+msgstr "Search a service"
 
 #. Default: "Update frequency"
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:21

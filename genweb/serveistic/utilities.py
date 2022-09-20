@@ -12,11 +12,13 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 
-from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
-from genweb.serveistic.content.serveitic import IServeiTIC
-from genweb.serveistic.config_helper import facets_vocabulary
-from genweb.serveistic.ws_client.problems import Client as ProblemesClient
 from genweb.core.indicators.client import Client as IndicadorsClient
+
+from genweb.serveistic.config_helper import facets_vocabulary
+from genweb.serveistic.content.serveitic import IServeiTIC
+from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
+from genweb.serveistic.controlpanel import IServeisTICFacetesControlPanelSettings
+from genweb.serveistic.ws_client.problems import Client as ProblemesClient
 
 
 def build_vocabulary(values):
@@ -29,6 +31,12 @@ def serveistic_config():
     """ Funcio que retorna les configuracions del controlpanel """
     registry = queryUtility(IRegistry)
     return registry.forInterface(IServeisTICControlPanelSettings)
+
+
+def serveistic_facetes_config():
+    """ Funcio que retorna les configuracions del controlpanel """
+    registry = queryUtility(IRegistry)
+    return registry.forInterface(IServeisTICFacetesControlPanelSettings)
 
 
 def get_servei(self):
@@ -103,7 +111,7 @@ class FacetValuesVocabularyBase(object):
         self.lang = ""
 
     def __call__(self, context):
-        facets = serveistic_config().facetes_table
+        facets = serveistic_facetes_config().facetes_table
         facets = [] if facets is None else facets
 
         vocabulary = []

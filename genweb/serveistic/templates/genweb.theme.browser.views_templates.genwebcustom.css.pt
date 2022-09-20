@@ -88,6 +88,18 @@ a.external-link img.link_blank {
 
 /* -------------------- */
 
+#faceted_settings,
+li#contentview-faceted\.configure {
+    display: none;
+}
+
+body.userrole-manager #faceted_settings,
+body.userrole-webmaster #faceted_settings,
+body.userrole-manager #contentview-faceted\.configure,
+body.userrole-webmaster #contentview-faceted\.configure {
+    display: block;
+}
+
 #content-area {
     margin-top: 1em;
 }

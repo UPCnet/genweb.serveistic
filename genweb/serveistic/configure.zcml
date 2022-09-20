@@ -56,6 +56,13 @@
       permission="cmf.ManagePortal"
       />
 
+    <browser:page
+      name="serveistic-facetes-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ServeisTICFacetesControlPanel"
+      permission="genweb.webmaster"
+      />
+
     <browser:jbot
       directory="templates"
       layer=".interfaces.IGenwebServeisticLayer"

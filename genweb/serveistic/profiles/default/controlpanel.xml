@@ -8,4 +8,13 @@
     visible="True">
   <permission>Manage Portal</permission>
  </configlet>
+
+  <configlet title="Serveis TIC Facetes settings" action_id="genweb.serveistic.facetes"
+    appId="genweb.serveistic.facetes" category="Products"
+    condition_expr="python:True"
+    url_expr="string:${portal_url}/serveistic-facetes-controlpanel"
+    icon_expr="string:$portal_url/++resource++cpgenweb.png"
+    visible="True">
+  <permission>Genweb: Webmaster Users</permission>
+ </configlet>
 </object>

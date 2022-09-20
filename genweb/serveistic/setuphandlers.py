@@ -10,7 +10,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
 from genweb.serveistic.config_helper import get_absolute_path, config
-from genweb.serveistic.controlpanel import IServeisTICControlPanelSettings
+from genweb.serveistic.controlpanel import IServeisTICFacetesControlPanelSettings
 
 
 # Specify the indexes you want, with ('index_name', 'index_type')
@@ -62,7 +62,7 @@ def add_catalog_indexes(catalog):
 
 def add_default_settings():
     settings = getUtility(IRegistry).forInterface(
-        IServeisTICControlPanelSettings, check=False)
+        IServeisTICFacetesControlPanelSettings, check=False)
 
     facets_file_path = get_absolute_path(config.get('facets', 'file_path'))
 

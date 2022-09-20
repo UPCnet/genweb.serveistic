@@ -127,7 +127,7 @@ class IServeisTICControlPanelSettings(model.Schema):
     model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
     form.widget(facetes_table=DataGridFieldFactory)
     facetes_table = schema.List(
-        title=_(u'Facetes'),
+        title=_(u'DEPRECATED Facetes'),
         description=_(
             u'help_facetes_table',
             default=u'Afegir els valors per facetes de cerca'),
@@ -189,3 +189,38 @@ class ServeisTICControlPanelSettingsForm(controlpanel.RegistryEditForm):
 
 class ServeisTICControlPanel(controlpanel.ControlPanelFormWrapper):
     form = ServeisTICControlPanelSettingsForm
+
+
+class IServeisTICFacetesControlPanelSettings(model.Schema):
+
+    model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
+    form.widget(facetes_table=DataGridFieldFactory)
+    facetes_table = schema.List(
+        title=_(u'Facetes'),
+        description=_(
+            u'help_facetes_table',
+            default=u'Afegir els valors per facetes de cerca'),
+        value_type=DictRow(
+            title=_(u'help_facetes_table'),
+            schema=ITableFacetes),
+        required=False
+        )
+
+
+class ServeisTICFacetesControlPanelSettingsForm(controlpanel.RegistryEditForm):
+
+    schema = IServeisTICFacetesControlPanelSettings
+    id = 'ServeisTICFacetesControlPanelSettingsForm'
+    label = _(u'Genweb ServeisTIC settings')
+    description = _(u'help_serveistic_settings_editform',
+                    default=u'ServeisTIC configuration.')
+
+    def updateFields(self):
+        super(ServeisTICFacetesControlPanelSettingsForm, self).updateFields()
+
+    def updateWidgets(self):
+        super(ServeisTICFacetesControlPanelSettingsForm, self).updateWidgets()
+
+
+class ServeisTICFacetesControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = ServeisTICFacetesControlPanelSettingsForm
