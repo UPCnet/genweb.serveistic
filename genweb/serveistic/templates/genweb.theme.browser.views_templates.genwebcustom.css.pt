@@ -94,9 +94,7 @@ li#contentview-faceted\.configure {
 }
 
 body.userrole-manager #faceted_settings,
-body.userrole-webmaster #faceted_settings,
-body.userrole-manager #contentview-faceted\.configure,
-body.userrole-webmaster #contentview-faceted\.configure {
+body.userrole-manager #contentview-faceted\.configure {
     display: block;
 }
 
