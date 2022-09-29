@@ -192,5 +192,13 @@
       <property name="vocabulary" />
       <property name="default">sortable_title</property>
     </criterion>
+    <criterion name="c12">
+      <property name="widget">resultsfilter</property>
+      <property name="title">Path</property>
+      <property name="position">right</property>
+      <property name="section">default</property>
+      <property name="hidden">1</property>
+      <property name="default">python:'/es/' in brain.getObject().absolute_url_path()</property>
+    </criterion>
   </criteria>
 </object>
