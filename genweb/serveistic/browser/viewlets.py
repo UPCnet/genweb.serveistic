@@ -6,6 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from five import grok
+from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 from plone.app.layout.viewlets.common import ManagePortletsFallbackViewlet
@@ -218,6 +219,14 @@ class HeaderGWServeistic(gwHeader):
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IGenwebControlPanelSettings)
         return settings.treu_imatge_capsalera
+
+    def can_view_facetes_url(self):
+        if not api.user.is_anonymous():
+            username = api.user.get_current().id
+            roles = api.user.get_roles(username=username, obj=self.context)
+            if 'Manager' in roles or 'WebMaster' in roles:
+                return True
+        return False
 
 
 class gwManagePortletsFallbackViewletMixin(object):

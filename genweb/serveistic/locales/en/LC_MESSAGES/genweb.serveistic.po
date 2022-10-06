@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: genweb.serveistic\n"
-"POT-Creation-Date: 2022-09-19 09:23+0000\n"
+"POT-Creation-Date: 2022-10-06 15:09+0000\n"
 "PO-Revision-Date: 2016-04-20 10:00+0000\n"
 "Last-Translator: Santi Cortés <santiago.cortes.vaillo@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
@@ -81,6 +81,11 @@ msgstr "Changes saved"
 msgid "Clau de la API"
 msgstr "API key"
 
+#. Default: "Configuració facetes"
+#: ./genweb/serveistic/browser/viewlets_templates/header.pt:37
+msgid "Configuracio facetes"
+msgstr "Facet configuration"
+
 #: ./genweb/serveistic/controlpanel.py:116
 msgid "Contingut JSON de la clau de la API"
 msgstr "JSON content of the API key"
@@ -96,6 +101,10 @@ msgstr "Password required to use update view (passphrase parameter value)"
 #: ./genweb/serveistic/content/notificaciotic.py:30
 msgid "Cos de la notificació"
 msgstr "Body of the notification"
+
+#: ./genweb/serveistic/controlpanel.py:130
+msgid "DEPRECATED Facetes"
+msgstr ""
 
 #: ./genweb/serveistic/content/problema.py:22
 msgid "Data de creació"

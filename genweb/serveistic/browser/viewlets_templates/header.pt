@@ -34,6 +34,11 @@
                      <tal:content content="cl_title">CustomLink</tal:content>
                  </a>
               </li>
+              <li><a i18n:domain="genweb.serveistic" tal:condition="viewlet/can_view_facetes_url"
+                 i18n:translate="Configuracio facetes"
+                 tal:attributes="href string:${portal_url}/@@serveistic-facetes-controlpanel">
+                 Configuració facetes
+              </a></li>
               <li><a accesskey="3"
                      i18n:domain="plone"
                      i18n:translate="Site Map"
