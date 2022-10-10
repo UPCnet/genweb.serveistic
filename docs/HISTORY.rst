@@ -1,11 +1,22 @@
 Changelog
 =========
 
-1.6.28 (unreleased)
+1.6.28 (2022-10-10)
 -------------------
 
-- Nothing changed yet.
-
+* Enlace a la configuracion de las facetas [Iago López]
+* Editar faceted_settings_*.xml [Iago López]
+* Editar estilos de quien configura las facetas [Iago López]
+* Ver los servicios populares del idioma donde te situas [Iago López]
+* Fix cambios facetas [Iago López]
+* JS [Iago López]
+* Fix .zcml [Iago López]
+* Traducciones [Iago López]
+* Fix csv [Iago López]
+* Fix migracio facetes [Iago López]
+* Estilo [Iago López]
+* Fix .xml [Iago López]
+* Añadir más facetas y poder tenerlas traducidas [Iago López]
 
 1.6.27 (2022-06-01)
 -------------------
