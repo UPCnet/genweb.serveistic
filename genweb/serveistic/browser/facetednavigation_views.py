@@ -91,7 +91,7 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
 
     def get_populars(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        serveitics = catalog(portal_type='serveitic', sort_on='sortable_title', path=self.context.absolute_url_path())
+        serveitics = catalog(portal_type='serveitic', sort_on='sortable_title', path='/'.join(self.context.getPhysicalPath()))
         populars = []
         for item in serveitics:
             serveitic = item.getObject()
