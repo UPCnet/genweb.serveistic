@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.6.29 (unreleased)
--------------------
+1.7.0 (2022-10-25)
+------------------
 
-- Nothing changed yet.
-
+* Fix popular catalog [Iago López]
 
 1.6.28 (2022-10-10)
 -------------------
