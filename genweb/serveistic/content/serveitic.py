@@ -143,8 +143,8 @@ class IServeiTIC(form.Schema):
         defaultFactory=lambda: u'')
 
     service_indicators_order = schema.TextLine(
-        title=(u"Ordre indicadors"),
-        description=(
+        title=_(u"Ordre indicadors"),
+        description=_(
             u"Ordre en el qual es mostren els indicadors relacionats amb el "
             u"servei. Té el format \"3.1, 1.2, 1.3\", on el número abans de "
             u"la coma representa l'ordre original de l'indicador i el de "

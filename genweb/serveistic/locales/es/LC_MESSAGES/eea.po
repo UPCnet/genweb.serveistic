@@ -1,2 +1,2 @@
 msgid "Search"
-msgstr "Búsqueda"
+msgstr "Buscar"
