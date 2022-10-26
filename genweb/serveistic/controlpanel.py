@@ -124,19 +124,6 @@ class IServeisTICControlPanelSettings(model.Schema):
         required=False
     )
 
-    model.fieldset('Facetes', _(u'Facetes'), fields=['facetes_table'])
-    form.widget(facetes_table=DataGridFieldFactory)
-    facetes_table = schema.List(
-        title=_(u'DEPRECATED Facetes'),
-        description=_(
-            u'help_facetes_table',
-            default=u'Afegir els valors per facetes de cerca'),
-        value_type=DictRow(
-            title=_(u'help_facetes_table'),
-            schema=ITableFacetes),
-        required=False
-        )
-
 
 class ServeisTICControlPanelSettingsForm(controlpanel.RegistryEditForm):
 

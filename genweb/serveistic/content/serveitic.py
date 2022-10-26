@@ -12,7 +12,6 @@ from plone.autoform.directives import write_permission
 from plone.dexterity.content import Item
 from plone.directives import form
 from plone.namedfile.field import NamedBlobImage as BlobImage
-from plone.supermodel.directives import fieldset
 from zope import schema
 from zope.interface import implements
 from zope.interface import Interface
