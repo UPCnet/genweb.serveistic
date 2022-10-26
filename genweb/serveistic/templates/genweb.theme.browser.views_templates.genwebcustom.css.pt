@@ -88,11 +88,15 @@ a.external-link img.link_blank {
 
 /* -------------------- */
 
+body#template-facetednavigation_view #plone-contentmenu-actions,
+body#template-facetednavigation_view #plone-contentmenu-display,
 #faceted_settings,
 li#contentview-faceted\.configure {
     display: none;
 }
 
+body#template-facetednavigation_view.userrole-manager #plone-contentmenu-actions,
+body#template-facetednavigation_view.userrole-manager #plone-contentmenu-display,
 body.userrole-manager #faceted_settings,
 body.userrole-manager #contentview-faceted\.configure {
     display: block;
