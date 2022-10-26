@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.7.1 (unreleased)
+1.7.1 (2022-10-26)
 ------------------
 
-- Nothing changed yet.
-
+* Traducciones [Iago López]
+* Fix traducción [Iago López]
+* Limpieza [Iago López]
+* Deshabilitar acciones y vista en la búsqueda facetada, solo accesible manager [Iago López]
 
 1.7.0 (2022-10-25)
 ------------------
