@@ -104,7 +104,7 @@ msgstr "Cos de la notificació"
 
 #: ./genweb/serveistic/controlpanel.py:130
 msgid "DEPRECATED Facetes"
-msgstr ""
+msgstr "DEPRECATED"
 
 #: ./genweb/serveistic/content/problema.py:22
 msgid "Data de creació"
@@ -258,7 +258,7 @@ msgstr "Identificador del servei al gn6, s'utilitza per a consultar els probleme
 
 #: ./genweb/serveistic/content/serveitic.py:140
 msgid "Identificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el servei"
-msgstr ""
+msgstr "Identificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el servei"
 
 #: ./genweb/serveistic/content/serveitic.py:132
 msgid "Identificador gn6"

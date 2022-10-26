@@ -104,7 +104,7 @@ msgstr "Body of the notification"
 
 #: ./genweb/serveistic/controlpanel.py:130
 msgid "DEPRECATED Facetes"
-msgstr ""
+msgstr "DEPRECATED"
 
 #: ./genweb/serveistic/content/problema.py:22
 msgid "Data de creació"
@@ -258,29 +258,29 @@ msgstr "Identifier of the service in gn6, used to check problems related to the 
 
 #: ./genweb/serveistic/content/serveitic.py:140
 msgid "Identificador del servei al servei web d'indicadors, s'utilitza per a consultar els indicadors relacionats amb el servei"
-msgstr "Identifier gn6"
+msgstr "Service identifier in the indicators web service, used to query the indicators related to the service"
 
 #: ./genweb/serveistic/content/serveitic.py:132
 msgid "Identificador gn6"
-msgstr "Identifier indicators"
+msgstr "Identifier gn6"
 
 #: ./genweb/serveistic/content/serveitic.py:139
 msgid "Identificador indicadors"
-msgstr "Header image"
+msgstr "Identifier indicators"
 
 #: ./genweb/serveistic/content/serveitic.py:119
 msgid "Imatge de capçalera"
-msgstr "Image of the service in the search result"
+msgstr "Header image"
 
 #: ./genweb/serveistic/content/serveitic.py:125
 msgid "Imatge del servei en el resultat de cerca"
-msgstr "Indicators"
+msgstr "Image of the service in the search result"
 
 #: ./genweb/serveistic/browser/indicador_views_templates/indicadors.pt:9
 #: ./genweb/serveistic/portlets/indicadors.py:36
 #: ./genweb/serveistic/portlets/templates/indicadors.pt:5
 msgid "Indicadors"
-msgstr "List of indicators associated with an ServeiTIC"
+msgstr "Indicators"
 
 #: ./genweb/serveistic/portlets/indicadors.py:62
 msgid "Llistat d'indicadors associats a un Servei TIC"
@@ -288,7 +288,7 @@ msgstr "List of indicators associated with an ServeiTIC"
 
 #: ./genweb/serveistic/portlets/indicadors.py:74
 msgid "Llistat d'indicadors associats amb un Servei TIC"
-msgstr "List of problems associated with an ServeiTIC"
+msgstr "List of indicators associated with an ServeiTIC"
 
 #: ./genweb/serveistic/portlets/problemes.py:52
 msgid "Llistat de problemes associats a un Servei TIC"
@@ -296,19 +296,19 @@ msgstr "List of problems associated with an ServeiTIC"
 
 #: ./genweb/serveistic/portlets/problemes.py:63
 msgid "Llistat de problemes associats amb un Servei TIC"
-msgstr "Check the box if you want the notification to appear on the home page as well"
+msgstr "List of problems associated with an ServeiTIC"
 
 #: ./genweb/serveistic/content/notificaciotic.py:41
 msgid "Marca la caixa si vols que la notificació aparegui també a la pàgina d'inici"
-msgstr "Menu"
+msgstr "Check the box if you want the notification to appear on the home page as well"
 
 #: ./genweb/serveistic/browser/viewlets_templates/sections.pt:14
 msgid "Menu"
-msgstr "Recommended image size 1920x82 pixels"
+msgstr "Menu"
 
 #: ./genweb/serveistic/content/serveitic.py:120
 msgid "Mida recomanada de la imatge 1920x82 pixels"
-msgstr "There are no recorded indicators related to this service"
+msgstr "Recommended image size 1920x82 pixels"
 
 #: ./genweb/serveistic/browser/facetednavigation_views_templates/container.pt:33
 msgid "Mostrar filtres"
@@ -316,77 +316,77 @@ msgstr "Show filters"
 
 #: ./genweb/serveistic/browser/indicador_views_templates/retrieve_indicadors.pt:59
 msgid "No hi ha cap indicador enregistrat relacionat amb aquest servei"
-msgstr "There are no recorded issues related to this service"
+msgstr "There are no recorded indicators related to this service"
 
 #: ./genweb/serveistic/browser/problema_views_templates/retrieve_problemes.pt:20
 msgid "No hi ha cap problema enregistrat relacionat amb aquest servei"
-msgstr "Name of the functional manager"
+msgstr "There are no recorded issues related to this service"
 
 #: ./genweb/serveistic/content/serveitic.py:106
 msgid "Nom del responsable funcional"
-msgstr "Name of the functional manager of the service"
+msgstr "Name of the functional manager"
 
 #: ./genweb/serveistic/content/serveitic.py:107
 msgid "Nom del responsable funcional del servei"
-msgstr "Maximum number of indicators"
+msgstr "Name of the functional manager of the service"
 
 #: ./genweb/serveistic/portlets/indicadors.py:16
 msgid "Nombre màxim d'indicadors"
-msgstr "Maximum number of categories"
+msgstr "Maximum number of indicators"
 
 #: ./genweb/serveistic/portlets/indicadors.py:21
 msgid "Nombre màxim de categories"
-msgstr "Maximum number of notifications"
+msgstr "Maximum number of categories"
 
 #: ./genweb/serveistic/portlets/notificacions.py:21
 msgid "Nombre màxim de notificacions"
-msgstr "Maximum number of problems"
+msgstr "Maximum number of notifications"
 
 #: ./genweb/serveistic/portlets/problemes.py:16
 msgid "Nombre màxim de problemes"
-msgstr "Notification"
+msgstr "Maximum number of problems"
 
 #: ./genweb/serveistic/profiles/default/types/notificaciotic.xml
 msgid "Notificacio TIC"
-msgstr "Notifications"
+msgstr "Notification"
 
 #: ./genweb/serveistic/browser/notificacio_views_templates/notificacions.pt:9
 msgid "Notificacions"
-msgstr "ICT notifications"
+msgstr "Notifications"
 
 #: ./genweb/serveistic/portlets/notificacions.py:35
 msgid "Notificacions TIC"
-msgstr "Popular"
+msgstr "ICT notifications"
 
 #: ./genweb/serveistic/content/serveitic.py:159
 msgid "Popular"
-msgstr "Supplier / Unit"
+msgstr "Popular"
 
 #: ./genweb/serveistic/content/serveitic.py:165
 msgid "Prestador"
-msgstr "problems"
+msgstr "Lender"
 
 #: ./genweb/serveistic/browser/problema_views_templates/problemes.pt:9
 #: ./genweb/serveistic/portlets/problemes.py:30
 #: ./genweb/serveistic/portlets/templates/problemes.pt:5
 msgid "Problemes"
-msgstr "To save"
+msgstr "Problems"
 
 #: ./genweb/serveistic/controlpanel.py:170
 msgid "Save"
-msgstr "Indicators Web Service"
+msgstr "To save"
 
 #: ./genweb/serveistic/controlpanel.py:77
 msgid "Servei Web Indicadors"
-msgstr "Web Service Problems"
+msgstr "Indicators Web Service"
 
 #: ./genweb/serveistic/controlpanel.py:59
 msgid "Servei Web Problemes"
-msgstr "Service / Area"
+msgstr "Web Service Problems"
 
 #: ./genweb/serveistic/content/serveitic.py:179
 msgid "Tipologia"
-msgstr "Servei / Àrea"
+msgstr "Tipology"
 
 #: ./genweb/serveistic/portlets/bannersportlet.py:31
 msgid "Tipus"
