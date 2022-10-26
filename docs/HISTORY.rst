@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.7.2 (unreleased)
+1.7.2 (2022-10-26)
 ------------------
 
-- Nothing changed yet.
-
+* Traducciones [Iago López]
+* Estilos [Iago López]
 
 1.7.1 (2022-10-26)
 ------------------
