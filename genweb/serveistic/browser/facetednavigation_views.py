@@ -70,9 +70,10 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
     $(document).ready(function()
     {{
         $("#c7").attr("placeholder", "{0}");
+        $("#c7_button").val("{1}");
     }});
-       """.format(self.context.translate(
-            'search_serveitic', domain='genweb.serveistic'))
+       """.format(self.context.translate('search_serveitic', domain='genweb.serveistic'),
+                  self.context.translate('Search', domain='eea'))
 
     def page_content(self):
         try:
