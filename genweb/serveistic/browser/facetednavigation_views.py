@@ -77,7 +77,16 @@ class FacetedContainerView(FacetedContainerView, NotificacioViewHelper):
 
     def page_content(self):
         try:
-            benvingut = self.context["benvingut"]
+            lang = self.context.language
+            if lang == 'ca':
+                benvingut = self.context["benvingut"]
+            elif lang == 'es':
+                benvingut = self.context["bienvenido"]
+            elif lang == 'en':
+                benvingut = self.context["welcome"]
+            else:
+                benvingut = self.context["benvingut"]
+
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
             workflows = tools.workflow().getWorkflowsFor(benvingut)[0]
