@@ -804,13 +804,13 @@ display: none;
     font-weight: normal;
 }
 body.site-ca .faceted-results::before {
-    content: "Tots els serveis:";
+    content: "Serveis:";
 }
 body.site-es .faceted-results::before {
-    content: "Todos los servicios:";
+    content: "Servicios:";
 }
 body.site-en .faceted-results::before {
-    content: "All the services:";
+    content: "Services:";
 }
 body.site-ca .faceted-results.results::before {
     content: "Resultats:";
