@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.7.3 (unreleased)
+1.7.3 (2022-10-27)
 ------------------
 
-- Nothing changed yet.
-
+* Cambio de literal [Iago López]
+* Pillar pagina de bienvenida en es y en [Iago López]
 
 1.7.2 (2022-10-26)
 ------------------
