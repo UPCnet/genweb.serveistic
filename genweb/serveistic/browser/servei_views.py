@@ -110,20 +110,25 @@ def initialize_servei(serveitic, event):
     # Configure portlets
     assignments = get_portlet_assignments(
         serveitic, 'plone.leftcolumn')
-    assignments['banners_global'] = BannersAssignment(banner_type=u"Global")
-    assignments['banners_local'] = BannersAssignment(banner_type=u"Local")
+    if 'banners_global' not in assignments:
+        assignments['banners_global'] = BannersAssignment(banner_type=u"Global")
+    if 'banners_local' not in assignments:
+        assignments['banners_local'] = BannersAssignment(banner_type=u"Local")
 
     assignments = get_portlet_assignments(
         serveitic, 'genweb.portlets.HomePortletManager3')
-    assignments['notificacions'] = NotificacionsAssignment()
+    if 'notificacions' not in assignments:
+        assignments['notificacions'] = NotificacionsAssignment()
 
     assignments = get_portlet_assignments(
         serveitic, 'genweb.portlets.HomePortletManager4')
-    assignments['problemes'] = ProblemesAssignment()
+    if 'problemes' not in assignments:
+        assignments['problemes'] = ProblemesAssignment()
 
     assignments = get_portlet_assignments(
         serveitic, 'genweb.portlets.HomePortletManager5')
-    assignments['indicadors'] = IndicadorsAssignment()
+    if 'indicadors' not in assignments:
+        assignments['indicadors'] = IndicadorsAssignment()
 
     # Create folder structure
     for folder_data in folder_structure:
