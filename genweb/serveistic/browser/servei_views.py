@@ -4,11 +4,13 @@ from five import grok
 
 from plone.app.contenttypes.behaviors.richtext import IRichText
 from plone.dexterity.utils import createContentInContainer
-from plone.portlets.interfaces import IPortletManager
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
 
 from zope.app.container.interfaces import IObjectAddedEvent
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.component import queryUtility
 from zope.interface import alsoProvides
 
@@ -29,6 +31,8 @@ from genweb.serveistic.portlets.problemes import Assignment as \
 from genweb.serveistic.portlets.indicadors import Assignment as \
     IndicadorsAssignment
 from genweb.serveistic.data.folder_structure import folder_structure
+
+import unicodedata
 
 
 class View(HomePageBase):
@@ -131,8 +135,18 @@ def initialize_servei(serveitic, event):
         assignments['indicadors'] = IndicadorsAssignment()
 
     # Create folder structure
+    normalizer = getUtility(IIDNormalizer)
     for folder_data in folder_structure:
-        createFolderAndContents(serveitic, folder_data)
+        try:
+            if isinstance(folder_data[0], str):
+                flattened = unicodedata.normalize('NFKD', folder_data[0].decode('utf-8')).encode('ascii', errors='ignore')
+            else:
+                flattened = unicodedata.normalize('NFKD', folder_data[0]).encode('ascii', errors='ignore')
+
+            if normalizer.normalize(flattened) not in serveitic:
+                createFolderAndContents(serveitic, folder_data)
+        except:
+            createFolderAndContents(serveitic, folder_data)
 
     # Mark ServeiTIC as initialized to prevent previous folder creations from
     # triggering the modify event
