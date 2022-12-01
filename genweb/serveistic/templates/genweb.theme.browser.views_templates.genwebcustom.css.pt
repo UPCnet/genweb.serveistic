@@ -86,6 +86,27 @@ a.external-link img.link_blank {
     margin-left: 5px;
 }
 
+@media only screen and (max-width: 768px) {
+
+    #portal-globalnav ul.nav {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    #portal-globalnav ul.nav > li > a {
+        text-align: left !important;
+    }
+
+    #portal-globalnav ul.nav > li > a > span.caret {
+        display: none;
+    }
+
+    #portal-globalnav ul.nav > li > ul {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
 /* -------------------- */
 
 body.template-facetednavigation_view #plone-contentmenu-actions,
