@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: genweb.serveistic\n"
-"POT-Creation-Date: 2022-10-26 09:33+0000\n"
+"POT-Creation-Date: 2023-01-13 08:51+0000\n"
 "PO-Revision-Date: 2016-04-20 10:00+0000\n"
 "Last-Translator: Santi Cortés <santiago.cortes.vaillo@upcnet.es>\n"
 "Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
@@ -438,6 +438,42 @@ msgstr "Valor EN"
 #: ./genweb/serveistic/controlpanel.py:27
 msgid "Valor ES"
 msgstr "Valor ES"
+
+#: ./genweb/serveistic/setuphandlers.py:26
+msgid "category_freq_anual"
+msgstr ""
+
+#: ./genweb/serveistic/setuphandlers.py:20
+msgid "category_freq_diaria"
+msgstr "Diaria"
+
+#: ./genweb/serveistic/setuphandlers.py:19
+msgid "category_freq_horaria"
+msgstr "Horaria"
+
+#: ./genweb/serveistic/setuphandlers.py:22
+msgid "category_freq_mensual"
+msgstr "Mensual"
+
+#: ./genweb/serveistic/setuphandlers.py:24
+msgid "category_freq_quadrimestral"
+msgstr "Cuatrimestral"
+
+#: ./genweb/serveistic/setuphandlers.py:25
+msgid "category_freq_semestral"
+msgstr "Semestral"
+
+#: ./genweb/serveistic/setuphandlers.py:21
+msgid "category_freq_setmanal"
+msgstr "Semanal"
+
+#: ./genweb/serveistic/setuphandlers.py:23
+msgid "category_freq_trimestral"
+msgstr "Trimestral"
+
+#: ./genweb/serveistic/setuphandlers.py:18
+msgid "category_freq_unknown"
+msgstr "Desconocida"
 
 #: ./genweb/serveistic/data_access/indicadors.py:129
 msgid "category_freq_{0}"

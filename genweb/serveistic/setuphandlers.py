@@ -9,9 +9,22 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 
+from genweb.serveistic import _
 from genweb.serveistic.config_helper import get_absolute_path, config
 from genweb.serveistic.controlpanel import IServeisTICFacetesControlPanelSettings
 
+
+translates = [
+    _(u"category_freq_unknown"),
+    _(u"category_freq_horaria"),
+    _(u"category_freq_diaria"),
+    _(u"category_freq_setmanal"),
+    _(u"category_freq_mensual"),
+    _(u"category_freq_trimestral"),
+    _(u"category_freq_quadrimestral"),
+    _(u"category_freq_semestral"),
+    _(u"category_freq_anual")
+]
 
 # Specify the indexes you want, with ('index_name', 'index_type')
 NEW_INDEXES = [
