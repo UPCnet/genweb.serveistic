@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.7.5 (unreleased)
+1.7.5 (2023-05-17)
 ------------------
 
-- Nothing changed yet.
-
+* Literales [Iago López]
 
 1.7.4 (2022-12-12)
 ------------------
